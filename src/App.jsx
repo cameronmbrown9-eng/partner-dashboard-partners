@@ -44,7 +44,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 42.9849,
       lng: -81.2453
     },
@@ -68,7 +67,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "4/15/25",
       lat: 42.9835,
       lng: -81.2497
     },
@@ -92,7 +90,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 45.4215,
       lng: -75.6972
     },
@@ -116,7 +113,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 45.4235,
       lng: -75.6919
     },
@@ -140,7 +136,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 49.2057,
       lng: -122.9110
     },
@@ -164,7 +159,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "Mobile",
       projStartYear: "YEAR 1",
-      pwlleTraining: "3/28/25",
       lat: 44.5667,
       lng: -80.9333
     },
@@ -188,7 +182,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 43.5448,
       lng: -80.2482
     },
@@ -212,7 +205,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "Mobile",
       projStartYear: "YEAR 1",
-      pwlleTraining: "3/17/25",
       lat: 43.4516,
       lng: -80.4925
     },
@@ -236,7 +228,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 43.7315,
       lng: -79.7624
     },
@@ -260,7 +251,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 43.2557,
       lng: -79.8711
     },
@@ -284,7 +274,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "T9BHV6NGWWFF",
       exemptionType2: "Mobile",
       projStartYear: "YEAR 1",
-      pwlleTraining: "NA",
       lat: 43.1594,
       lng: -79.2469
     },
@@ -308,7 +297,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "GWPFIRNGX8FF",
       exemptionType2: "Mobile",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 46.0878,
       lng: -64.7782
     },
@@ -332,7 +320,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 52.1332,
       lng: -106.6700
     },
@@ -356,7 +343,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 48.4758,
       lng: -81.3304
     },
@@ -380,7 +366,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 45.4729,
       lng: -76.6867
     },
@@ -404,7 +389,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 44.3091,
       lng: -78.3197
     },
@@ -428,7 +412,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 48.4284,
       lng: -71.0649
     },
@@ -452,7 +435,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 45.3669,
       lng: -63.2755
     },
@@ -476,7 +458,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 43.6532,
       lng: -79.3832
     },
@@ -500,7 +481,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 45.9636,
       lng: -66.6431
     },
@@ -524,7 +504,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "Mobile",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 45.2733,
       lng: -66.0633
     },
@@ -548,7 +527,6 @@ const ProjectPartnerDashboard = () => {
       deviceSerial2: "NA",
       exemptionType2: "NA",
       projStartYear: "YEAR 2",
-      pwlleTraining: "TBD",
       lat: 53.5461,
       lng: -113.4938
     }
@@ -565,16 +543,13 @@ const ProjectPartnerDashboard = () => {
       NonMobile: partnersData.filter(s => s.exemptionType1 === "Non-Mobile").length
     };
 
-    const pwlleCompleted = partnersData.filter(s => s.pwlleTraining !== "TBD" && s.pwlleTraining !== "NA").length;
-
     return {
       totalPartners: partnersData.length,
       provinces,
       totalDevices,
       year1Sites,
       year2Sites,
-      exemptionType1Counts,
-      pwlleCompleted
+      exemptionType1Counts
     };
   };
 
@@ -607,7 +582,6 @@ const ProjectPartnerDashboard = () => {
           <div><span className="font-semibold text-purple-800">Device Serial #2:</span> {site.deviceSerial2}</div>
           <div><span className="font-semibold text-purple-800">Exemption Type #2:</span> {site.exemptionType2}</div>
           <div><span className="font-semibold text-purple-800">Project Start Year:</span> {site.projStartYear}</div>
-          <div><span className="font-semibold text-purple-800">PWLLE Training:</span> {site.pwlleTraining}</div>
         </div>
       </div>
     );
@@ -675,7 +649,6 @@ const ProjectPartnerDashboard = () => {
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Device Serial #2</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Type #2</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Proj Start YEAR</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>PWLLE Training Date(s)</th>
               </tr>
             </thead>
             <tbody>
@@ -699,7 +672,6 @@ const ProjectPartnerDashboard = () => {
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.deviceSerial2}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionType2}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.projStartYear}</td>
-                  <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.pwlleTraining}</td>
                 </tr>
               ))}
             </tbody>
@@ -803,7 +775,7 @@ const ProjectPartnerDashboard = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-gradient-to-br from-violet-100 to-violet-200 p-5 rounded-xl shadow-lg border-2 border-violet-300 hover:shadow-2xl transition-shadow cursor-pointer"
                  onClick={() => toggleMetric('year1')}>
               <div className="flex items-center justify-between">
@@ -837,10 +809,6 @@ const ProjectPartnerDashboard = () => {
                   ))}
                 </div>
               )}
-            </div>
-            <div className="bg-gradient-to-br from-cyan-100 to-cyan-200 p-5 rounded-xl shadow-lg border-2 border-cyan-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-cyan-900">{stats.pwlleCompleted}</div>
-              <div className="text-sm text-cyan-700 font-medium mt-1">PWLLE Training Complete</div>
             </div>
           </div>
         </div>
