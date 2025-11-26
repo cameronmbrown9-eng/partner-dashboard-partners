@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { MapPin, List, X, Calendar, Award, Users, FileCheck, Maximize2, Minimize2, ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Award, MapPin, List, Users, FileCheck, Calendar, TrendingUp, Filter, X } from 'lucide-react';
+import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Fix for default marker icons in react-leaflet
+// Fix default marker icon
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -11,1126 +12,905 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
+// Real partner data from CSV
+const partnersData = [
+  {
+    "name": "Western University",
+    "city": "London",
+    "province": "ON",
+    "latitude": 42.9849,
+    "longitude": -81.2453,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Regional HIV/AIDS Connection (RHAC)",
+    "city": "London",
+    "province": "ON",
+    "latitude": 42.9849,
+    "longitude": -81.2453,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Complete"
+  },
+  {
+    "name": "Sandy Hill Community Healh Centre",
+    "city": "Ottawa",
+    "province": "ON",
+    "latitude": 45.4215,
+    "longitude": -75.6972,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Ottawa Inner City Health",
+    "city": "Ottawa",
+    "province": "ON",
+    "latitude": 45.4215,
+    "longitude": -75.6972,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Lower Mainland Purpose Society",
+    "city": "New Westminister",
+    "province": "BC",
+    "latitude": 49.2069,
+    "longitude": -122.911,
+    "devices": 1,
+    "device1Type": "Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "County of Grey",
+    "city": "Owen Sound",
+    "province": "ON",
+    "latitude": 44.5675,
+    "longitude": -80.9434,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": "Approved",
+    "exemptionType2": "Mobile",
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Complete"
+  },
+  {
+    "name": "Guelph Community Health Centre",
+    "city": "Guelph",
+    "province": "ON",
+    "latitude": 43.5448,
+    "longitude": -80.2482,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Sanguen Health Centre",
+    "city": "Kitchener",
+    "province": "ON",
+    "latitude": 43.4516,
+    "longitude": -80.4925,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": "Approved",
+    "exemptionType2": "Mobile",
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Complete"
+  },
+  {
+    "name": "Moyo Health",
+    "city": "Brampton",
+    "province": "ON",
+    "latitude": 43.7315,
+    "longitude": -79.7624,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Hamilton Urban Core Community Health Centre",
+    "city": "Hamilton",
+    "province": "ON",
+    "latitude": 43.2557,
+    "longitude": -79.8711,
+    "devices": 1,
+    "device1Type": "Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "In Progress",
+    "exemptionType1": "Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Positive Living Niagara",
+    "city": "St. Catherines",
+    "province": "ON",
+    "latitude": 43.1594,
+    "longitude": -79.2469,
+    "devices": 2,
+    "device1Type": "Non-Mobile",
+    "device2Type": "Mobile",
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": "Submitted",
+    "exemptionType2": "Mobile",
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Ensemble Moncton",
+    "city": "Moncton",
+    "province": "NB",
+    "latitude": 46.0878,
+    "longitude": -64.7782,
+    "devices": 2,
+    "device1Type": "Non-Mobile",
+    "device2Type": "Mobile",
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": "Submitted",
+    "exemptionType2": "Mobile",
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Prairie Harm Reduction",
+    "city": "Saskatoon",
+    "province": "SK",
+    "latitude": 52.1332,
+    "longitude": -106.67,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Cochrane District Paramedic Service",
+    "city": "Timmins",
+    "province": "ON",
+    "latitude": 48.4758,
+    "longitude": -81.3304,
+    "devices": 1,
+    "device1Type": "Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Renfrew Paramedic Services",
+    "city": "Renfrew",
+    "province": "ON",
+    "latitude": 45.4729,
+    "longitude": -76.683,
+    "devices": 1,
+    "device1Type": "Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Peterborough AIDS Resource Network",
+    "city": "Peterborough",
+    "province": "ON",
+    "latitude": 44.3091,
+    "longitude": -78.3197,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "In Progress",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Travailderue",
+    "city": "Chicoutimi",
+    "province": "QC",
+    "latitude": 48.4284,
+    "longitude": -71.0537,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "NHC Society",
+    "city": "Truro",
+    "province": "NS",
+    "latitude": 45.3676,
+    "longitude": -63.2755,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Breakaway",
+    "city": "Toronto",
+    "province": "ON",
+    "latitude": 43.6532,
+    "longitude": -79.3832,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "AIDS New Brunswick",
+    "city": "Fredericton",
+    "province": "NB",
+    "latitude": 45.9636,
+    "longitude": -66.6431,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Submitted",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionType2": null,
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Avenue B Harm Reduction Inc.",
+    "city": "Saint John",
+    "province": "NB",
+    "latitude": 45.2733,
+    "longitude": -66.0633,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "Approved",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": "Submitted",
+    "exemptionType2": "Mobile",
+    "scatrTraining": "Complete",
+    "pwlleTraining": "Pending"
+  },
+  {
+    "name": "Boyle Street Service Society",
+    "city": "Edmonton",
+    "province": "AB",
+    "latitude": 53.5461,
+    "longitude": -113.4938,
+    "devices": 1,
+    "device1Type": "Non-Mobile",
+    "device2Type": null,
+    "exemptionStatus1": "In Progress",
+    "exemptionType1": "Non-Mobile",
+    "exemptionStatus2": null,
+    "exemptionStatus2": null,
+    "scatrTraining": "Pending",
+    "pwlleTraining": "Pending"
+  }
+];
+
 const ProjectPartnerDashboard = () => {
-  const [compactTable, setCompactTable] = useState(true);
-  const [expandedMetrics, setExpandedMetrics] = useState({});
+  const [filters, setFilters] = useState({
+    deviceCount: 'all', // 'all', '1', '2'
+    province: 'all',
+    exemptionStatus: 'all' // 'all', 'active', 'pending', 'in-progress'
+  });
+  const [showFilters, setShowFilters] = useState(false);
 
-  const toggleMetric = (metricId) => {
-    setExpandedMetrics(prev => ({
-      ...prev,
-      [metricId]: !prev[metricId]
-    }));
-  };
+  // Calculate statistics
+  const stats = useMemo(() => {
+    const totalPartners = partnersData.length;
+    const uniqueCities = new Set(partnersData.map(p => p.city)).size;
+    const uniqueProvinces = new Set(partnersData.map(p => p.province)).size;
+    const totalDevicesActive = partnersData.reduce((sum, p) => sum + (p.devices || 0), 0);
+    const totalDevicesMax = 28;
+    
+    const sitesWith1Device = partnersData.filter(p => p.devices === 1).length;
+    const sitesWith2Devices = partnersData.filter(p => p.devices === 2).length;
+    
+    // Exemption analysis
+    const sitesWith2Exemptions = partnersData.filter(p => 
+      p.exemptionStatus1 && p.exemptionStatus2
+    ).length;
+    
+    const sitesWith1Mobile = partnersData.filter(p => 
+      (p.exemptionStatus1 && p.exemptionType1 === "Mobile" && !p.exemptionStatus2) ||
+      (p.exemptionStatus2 && p.exemptionType2 === "Mobile" && !p.exemptionStatus1)
+    ).length;
+    
+    const sitesWith1NonMobile = partnersData.filter(p => 
+      (p.exemptionStatus1 && p.exemptionType1 === "Non-Mobile" && !p.exemptionStatus2) ||
+      (p.exemptionStatus2 && p.exemptionType2 === "Non-Mobile" && !p.exemptionStatus1)
+    ).length;
+    
+    // Sites with active exemptions
+    const sitesWithActiveExemptions = partnersData.filter(p =>
+      p.exemptionStatus1 === "Approved" || p.exemptionStatus2 === "Approved"
+    );
+    
+    const sitesWithoutActiveExemptions = partnersData.filter(p =>
+      p.exemptionStatus1 !== "Approved" && p.exemptionStatus2 !== "Approved"
+    );
 
-  // CSV data parsed into objects
-  const partnersData = [
-    {
-      id: 1,
-      participationStatus: "CURRENT",
-      nameOrganization: "Western University",
-      address: "1151 Richmond Street",
-      city: "London",
-      prov: "ON",
-      primaryContact: "Francois Lagugne-Labarthet, Primary Investigator",
-      email1: "flagugne@uwo.ca",
-      phone1: "519-661-2111 x81006",
-      additionalContact: "Cameron Brown, Project Manager",
-      email2: "cbrown58@uwo.ca",
-      phone2: "226-238-9970",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "K8N6986DMRFD",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "8/15/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "2026-05-31",
-      exemptionFileName: "WESTERN UNIVERSITY_ONTARIO_Fixed_Exemption_23-103191-197_Valid Through_2026-05-31",
-      lat: 42.9849,
-      lng: -81.2453
-    },
-    {
-      id: 2,
-      participationStatus: "CURRENT",
-      nameOrganization: "Regional HIV/AIDS Connection (RHAC)",
-      address: "446 York Street",
-      city: "London",
-      prov: "ON",
-      primaryContact: "Megan Van Boheemen",
-      email1: "mvanboheemen@hivaidsconnection.ca",
-      phone1: "226-377-8721",
-      additionalContact: "Donovan Wiebe",
-      email2: "DWiebe@hivaidsconnection.ca",
-      phone2: "519-434-1601",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "RNSR8R6DMWFD",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "5/16/23, 4/9/24",
-      pwlleTraining: "4/15/25",
-      exemptionExpiration: "2025-11-25",
-      exemptionFileName: "RHAC LONDON_ONTARIO_Fixed_Exemption_23-102074-664_Valid Through_2025-11-25",
-      lat: 42.9835,
-      lng: -81.2497
-    },
-    {
-      id: 3,
-      participationStatus: "CURRENT",
-      nameOrganization: "Sandy Hill Community Health Centre",
-      address: "221 Nelson Street",
-      city: "Ottawa",
-      prov: "ON",
-      primaryContact: "Dean Dewar",
-      email1: "ddewar@sandyhillchc.on.ca",
-      phone1: "613-795-8985",
-      additionalContact: "Fiona Miller",
-      email2: "fmiller@sandyhillchc.on.ca",
-      phone2: "613-277-8932",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "J6N29H27GMFE",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "5/31/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "2025-11-30",
-      exemptionFileName: "SANDYHILL CHC OTTAWA_ONTARIO_Fixed_Exemption_25-103345-595_Valid Through_2025-11-30",
-      lat: 45.4215,
-      lng: -75.6972
-    },
-    {
-      id: 4,
-      participationStatus: "CURRENT",
-      nameOrganization: "Ottawa Inner City Health",
-      address: "5 Myrand Ave",
-      city: "Ottawa",
-      prov: "ON",
-      primaryContact: "Louise Beaudoin",
-      email1: "lbeaudoin@oich.ca",
-      phone1: "613-797-7514",
-      additionalContact: "Chad Bouthillier",
-      email2: "cbouthillier@oich.ca",
-      phone2: "613-709-9656",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "WG5TSW6DJ8FD",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "5/30/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "2027-09-30",
-      exemptionFileName: "INNER CITY HEALTH OTTAWA_ONTARIO_Fixed_Exemption_24-107784-124_Valid Through_2027-09-30",
-      lat: 45.4235,
-      lng: -75.6919
-    },
-    {
-      id: 5,
-      participationStatus: "CURRENT",
-      nameOrganization: "Lower Mainland Purpose Society",
-      address: "40 Begbie Street",
-      city: "New Westminister",
-      prov: "BC",
-      primaryContact: "Lynda Fletcher-Gordon",
-      email1: "lyndafg@purposesociety.org",
-      phone1: "604-526-2522",
-      additionalContact: "Jasmine Kaur",
-      email2: "jasmine.kaur@purposesociety.org",
-      phone2: "236-883-5584",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "NN619S6174FD",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "6/20/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "2026-09-30",
-      exemptionFileName: "PURPOSE SOCIETY_BRITSH COLUMBIA_Fixed_Exemption_Provincial_Valid Through_2026-09-30",
-      lat: 49.2057,
-      lng: -122.9110
-    },
-    {
-      id: 6,
-      participationStatus: "CURRENT",
-      nameOrganization: "County of Grey",
-      address: "595 9th Avenue East",
-      city: "Owen Sound",
-      prov: "ON",
-      primaryContact: "Kevin McNab",
-      email1: "kevin.mcnab@grey.ca",
-      phone1: "519-379-0279",
-      additionalContact: "Teresa Tibbo",
-      email2: "Teresa.Tibbo@grey.ca",
-      phone2: "519-379-8743",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "WBGVJXPMPGFE",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "Approved",
-      exemptionType2: "Mobile",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "3/25/24",
-      pwlleTraining: "3/28/25",
-      exemptionExpiration: "2026-07-31",
-      exemptionFileName: "GREY COUNTY_ONTARIO_Mobile_Exemption_25-103969-673_Valid Through_2026-07-31 AND GREY COUNTY_ONTARIO_Fixed_Exemption_25-103968-537_Valid Through_2026-07-31",
-      lat: 44.5667,
-      lng: -80.9333
-    },
-    {
-      id: 7,
-      participationStatus: "CURRENT",
-      nameOrganization: "Guelph Community Health Centre",
-      address: "176 Wyndham Street North",
-      city: "Guelph",
-      prov: "ON",
-      primaryContact: "Lindsey Sodtke",
-      email1: "lsodtke@guephchc.ca",
-      phone1: "519-821-6638 Ext302",
-      additionalContact: "Cristiane Kraft",
-      email2: "ckraft@guelphchc.ca",
-      phone2: "519-821-6638 Ext341",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "77MTFY4YFGFD",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "11/7/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting HC Approval",
-      lat: 43.5448,
-      lng: -80.2482
-    },
-    {
-      id: 8,
-      participationStatus: "CURRENT",
-      nameOrganization: "Sanguen Health Centre",
-      address: "150 Duke Street West",
-      city: "Kitchener",
-      prov: "ON",
-      primaryContact: "Leigh Wardlaw",
-      email1: "l.wardlaw@sanguen.com",
-      phone1: "226-789-5250",
-      additionalContact: "Violet Umanetz",
-      email2: "v.umanetz@sanguen.com",
-      phone2: "519-547-7222",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "MZ9Z78P25MFD",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "Approved",
-      exemptionType2: "Mobile",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "7/24/23",
-      pwlleTraining: "3/17/25",
-      exemptionExpiration: "2026-10-31",
-      exemptionFileName: "SANGUEN CHC_ONTARIO_Mobile_Exemption_Valid Through_2026-10-31 AND SANGUEN CHC_ONTARIO_Mobile_Exemption_Valid Through_2026-10-31",
-      lat: 43.4516,
-      lng: -80.4925
-    },
-    {
-      id: 9,
-      participationStatus: "CURRENT",
-      nameOrganization: "Moyo Health",
-      address: "7700 Hurontario St. #601",
-      city: "Brampton",
-      prov: "ON",
-      primaryContact: "Jillian Watkins",
-      email1: "jillianw@moyohcs.ca",
-      phone1: "905-361-0523 x215",
-      additionalContact: "Adam Chalcraft",
-      email2: "adamc@moyohcs.ca",
-      phone2: "905-781-0223",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "GWAPGCKM2GFE",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "3/19/24",
-      pwlleTraining: "NA",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting HC Approval",
-      lat: 43.7315,
-      lng: -79.7624
-    },
-    {
-      id: 10,
-      participationStatus: "CURRENT",
-      nameOrganization: "Hamilton Urban Core Community Health Centre",
-      address: "70 St. James Street South",
-      city: "Hamilton",
-      prov: "ON",
-      primaryContact: "Sandy Ezepue",
-      email1: "ezepues@hucchc.com",
-      phone1: "905-522-3233 Ext246",
-      additionalContact: "Tiffany Toplin",
-      email2: "ttoplin@hucchc.com",
-      phone2: "905-522-3233 Ext238",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "M2XWE5PD6RFP",
-      exemptionStatus1: "In Progress",
-      exemptionType1: "Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "5/24/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting Submission",
-      lat: 43.2557,
-      lng: -79.8711
-    },
-    {
-      id: 11,
-      participationStatus: "CURRENT",
-      nameOrganization: "Positive Living Niagara",
-      address: "120 Queenston St",
-      city: "St. Catherines",
-      prov: "ON",
-      primaryContact: "Talia Storm",
-      email1: "tstorm@positivelivingniagra.com",
-      phone1: "905-984-8684 Ext128",
-      additionalContact: "Myrtle Stage",
-      email2: "mstage@positivelivingniagra.com",
-      phone2: "905-984-8684 Ext312",
-      agreementStatus: "Signed",
-      devicesAssigned: "2",
-      deviceSerial1: "WCFY6P4Y4GFD",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "T9BHV6NGWWFF",
-      exemptionStatus2: "Submitted",
-      exemptionType2: "Mobile",
-      projStartYear: "YEAR 1",
-      scatrDelivery: "5/23/23",
-      pwlleTraining: "NA",
-      exemptionExpiration: "2026-09-30",
-      exemptionFileName: "POSITIVE LIVING NIAGARA_ONTARIO_Fixed_Exemption_23-107999-566_Valid Through 2026-09-30",
-      lat: 43.1594,
-      lng: -79.2469
-    },
-    {
-      id: 12,
-      participationStatus: "CURRENT",
-      nameOrganization: "Ensemble Moncton",
-      address: "80 Weldon Street",
-      city: "Moncton",
-      prov: "NB",
-      primaryContact: "Scott Phipps",
-      email1: "sphipps@ensemblegm.ca",
-      phone1: "506-859-9616",
-      additionalContact: "Josue Goguen",
-      email2: "jgoguen@ensemblegm.ca",
-      phone2: "506-227-6416",
-      agreementStatus: "Signed",
-      devicesAssigned: "2",
-      deviceSerial1: "P9E4A2059MFG",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "GWPFIRNGX8FF",
-      exemptionStatus2: "Submitted",
-      exemptionType2: "Mobile",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "7/29/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "2026-09-30",
-      exemptionFileName: "ENSEMBLE_NEW BRUNSWICK_Fixed_Exemption_Provincial_Valid Through_2026-09-30 AND MOBILE_Submitted_and_Pending",
-      lat: 46.0878,
-      lng: -64.7782
-    },
-    {
-      id: 13,
-      participationStatus: "CURRENT",
-      nameOrganization: "Prairie Harm Reduction",
-      address: "1516 20th St W",
-      city: "Saskatoon",
-      prov: "SK",
-      primaryContact: "Kayla DeMong",
-      email1: "admin@prairiehr.ca",
-      phone1: "306-242-5005 Ext 4",
-      additionalContact: "Julene Rawson",
-      email2: "operations@prairiehr.ca",
-      phone2: "306-242-5005 Ext4",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "C2Q1MR2JT8FG",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "8/14/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "2026-03-21",
-      exemptionFileName: "PRAIREHARMREDUCTION_SASKATCHEWAN_Non-MOBILE_Valid Through_2026-03-31.pdf",
-      lat: 52.1332,
-      lng: -106.6700
-    },
-    {
-      id: 14,
-      participationStatus: "CURRENT",
-      nameOrganization: "Cochrane District Paramedic Service",
-      address: "500 Algonquin Blvd East",
-      city: "Timmins",
-      prov: "ON",
-      primaryContact: "Seamus Murphy",
-      email1: "seamus.murphy@cdsb.care",
-      phone1: "705-268-772 x296",
-      additionalContact: "Chantal Riva",
-      email2: "Chantal.riva@cdsb.care",
-      phone2: "705-268-722 x150",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "56KBC7GT14FG",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "6/23/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting HC Approval",
-      lat: 48.4758,
-      lng: -81.3304
-    },
-    {
-      id: 15,
-      participationStatus: "CURRENT",
-      nameOrganization: "Renfrew Paramedic Services",
-      address: "450 O'Brien Rd",
-      city: "Renfrew",
-      prov: "ON",
-      primaryContact: "Stephanie Rose",
-      email1: "SRose@countyofrenfrew.on.ca",
-      phone1: "613-818-9813",
-      additionalContact: "Required",
-      email2: "Required",
-      phone2: "Required",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "7CQDZFGT2GFG",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "7/17/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting HC Approval",
-      lat: 45.4729,
-      lng: -76.6867
-    },
-    {
-      id: 16,
-      participationStatus: "CURRENT",
-      nameOrganization: "Peterborough AIDS Resource Network",
-      address: "60 Hunter St E 2nd Floor",
-      city: "Peterborough",
-      prov: "ON",
-      primaryContact: "Dane Record",
-      email1: "executivedirector@parn.ca",
-      phone1: "705-559-0656",
-      additionalContact: "Aizha Polluck",
-      email2: "aizha@parn.ca",
-      phone2: "705-749-9110 Ext206",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "F4FDTFNGWRFF",
-      exemptionStatus1: "In Progress",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "7/25/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting Submission",
-      lat: 44.3091,
-      lng: -78.3197
-    },
-    {
-      id: 17,
-      participationStatus: "CURRENT",
-      nameOrganization: "Travailderue",
-      address: "221 Rue Tessier",
-      city: "Chicoutimi",
-      prov: "QC",
-      primaryContact: "Stéphanie Bouchard",
-      email1: "stephanie.bouchard@strchic.com",
-      phone1: "418-545-0999",
-      additionalContact: "Janick Meunier",
-      email2: "janick.meunier@strchic.com",
-      phone2: "418-545-0999",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "ATPBJ8JJT8FG",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "8/26/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "2027-06-30",
-      exemptionFileName: "TRAVAILDERUE_QUEBEC_Fixed_Exemption_FEDERAL_Valid Through_2027-06-30",
-      lat: 48.4284,
-      lng: -71.0649
-    },
-    {
-      id: 18,
-      participationStatus: "CURRENT",
-      nameOrganization: "NHC Society",
-      address: "76 Esplanade",
-      city: "Truro",
-      prov: "NS",
-      primaryContact: "Alana Weatherbee",
-      email1: "support@nhcsociety.ca",
-      phone1: "902-895-0931",
-      additionalContact: "Albert McNutt",
-      email2: "super@nhcsociety.ca",
-      phone2: "902-895-0931",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "W54DM9GT2GFG",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "7/30/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting HC Approval",
-      lat: 45.3669,
-      lng: -63.2755
-    },
-    {
-      id: 19,
-      participationStatus: "CURRENT",
-      nameOrganization: "Breakaway",
-      address: "21 Strickland Ave",
-      city: "Toronto",
-      prov: "ON",
-      primaryContact: "Ruben Tarajano",
-      email1: "Rubent@breakawaycs.ca",
-      phone1: "647-883-1135",
-      additionalContact: "Required",
-      email2: "Required",
-      phone2: "Required",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "88X7YQ625MFP",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "8/21/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting HC Approval",
-      lat: 43.6532,
-      lng: -79.3832
-    },
-    {
-      id: 20,
-      participationStatus: "CURRENT",
-      nameOrganization: "AIDS New Brunswick",
-      address: "354 King St",
-      city: "Fredericton",
-      prov: "NB",
-      primaryContact: "Linda Thompson-Brown",
-      email1: "linda@aidsnb.com",
-      phone1: "506-455-2625",
-      additionalContact: "Jess Gionet",
-      email2: "Jess.gionet@aidsnb.com",
-      phone2: "506-478-4765",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "8JF8TA2JT8FG",
-      exemptionStatus1: "Submitted",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "09/26/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting Prov Approval",
-      lat: 45.9636,
-      lng: -66.6431
-    },
-    {
-      id: 21,
-      participationStatus: "CURRENT",
-      nameOrganization: "Avenue B Harm Reduction Inc.",
-      address: "62 Waterloo St",
-      city: "Saint John",
-      prov: "NB",
-      primaryContact: "Laura MacNeill",
-      email1: "laura.macneill@avenueb.ca",
-      phone1: "506-652-2437",
-      additionalContact: "Allie Myles",
-      email2: "allie.myles@avenueb.ca",
-      phone2: "506-652-2437",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "65Q11N2JT8FG",
-      exemptionStatus1: "Approved",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "Submitted",
-      exemptionType2: "Mobile",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "09/25/25",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "2026-03-31",
-      exemptionFileName: "AVENUE B_NEW BRUNSWICK_Fixed_Exemption_PROVINCIAL_Valid Through_2026-03-31.pdf",
-      lat: 45.2733,
-      lng: -66.0633
-    },
-    {
-      id: 22,
-      participationStatus: "CURRENT",
-      nameOrganization: "Boyle Street Service Society",
-      address: "#201, 14065 Victoria Trail",
-      city: "Edmonton",
-      prov: "AB",
-      primaryContact: "Sindi Addorisio",
-      email1: "saddorisio@boylestreet.org",
-      phone1: "587-340-2985",
-      additionalContact: "Marliss Taylor",
-      email2: "MTaylor@boylestreet.org",
-      phone2: "708-915-2209",
-      agreementStatus: "Signed",
-      devicesAssigned: "1",
-      deviceSerial1: "TBD",
-      exemptionStatus1: "In Progress",
-      exemptionType1: "Non-Mobile",
-      deviceSerial2: "NA",
-      exemptionStatus2: "NA",
-      exemptionType2: "NA",
-      projStartYear: "YEAR 2",
-      scatrDelivery: "TBD",
-      pwlleTraining: "TBD",
-      exemptionExpiration: "Pending",
-      exemptionFileName: "Awaiting Submission",
-      lat: 53.5461,
-      lng: -113.4938
-    }
-  ];
-
-  const calculateDaysUntil = (dateStr) => {
-    if (dateStr === "Pending" || dateStr === "TBD" || dateStr === "NA") {
-      return null;
-    }
-    
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    
-    const targetDate = new Date(dateStr);
-    targetDate.setHours(0, 0, 0, 0);
-    
-    const diffTime = targetDate - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    return diffDays;
-  };
-
-  // Get exemptions with actual dates and sort by days until expiration
-  const getExemptionTracker = () => {
-    return partnersData
-      .map(site => ({
-        name: site.nameOrganization,
-        expiration: site.exemptionExpiration,
-        days: calculateDaysUntil(site.exemptionExpiration)
-      }))
-      .filter(item => item.days !== null)
-      .sort((a, b) => a.days - b.days);
-  };
-
-  // Calculate comprehensive statistics
-  const getStatistics = () => {
-    const provinces = [...new Set(partnersData.map(s => s.prov))];
-    const totalDevices = partnersData.reduce((sum, s) => sum + parseInt(s.devicesAssigned), 0);
-    const year1Sites = partnersData.filter(s => s.projStartYear === "YEAR 1").length;
-    const year2Sites = partnersData.filter(s => s.projStartYear === "YEAR 2").length;
-    
     const exemptionStatus1Counts = {
       Approved: partnersData.filter(s => s.exemptionStatus1 === "Approved").length,
       Submitted: partnersData.filter(s => s.exemptionStatus1 === "Submitted").length,
-      InProgress: partnersData.filter(s => s.exemptionStatus1 === "In Progress").length
+      InProgress: partnersData.filter(s => s.exemptionStatus1 === "In Progress").length,
     };
-
-    const exemptionType1Counts = {
-      Mobile: partnersData.filter(s => s.exemptionType1 === "Mobile").length,
-      NonMobile: partnersData.filter(s => s.exemptionType1 === "Non-Mobile").length
-    };
-
-    // Count sites with completed Scatr training
-    const scatrCompleted = partnersData.filter(s => s.scatrDelivery !== "TBD" && s.scatrDelivery !== "NA").length;
-    
-    // Count sites with completed PWLLE training
-    const pwlleCompleted = partnersData.filter(s => s.pwlleTraining !== "TBD" && s.pwlleTraining !== "NA").length;
 
     return {
-      totalPartners: partnersData.length,
-      provinces,
-      totalDevices,
-      year1Sites,
-      year2Sites,
-      exemptionStatus1Counts,
-      exemptionType1Counts,
-      scatrCompleted,
-      pwlleCompleted
+      totalPartners,
+      uniqueCities,
+      uniqueProvinces,
+      totalDevicesActive,
+      totalDevicesMax,
+      sitesWith1Device,
+      sitesWith2Devices,
+      sitesWith2Exemptions,
+      sitesWith1Mobile,
+      sitesWith1NonMobile,
+      sitesWithActiveExemptions,
+      sitesWithoutActiveExemptions,
+      exemptionStatus1Counts
     };
-  };
+  }, []);
 
-  const stats = getStatistics();
-  const exemptionTracker = getExemptionTracker();
-
-  const SiteDetails = ({ site, onClose }) => {
-    const daysUntil = calculateDaysUntil(site.exemptionExpiration);
-    
-    return (
-      <div className="bg-white p-4 rounded-xl shadow-2xl max-w-md border-2 border-purple-200">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-lg font-bold text-purple-900">{site.nameOrganization}</h3>
-          {onClose && (
-            <button 
-              onClick={onClose}
-              className="text-gray-500 hover:text-purple-700 transition-colors"
-            >
-              <X size={20} />
-            </button>
-          )}
-        </div>
+  // Filter data
+  const filteredData = useMemo(() => {
+    return partnersData.filter(site => {
+      // Device count filter
+      if (filters.deviceCount !== 'all' && site.devices !== parseInt(filters.deviceCount)) {
+        return false;
+      }
+      
+      // Province filter
+      if (filters.province !== 'all' && site.province !== filters.province) {
+        return false;
+      }
+      
+      // Exemption status filter
+      if (filters.exemptionStatus !== 'all') {
+        const hasApproved = site.exemptionStatus1 === "Approved" || site.exemptionStatus2 === "Approved";
+        const hasPending = site.exemptionStatus1 === "Submitted" || site.exemptionStatus2 === "Submitted";
+        const hasInProgress = site.exemptionStatus1 === "In Progress" || site.exemptionStatus2 === "In Progress";
         
-        <div className="space-y-2 text-sm max-h-80 overflow-y-auto">
-          <div><span className="font-semibold text-purple-800">Participation Status:</span> {site.participationStatus}</div>
-          <div><span className="font-semibold text-purple-800">Address:</span> {site.address}, {site.city}, {site.prov}</div>
-          <div><span className="font-semibold text-purple-800">Primary Contact:</span> {site.primaryContact}</div>
-          <div><span className="font-semibold text-purple-800">Email:</span> {site.email1}</div>
-          <div><span className="font-semibold text-purple-800">Phone:</span> {site.phone1}</div>
-          <div><span className="font-semibold text-purple-800">Additional Contact:</span> {site.additionalContact}</div>
-          <div><span className="font-semibold text-purple-800">Email:</span> {site.email2}</div>
-          <div><span className="font-semibold text-purple-800">Phone:</span> {site.phone2}</div>
-          <div><span className="font-semibold text-purple-800">Agreement Status:</span> {site.agreementStatus}</div>
-          <div><span className="font-semibold text-purple-800">Devices Assigned:</span> {site.devicesAssigned}</div>
-          <div><span className="font-semibold text-purple-800">Device Serial #1:</span> {site.deviceSerial1}</div>
-          <div><span className="font-semibold text-purple-800">Exemption Status #1:</span> {site.exemptionStatus1}</div>
-          <div><span className="font-semibold text-purple-800">Exemption Type #1:</span> {site.exemptionType1}</div>
-          <div><span className="font-semibold text-purple-800">Device Serial #2:</span> {site.deviceSerial2}</div>
-          <div><span className="font-semibold text-purple-800">Exemption Status #2:</span> {site.exemptionStatus2}</div>
-          <div><span className="font-semibold text-purple-800">Exemption Type #2:</span> {site.exemptionType2}</div>
-          <div><span className="font-semibold text-purple-800">Project Start Year:</span> {site.projStartYear}</div>
-          <div><span className="font-semibold text-purple-800">Scatr Delivery/Training:</span> {site.scatrDelivery}</div>
-          <div><span className="font-semibold text-purple-800">PWLLE Training:</span> {site.pwlleTraining}</div>
-          <div><span className="font-semibold text-purple-800">Exemption Expiration:</span> {site.exemptionExpiration}</div>
-          {daysUntil !== null && (
-            <div className={`font-semibold ${daysUntil < 30 ? 'text-red-600' : daysUntil < 90 ? 'text-orange-600' : 'text-green-600'}`}>
-              Days Until Expiration: {daysUntil} {daysUntil === 1 ? 'day' : 'days'}
-            </div>
-          )}
-          <div className="break-words"><span className="font-semibold text-purple-800">Exemption File:</span> {site.exemptionFileName}</div>
-        </div>
-      </div>
-    );
+        if (filters.exemptionStatus === 'active' && !hasApproved) return false;
+        if (filters.exemptionStatus === 'pending' && !hasPending) return false;
+        if (filters.exemptionStatus === 'in-progress' && !hasInProgress) return false;
+      }
+      
+      return true;
+    });
+  }, [filters]);
+
+  const provinces = useMemo(() => {
+    return Array.from(new Set(partnersData.map(p => p.province))).sort();
+  }, []);
+
+  const resetFilters = () => {
+    setFilters({
+      deviceCount: 'all',
+      province: 'all',
+      exemptionStatus: 'all'
+    });
   };
 
-  const MapView = () => {
-    return (
-      <div className="h-[600px] rounded-xl overflow-hidden shadow-2xl border-4 border-purple-200">
-        <MapContainer 
-          center={[52.0, -95.0]} 
-          zoom={5} 
-          style={{ height: '100%', width: '100%' }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {partnersData.map((site) => (
-            <Marker 
-              key={site.id} 
-              position={[site.lat, site.lng]}
-            >
-              <Popup maxWidth={400}>
-                <SiteDetails site={site} />
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      </div>
-    );
-  };
-
-  const TableView = () => {
-    return (
-      <div className="space-y-4">
-        <div className="p-5 bg-gradient-to-r from-purple-100 to-purple-50 rounded-xl shadow-inner border-2 border-purple-200">
-          <p className="text-sm text-gray-800 leading-relaxed">
-            These {stats.totalPartners} sites represent the culmination of the project's <span className="font-semibold text-purple-900">Fiscal Year 2</span> (April 1st, 2025 to March 31st, 2026). 
-            There are 2 remaining fiscal years: <span className="font-semibold text-purple-900">Fiscal Year 3</span> (April 1st, 2026 to March 31st, 2027) and <span className="font-semibold text-purple-900">Fiscal Year 4</span> (April 1st, 2027 to March 31st, 2028). 
-            Each of the final two years will have <span className="font-semibold text-purple-900">2 vacancies</span> each for additional sites and/or device allocations. 
-            Therefore there are <span className="font-semibold text-purple-900">4 total project partner vacancies and/or device allocations</span> remaining until project end.
-          </p>
-        </div>
-        <div className="flex justify-end">
-          <button
-            onClick={() => setCompactTable(!compactTable)}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors shadow-md"
-          >
-            {compactTable ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
-            {compactTable ? 'Expand View' : 'Compact View (Fit All Columns)'}
-          </button>
-        </div>
-        <div className="overflow-x-auto rounded-xl shadow-2xl border-4 border-purple-200">
-          <table className={`w-full border-collapse ${compactTable ? '' : 'text-sm'}`} style={compactTable ? { fontSize: '0.65rem' } : {}}>
-            <thead>
-              <tr className="bg-gradient-to-r from-purple-700 to-purple-900 text-white">
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Participation Status</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Name/Organization</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Address (Device)</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>City</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Prov</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Primary Contact</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Email</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Phone Number</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Additional Contact</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Email</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Phone Number</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Collaborative Site Agreement Status</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Devices Assign'd</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Device Serial #1</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Status #1</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Type #1</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Device Serial #2</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Status #2</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Type #2</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Proj Start YEAR</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Scatr Delivery_Training Date(s)</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>PWLLE Training Date(s)</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Expiration Date</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Days Left</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption File Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {partnersData.map((site, idx) => {
-                const daysUntil = calculateDaysUntil(site.exemptionExpiration);
-                return (
-                  <tr key={site.id} className={idx % 2 === 0 ? 'bg-purple-50 hover:bg-purple-100' : 'bg-white hover:bg-purple-50'}>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.participationStatus}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'} font-semibold text-purple-900`}>{site.nameOrganization}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.address}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.city}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.prov}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.primaryContact}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.email1}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.phone1}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.additionalContact}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.email2}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.phone2}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.agreementStatus}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.devicesAssigned}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.deviceSerial1}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionStatus1}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionType1}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.deviceSerial2}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionStatus2}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionType2}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.projStartYear}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.scatrDelivery}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.pwlleTraining}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionExpiration}</td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'} font-semibold ${
-                      daysUntil === null ? '' : 
-                      daysUntil < 30 ? 'text-red-600' : 
-                      daysUntil < 90 ? 'text-orange-600' : 
-                      'text-green-600'
-                    }`}>
-                      {daysUntil !== null ? `${daysUntil} days` : '-'}
-                    </td>
-                    <td className={`border border-purple-200 ${compactTable ? 'p-1 text-xs' : 'p-2 text-xs'}`}>{site.exemptionFileName}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    );
-  };
+  // Calculate today's position on timeline (Phase 1 start to project end)
+  const phase1Start = new Date('2022-04-01');
+  const projectEnd = new Date('2028-03-31');
+  const today = new Date();
+  const totalDays = (projectEnd - phase1Start) / (1000 * 60 * 60 * 24);
+  const daysElapsed = (today - phase1Start) / (1000 * 60 * 60 * 24);
+  const timelineProgress = Math.min(100, Math.max(0, (daysElapsed / totalDays) * 100));
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
-      <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
-        <div className="flex items-start gap-4">
-          <Award className="mt-1 flex-shrink-0" size={40} />
-          <div>
-            <h1 className="text-2xl font-bold mb-2">The University of Western Ontario - A Novel Two Phase Drug-Checking Initiative:  Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions  Program</h1>
-            <p className="text-lg mb-1 flex items-center gap-2">
-              <Users size={20} />
-              In partnership with Scatr Inc
-            </p>
-            <p className="text-sm flex items-center gap-2">
-              <FileCheck size={18} />
-              Interactive Project Partner Dashboard
-            </p>
+      {/* Header */}
+      <div className="bg-gradient-to-r from-purple-700 via-purple-800 to-purple-900 text-white shadow-2xl">
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
+                <Award size={40} />
+                Western University - PWLLE Leading the Way Drug-Checking Initiative
+              </h1>
+              <p className="text-lg mb-1 flex items-center gap-2">
+                <Users size={20} />
+                In partnership with Scatr Inc
+              </p>
+              <p className="text-sm flex items-center gap-2">
+                <FileCheck size={18} />
+                Interactive Project Partner Dashboard
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="p-6 space-y-6">
-        {/* Map View Section */}
+      <div className="container mx-auto px-6 py-6 space-y-6">
+        {/* Executive Summary */}
         <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
-          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-            <h2 className="flex items-center gap-2 font-bold text-2xl">
-              <MapPin size={28} />
-              Map View
-            </h2>
-          </div>
-          <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-            <MapView />
-          </div>
-        </div>
-
-        {/* Table View Section */}
-        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
-          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-            <h2 className="flex items-center gap-2 font-bold text-2xl">
-              <List size={28} />
-              Table View
-            </h2>
-          </div>
-          <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-            <TableView />
-          </div>
-        </div>
-
-        {/* Comprehensive Summary Statistics */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100">
-          <div className="flex items-center gap-3 mb-4">
-            <Award className="text-purple-700" size={32} />
-            <h2 className="font-bold text-2xl text-purple-900">Summary Metrics</h2>
+          <div className="p-4 bg-gradient-to-r from-purple-700 to-purple-900 flex items-center gap-3">
+            <FileCheck className="text-white" size={28} />
+            <h2 className="font-bold text-2xl text-white">Executive Summary</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-5 rounded-xl shadow-lg border-2 border-purple-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('total')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-3xl font-bold text-purple-900">{stats.totalPartners}</div>
-                  <div className="text-sm text-purple-700 font-medium mt-1">Total Partner Sites</div>
-                </div>
-                {expandedMetrics.total ? <ChevronUp className="text-purple-700" /> : <ChevronDown className="text-purple-700" />}
-              </div>
-              {expandedMetrics.total && (
-                <div className="mt-3 pt-3 border-t border-purple-300 text-xs text-purple-800 space-y-1">
-                  {partnersData.map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
+          <div className="p-6 space-y-6">
+            <div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                The Leading the Way initiative represents Western University's commitment to expanding 
+                drug-checking services across Canada through partnership with Scatr Inc. This dashboard 
+                tracks the progress of our partner sites, device allocations, and regulatory exemption statuses.
+              </p>
             </div>
-            <div className="bg-gradient-to-br from-purple-200 to-purple-300 p-5 rounded-xl shadow-lg border-2 border-purple-400 hover:shadow-2xl transition-shadow">
-              <div className="text-3xl font-bold text-purple-900">{stats.totalDevices}</div>
-              <div className="text-sm text-purple-700 font-medium mt-1">Total Devices Assigned</div>
-            </div>
-            <div className="bg-gradient-to-br from-indigo-100 to-indigo-200 p-5 rounded-xl shadow-lg border-2 border-indigo-300 hover:shadow-2xl transition-shadow">
-              <div className="text-3xl font-bold text-indigo-900">{stats.provinces.length}</div>
-              <div className="text-sm text-indigo-700 font-medium mt-1">Provinces/Territories</div>
-              <div className="text-xs text-indigo-600 mt-2">{stats.provinces.join(', ')}</div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-300 to-purple-400 p-5 rounded-xl shadow-lg border-2 border-purple-500 hover:shadow-2xl transition-shadow">
-              <div className="text-3xl font-bold text-purple-900">{stats.totalPartners}</div>
-              <div className="text-sm text-purple-700 font-medium mt-1">Signed Agreements</div>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-green-100 to-green-200 p-5 rounded-xl shadow-lg border-2 border-green-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('approved')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-green-900">{stats.exemptionStatus1Counts.Approved}</div>
-                  <div className="text-sm text-green-700 font-medium mt-1">Approved Exemptions</div>
+            {/* Project Timeline */}
+            <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-xl border-2 border-purple-200">
+              <h3 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">
+                <Calendar size={24} />
+                Project Timeline
+              </h3>
+              
+              <div className="space-y-6">
+                {/* Phase Information */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white p-4 rounded-lg border-2 border-purple-300">
+                    <h4 className="font-bold text-purple-900 mb-2">Phase 1 (April 2022 - March 2024)</h4>
+                    <p className="text-sm text-gray-700">
+                      "Creating A Drug Checking Network Using Machine Learning Enabled Spectrometers"
+                      <br/>
+                      <span className="font-semibold mt-1 block">13 sites identified and deployed</span>
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border-2 border-green-300">
+                    <h4 className="font-bold text-green-900 mb-2">Phase 2 (June 2024 - March 2028)</h4>
+                    <p className="text-sm text-gray-700">
+                      "Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"
+                      <br/>
+                      <span className="font-semibold mt-1 block">Continuing expansion with PWLLE integration</span>
+                    </p>
+                  </div>
                 </div>
-                {expandedMetrics.approved ? <ChevronUp className="text-green-700" /> : <ChevronDown className="text-green-700" />}
-              </div>
-              {expandedMetrics.approved && (
-                <div className="mt-3 pt-3 border-t border-green-300 text-xs text-green-800 space-y-1">
-                  {partnersData.filter(site => site.exemptionStatus1 === "Approved").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 p-5 rounded-xl shadow-lg border-2 border-yellow-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('submitted')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-yellow-900">{stats.exemptionStatus1Counts.Submitted}</div>
-                  <div className="text-sm text-yellow-700 font-medium mt-1">Submitted Exemptions</div>
-                </div>
-                {expandedMetrics.submitted ? <ChevronUp className="text-yellow-700" /> : <ChevronDown className="text-yellow-700" />}
-              </div>
-              {expandedMetrics.submitted && (
-                <div className="mt-3 pt-3 border-t border-yellow-300 text-xs text-yellow-800 space-y-1">
-                  {partnersData.filter(site => site.exemptionStatus1 === "Submitted").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-5 rounded-xl shadow-lg border-2 border-orange-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('inprogress')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-orange-900">{stats.exemptionStatus1Counts.InProgress}</div>
-                  <div className="text-sm text-orange-700 font-medium mt-1">In Progress</div>
-                </div>
-                {expandedMetrics.inprogress ? <ChevronUp className="text-orange-700" /> : <ChevronDown className="text-orange-700" />}
-              </div>
-              {expandedMetrics.inprogress && (
-                <div className="mt-3 pt-3 border-t border-orange-300 text-xs text-orange-800 space-y-1">
-                  {partnersData.filter(site => site.exemptionStatus1 === "In Progress").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-teal-100 to-teal-200 p-5 rounded-xl shadow-lg border-2 border-teal-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-teal-900">{stats.exemptionType1Counts.Mobile}</div>
-              <div className="text-sm text-teal-700 font-medium mt-1">Mobile Exemptions</div>
-            </div>
-            <div className="bg-gradient-to-br from-sky-100 to-sky-200 p-5 rounded-xl shadow-lg border-2 border-sky-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-sky-900">{stats.exemptionType1Counts.NonMobile}</div>
-              <div className="text-sm text-sky-700 font-medium mt-1">Non-Mobile Exemptions</div>
-            </div>
-          </div>
+                {/* Timeline Graphic */}
+                <div className="relative">
+                  <div className="flex justify-between text-xs font-semibold text-gray-600 mb-2">
+                    <span>Phase 1 Start<br/>April 1, 2022</span>
+                    <span className="text-center">Phase 2<br/>June 2024 - Present</span>
+                    <span className="text-right">Project End<br/>March 31, 2028</span>
+                  </div>
+                  
+                  <div className="relative h-12 bg-gradient-to-r from-purple-200 via-green-200 to-purple-300 rounded-full overflow-hidden shadow-inner">
+                    <div 
+                      className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-600 to-green-600 opacity-50"
+                      style={{ width: `${timelineProgress}%` }}
+                    ></div>
+                    
+                    {/* "We Are Here" marker */}
+                    <div 
+                      className="absolute top-0 transform -translate-x-1/2 -translate-y-8"
+                      style={{ left: `${timelineProgress}%` }}
+                    >
+                      <div className="flex flex-col items-center">
+                        <div className="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg border-2 border-yellow-600 whitespace-nowrap">
+                          ▼ WE ARE HERE
+                        </div>
+                        <div className="w-0.5 h-6 bg-yellow-600"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 text-center text-sm text-gray-600">
+                    <span className="font-semibold">Current Date:</span> {today.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </div>
+                </div>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-violet-100 to-violet-200 p-5 rounded-xl shadow-lg border-2 border-violet-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('year1')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-violet-900">{stats.year1Sites} <span className="text-lg">(12 Devices)</span></div>
-                  <div className="text-sm text-violet-700 font-medium mt-1">Year 1 Sites</div>
+              {/* Exemption Status Summary */}
+              <div>
+                <h3 className="text-xl font-bold text-purple-900 mb-3 mt-6">Exemption Status Summary</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Sites WITH Active Exemptions */}
+                  <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4">
+                    <h4 className="font-bold text-green-900 mb-2 flex items-center gap-2">
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      Sites with Active Exemptions ({stats.sitesWithActiveExemptions.length})
+                    </h4>
+                    <div className="max-h-48 overflow-y-auto">
+                      <ul className="text-sm space-y-1">
+                        {stats.sitesWithActiveExemptions.map((site, idx) => (
+                          <li key={idx} className="text-gray-700">
+                            • {site.name} - {site.city}, {site.province}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  {/* Sites WITHOUT Active Exemptions (Need Follow-up) */}
+                  <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-4">
+                    <h4 className="font-bold text-orange-900 mb-2 flex items-center gap-2">
+                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                      Sites Needing Follow-up ({stats.sitesWithoutActiveExemptions.length})
+                    </h4>
+                    <div className="max-h-48 overflow-y-auto">
+                      <ul className="text-sm space-y-1">
+                        {stats.sitesWithoutActiveExemptions.map((site, idx) => (
+                          <li key={idx} className="text-gray-700">
+                            • {site.name} - {site.city}, {site.province}
+                            <span className="text-xs text-orange-600 ml-2">
+                              ({site.exemptionStatus1 || 'Not Started'})
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                {expandedMetrics.year1 ? <ChevronUp className="text-violet-700" /> : <ChevronDown className="text-violet-700" />}
               </div>
-              {expandedMetrics.year1 && (
-                <div className="mt-3 pt-3 border-t border-violet-300 text-xs text-violet-800 space-y-1">
-                  {partnersData.filter(site => site.projStartYear === "YEAR 1").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="bg-gradient-to-br from-pink-100 to-pink-200 p-5 rounded-xl shadow-lg border-2 border-pink-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('year2')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-pink-900">{stats.year2Sites} <span className="text-lg">(12 Devices)</span></div>
-                  <div className="text-sm text-pink-700 font-medium mt-1">Year 2 Sites</div>
-                </div>
-                {expandedMetrics.year2 ? <ChevronUp className="text-pink-700" /> : <ChevronDown className="text-pink-700" />}
-              </div>
-              {expandedMetrics.year2 && (
-                <div className="mt-3 pt-3 border-t border-pink-300 text-xs text-pink-800 space-y-1">
-                  {partnersData.filter(site => site.projStartYear === "YEAR 2").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-5 rounded-xl shadow-lg border-2 border-blue-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-blue-900">{stats.scatrCompleted}</div>
-              <div className="text-sm text-blue-700 font-medium mt-1">Scatr Training Complete</div>
-            </div>
-            <div className="bg-gradient-to-br from-cyan-100 to-cyan-200 p-5 rounded-xl shadow-lg border-2 border-cyan-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-cyan-900">{stats.pwlleCompleted}</div>
-              <div className="text-sm text-cyan-700 font-medium mt-1">PWLLE Training Complete</div>
             </div>
           </div>
         </div>
 
-        {/* Exemption Expiration Tracker */}
+        {/* Summary Statistics */}
         <div className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100">
-          <div className="flex items-center gap-3 mb-4">
-            <Calendar className="text-purple-700" size={32} />
-            <h2 className="font-bold text-2xl text-purple-900">Exemption Expiration Tracker</h2>
+          <div className="flex items-center gap-3 mb-6">
+            <TrendingUp className="text-purple-700" size={32} />
+            <h2 className="font-bold text-2xl text-purple-900">Project Statistics</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {exemptionTracker.map((item, idx) => (
-              <div 
-                key={idx}
-                className={`p-4 rounded-xl border-l-4 shadow-lg hover:shadow-2xl transition-all ${
-                  item.days < 30 ? 'bg-gradient-to-r from-red-50 to-red-100 border-red-600' : 
-                  item.days < 90 ? 'bg-gradient-to-r from-orange-50 to-orange-100 border-orange-600' : 
-                  'bg-gradient-to-r from-green-50 to-green-100 border-green-600'
-                }`}
-              >
-                <div className="font-semibold text-sm text-gray-800">{item.name}</div>
-                <div className={`text-2xl font-bold mt-2 ${
-                  item.days < 30 ? 'text-red-600' : 
-                  item.days < 90 ? 'text-orange-600' : 
-                  'text-green-600'
-                }`}>
-                  {item.days} days
-                </div>
-                <div className="text-xs text-gray-600 mt-1">Expires: {item.expiration}</div>
+          
+          {/* Key Metrics Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+            <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-5 rounded-xl shadow-lg border-2 border-purple-300 hover:shadow-2xl transition-shadow">
+              <div className="text-3xl font-bold text-purple-900">{stats.totalPartners}</div>
+              <div className="text-sm text-purple-700 font-medium mt-1">Total Partner Sites</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-5 rounded-xl shadow-lg border-2 border-blue-300 hover:shadow-2xl transition-shadow">
+              <div className="text-3xl font-bold text-blue-900">{stats.uniqueCities}</div>
+              <div className="text-sm text-blue-700 font-medium mt-1">Unique Cities</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-indigo-100 to-indigo-200 p-5 rounded-xl shadow-lg border-2 border-indigo-300 hover:shadow-2xl transition-shadow">
+              <div className="text-3xl font-bold text-indigo-900">{stats.uniqueProvinces}</div>
+              <div className="text-sm text-indigo-700 font-medium mt-1">Unique Provinces</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-teal-100 to-teal-200 p-5 rounded-xl shadow-lg border-2 border-teal-300 hover:shadow-2xl transition-shadow">
+              <div className="text-3xl font-bold text-teal-900">
+                {stats.totalDevicesActive} of {stats.totalDevicesMax}
               </div>
-            ))}
+              <div className="text-sm text-teal-700 font-medium mt-1">Total Devices Allocated</div>
+            </div>
+          </div>
+
+          {/* Device Distribution */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-gradient-to-br from-green-100 to-green-200 p-5 rounded-xl shadow-lg border-2 border-green-300">
+              <div className="text-2xl font-bold text-green-900">{stats.sitesWith2Devices}</div>
+              <div className="text-sm text-green-700 font-medium mt-1">Sites with 2 Devices</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 p-5 rounded-xl shadow-lg border-2 border-yellow-300">
+              <div className="text-2xl font-bold text-yellow-900">{stats.sitesWith1Device}</div>
+              <div className="text-sm text-yellow-700 font-medium mt-1">Sites with 1 Device</div>
+            </div>
+          </div>
+
+          {/* Exemption Distribution */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gradient-to-br from-violet-100 to-violet-200 p-5 rounded-xl shadow-lg border-2 border-violet-300">
+              <div className="text-2xl font-bold text-violet-900">{stats.sitesWith2Exemptions}</div>
+              <div className="text-sm text-violet-700 font-medium mt-1">Sites with 2 Exemptions (Mobile & Non-Mobile)</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-pink-100 to-pink-200 p-5 rounded-xl shadow-lg border-2 border-pink-300">
+              <div className="text-2xl font-bold text-pink-900">{stats.sitesWith1Mobile}</div>
+              <div className="text-sm text-pink-700 font-medium mt-1">Sites with 1 Exemption (Mobile Only)</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-rose-100 to-rose-200 p-5 rounded-xl shadow-lg border-2 border-rose-300">
+              <div className="text-2xl font-bold text-rose-900">{stats.sitesWith1NonMobile}</div>
+              <div className="text-sm text-rose-700 font-medium mt-1">Sites with 1 Exemption (Non-Mobile Only)</div>
+            </div>
+          </div>
+
+          {/* Fiscal Year Note */}
+          <div className="mt-6 p-5 bg-gradient-to-r from-purple-100 to-purple-50 rounded-xl shadow-inner border-2 border-purple-200">
+            <p className="text-sm text-gray-800 leading-relaxed">
+              These {stats.totalPartners} sites represent progress through <span className="font-semibold text-purple-900">Fiscal Year 2</span>. 
+              With <span className="font-semibold text-purple-900">4 total project partner vacancies</span> remaining 
+              (2 in FY3, 2 in FY4), the project can accommodate up to {stats.totalDevicesMax} total device allocations by March 31, 2028.
+            </p>
+          </div>
+        </div>
+
+        {/* Filters Section */}
+        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+          <div className="p-4 bg-gradient-to-r from-purple-700 to-purple-900 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Filter className="text-white" size={28} />
+              <h2 className="font-bold text-2xl text-white">Filters</h2>
+            </div>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="text-white hover:bg-purple-600 px-4 py-2 rounded-lg transition-colors"
+            >
+              {showFilters ? 'Hide' : 'Show'} Filters
+            </button>
+          </div>
+          
+          {showFilters && (
+            <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Device Count Filter */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Device Count
+                  </label>
+                  <select
+                    value={filters.deviceCount}
+                    onChange={(e) => setFilters({...filters, deviceCount: e.target.value})}
+                    className="w-full px-4 py-2 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  >
+                    <option value="all">All Sites</option>
+                    <option value="1">1 Device</option>
+                    <option value="2">2 Devices</option>
+                  </select>
+                </div>
+
+                {/* Province Filter */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Province
+                  </label>
+                  <select
+                    value={filters.province}
+                    onChange={(e) => setFilters({...filters, province: e.target.value})}
+                    className="w-full px-4 py-2 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  >
+                    <option value="all">All Provinces</option>
+                    {provinces.map(prov => (
+                      <option key={prov} value={prov}>{prov}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Exemption Status Filter */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Exemption Status
+                  </label>
+                  <select
+                    value={filters.exemptionStatus}
+                    onChange={(e) => setFilters({...filters, exemptionStatus: e.target.value})}
+                    className="w-full px-4 py-2 border-2 border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  >
+                    <option value="all">All Statuses</option>
+                    <option value="active">Active (Approved)</option>
+                    <option value="pending">Pending (Submitted)</option>
+                    <option value="in-progress">In Progress</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between">
+                <div className="text-sm text-gray-600">
+                  Showing {filteredData.length} of {partnersData.length} sites
+                </div>
+                <button
+                  onClick={resetFilters}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors"
+                >
+                  <X size={18} />
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Map View */}
+        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+          <div className="p-4 bg-gradient-to-r from-purple-700 to-purple-900 flex items-center gap-3">
+            <MapPin className="text-white" size={28} />
+            <h2 className="font-bold text-2xl text-white">Partner Site Map</h2>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+            <MapContainer
+              center={[56.1304, -106.3468]}
+              zoom={5}
+              style={{ height: '600px', width: '100%', borderRadius: '12px' }}
+              className="shadow-xl"
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              {filteredData.map((site, index) => (
+                <Marker key={index} position={[site.latitude, site.longitude]}>
+                  <Popup maxWidth={400}>
+                    <div className="font-sans">
+                      <h3 className="font-bold text-lg text-purple-900 mb-3 border-b-2 border-purple-300 pb-2">
+                        {site.name}
+                      </h3>
+                      <div className="space-y-1 text-sm">
+                        {[
+                          { label: 'City', value: site.city },
+                          { label: 'Province', value: site.province },
+                          { label: 'Devices', value: site.devices },
+                          { label: 'Exemption 1', value: `${site.exemptionStatus1} (${site.exemptionType1})` },
+                          { label: 'Exemption 2', value: site.exemptionStatus2 ? `${site.exemptionStatus2} (${site.exemptionType2})` : 'N/A' },
+                          { label: 'SCATR Training', value: site.scatrTraining },
+                          { label: 'PWLLE Training', value: site.pwlleTraining }
+                        ].map((row, idx) => (
+                          <div
+                            key={idx}
+                            className={`flex justify-between px-2 py-1.5 ${
+                              idx % 2 === 0 ? 'bg-purple-50' : 'bg-white'
+                            }`}
+                          >
+                            <span className="font-semibold text-gray-700">{row.label}:</span>
+                            <span className="text-gray-600">{row.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
+            </MapContainer>
+          </div>
+        </div>
+
+        {/* Table View */}
+        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+          <div className="p-4 bg-gradient-to-r from-purple-700 to-purple-900 flex items-center gap-3">
+            <List className="text-white" size={28} />
+            <h2 className="font-bold text-2xl text-white">Partner Details Table</h2>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-purple-900 text-white">
+                    <th className="px-4 py-3 text-left border border-purple-700">Site Name</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">City</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">Province</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">Devices</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">Exemption 1</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">Type 1</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">Exemption 2</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">Type 2</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">SCATR</th>
+                    <th className="px-4 py-3 text-left border border-purple-700">PWLLE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData.map((site, index) => (
+                    <tr
+                      key={index}
+                      className={`${
+                        index % 2 === 0 ? 'bg-purple-50' : 'bg-white'
+                      } hover:bg-purple-100 transition-colors`}
+                    >
+                      <td className="px-4 py-3 border border-gray-300 font-semibold text-purple-900">
+                        {site.name}
+                      </td>
+                      <td className="px-4 py-3 border border-gray-300">{site.city}</td>
+                      <td className="px-4 py-3 border border-gray-300">{site.province}</td>
+                      <td className="px-4 py-3 border border-gray-300 text-center font-bold">
+                        {site.devices}
+                      </td>
+                      <td className="px-4 py-3 border border-gray-300">
+                        <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                          site.exemptionStatus1 === 'Approved' ? 'bg-green-200 text-green-800' :
+                          site.exemptionStatus1 === 'Submitted' ? 'bg-yellow-200 text-yellow-800' :
+                          'bg-orange-200 text-orange-800'
+                        }`}>
+                          {site.exemptionStatus1}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 border border-gray-300">{site.exemptionType1}</td>
+                      <td className="px-4 py-3 border border-gray-300">
+                        {site.exemptionStatus2 && (
+                          <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                            site.exemptionStatus2 === 'Approved' ? 'bg-green-200 text-green-800' :
+                            site.exemptionStatus2 === 'Submitted' ? 'bg-yellow-200 text-yellow-800' :
+                            'bg-orange-200 text-orange-800'
+                          }`}>
+                            {site.exemptionStatus2}
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 border border-gray-300">{site.exemptionType2 || 'N/A'}</td>
+                      <td className="px-4 py-3 border border-gray-300">{site.scatrTraining}</td>
+                      <td className="px-4 py-3 border border-gray-300">{site.pwlleTraining}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
