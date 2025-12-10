@@ -640,7 +640,7 @@ const ProjectPartnerDashboard = () => {
 
             {/* Part 2: 2022-2024 - Phase 1 & Phase 2 */}
             <div className="mt-8 mb-8">
-              <h3 className="text-xl font-bold text-purple-900 mb-4">Health Canada Contribution Agreements (2022-2024)</h3>
+              <h3 className="text-xl font-bold text-purple-900 mb-4">Health Canada Contribution Agreements (2022-2028)</h3>
               <div className="relative">
                 {/* Timeline Line */}
                 <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 transform -translate-y-1/2"></div>
@@ -650,40 +650,68 @@ const ProjectPartnerDashboard = () => {
                 <div className="relative flex justify-between items-center py-8">
                   {/* 2022 - Phase 1 */}
                   <div className="flex flex-col items-center">
-                    <div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2022</div>
+                    <div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2022</div>
                     <div className="w-4 h-4 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[200px] text-center">
-                      <div className="font-bold text-purple-900 text-sm">Phase #1</div>
+                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-2 rounded-xl shadow-lg border-2 border-purple-300 max-w-[160px] text-center">
+                      <div className="font-bold text-purple-900 text-xs">Phase #1</div>
                       <div className="text-xs text-purple-700 mt-1 font-medium">Contribution Agreement</div>
-                      <div className="text-xs text-purple-600 mt-1">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</div>
-                      <div className="flex items-center justify-center gap-2 mt-2">
-                        <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">Health Canada</span>
+                      <div className="text-xs text-purple-600 mt-1">Creating a Drug Checking Network Using ML Spectrometers</div>
+                      <div className="flex items-center justify-center gap-2 mt-1">
+                        <span className="text-xs bg-red-100 text-red-700 px-1 py-0.5 rounded">Health Canada</span>
                       </div>
                     </div>
                   </div>
 
                   {/* 2023 */}
                   <div className="flex flex-col items-center">
-                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2023</div>
-                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2023</div>
+                    <div className="w-3 h-3 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
                   </div>
 
                   {/* 2024 - Phase 2 */}
                   <div className="flex flex-col items-center">
-                    <div className="mb-4 bg-gradient-to-br from-purple-200 to-purple-300 p-3 rounded-xl shadow-lg border-2 border-purple-400 max-w-[200px] text-center">
-                      <div className="font-bold text-purple-900 text-sm">Phase #2</div>
+                    <div className="mb-4 bg-gradient-to-br from-purple-200 to-purple-300 p-2 rounded-xl shadow-lg border-2 border-purple-400 max-w-[160px] text-center">
+                      <div className="font-bold text-purple-900 text-xs">Phase #2</div>
                       <div className="text-xs text-purple-700 mt-1 font-medium">Contribution & Amending Agreement</div>
-                      <div className="text-xs text-purple-600 mt-1">Leading the Way: PWLLE at the Forefront of Drug Checking Initiatives</div>
-                      <div className="flex items-center justify-center gap-2 mt-2">
-                        <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">Health Canada</span>
+                      <div className="text-xs text-purple-600 mt-1">PWLLE at the Forefront of Drug Checking</div>
+                      <div className="flex items-center justify-center gap-2 mt-1">
+                        <span className="text-xs bg-red-100 text-red-700 px-1 py-0.5 rounded">Health Canada</span>
                       </div>
                     </div>
                     <div className="w-4 h-4 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2">2024</div>
-                    {/* CCRA Callout */}
-                    <div className="mt-4 bg-gradient-to-br from-red-50 to-red-100 p-3 rounded-xl shadow-lg border-2 border-red-300 max-w-[200px] text-center">
-                      <div className="font-bold text-red-800 text-sm">CCRA Royal Assent</div>
-                      <div className="text-xs text-red-600 mt-1">The Community Care and Recovery Act, 2024 received Royal Assent on December 4, 2024</div>
+                    <div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mt-2">2024</div>
+                    {/* CCRA Callout - smaller note */}
+                    <div className="mt-2 bg-gray-50 p-1.5 rounded-lg border border-gray-200 max-w-[120px] text-center opacity-70">
+                      <div className="text-gray-500 text-xs">CCRA Royal Assent</div>
+                      <div className="text-xs text-gray-400">Dec 4, 2024</div>
+                    </div>
+                  </div>
+
+                  {/* 2025 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2025</div>
+                    <div className="w-3 h-3 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                  </div>
+
+                  {/* 2026 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2026</div>
+                    <div className="w-3 h-3 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                  </div>
+
+                  {/* 2027 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2027</div>
+                    <div className="w-3 h-3 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                  </div>
+
+                  {/* 2028 - Project End */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-800 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2028</div>
+                    <div className="w-4 h-4 bg-purple-800 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-2 rounded-xl shadow-lg border-2 border-purple-300 max-w-[120px] text-center">
+                      <div className="font-bold text-purple-900 text-xs">Project End</div>
+                      <div className="text-xs text-purple-600 mt-1">March 31, 2028</div>
                     </div>
                   </div>
                 </div>
@@ -833,8 +861,8 @@ const ProjectPartnerDashboard = () => {
           <p className="text-sm text-gray-800 leading-relaxed">
             These {stats.totalPartners} sites represent the culmination of the project's <span className="font-semibold text-purple-900">Fiscal Year 2</span> (April 1st, 2025 to March 31st, 2026). 
             There are 2 remaining fiscal years: <span className="font-semibold text-purple-900">Fiscal Year 3</span> (April 1st, 2026 to March 31st, 2027) and <span className="font-semibold text-purple-900">Fiscal Year 4</span> (April 1st, 2027 to March 31st, 2028). 
-            Each of the final two years will have <span className="font-semibold text-purple-900">2 vacancies</span> each for additional sites and/or device allocations. 
-            Therefore there are <span className="font-semibold text-purple-900">4 total project partner vacancies and/or device allocations</span> remaining until project end.
+            Each of which will have <span className="font-semibold text-purple-900">2 vacancies</span> for additional sites and/or device allocations. 
+            Therefore there are <span className="font-semibold text-purple-900">4 total project partner vacancies and/or device allocations</span> remaining from <span className="font-semibold text-purple-900">{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span> until project end, <span className="font-semibold text-purple-900">March 31st, 2028</span>.
           </p>
         </div>
         <div className="flex justify-end">
@@ -861,13 +889,11 @@ const ProjectPartnerDashboard = () => {
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Additional Contact</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Email</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Phone Number</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Collaborative Site Agreement Status</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Devices Assign'd</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Device Serial #1</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Type #1</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Device Serial #2</th>
                 <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Exemption Type #2</th>
-                <th className={`border border-purple-300 ${compactTable ? 'p-0.5' : 'p-2'} text-left`}>Proj Start YEAR</th>
               </tr>
             </thead>
             <tbody>
@@ -884,13 +910,11 @@ const ProjectPartnerDashboard = () => {
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.additionalContact}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.email2}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.phone2}</td>
-                  <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.agreementStatus}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.devicesAssigned}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.deviceSerial1}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionType1}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.deviceSerial2}</td>
                   <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.exemptionType2}</td>
-                  <td className={`border border-purple-200 ${compactTable ? 'p-0.5' : 'p-2'}`}>{site.projStartYear}</td>
                 </tr>
               ))}
             </tbody>
@@ -911,12 +935,17 @@ const ProjectPartnerDashboard = () => {
               <Users size={20} />
               In partnership with Scatr Inc
             </p>
-            <p className="text-sm flex items-center gap-2">
-              <FileCheck size={18} />
-              Interactive Project Partner Dashboard
-            </p>
+
           </div>
         </div>
+      </div>
+
+      {/* Centered Dashboard Title */}
+      <div className="text-center py-6 bg-gradient-to-r from-purple-50 to-white">
+        <h2 className="text-3xl font-bold text-purple-900 flex items-center justify-center gap-3">
+          <FileCheck size={32} className="text-purple-700" />
+          Interactive Project Partner Dashboard
+        </h2>
       </div>
 
       <div className="p-6 space-y-6">
@@ -927,7 +956,7 @@ const ProjectPartnerDashboard = () => {
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
             <h2 className="flex items-center gap-2 font-bold text-2xl">
               <MapPin size={28} />
-              Map View
+              Map View of Project Partner Sites
             </h2>
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50">
@@ -980,59 +1009,46 @@ const ProjectPartnerDashboard = () => {
               <div className="text-sm text-indigo-700 font-medium mt-1">Provinces/Territories</div>
               <div className="text-xs text-indigo-600 mt-2">{stats.provinces.join(', ')}</div>
             </div>
-            <div className="bg-gradient-to-br from-purple-300 to-purple-400 p-5 rounded-xl shadow-lg border-2 border-purple-500 hover:shadow-2xl transition-shadow">
-              <div className="text-3xl font-bold text-purple-900">{stats.totalPartners}</div>
-              <div className="text-sm text-purple-700 font-medium mt-1">Signed Agreements</div>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-teal-100 to-teal-200 p-5 rounded-xl shadow-lg border-2 border-teal-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-teal-900">{stats.exemptionType1Counts.Mobile}</div>
-              <div className="text-sm text-teal-700 font-medium mt-1">Mobile Exemptions</div>
+            <div className="bg-gradient-to-br from-teal-100 to-teal-200 p-5 rounded-xl shadow-lg border-2 border-teal-300 hover:shadow-2xl transition-shadow cursor-pointer"
+                 onClick={() => toggleMetric('mobile')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-2xl font-bold text-teal-900">{stats.exemptionType1Counts.Mobile}</div>
+                  <div className="text-sm text-teal-700 font-medium mt-1">Mobile Exemptions</div>
+                </div>
+                {expandedMetrics.mobile ? <ChevronUp className="text-teal-700" /> : <ChevronDown className="text-teal-700" />}
+              </div>
+              {expandedMetrics.mobile && (
+                <div className="mt-3 pt-3 border-t border-teal-300 text-xs text-teal-800 space-y-1">
+                  {partnersData.filter(site => site.exemptionType1 === "Mobile").map(site => (
+                    <div key={site.id}>• {site.nameOrganization}</div>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="bg-gradient-to-br from-sky-100 to-sky-200 p-5 rounded-xl shadow-lg border-2 border-sky-300 hover:shadow-2xl transition-shadow">
-              <div className="text-2xl font-bold text-sky-900">{stats.exemptionType1Counts.NonMobile}</div>
-              <div className="text-sm text-sky-700 font-medium mt-1">Non-Mobile Exemptions</div>
+            <div className="bg-gradient-to-br from-sky-100 to-sky-200 p-5 rounded-xl shadow-lg border-2 border-sky-300 hover:shadow-2xl transition-shadow cursor-pointer"
+                 onClick={() => toggleMetric('nonMobile')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-2xl font-bold text-sky-900">{stats.exemptionType1Counts.NonMobile}</div>
+                  <div className="text-sm text-sky-700 font-medium mt-1">Non-Mobile Exemptions</div>
+                </div>
+                {expandedMetrics.nonMobile ? <ChevronUp className="text-sky-700" /> : <ChevronDown className="text-sky-700" />}
+              </div>
+              {expandedMetrics.nonMobile && (
+                <div className="mt-3 pt-3 border-t border-sky-300 text-xs text-sky-800 space-y-1">
+                  {partnersData.filter(site => site.exemptionType1 === "Non-Mobile").map(site => (
+                    <div key={site.id}>• {site.nameOrganization}</div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gradient-to-br from-violet-100 to-violet-200 p-5 rounded-xl shadow-lg border-2 border-violet-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('year1')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-violet-900">{stats.year1Sites} <span className="text-lg">(12 Devices)</span></div>
-                  <div className="text-sm text-violet-700 font-medium mt-1">Year 1 Sites</div>
-                </div>
-                {expandedMetrics.year1 ? <ChevronUp className="text-violet-700" /> : <ChevronDown className="text-violet-700" />}
-              </div>
-              {expandedMetrics.year1 && (
-                <div className="mt-3 pt-3 border-t border-violet-300 text-xs text-violet-800 space-y-1">
-                  {partnersData.filter(site => site.projStartYear === "YEAR 1").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="bg-gradient-to-br from-pink-100 to-pink-200 p-5 rounded-xl shadow-lg border-2 border-pink-300 hover:shadow-2xl transition-shadow cursor-pointer"
-                 onClick={() => toggleMetric('year2')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-2xl font-bold text-pink-900">{stats.year2Sites} <span className="text-lg">(12 Devices)</span></div>
-                  <div className="text-sm text-pink-700 font-medium mt-1">Year 2 Sites</div>
-                </div>
-                {expandedMetrics.year2 ? <ChevronUp className="text-pink-700" /> : <ChevronDown className="text-pink-700" />}
-              </div>
-              {expandedMetrics.year2 && (
-                <div className="mt-3 pt-3 border-t border-pink-300 text-xs text-pink-800 space-y-1">
-                  {partnersData.filter(site => site.projStartYear === "YEAR 2").map(site => (
-                    <div key={site.id}>• {site.nameOrganization}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
