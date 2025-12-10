@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, List, X, Award, Users, FileCheck, Maximize2, Minimize2, ChevronDown, ChevronUp } from 'lucide-react';
+import { MapPin, List, X, Award, Users, FileCheck, Maximize2, Minimize2, ChevronDown, ChevronUp, Clock, Trophy } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -555,6 +555,157 @@ const ProjectPartnerDashboard = () => {
 
   const stats = getStatistics();
 
+  const ProjectTimeline = () => {
+    return (
+      <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+        <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+          <h2 className="flex items-center gap-2 font-bold text-2xl">
+            <Clock size={28} />
+            Project Background & Timeline
+          </h2>
+        </div>
+        <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+          {/* Timeline Container */}
+          <div className="relative">
+            {/* Part 1: 2018-2021 - Drug Checking Technology Challenge */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-purple-900 mb-4">Drug Checking Technology Challenge (2018-2021)</h3>
+              <div className="relative">
+                {/* Timeline Line */}
+                <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 transform -translate-y-1/2"></div>
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-8 border-l-purple-800 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
+                
+                {/* Timeline Events */}
+                <div className="relative flex justify-between items-center py-8">
+                  {/* 2018 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2018</div>
+                    <div className="w-4 h-4 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[180px] text-center">
+                      <div className="font-bold text-purple-900 text-sm">Challenge Launched</div>
+                      <div className="text-xs text-purple-700 mt-1">October 2018</div>
+                      <div className="text-xs text-purple-600 mt-1">Impact Canada Initiative</div>
+                      <div className="text-xs text-purple-600">Health Canada</div>
+                    </div>
+                  </div>
+
+                  {/* 2019 */}
+                  <div className="flex flex-col items-center">
+                    <div className="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 p-3 rounded-xl shadow-lg border-2 border-gray-300 max-w-[150px] text-center">
+                      <div className="font-bold text-gray-800 text-sm">Application Deadline</div>
+                    </div>
+                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2">2019</div>
+                  </div>
+
+                  {/* 2020 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2020</div>
+                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="mt-4 bg-gradient-to-br from-gray-100 to-gray-200 p-3 rounded-xl shadow-lg border-2 border-gray-300 max-w-[150px] text-center">
+                      <div className="font-bold text-gray-800 text-sm">Pilot-Phase</div>
+                    </div>
+                  </div>
+
+                  {/* 2021 - Winner */}
+                  <div className="flex flex-col items-center">
+                    <div className="mb-4 bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl shadow-lg border-2 border-yellow-400 max-w-[220px] text-center">
+                      <div className="flex items-center justify-center gap-1 mb-1">
+                        <Trophy className="text-yellow-600" size={16} />
+                        <span className="font-bold text-yellow-800 text-sm">Scatr Wins!</span>
+                      </div>
+                      <div className="text-xs text-yellow-700">Government of Canada announces Scatr as the grand prize winner</div>
+                      <div className="text-xs font-bold text-yellow-800 mt-1">$1,000,000 Prize</div>
+                    </div>
+                    <div className="w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                      <Trophy className="text-white" size={12} />
+                    </div>
+                    <div className="bg-purple-700 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2">2021</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Part 2: 2022-Present - Contribution Agreements */}
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-purple-900 mb-4">Health Canada Contribution Agreements (2022-Present)</h3>
+              <div className="relative">
+                {/* Timeline Line */}
+                <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 transform -translate-y-1/2"></div>
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-8 border-l-purple-800 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
+                
+                {/* Timeline Events */}
+                <div className="relative flex justify-between items-center py-8">
+                  {/* 2022 - Phase 1 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2022</div>
+                    <div className="w-4 h-4 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[200px] text-center">
+                      <div className="font-bold text-purple-900 text-sm">Phase #1</div>
+                      <div className="text-xs text-purple-700 mt-1 font-medium">Contribution Agreement</div>
+                      <div className="text-xs text-purple-600 mt-1">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</div>
+                      <div className="flex items-center justify-center gap-2 mt-2">
+                        <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">Health Canada</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2023 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2023</div>
+                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                  </div>
+
+                  {/* 2024 - Phase 2 */}
+                  <div className="flex flex-col items-center">
+                    <div className="mb-4 bg-gradient-to-br from-purple-200 to-purple-300 p-3 rounded-xl shadow-lg border-2 border-purple-400 max-w-[200px] text-center">
+                      <div className="font-bold text-purple-900 text-sm">Phase #2</div>
+                      <div className="text-xs text-purple-700 mt-1 font-medium">Contribution & Amending Agreement</div>
+                      <div className="text-xs text-purple-600 mt-1">Leading the Way: PWLLE at the Forefront of Drug Checking Initiatives</div>
+                      <div className="flex items-center justify-center gap-2 mt-2">
+                        <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">Health Canada</span>
+                      </div>
+                    </div>
+                    <div className="w-4 h-4 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2">2024</div>
+                    {/* CCRA Callout */}
+                    <div className="mt-4 bg-gradient-to-br from-red-50 to-red-100 p-3 rounded-xl shadow-lg border-2 border-red-300 max-w-[200px] text-center">
+                      <div className="font-bold text-red-800 text-sm">CCRA Royal Assent</div>
+                      <div className="text-xs text-red-600 mt-1">The Community Care and Recovery Act, 2024 received Royal Assent on December 4, 2024</div>
+                    </div>
+                  </div>
+
+                  {/* 2025 */}
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2025</div>
+                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+                  </div>
+
+                  {/* Present */}
+                  <div className="flex flex-col items-center">
+                    <div className="mb-4 bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl shadow-lg border-2 border-green-400 max-w-[150px] text-center">
+                      <div className="font-bold text-green-800 text-sm">Present...</div>
+                      <div className="text-xs text-green-600 mt-1">22 partner sites across Canada</div>
+                    </div>
+                    <div className="w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                      <MapPin className="text-white" size={12} />
+                    </div>
+                    <div className="bg-purple-800 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mt-2">Current</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="mt-8 bg-gradient-to-r from-purple-700 to-purple-900 text-white p-4 rounded-xl text-center">
+              <p className="font-medium">Western University in Collaboration with Scatr Inc: A Two-Phase Novel Drug Checking Initiative</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const SiteDetails = ({ site, onClose }) => {
     return (
       <div className="bg-white p-4 rounded-xl shadow-2xl max-w-md border-2 border-purple-200">
@@ -701,6 +852,9 @@ const ProjectPartnerDashboard = () => {
       </div>
 
       <div className="p-6 space-y-6">
+        {/* Project Timeline */}
+        <ProjectTimeline />
+
         <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
             <h2 className="flex items-center gap-2 font-bold text-2xl">
