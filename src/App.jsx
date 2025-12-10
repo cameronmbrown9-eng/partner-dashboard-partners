@@ -556,6 +556,18 @@ const ProjectPartnerDashboard = () => {
   const stats = getStatistics();
 
   const ProjectTimeline = () => {
+    // Calculate current position on fiscal year timeline
+    const today = new Date();
+    const projectStart = new Date('2024-04-01');
+    const projectEnd = new Date('2028-03-31');
+    const totalDays = (projectEnd - projectStart) / (1000 * 60 * 60 * 24);
+    const daysPassed = (today - projectStart) / (1000 * 60 * 60 * 24);
+    const progressPercent = Math.min(Math.max((daysPassed / totalDays) * 100, 0), 100);
+    
+    const formatDate = (date) => {
+      return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    };
+
     return (
       <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
         <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
@@ -626,9 +638,9 @@ const ProjectPartnerDashboard = () => {
               </div>
             </div>
 
-            {/* Part 2: 2022-Present - Contribution Agreements */}
-            <div className="mt-8">
-              <h3 className="text-xl font-bold text-purple-900 mb-4">Health Canada Contribution Agreements (2022-Present)</h3>
+            {/* Part 2: 2022-2024 - Phase 1 & Phase 2 */}
+            <div className="mt-8 mb-8">
+              <h3 className="text-xl font-bold text-purple-900 mb-4">Health Canada Contribution Agreements (2022-2024)</h3>
               <div className="relative">
                 {/* Timeline Line */}
                 <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 transform -translate-y-1/2"></div>
@@ -674,23 +686,79 @@ const ProjectPartnerDashboard = () => {
                       <div className="text-xs text-red-600 mt-1">The Community Care and Recovery Act, 2024 received Royal Assent on December 4, 2024</div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
 
-                  {/* 2025 */}
-                  <div className="flex flex-col items-center">
-                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2">2025</div>
-                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+            {/* Part 3: Fiscal Year Timeline (April 2024 - March 2028) */}
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-purple-900 mb-4">Project Fiscal Years (April 1, 2024 - March 31, 2028)</h3>
+              <div className="relative pt-16 pb-8">
+                {/* "We Are Here" Marker */}
+                <div 
+                  className="absolute top-0 flex flex-col items-center z-10"
+                  style={{ left: `${progressPercent}%`, transform: 'translateX(-50%)' }}
+                >
+                  <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-3 py-1.5 rounded-lg shadow-lg text-sm font-bold whitespace-nowrap">
+                    We Are Here
                   </div>
+                  <div className="text-xs text-green-700 font-medium mt-1 whitespace-nowrap">
+                    {formatDate(today)}
+                  </div>
+                  <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-green-500 mt-1"></div>
+                  <div className="w-1 h-8 bg-green-500"></div>
+                </div>
 
-                  {/* Present */}
-                  <div className="flex flex-col items-center">
-                    <div className="mb-4 bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl shadow-lg border-2 border-green-400 max-w-[150px] text-center">
-                      <div className="font-bold text-green-800 text-sm">Present...</div>
-                      <div className="text-xs text-green-600 mt-1">22 partner sites across Canada</div>
+                {/* Timeline Bar Background */}
+                <div className="relative h-16 bg-gray-200 rounded-full overflow-hidden shadow-inner mt-8">
+                  {/* Progress Fill */}
+                  <div 
+                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-l-full"
+                    style={{ width: `${progressPercent}%` }}
+                  ></div>
+                  
+                  {/* Fiscal Year Sections */}
+                  <div className="absolute inset-0 flex">
+                    {/* FY1 */}
+                    <div className="flex-1 border-r-2 border-white flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="font-bold text-purple-900 text-sm">Fiscal Year 1</div>
+                        <div className="text-xs text-purple-700">Apr 1, 2024 - Mar 31, 2025</div>
+                      </div>
                     </div>
-                    <div className="w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
-                      <MapPin className="text-white" size={12} />
+                    {/* FY2 */}
+                    <div className="flex-1 border-r-2 border-white flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="font-bold text-purple-900 text-sm">Fiscal Year 2</div>
+                        <div className="text-xs text-purple-700">Apr 1, 2025 - Mar 31, 2026</div>
+                      </div>
                     </div>
-                    <div className="bg-purple-800 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mt-2">Current</div>
+                    {/* FY3 */}
+                    <div className="flex-1 border-r-2 border-white flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="font-bold text-purple-900 text-sm">Fiscal Year 3</div>
+                        <div className="text-xs text-purple-700">Apr 1, 2026 - Mar 31, 2027</div>
+                      </div>
+                    </div>
+                    {/* FY4 */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="font-bold text-purple-900 text-sm">Fiscal Year 4</div>
+                        <div className="text-xs text-purple-700">Apr 1, 2027 - Mar 31, 2028</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Start and End Labels */}
+                <div className="flex justify-between mt-2">
+                  <div className="text-center">
+                    <div className="font-bold text-purple-800 text-sm">Project Start</div>
+                    <div className="text-xs text-purple-600">April 1, 2024</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold text-purple-800 text-sm">Project End</div>
+                    <div className="text-xs text-purple-600">March 31, 2028</div>
                   </div>
                 </div>
               </div>
