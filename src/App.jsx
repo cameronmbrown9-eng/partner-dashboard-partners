@@ -539,13 +539,6 @@ const ProjectPartnerDashboard = () => {
 
   const TableView = () => (
     <div className="space-y-4">
-      <div className="p-5 bg-gradient-to-r from-purple-100 to-purple-50 rounded-xl shadow-inner border-2 border-purple-200">
-        <p className="text-sm text-gray-800 leading-relaxed">
-          These 22 sites represent the culmination of the project's <span className="font-semibold text-purple-900">Phase #2 - Fiscal Year 2</span> recruiting targets (April 1st, 2025 to March 31st, 2026). 
-          There are 2 remaining Fiscal Years: <span className="font-semibold text-purple-900">Fiscal Year 3</span> (April 1st, 2026 to March 31st, 2027) and <span className="font-semibold text-purple-900">Fiscal Year 4</span> (April 1st, 2027 to March 31st, 2028). 
-          Each of which will have <span className="font-semibold text-purple-900">2 vacancies</span> for additional sites and/or device allocations.
-        </p>
-      </div>
       <div className="overflow-x-auto rounded-xl shadow-2xl border-4 border-purple-200">
         <table className="w-full border-collapse text-sm">
           <thead>
