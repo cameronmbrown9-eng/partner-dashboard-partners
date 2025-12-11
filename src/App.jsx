@@ -342,7 +342,7 @@ const TableOfContents = () => {
     { id: 'timeline', label: 'Project Background & Timeline' },
     { id: 'presentation', label: 'Project Overview Presentation' },
     { id: 'publications', label: 'Project-Related Publications' },
-    { id: 'documents', label: 'Research Documents' },
+    { id: 'documents', label: 'Research, Ethics & Related Documents' },
     { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
     { id: 'table', label: 'Project Partner Contact Info' },
     { id: 'metrics', label: 'Summary Metrics' },
@@ -690,7 +690,7 @@ const ProjectPartnerDashboard = () => {
   const ResearchDocuments = () => (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research Documents</h2>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research, Ethics & Related Documents</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50">
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
