@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -56,7 +56,7 @@ const ProjectContactInfo = ({ isFooter = false }) => (
     <div className="space-y-4 text-sm">
       <div className="bg-white p-4 rounded-xl border border-purple-200">
         <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
-        <div className="text-gray-700 italic">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers & Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives. Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
+        <div className="text-gray-700 italic"><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers & Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</strong> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-xl border border-purple-200">
@@ -297,6 +297,84 @@ const PartnerDiscussionBoard = () => {
   );
 };
 
+// Back to Top Button Component
+const BackToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className="fixed bottom-6 right-6 z-50 bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 flex items-center gap-2 group"
+      title="Back to Top"
+    >
+      <ArrowUp size={24} />
+      <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-sm font-medium">Back to Top</span>
+    </button>
+  );
+};
+
+// Table of Contents Component
+const TableOfContents = () => {
+  const sections = [
+    { id: 'csuch', label: 'Canadian Substance Use Costs and Harms' },
+    { id: 'timeline', label: 'Project Background & Timeline' },
+    { id: 'presentation', label: 'Project Overview Presentation' },
+    { id: 'publications', label: 'Project-Related Publications' },
+    { id: 'documents', label: 'Research Documents' },
+    { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
+    { id: 'table', label: 'Table View' },
+    { id: 'metrics', label: 'Summary Metrics' },
+    { id: 'discussion', label: 'Partner Discussion Board' },
+    { id: 'links', label: 'Related Links & Resources' }
+  ];
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <div className="mt-4 bg-white p-4 rounded-xl border-2 border-purple-300 shadow-md">
+      <div className="font-bold text-purple-900 mb-3 text-sm">Quick Navigation:</div>
+      <div className="flex flex-wrap gap-2">
+        {sections.map((section) => (
+          <button
+            key={section.id}
+            onClick={() => scrollToSection(section.id)}
+            className="text-sm text-purple-700 hover:text-purple-900 hover:bg-purple-100 px-3 py-1.5 rounded-full border border-purple-200 transition-colors"
+          >
+            {section.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const ProjectPartnerDashboard = () => {
   const [expandedMetrics, setExpandedMetrics] = useState({});
   const [expandedRow, setExpandedRow] = useState(null);
@@ -365,19 +443,45 @@ const ProjectPartnerDashboard = () => {
     const today = new Date();
     const projectStart = new Date('2024-04-01');
     const projectEnd = new Date('2028-03-31');
-    const hcStart = new Date('2022-01-01');
-    const hcEnd = new Date('2028-03-31');
     
-    const totalDays = (projectEnd - projectStart) / (1000 * 60 * 60 * 24);
-    const daysPassed = (today - projectStart) / (1000 * 60 * 60 * 24);
-    const progressPercent = Math.min(Math.max((daysPassed / totalDays) * 100, 0), 100);
+    // Calculate fiscal year progress (4 fiscal years, each 25% of visual width)
+    const fy1End = new Date('2025-03-31');
+    const fy2End = new Date('2026-03-31');
+    const fy3End = new Date('2027-03-31');
     
-    const hcTotalDays = (hcEnd - hcStart) / (1000 * 60 * 60 * 24);
-    const hcDaysPassed = (today - hcStart) / (1000 * 60 * 60 * 24);
-    const hcProgressPercent = Math.min(Math.max((hcDaysPassed / hcTotalDays) * 100, 0), 100);
+    let fyNumber, fyProgress;
+    if (today <= fy1End) {
+      fyNumber = 0;
+      const fy1Start = new Date('2024-04-01');
+      fyProgress = (today - fy1Start) / (fy1End - fy1Start);
+    } else if (today <= fy2End) {
+      fyNumber = 1;
+      const fy2Start = new Date('2025-04-01');
+      fyProgress = (today - fy2Start) / (fy2End - fy2Start);
+    } else if (today <= fy3End) {
+      fyNumber = 2;
+      const fy3Start = new Date('2026-04-01');
+      fyProgress = (today - fy3Start) / (fy3End - fy3Start);
+    } else {
+      fyNumber = 3;
+      const fy4Start = new Date('2027-04-01');
+      fyProgress = (today - fy4Start) / (projectEnd - fy4Start);
+    }
+    const progressPercent = Math.min(Math.max(((fyNumber + fyProgress) / 4) * 100, 0), 100);
+    
+    // Calculate HC timeline progress based on visual year positions (7 year markers, evenly spaced)
+    const hcStartYear = 2022;
+    const hcEndYear = 2028;
+    const totalYearSpan = hcEndYear - hcStartYear; // 6 years
+    const currentYear = today.getFullYear();
+    const startOfYear = new Date(currentYear, 0, 1);
+    const dayOfYear = Math.floor((today - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+    const daysInYear = ((currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0) ? 366 : 365;
+    const yearFraction = dayOfYear / daysInYear;
+    const yearsFromStart = Math.min(Math.max((currentYear - hcStartYear) + yearFraction, 0), totalYearSpan);
+    const hcProgressPercent = (yearsFromStart / totalYearSpan) * 100;
     
     const formatDate = (date) => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    const currentYear = today.getFullYear();
 
     return (
       <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
@@ -662,10 +766,17 @@ const ProjectPartnerDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50" id="top">
+      <BackToTop />
       <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">The University of Western Ontario - A Novel Two Phase Drug-Checking Initiative:<br />Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            The University of Western Ontario
+            <br /><br />
+            A Novel Two Phase Drug-Checking Initiative:
+            <br />
+            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program
+          </h1>
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <span className="text-sky-300 font-bold">Scatr Inc.</span></p>
         </div>
       </div>
@@ -674,11 +785,12 @@ const ProjectPartnerDashboard = () => {
       <div className="px-6 pb-4">
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the network's infrastructure, facilitate communication and collaboration across sites, and serve as a resource hub for project-related information.</p>
-          <p className="text-gray-800 leading-relaxed mt-3">As of <strong>{todayFormatted}</strong>, Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em> project, funded through Health Canada's Substance Use and Addictions Program (SUAP), has successfully assigned <strong>24 spectrometers</strong> to <strong>22 harm reduction sites</strong> across Canada. Looking ahead, the project aims to deploy 4 more spectrometers - 2 in Fiscal Year 3, April 1st 2026 to March 31st 2027 and 2 in Fiscal Year 4, April 1st 2027 to March 31st 2028, bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
+          <TableOfContents />
+          <p className="text-gray-800 leading-relaxed mt-4">As of <strong>{todayFormatted}</strong>, Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em> project, funded through Health Canada's Substance Use and Addictions Program (SUAP), has successfully assigned <strong>24 spectrometers</strong> to <strong>22 harm reduction sites</strong> across Canada. Looking ahead, the project aims to deploy 4 more spectrometers - 2 in Fiscal Year 3, April 1st 2026 to March 31st 2027 and 2 in Fiscal Year 4, April 1st 2027 to March 31st 2028, bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
         </div>
       </div>
       <div className="p-6 space-y-6">
-        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+        <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
             <h2 className="flex items-center gap-2 font-bold text-2xl">Canadian Substance Use Costs and Harms</h2>
           </div>
@@ -687,19 +799,19 @@ const ProjectPartnerDashboard = () => {
             <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023</p>
           </div>
         </div>
-        <ProjectTimeline />
-        <PowerPointViewer />
-        <ProjectPublications />
-        <ResearchDocuments />
-        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+        <div id="timeline" className="scroll-mt-4"><ProjectTimeline /></div>
+        <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
+        <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
+        <div id="documents" className="scroll-mt-4"><ResearchDocuments /></div>
+        <div id="map" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><MapPin size={28} />Interactive Map View of Project Partner Sites</h2></div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><MapView /></div>
         </div>
-        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+        <div id="table" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><List size={28} />Table View</h2></div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
-        <div className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100">
+        <div id="metrics" className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100 scroll-mt-4">
           <div className="flex items-center gap-3 mb-4"><Users className="text-purple-700" size={32} /><h2 className="font-bold text-2xl text-purple-900">Summary Metrics</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-5 rounded-xl shadow-lg border-2 border-purple-300 hover:shadow-2xl transition-shadow cursor-pointer" onClick={() => toggleMetric('total')}>
@@ -723,8 +835,8 @@ const ProjectPartnerDashboard = () => {
             </div>
           </div>
         </div>
-        <PartnerDiscussionBoard />
-        <RelatedLinks />
+        <div id="discussion" className="scroll-mt-4"><PartnerDiscussionBoard /></div>
+        <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
         <ProjectContactInfo isFooter={true} />
       </div>
     </div>
