@@ -75,8 +75,7 @@ const ProjectContactInfo = ({ isFooter = false }) => (
         </div>
         <div className="bg-white p-4 rounded-xl border border-purple-200">
           <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
-          <div className="text-gray-800 font-medium">Cameron Brown</div>
-          <div className="text-gray-600">Research Associate, Faculty of Science</div>
+          <div className="text-gray-800 font-medium">Cameron Brown, Faculty of Science</div>
           <div className="text-gray-600">Western University, London, ON, Canada</div>
           <div className="flex items-center gap-2 mt-2 text-purple-700">
             <Phone size={14} />
