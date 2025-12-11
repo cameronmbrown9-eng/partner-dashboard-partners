@@ -37,7 +37,7 @@ const NEWS_UPDATES = [
 // FAQ Data
 const FAQ_DATA = [
   { question: 'How do I access the Scatr portal to view drug-checking results?', answer: 'Visit scatr.ca/auth and log in with the credentials provided during your onboarding. If you need your credentials reset, contact the Project Manager.' },
-  { question: 'How do I schedule Drug-Checking Peer (DCP) training for my staff?', answer: 'Contact the Project Manager at cbrown58@uwo.ca to schedule virtual training sessions. Training is delivered via Western Corporate Zoom and typically takes 2-3 hours.' },
+  { question: 'How do I schedule Drug-Checking Peer (DCP) training for my PWLLE staff and/or community members?', answer: 'Contact the Project Manager at cbrown58@uwo.ca to schedule virtual training sessions. Training is delivered via Western Corporate Zoom and typically takes 2-3 hours.' },
   { question: 'What is an Exemption 56 and does my site need one?', answer: 'An Exemption under Section 56 of the Controlled Drugs and Substances Act allows your site to legally handle controlled substances for drug-checking purposes. All partner sites require an approved exemption before operating. Templates are available in the Research Documents section.' },
   { question: 'How do I update my site\'s contact information on the dashboard?', answer: 'Contact the Project Manager with your updated information and we will update the dashboard accordingly.' },
   { question: 'Can I share this dashboard with others at my organization?', answer: 'Yes, you may share access with colleagues directly involved in the drug-checking program at your site. However, please do not share access with individuals outside of the project network.' },
