@@ -31,7 +31,6 @@ const NEWS_UPDATES = [
   { date: '2025-12-11', title: 'Project Partner Dashboard Launched', description: 'The new interactive dashboard is now live, providing partners with centralized access to project information, documents, and contact details.' },
   { date: '2025-12-01', title: '22 Partner Sites Now Active', description: 'We have successfully onboarded 22 partner sites across 7 provinces, 20 cities, with 24 spectrometers deployed.' },
   { date: '2025-11-15', title: 'Drug-Checking Peer Training Program Begins', description: 'Virtual training sessions are now being scheduled for partner sites. Contact the Project Manager to arrange training for your team.' },
-  { date: '2025-10-01', title: 'Fiscal Year 2 Begins', description: 'Phase #2 Fiscal Year 2 has officially started (April 1, 2025 - March 31, 2026).' },
   { date: '2025-09-15', title: 'Manuscript Submitted to Harm Reduction Journal', description: 'Our peer-reviewed paper on street drug monitoring using Raman spectroscopy has been submitted for review.' },
 ];
 
