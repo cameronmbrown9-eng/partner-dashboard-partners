@@ -1131,7 +1131,7 @@ const ProjectPartnerDashboard = () => {
       <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            The University of Western Ontario
+            Western University
             <br /><br />
             A Novel Two Phase Drug-Checking Initiative:
             <br />
