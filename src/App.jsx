@@ -602,6 +602,7 @@ const ProjectPartnerDashboard = () => {
           <div className="space-y-2">
             <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Phase 1 - Letter of Information & Consent (PDF)</a>
             <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />DCP Training - Letter of Information & Consent (PDF)</a>
+            <a href="/DCP-Survey.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />DCP Training - Pre & Post Course Survey (PDF)</a>
           </div>
           <p className="text-xs text-gray-500 mt-2 italic">Click to view or download PDF documents</p>
         </div>
