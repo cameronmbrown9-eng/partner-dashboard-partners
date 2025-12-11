@@ -712,12 +712,12 @@ const TableOfContents = () => {
   return (
     <div className="mt-4 bg-white p-4 rounded-xl border-2 border-purple-300 shadow-md">
       <div className="font-bold text-purple-900 mb-3 text-sm">Quick Navigation:</div>
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-2 gap-2">
         {sections.map((section) => (
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className="text-sm text-purple-700 hover:text-purple-900 hover:bg-purple-100 px-3 py-1.5 rounded-full border border-purple-200 transition-colors"
+            className="text-sm text-purple-700 hover:text-purple-900 hover:bg-purple-100 px-3 py-1.5 rounded-full border border-purple-200 transition-colors text-left"
           >
             {section.label}
           </button>
