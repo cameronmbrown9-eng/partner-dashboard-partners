@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, List, X, Award, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw } from 'lucide-react';
+import { MapPin, List, X, Award, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2 } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -10,6 +10,10 @@ L.Icon.Default.mergeOptions({
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
+
+// Headshot image paths (place images in public folder)
+const professorHeadshot = '/professor.jpeg';
+const cameronHeadshot = '/cameron.jpeg';
 
 // Maple Leaf SVG Component for Health Canada
 const MapleLeaf = ({ size = 12 }) => (
@@ -33,6 +37,81 @@ const ResetMapButton = () => {
       <RotateCcw size={18} className="text-purple-700" />
       <span className="text-sm font-medium text-purple-700">Reset View</span>
     </button>
+  );
+};
+
+// PowerPoint Viewer Component
+const PowerPointViewer = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  
+  // The PPTX file should be placed in the public folder
+  // When deployed to GitHub Pages, it will be accessible at this URL
+  const pptxFileName = 'project-presentation.pptx';
+  const siteUrl = 'https://partners.scatr.ca'; // Update this to your actual deployed URL
+  const pptxUrl = `${siteUrl}/${pptxFileName}`;
+  const embedUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
+  
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden mb-8">
+      <div 
+        className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <h2 className="flex items-center gap-2 font-bold text-2xl">
+          <Presentation size={28} />
+          Project Overview Presentation
+        </h2>
+        <div className="flex items-center gap-2">
+          {isExpanded && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsFullscreen(!isFullscreen);
+              }}
+              className="p-2 hover:bg-purple-600 rounded-lg transition-colors"
+              title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+            >
+              {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+            </button>
+          )}
+          {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+        </div>
+      </div>
+      
+      {isExpanded && (
+        <div className={`bg-gradient-to-br from-white to-purple-50 ${isFullscreen ? 'fixed inset-0 z-50 p-4' : 'p-6'}`}>
+          {isFullscreen && (
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-purple-900">Project Overview Presentation</h2>
+              <button
+                onClick={() => setIsFullscreen(false)}
+                className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
+              >
+                <Minimize2 size={20} className="text-purple-700" />
+              </button>
+            </div>
+          )}
+          <div className={`${isFullscreen ? 'h-[calc(100%-60px)]' : 'h-[600px]'} w-full rounded-lg overflow-hidden border-2 border-purple-200 shadow-lg`}>
+            <iframe
+              src={embedUrl}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              title="Project Presentation"
+              className="bg-white"
+            />
+          </div>
+          <p className="text-sm text-purple-600 mt-3 text-center">
+            Click through the slides above to view the full project presentation. 
+            <a href={pptxUrl} download className="ml-2 underline hover:text-purple-800">
+              Download PowerPoint
+            </a>
+          </p>
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -981,6 +1060,9 @@ const ProjectPartnerDashboard = () => {
       <div className="p-6 space-y-6">
         {/* Project Timeline */}
         <ProjectTimeline />
+
+        {/* Project Presentation */}
+        <PowerPointViewer />
 
         {/* Map View */}
         <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
