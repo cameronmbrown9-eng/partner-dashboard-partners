@@ -20,7 +20,7 @@ const DISCOURSE_CONFIG = {
 
 // Announcement Banner Configuration - UPDATE MESSAGE AS NEEDED
 const ANNOUNCEMENT_CONFIG = {
-  isActive: true, // Set to false to hide the banner
+  isActive: false, // Set to false to hide the banner
   type: 'info', // 'info', 'warning', 'urgent'
   message: 'Welcome to the new Project Partner Dashboard! Explore the features and reach out if you have any questions.',
   link: null, // Optional: { text: 'Learn More', url: 'https://...' }
