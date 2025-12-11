@@ -344,7 +344,7 @@ const TableOfContents = () => {
     { id: 'publications', label: 'Project-Related Publications' },
     { id: 'documents', label: 'Research Documents' },
     { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
-    { id: 'table', label: 'Table View' },
+    { id: 'table', label: 'Project Partner Contact Info' },
     { id: 'metrics', label: 'Summary Metrics' },
     { id: 'discussion', label: 'Partner Discussion Board' },
     { id: 'links', label: 'Related Links & Resources' }
@@ -809,7 +809,7 @@ const ProjectPartnerDashboard = () => {
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><MapView /></div>
         </div>
         <div id="table" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
-          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><List size={28} />Table View</h2></div>
+          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><List size={28} />Project Partner Contact Info</h2></div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
         <div id="metrics" className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100 scroll-mt-4">
