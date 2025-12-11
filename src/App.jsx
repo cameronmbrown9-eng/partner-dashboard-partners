@@ -175,10 +175,10 @@ const ProjectPublications = () => (
       </h2>
     </div>
     <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-      <div className="relative overflow-hidden rounded-xl border-2 border-gray-300 shadow-lg">
+      <div className="relative overflow-hidden rounded-xl border-2 border-gray-300 shadow-lg max-w-[50%] mx-auto">
         <img src="/manuscript-preview.png" alt="Manuscript Preview" className="w-full" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-8xl font-bold text-red-500 opacity-50 rotate-[-30deg]">DRAFT</span>
+          <span className="text-2xl font-bold text-red-500 opacity-70 rotate-[-30deg] text-center">UNDER REVIEW<br />Harm Reduction Journal</span>
         </div>
       </div>
       <p className="text-sm text-gray-600 mt-4 text-center italic">
