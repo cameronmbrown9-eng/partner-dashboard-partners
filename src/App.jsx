@@ -697,7 +697,6 @@ const TableOfContents = () => {
     { id: 'presentation', label: 'Project Overview Presentation' },
     { id: 'publications', label: 'Project-Related Publications' },
     { id: 'documents', label: 'Research, Ethics & Related Documents' },
-    { id: 'training', label: 'Training Status' },
     { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
     { id: 'table', label: 'Project Partner Contact Info' },
     { id: 'metrics', label: 'Summary Metrics' },
@@ -1163,7 +1162,6 @@ const ProjectPartnerDashboard = () => {
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
         <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
         <div id="documents" className="scroll-mt-4"><ResearchDocuments /></div>
-        <div id="training" className="scroll-mt-4"><TrainingTracker partnersData={partnersData} /></div>
         <div id="map" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><MapPin size={28} />Interactive Map View of Project Partner Sites</h2></div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><MapView /></div>
