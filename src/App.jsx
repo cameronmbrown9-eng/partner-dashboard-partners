@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp } from 'lucide-react';
+import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp, AlertTriangle, Printer, HelpCircle, Newspaper, GraduationCap, X } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -16,6 +16,61 @@ const DISCOURSE_CONFIG = {
   forumUrl: 'https://forum.uwo-drugchecking.ca', // Your Discourse forum URL
   embedUrl: 'https://forum.uwo-drugchecking.ca/embed/comments', // Embed endpoint
   isConfigured: false // Set to true once Discourse is set up
+};
+
+// Announcement Banner Configuration - UPDATE MESSAGE AS NEEDED
+const ANNOUNCEMENT_CONFIG = {
+  isActive: true, // Set to false to hide the banner
+  type: 'info', // 'info', 'warning', 'urgent'
+  message: 'Welcome to the new Project Partner Dashboard! Explore the features and reach out if you have any questions.',
+  link: null, // Optional: { text: 'Learn More', url: 'https://...' }
+};
+
+// News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
+const NEWS_UPDATES = [
+  { date: '2025-12-11', title: 'Project Partner Dashboard Launched', description: 'The new interactive dashboard is now live, providing partners with centralized access to project information, documents, and contact details.' },
+  { date: '2025-12-01', title: '22 Partner Sites Now Active', description: 'We have successfully onboarded all 22 partner sites across 5 provinces, with 24 spectrometers deployed.' },
+  { date: '2025-11-15', title: 'Drug-Checking Peer Training Program Begins', description: 'Virtual training sessions are now being scheduled for partner sites. Contact the Project Manager to arrange training for your team.' },
+  { date: '2025-10-01', title: 'Fiscal Year 2 Begins', description: 'Phase #2 Fiscal Year 2 has officially started (April 1, 2025 - March 31, 2026).' },
+  { date: '2025-09-15', title: 'Manuscript Submitted to Harm Reduction Journal', description: 'Our peer-reviewed paper on street drug monitoring using Raman spectroscopy has been submitted for review.' },
+];
+
+// FAQ Data
+const FAQ_DATA = [
+  { question: 'How do I access the Scatr portal to view drug-checking results?', answer: 'Visit scatr.ca/auth and log in with the credentials provided during your onboarding. If you need your credentials reset, contact the Project Manager.' },
+  { question: 'What should I do if my spectrometer device is malfunctioning?', answer: 'First, try the basic troubleshooting steps in your device manual. If the issue persists, contact Scatr support directly or reach out to the Project Manager who can coordinate with the technical team.' },
+  { question: 'How do I schedule Drug-Checking Peer (DCP) training for my staff?', answer: 'Contact the Project Manager at cbrown58@uwo.ca to schedule virtual training sessions. Training is delivered via Western Corporate Zoom and typically takes 2-3 hours.' },
+  { question: 'What is an Exemption 56 and does my site need one?', answer: 'An Exemption under Section 56 of the Controlled Drugs and Substances Act allows your site to legally handle controlled substances for drug-checking purposes. All partner sites require an approved exemption before operating. Templates are available in the Research Documents section.' },
+  { question: 'How do I update my site\'s contact information on the dashboard?', answer: 'Contact the Project Manager with your updated information and we will update the dashboard accordingly.' },
+  { question: 'Can I share this dashboard with others at my organization?', answer: 'Yes, you may share access with colleagues directly involved in the drug-checking program at your site. However, please do not share access with individuals outside of the project network.' },
+  { question: 'What is the difference between Mobile and Non-Mobile exemptions?', answer: 'A Non-Mobile exemption allows drug-checking at a fixed location only. A Mobile exemption allows you to conduct drug-checking at various locations within your approved geographic area, such as outreach services or pop-up sites.' },
+  { question: 'How often should we be submitting drug-checking data?', answer: 'Data should be submitted through the Scatr portal in real-time or as close to real-time as possible. This ensures the network has up-to-date information on the drug supply.' },
+];
+
+// Training Completion Status - UPDATE AS SITES COMPLETE TRAINING
+const TRAINING_STATUS = {
+  1: { completed: true, date: '2025-06-15' }, // Western University
+  2: { completed: true, date: '2025-07-20' }, // RHAC
+  3: { completed: true, date: '2025-08-10' }, // Sandy Hill
+  4: { completed: false, date: null }, // Ottawa Inner City Health
+  5: { completed: true, date: '2025-09-05' }, // Lower Mainland Purpose Society
+  6: { completed: false, date: null }, // County of Grey
+  7: { completed: true, date: '2025-08-25' }, // Guelph CHC
+  8: { completed: true, date: '2025-09-12' }, // Sanguen
+  9: { completed: false, date: null }, // Moyo Health
+  10: { completed: true, date: '2025-10-01' }, // Hamilton Urban Core
+  11: { completed: false, date: null }, // Positive Living Niagara
+  12: { completed: true, date: '2025-10-15' }, // Ensemble Moncton
+  13: { completed: false, date: null }, // Prairie Harm Reduction
+  14: { completed: false, date: null }, // Cochrane District Paramedic
+  15: { completed: false, date: null }, // Renfrew Paramedic
+  16: { completed: true, date: '2025-11-01' }, // PARN
+  17: { completed: false, date: null }, // Travailderue
+  18: { completed: false, date: null }, // NHC Society
+  19: { completed: true, date: '2025-11-10' }, // Breakaway
+  20: { completed: false, date: null }, // AIDS New Brunswick
+  21: { completed: false, date: null }, // Avenue B
+  22: { completed: false, date: null }, // Boyle Street
 };
 
 // Canadian Flag SVG Component (only for title)
@@ -335,17 +390,318 @@ const BackToTop = () => {
   );
 };
 
+// Announcement Banner Component
+const AnnouncementBanner = ({ onDismiss }) => {
+  if (!ANNOUNCEMENT_CONFIG.isActive) return null;
+  
+  const bgColors = {
+    info: 'bg-gradient-to-r from-blue-600 to-blue-700',
+    warning: 'bg-gradient-to-r from-yellow-500 to-yellow-600',
+    urgent: 'bg-gradient-to-r from-red-600 to-red-700'
+  };
+  
+  const icons = {
+    info: <Newspaper size={20} />,
+    warning: <AlertTriangle size={20} />,
+    urgent: <AlertTriangle size={20} />
+  };
+
+  return (
+    <div className={`${bgColors[ANNOUNCEMENT_CONFIG.type]} text-white px-4 py-3 shadow-lg`}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          {icons[ANNOUNCEMENT_CONFIG.type]}
+          <span className="text-sm font-medium">{ANNOUNCEMENT_CONFIG.message}</span>
+          {ANNOUNCEMENT_CONFIG.link && (
+            <a href={ANNOUNCEMENT_CONFIG.link.url} className="underline hover:no-underline text-sm font-bold">
+              {ANNOUNCEMENT_CONFIG.link.text}
+            </a>
+          )}
+        </div>
+        <button onClick={onDismiss} className="p-1 hover:bg-white/20 rounded transition-colors" title="Dismiss">
+          <X size={18} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// News/Updates Feed Component
+const NewsUpdatesFeed = () => {
+  const [showAll, setShowAll] = useState(false);
+  const displayedNews = showAll ? NEWS_UPDATES : NEWS_UPDATES.slice(0, 3);
+
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
+
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+        <h2 className="flex items-center gap-2 font-bold text-2xl">
+          <Newspaper size={28} />
+          News & Updates
+        </h2>
+      </div>
+      <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+        <div className="space-y-4">
+          {displayedNews.map((item, idx) => (
+            <div key={idx} className="bg-white p-4 rounded-xl border-2 border-purple-200 hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-4">
+                <div className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
+                  {formatDate(item.date)}
+                </div>
+                <div>
+                  <h3 className="font-bold text-purple-900 mb-1">{item.title}</h3>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {NEWS_UPDATES.length > 3 && (
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="mt-4 w-full py-2 text-purple-700 hover:text-purple-900 font-medium text-sm flex items-center justify-center gap-2"
+          >
+            {showAll ? <><ChevronUp size={18} /> Show Less</> : <><ChevronDown size={18} /> Show All Updates ({NEWS_UPDATES.length})</>}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// FAQ Section Component
+const FAQSection = () => {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+        <h2 className="flex items-center gap-2 font-bold text-2xl">
+          <HelpCircle size={28} />
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+        <div className="space-y-3">
+          {FAQ_DATA.map((faq, idx) => (
+            <div key={idx} className="bg-white rounded-xl border-2 border-purple-200 overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                className="w-full px-4 py-3 text-left flex items-center justify-between gap-4 hover:bg-purple-50 transition-colors"
+              >
+                <span className="font-medium text-purple-900">{faq.question}</span>
+                {expandedFaq === idx ? <ChevronUp size={20} className="text-purple-600 flex-shrink-0" /> : <ChevronDown size={20} className="text-purple-600 flex-shrink-0" />}
+              </button>
+              {expandedFaq === idx && (
+                <div className="px-4 pb-4 pt-0">
+                  <div className="bg-purple-50 p-4 rounded-lg text-sm text-gray-700 leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 bg-gradient-to-br from-purple-100 to-purple-200 p-4 rounded-xl border-2 border-purple-300">
+          <p className="text-sm text-purple-800">
+            <span className="font-bold">Still have questions?</span> Contact the Project Manager at{' '}
+            <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-purple-900">cbrown58@uwo.ca</a>
+            {' '}or call <span className="font-medium">226-238-9970</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Training Tracker Component
+const TrainingTracker = ({ partnersData }) => {
+  const completedCount = Object.values(TRAINING_STATUS).filter(s => s.completed).length;
+  const totalCount = Object.keys(TRAINING_STATUS).length;
+  const progressPercent = (completedCount / totalCount) * 100;
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return null;
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
+
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+        <h2 className="flex items-center gap-2 font-bold text-2xl">
+          <GraduationCap size={28} />
+          Drug-Checking Peer (DCP) Training Status
+        </h2>
+      </div>
+      <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+        {/* Progress Bar */}
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm font-medium text-purple-900">Network Training Progress</span>
+            <span className="text-sm font-bold text-purple-700">{completedCount} of {totalCount} sites ({Math.round(progressPercent)}%)</span>
+          </div>
+          <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-500"
+              style={{ width: `${progressPercent}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Sites Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {partnersData.map((site) => {
+            const status = TRAINING_STATUS[site.id];
+            return (
+              <div 
+                key={site.id}
+                className={`p-3 rounded-xl border-2 flex items-center gap-3 ${
+                  status?.completed 
+                    ? 'bg-green-50 border-green-300' 
+                    : 'bg-gray-50 border-gray-200'
+                }`}
+              >
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  status?.completed 
+                    ? 'bg-green-500 text-white' 
+                    : 'bg-gray-300 text-gray-500'
+                }`}>
+                  {status?.completed ? <Check size={18} /> : <Clock size={18} />}
+                </div>
+                <div className="min-w-0">
+                  <div className={`font-medium text-sm truncate ${
+                    status?.completed ? 'text-green-900' : 'text-gray-700'
+                  }`}>
+                    {site.nameOrganization.length > 30 ? site.nameOrganization.substring(0, 27) + '...' : site.nameOrganization}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {status?.completed 
+                      ? `Completed ${formatDate(status.date)}` 
+                      : 'Training Pending'
+                    }
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Legend */}
+        <div className="mt-4 flex items-center gap-6 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-green-500"></div>
+            <span className="text-gray-600">Training Completed</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-gray-300"></div>
+            <span className="text-gray-600">Training Pending</span>
+          </div>
+        </div>
+
+        {/* Contact Info */}
+        <div className="mt-4 bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
+          <p className="text-sm text-yellow-800">
+            <span className="font-bold">Ready to schedule training?</span> Contact the Project Manager at{' '}
+            <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-yellow-900">cbrown58@uwo.ca</a>
+            {' '}to arrange a virtual training session for your team.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Print Contact List Function
+const printContactList = (partnersData) => {
+  const printWindow = window.open('', '_blank');
+  const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Project Partner Contact List - ${today}</title>
+      <style>
+        body { font-family: Arial, sans-serif; font-size: 11px; margin: 20px; }
+        h1 { font-size: 18px; color: #5b21b6; margin-bottom: 5px; }
+        h2 { font-size: 12px; color: #666; font-weight: normal; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 6px; text-align: left; }
+        th { background-color: #5b21b6; color: white; font-size: 10px; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .footer { margin-top: 20px; font-size: 10px; color: #666; border-top: 1px solid #ddd; padding-top: 10px; }
+        @media print {
+          body { margin: 10px; }
+          table { font-size: 9px; }
+          th, td { padding: 4px; }
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Western University Drug-Checking Network</h1>
+      <h2>Project Partner Contact List - Generated ${today}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Organization</th>
+            <th>City, Prov</th>
+            <th>Primary Contact</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Additional Contact</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${partnersData.map(site => `
+            <tr>
+              <td><strong>${site.nameOrganization}</strong></td>
+              <td>${site.city}, ${site.prov}</td>
+              <td>${site.primaryContact}</td>
+              <td>${site.email1}</td>
+              <td>${site.phone1}</td>
+              <td>${site.additionalContact}</td>
+              <td>${site.email2}</td>
+              <td>${site.phone2}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+      <div class="footer">
+        <p><strong>Project Contact:</strong> Cameron Brown, Project Manager | cbrown58@uwo.ca | 226-238-9970</p>
+        <p><strong>Principal Investigator:</strong> Prof. Francois Lagugne-Labarthet | flagugne@uwo.ca | 519-661-2111 x81006</p>
+        <p><em>This document contains confidential contact information. Please do not share outside the project network.</em></p>
+      </div>
+    </body>
+    </html>
+  `;
+  
+  printWindow.document.write(html);
+  printWindow.document.close();
+  printWindow.focus();
+  setTimeout(() => printWindow.print(), 250);
+};
+
 // Table of Contents Component
 const TableOfContents = () => {
   const sections = [
+    { id: 'news', label: 'News & Updates' },
     { id: 'csuch', label: 'Canadian Substance Use Costs and Harms' },
     { id: 'timeline', label: 'Project Background & Timeline' },
     { id: 'presentation', label: 'Project Overview Presentation' },
     { id: 'publications', label: 'Project-Related Publications' },
     { id: 'documents', label: 'Research, Ethics & Related Documents' },
+    { id: 'training', label: 'Training Status' },
     { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
     { id: 'table', label: 'Project Partner Contact Info' },
     { id: 'metrics', label: 'Summary Metrics' },
+    { id: 'faq', label: 'FAQ' },
     { id: 'discussion', label: 'Partner Discussion Board' },
     { id: 'links', label: 'Related Links & Resources' }
   ];
@@ -378,6 +734,7 @@ const TableOfContents = () => {
 const ProjectPartnerDashboard = () => {
   const [expandedMetrics, setExpandedMetrics] = useState({});
   const [expandedRow, setExpandedRow] = useState(null);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
 
   const toggleMetric = (metricId) => {
     setExpandedMetrics(prev => ({
@@ -769,6 +1126,7 @@ const ProjectPartnerDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50" id="top">
       <BackToTop />
+      {showAnnouncement && <AnnouncementBanner onDismiss={() => setShowAnnouncement(false)} />}
       <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
@@ -791,6 +1149,7 @@ const ProjectPartnerDashboard = () => {
         </div>
       </div>
       <div className="p-6 space-y-6">
+        <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
         <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
             <h2 className="flex items-center gap-2 font-bold text-2xl">Canadian Substance Use Costs and Harms</h2>
@@ -804,12 +1163,23 @@ const ProjectPartnerDashboard = () => {
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
         <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
         <div id="documents" className="scroll-mt-4"><ResearchDocuments /></div>
+        <div id="training" className="scroll-mt-4"><TrainingTracker partnersData={partnersData} /></div>
         <div id="map" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><MapPin size={28} />Interactive Map View of Project Partner Sites</h2></div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><MapView /></div>
         </div>
         <div id="table" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
-          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><List size={28} />Project Partner Contact Info</h2></div>
+          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 font-bold text-2xl"><List size={28} />Project Partner Contact Info</h2>
+            <button
+              onClick={() => printContactList(partnersData)}
+              className="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+              title="Print Contact List"
+            >
+              <Printer size={18} />
+              Print List
+            </button>
+          </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
         <div id="metrics" className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100 scroll-mt-4">
@@ -836,6 +1206,7 @@ const ProjectPartnerDashboard = () => {
             </div>
           </div>
         </div>
+        <div id="faq" className="scroll-mt-4"><FAQSection /></div>
         <div id="discussion" className="scroll-mt-4"><PartnerDiscussionBoard /></div>
         <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
         <ProjectContactInfo isFooter={true} />
