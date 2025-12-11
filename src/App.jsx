@@ -181,13 +181,6 @@ const ProjectPublications = () => (
         </div>
         <div className="relative z-10">
           <div className="font-bold text-lg text-gray-800 mb-2">Manuscript Under Review</div>
-          <div className="text-gray-600 italic mb-4" style={{ filter: 'blur(1px)' }}>
-            Street Drug Monitoring Across Ontario Using Portable Raman Spectroscopy and Machine Learning: A Multi-Site Harm Reduction Network Study
-          </div>
-          <div className="text-sm text-gray-500">
-            <div>Harm Reduction Journal (Under Review)</div>
-            <div className="mt-2">Authors: Brown, C., et al.</div>
-          </div>
         </div>
       </div>
       <p className="text-sm text-gray-600 mt-4 text-center italic">
@@ -437,9 +430,8 @@ const ProjectPartnerDashboard = () => {
               </div>
             </div>
             <div className="mt-8 mb-8">
-              <h3 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-purple-900 mb-4">
                 Health Canada Contribution Agreements w/ Western University (2022-2028)
-                <a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 flex items-center gap-1">Learn More <ExternalLink size={14} /></a>
               </h3>
               <div className="relative pt-12">
                 <div className="absolute top-0 flex flex-col items-center z-10" style={{ left: `${hcProgressPercent}%`, transform: 'translateX(-50%)' }}>
@@ -678,7 +670,7 @@ const ProjectPartnerDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
       <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">The University of Western Ontario - A Novel Two Phase Drug-Checking Initiative: Contribution Agreement Funding Provided by Health Canada's<CanadianFlag size={28} /> Substance Use and Addictions Program</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">The University of Western Ontario - A Novel Two Phase Drug-Checking Initiative: Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program</h1>
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <span className="text-sky-300 font-bold">Scatr Inc.</span></p>
         </div>
       </div>
