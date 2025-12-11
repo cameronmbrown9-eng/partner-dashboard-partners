@@ -611,38 +611,46 @@ const ProjectPartnerDashboard = () => {
   );
 
   const linksData = [
-    { title: "Western News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology." },
-    { title: "Scatr Portal (Partner Login)", url: "https://scatr.ca/auth", description: "Secure login for partners to access the drug-checking data management system." },
-    { title: "Scatr Live Dashboard", url: "https://scatr.live/", description: "Public dashboard with real-time drug-checking results across the network." },
-    { title: "Impact Canada - Drug Checking Challenge", url: "https://impact.canada.ca/en/challenges/drug-checking-challenge", description: "Official Government of Canada page for the Drug Checking Technology Challenge." },
-    { title: "Grand Prize Winner Announcement", url: "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html", description: "Health Canada announces Scatr Inc. as the $1 million grand prize winner." },
-    { title: "Toronto Met - Fighting the Opioid Crisis", url: "https://www.torontomu.ca/magazine/2019/08/how-an-aerospace-engineer-is-fighting-the-opioid-crisis/", description: "Profile of Scatr founder applying aerospace engineering to harm reduction." },
-    { title: "CBC - Drug-Testing Machine 'Game Changer'", url: "https://www.cbc.ca/news/", description: "Coverage of portable drug-testing machines revolutionizing harm reduction." },
-    { title: "CBC - Ontario SCS Policy Changes", url: "https://www.cbc.ca/news/canada/toronto/", description: "News coverage of Ontario policy changes affecting supervised consumption sites." },
-    { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk." },
-    { title: "Vancouver Coastal Health - Harm Reduction", url: "https://www.vch.ca/en/health-topics/harm-reduction", description: "Comprehensive harm reduction information from BC health authority." },
-    { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site." },
-    { title: "LIHC - Safer Opioid Supply", url: "https://www.lihc.on.ca/safer-supply", description: "London InterCommunity Health Centre's safer supply program." },
-    { title: "Sanguen - Drug Checking Program", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre - project partner." },
-    { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services." },
-    { title: "CATIE - Harm Reduction Toolkit", url: "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers", description: "Comprehensive toolkit for implementing harm reduction approaches." },
-    { title: "CATIE - Ontario HR Program", url: "https://www.catie.ca/caties-ontario-harm-reduction-program", description: "Distribution of harm reduction supplies across Ontario." },
-    { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use." },
-    { title: "Health Canada - Opioid/Stimulant Harms", url: "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/", description: "Latest statistics on opioid and stimulant-related harms in Canada." },
-    { title: "SCS Dashboard Ontario", url: "https://scsdashboard.ca/", description: "Interactive dashboard tracking Ontario supervised consumption site data." },
-    { title: "BCCSU Drug Checking", url: "https://drugcheckingbc.ca/", description: "BC Centre on Substance Use drug checking program information." },
-    { title: "Toward the Heart - Safer Use", url: "https://towardtheheart.com/safer-use", description: "BC harm reduction resources for safer drug use practices." },
-    { title: "CCSA - Drug Checking", url: "https://www.ccsa.ca/drug-checking", description: "Canadian Centre on Substance Use resources on drug checking." },
-    { title: "Health Canada - SCS Statistics", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/status-application.html", description: "Federal statistics on supervised consumption sites in Canada." },
-    { title: "Ontario Harm Reduction - Find Supplies", url: "https://findneedles.ca/", description: "Find harm reduction supplies across Ontario." },
-    { title: "CATIE - Monitoring Drug Supply", url: "https://www.catie.ca/monitoring-and-responding-to-the-unregulated-drug-supply", description: "Resources on monitoring the unregulated drug supply." },
-    { title: "CIAJ - Ontario Drug Policy Analysis", url: "https://ciaj-icaj.ca/en/publications/", description: "Analysis of Ontario's drug policy changes and impacts." },
-    { title: "CCRA 2024 Legislation", url: "https://www.ontario.ca/laws/statute/24c27", description: "Full text of Ontario's Community Care and Recovery Act." },
-    { title: "Health Canada - Apply for SCS", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/apply.html", description: "Federal application process for supervised consumption sites." },
-    { title: "CSUCH - Costs and Harms Reports", url: "https://csuch.ca/publications/substance-use-costs-and-harms/", description: "Reports on economic and health burden of substance use." },
-    { title: "CDA-AMC - Drug-Checking Technologies", url: "https://www.cadth.ca/", description: "Review of drug-checking technologies for unregulated substances." },
-    { title: "CCSA Main Site", url: "https://www.ccsa.ca/", description: "Canadian Centre on Substance Use and Addiction resources." },
-    { title: "CATIE Main Site", url: "https://www.catie.ca/", description: "Canada's source for HIV and hepatitis C information." }
+    // === PROJECT & SCATR RESOURCES ===
+    { title: "Western News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.", category: "Project & Scatr" },
+    { title: "Impact Canada - Drug Checking Challenge", url: "https://impact.canada.ca/en/challenges/drug-checking-challenge", description: "Official Government of Canada page for the Drug Checking Technology Challenge.", category: "Project & Scatr" },
+    { title: "Grand Prize Winner Announcement", url: "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html", description: "Health Canada announces Scatr Inc. as the $1 million grand prize winner.", category: "Project & Scatr" },
+    { title: "Toronto Met - Fighting the Opioid Crisis", url: "https://www.torontomu.ca/magazine/2019/08/how-an-aerospace-engineer-is-fighting-the-opioid-crisis/", description: "Profile of Scatr founder applying aerospace engineering to harm reduction.", category: "Project & Scatr" },
+    { title: "Scatr Portal (Partner Login)", url: "https://scatr.ca/auth", description: "Secure login for partners to access the drug-checking data management system.", category: "Project & Scatr" },
+    { title: "Scatr Live Dashboard", url: "https://scatr.live/", description: "Public dashboard with real-time drug-checking results across the network.", category: "Project & Scatr" },
+    // === DRUG CHECKING PROGRAMS ===
+    { title: "BCCSU Drug Checking", url: "https://drugcheckingbc.ca/", description: "BC Centre on Substance Use drug checking program information.", category: "Drug Checking" },
+    { title: "CCSA - Drug Checking", url: "https://www.ccsa.ca/drug-checking", description: "Canadian Centre on Substance Use resources on drug checking.", category: "Drug Checking" },
+    { title: "Sanguen - Drug Checking Program", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre - project partner.", category: "Drug Checking" },
+    { title: "CDA-AMC - Drug-Checking Technologies", url: "https://www.cadth.ca/", description: "Review of drug-checking technologies for unregulated substances.", category: "Drug Checking" },
+    // === GOVERNMENT & HEALTH CANADA ===
+    { title: "Health Canada - Opioid/Stimulant Harms", url: "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/", description: "Latest statistics on opioid and stimulant-related harms in Canada.", category: "Government" },
+    { title: "Health Canada - SCS Statistics", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/status-application.html", description: "Federal statistics on supervised consumption sites in Canada.", category: "Government" },
+    { title: "Health Canada - Apply for SCS", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/apply.html", description: "Federal application process for supervised consumption sites.", category: "Government" },
+    { title: "CCRA 2024 Legislation", url: "https://www.ontario.ca/laws/statute/24c27", description: "Full text of Ontario's Community Care and Recovery Act.", category: "Government" },
+    // === CATIE RESOURCES ===
+    { title: "CATIE Main Site", url: "https://www.catie.ca/", description: "Canada's source for HIV and hepatitis C information.", category: "CATIE" },
+    { title: "CATIE - Harm Reduction Toolkit", url: "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers", description: "Comprehensive toolkit for implementing harm reduction approaches.", category: "CATIE" },
+    { title: "CATIE - Ontario HR Program", url: "https://www.catie.ca/caties-ontario-harm-reduction-program", description: "Distribution of harm reduction supplies across Ontario.", category: "CATIE" },
+    { title: "CATIE - Monitoring Drug Supply", url: "https://www.catie.ca/monitoring-and-responding-to-the-unregulated-drug-supply", description: "Resources on monitoring the unregulated drug supply.", category: "CATIE" },
+    // === CCSA RESOURCES ===
+    { title: "CCSA Main Site", url: "https://www.ccsa.ca/", description: "Canadian Centre on Substance Use and Addiction resources.", category: "CCSA" },
+    { title: "CSUCH - Costs and Harms Reports", url: "https://csuch.ca/publications/substance-use-costs-and-harms/", description: "Reports on economic and health burden of substance use.", category: "CCSA" },
+    // === HARM REDUCTION SERVICES ===
+    { title: "Vancouver Coastal Health - Harm Reduction", url: "https://www.vch.ca/en/health-topics/harm-reduction", description: "Comprehensive harm reduction information from BC health authority.", category: "Harm Reduction" },
+    { title: "Toward the Heart - Safer Use", url: "https://towardtheheart.com/safer-use", description: "BC harm reduction resources for safer drug use practices.", category: "Harm Reduction" },
+    { title: "Ontario Harm Reduction - Find Supplies", url: "https://findneedles.ca/", description: "Find harm reduction supplies across Ontario.", category: "Harm Reduction" },
+    { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services.", category: "Harm Reduction" },
+    { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Harm Reduction" },
+    { title: "LIHC - Safer Opioid Supply", url: "https://www.lihc.on.ca/safer-supply", description: "London InterCommunity Health Centre's safer supply program.", category: "Harm Reduction" },
+    { title: "SCS Dashboard Ontario", url: "https://scsdashboard.ca/", description: "Interactive dashboard tracking Ontario supervised consumption site data.", category: "Harm Reduction" },
+    // === RESEARCH & PUBLICATIONS ===
+    { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use.", category: "Research" },
+    { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk.", category: "Research" },
+    { title: "CIAJ - Ontario Drug Policy Analysis", url: "https://ciaj-icaj.ca/en/publications/", description: "Analysis of Ontario's drug policy changes and impacts.", category: "Research" },
+    // === NEWS & MEDIA ===
+    { title: "CBC - Drug-Testing Machine 'Game Changer'", url: "https://www.cbc.ca/news/", description: "Coverage of portable drug-testing machines revolutionizing harm reduction.", category: "News" },
+    { title: "CBC - Ontario SCS Policy Changes", url: "https://www.cbc.ca/news/canada/toronto/", description: "News coverage of Ontario policy changes affecting supervised consumption sites.", category: "News" }
   ];
 
   const RelatedLinks = () => (
