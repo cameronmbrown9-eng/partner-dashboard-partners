@@ -876,7 +876,7 @@ const ProjectPartnerDashboard = () => {
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="mb-4 bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl shadow-lg border-2 border-yellow-400 max-w-[220px] text-center">
-                      <div className="flex items-center justify-center gap-1 mb-1"><Trophy className="text-yellow-600" size={16} /><span className="font-bold text-yellow-800 text-sm">Scatr Wins!</span></div>
+                      <div className="flex items-center justify-center gap-1 mb-1"><Trophy className="text-yellow-600" size={16} /><span className="font-bold text-yellow-800 text-sm">Scatr Wins!</span><a href="https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:text-yellow-800"><ExternalLink size={14} /></a></div>
                       <div className="text-xs text-yellow-700">$1,000,000 Prize</div>
                     </div>
                     <div className="w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center"><Trophy className="text-white" size={12} /></div>
