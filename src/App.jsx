@@ -48,7 +48,7 @@ const PowerPointViewer = () => {
   // The PPTX file should be placed in the public folder
   // When deployed to GitHub Pages, it will be accessible at this URL
   const pptxFileName = 'project-presentation.pptx';
-  const siteUrl = 'https://partners.uwo-drugchecking.ca/'; // Update this to your actual deployed URL
+  const siteUrl = 'https://partners.uwo-drugchecking.ca/project-presentation.pptx'; // Update this to your actual deployed URL
   const pptxUrl = `${siteUrl}/${pptxFileName}`;
   const embedUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
   
