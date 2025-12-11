@@ -55,7 +55,7 @@ const ProjectContactInfo = ({ isFooter = false }) => (
     </h3>
     <div className="space-y-4 text-sm">
       <div className="bg-white p-4 rounded-xl border border-purple-200">
-        <div className="font-bold text-purple-900 mb-2">Project Title:</div>
+        <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
         <div className="text-gray-700 italic">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers & Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives. Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -94,7 +94,7 @@ const ProjectContactInfo = ({ isFooter = false }) => (
 
 // PowerPoint Viewer Component
 const PowerPointViewer = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   
   const pptxFileName = 'project-presentation.pptx';
@@ -437,15 +437,17 @@ const ProjectPartnerDashboard = () => {
                 <div className="absolute top-0 flex flex-col items-center z-10" style={{ left: `${hcProgressPercent}%`, transform: 'translateX(-50%)' }}>
                   <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-bold whitespace-nowrap">We Are Here</div>
                   <div className="text-xs text-green-700 font-medium whitespace-nowrap">{formatDate(today)}</div>
+                  <div className="w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-green-500 mt-1"></div>
+                  <div className="w-1 h-6 bg-green-500"></div>
                 </div>
                 <div className="absolute top-12 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800"></div>
                 <div className="relative flex justify-between items-start pt-8" style={{ marginTop: '8px' }}>
                   <div className="flex flex-col items-center">
                     <div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2 flex items-center gap-1">2022 <Check size={14} className="text-green-300" /></div>
                     <div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-2 rounded-xl shadow-lg border-2 border-purple-300 max-w-[140px] text-center">
-                      <div className="font-bold text-purple-900 text-xs">Phase #1</div>
-                      <div className="text-xs text-purple-600 mt-1">Drug Checking Network</div>
+                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[220px] text-center">
+                      <div className="font-bold text-purple-900 text-sm">Phase #1</div>
+                      <div className="text-xs text-purple-600 mt-1">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</div>
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
@@ -453,9 +455,9 @@ const ProjectPartnerDashboard = () => {
                     <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
                   </div>
                   <div className="flex flex-col items-center relative">
-                    <div className="mb-2 bg-gradient-to-br from-purple-200 to-purple-300 p-2 rounded-xl shadow-lg border-2 border-purple-400 max-w-[140px] text-center">
-                      <div className="font-bold text-purple-900 text-xs">Phase #2</div>
-                      <div className="text-xs text-purple-600 mt-1">PWLLE at Forefront</div>
+                    <div className="mb-2 bg-gradient-to-br from-purple-200 to-purple-300 p-3 rounded-xl shadow-lg border-2 border-purple-400 max-w-[220px] text-center">
+                      <div className="font-bold text-purple-900 text-sm">Phase #2</div>
+                      <div className="text-xs text-purple-600 mt-1">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</div>
                     </div>
                     <div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
                     <div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mt-2 flex items-center gap-1">2024 <Check size={14} className="text-green-300" /></div>
@@ -592,26 +594,16 @@ const ProjectPartnerDashboard = () => {
   const ResearchDocuments = () => (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research Documents & Surveys</h2>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research Documents</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-            <h3 className="font-bold text-purple-900 mb-3 flex items-center gap-2"><FileText size={20} className="text-purple-700" />Letters of Information & Consent</h3>
-            <div className="space-y-2">
-              <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Phase 1 - Letter of Information & Consent (PDF)</a>
-              <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />DCP Training - Letter of Information & Consent (PDF)</a>
-            </div>
-            <p className="text-xs text-gray-500 mt-2 italic">Click to view or download PDF documents</p>
+        <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
+          <h3 className="font-bold text-purple-900 mb-3 flex items-center gap-2"><FileText size={20} className="text-purple-700" />Letters of Information & Consent</h3>
+          <div className="space-y-2">
+            <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Phase 1 - Letter of Information & Consent (PDF)</a>
+            <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />DCP Training - Letter of Information & Consent (PDF)</a>
           </div>
-          <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-            <h3 className="font-bold text-purple-900 mb-3 flex items-center gap-2"><ExternalLink size={20} className="text-purple-700" />Drug-Checking Peer Training Surveys</h3>
-            <div className="space-y-2">
-              <a href="https://uwo.eu.qualtrics.com/jfe/form/SV_PLACEHOLDER_PRE" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><ExternalLink size={16} />Pre-Course Survey (Qualtrics)</a>
-              <a href="https://uwo.eu.qualtrics.com/jfe/form/SV_PLACEHOLDER_POST" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><ExternalLink size={16} />Post-Course Survey (Qualtrics)</a>
-            </div>
-            <p className="text-xs text-gray-500 mt-2 italic">For informational purposes only</p>
-          </div>
+          <p className="text-xs text-gray-500 mt-2 italic">Click to view or download PDF documents</p>
         </div>
       </div>
     </div>
@@ -674,12 +666,12 @@ const ProjectPartnerDashboard = () => {
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <span className="text-sky-300 font-bold">Scatr Inc.</span></p>
         </div>
       </div>
+      <div className="px-6 pt-6"><ProjectContactInfo /></div>
       <div className="text-center py-6 bg-gradient-to-r from-purple-50 to-white"><h2 className="text-3xl font-bold text-purple-900">Interactive Project Partner Dashboard</h2></div>
-      <div className="px-6"><ProjectContactInfo /></div>
       <div className="px-6 pb-4">
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the network's infrastructure, facilitate communication and collaboration across sites, and serve as a resource hub for project-related information.</p>
-          <p className="text-gray-800 leading-relaxed mt-3">As of <strong>{todayFormatted}</strong>, Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em> project, funded through Health Canada's Substance Use and Addictions Program (SUAP), has successfully assigned <strong>23 spectrometers</strong> to <strong>22 harm reduction sites</strong> across Canada. Looking ahead, the project aims to deploy 4 more spectrometers - 2 in Fiscal Year 3, April 1st 2026 to March 31st 2027 and 2 in Fiscal Year 4, April 1st 2027 to March 31st 2028, bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
+          <p className="text-gray-800 leading-relaxed mt-3">As of <strong>{todayFormatted}</strong>, Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em> project, funded through Health Canada's Substance Use and Addictions Program (SUAP), has successfully assigned <strong>24 spectrometers</strong> to <strong>22 harm reduction sites</strong> across Canada. Looking ahead, the project aims to deploy 4 more spectrometers - 2 in Fiscal Year 3, April 1st 2026 to March 31st 2027 and 2 in Fiscal Year 4, April 1st 2027 to March 31st 2028, bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
         </div>
       </div>
       <div className="p-6 space-y-6">
