@@ -44,7 +44,6 @@ const FAQ_DATA = [
   { question: 'How do I update my site\'s contact information on the dashboard?', answer: 'Contact the Project Manager with your updated information and we will update the dashboard accordingly.' },
   { question: 'Can I share this dashboard with others at my organization?', answer: 'Yes, you may share access with colleagues directly involved in the drug-checking program at your site. However, please do not share access with individuals outside of the project network.' },
   { question: 'What is the difference between Mobile and Non-Mobile exemptions?', answer: 'A Non-Mobile exemption allows drug-checking at a fixed location only. A Mobile exemption allows you to conduct drug-checking at various locations within your approved geographic area, such as outreach services or pop-up sites.' },
-  { question: 'How often should we be submitting drug-checking data?', answer: 'Data should be submitted through the Scatr portal in real-time or as close to real-time as possible. This ensures the network has up-to-date information on the drug supply.' },
 ];
 
 // Training Completion Status - UPDATE AS SITES COMPLETE TRAINING
