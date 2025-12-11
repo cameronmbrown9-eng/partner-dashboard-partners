@@ -1140,7 +1140,7 @@ const ProjectPartnerDashboard = () => {
         </div>
       </div>
       <div className="px-6 pt-6"><ProjectContactInfo /></div>
-      <div className="text-center py-6 bg-gradient-to-r from-purple-50 to-white"><h2 className="text-3xl font-bold text-purple-900">Interactive Project Partner Dashboard</h2></div>
+      <div className="text-center py-6 bg-gradient-to-r from-purple-50 to-white"><h2 className="text-5xl md:text-6xl font-black text-purple-900 tracking-tight">Interactive Project Partner Dashboard</h2></div>
       <div className="px-6 pb-4">
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the network's infrastructure, facilitate communication and collaboration across sites, and serve as a resource hub for project-related information.</p>
