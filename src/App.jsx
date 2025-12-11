@@ -684,6 +684,15 @@ const ProjectPartnerDashboard = () => {
         </div>
       </div>
       <div className="p-6 space-y-6">
+        <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+            <h2 className="flex items-center gap-2 font-bold text-2xl">Canadian Substance Use Costs and Harms</h2>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+            <img src="/csuch-infographic.png" alt="Canadian Substance Use Costs and Harms Infographic" className="w-full rounded-lg shadow-lg" />
+            <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023</p>
+          </div>
+        </div>
         <ProjectTimeline />
         <PowerPointViewer />
         <ProjectPublications />
