@@ -151,7 +151,8 @@ const PowerPointViewer = () => {
   
   const pptxFileName = 'project-presentation.pptx';
   const siteUrl = 'https://partners.uwo-drugchecking.ca';
-  const pptxUrl = `${siteUrl}/${pptxFileName}`;
+  const cacheBuster = '?v=' + Date.now();
+  const pptxUrl = `${siteUrl}/${pptxFileName}${cacheBuster}`;
   const embedUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
   
   return (
