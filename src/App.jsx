@@ -598,7 +598,6 @@ const ProjectPartnerDashboard = () => {
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50">
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-          <h3 className="font-bold text-purple-900 mb-3 flex items-center gap-2"><FileText size={20} className="text-purple-700" />Letters of Information & Consent</h3>
           <div className="space-y-2">
             <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Device Use - Letter of Information & Consent (PDF)</a>
             <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Letter of Information & Consent (PDF)</a>
