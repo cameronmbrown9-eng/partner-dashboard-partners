@@ -602,7 +602,7 @@ const ProjectPartnerDashboard = () => {
             <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Device Use - Letter of Information & Consent (PDF)</a>
             <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Letter of Information & Consent (PDF)</a>
             <a href="/DCP-Survey.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Pre- and Post-Surveys (PDF)</a>
-            <a href="/DCP-Certificate-Example.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Certificate of Achievement (Example PDF)</a>
+            <a href="/DCP-Certificate-Example.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Example Certificate of Achievement (PDF)</a>
             <a href="/Collaborative-Site-Agreement.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Collaborative Site Agreement - Example Template (PDF)</a>
           </div>
           <p className="text-xs text-gray-500 mt-2 italic">Click to view or download PDF documents</p>
@@ -672,7 +672,7 @@ const ProjectPartnerDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
       <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">The University of Western Ontario - A Novel Two Phase Drug-Checking Initiative: Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">The University of Western Ontario - A Novel Two Phase Drug-Checking Initiative:<br />Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program</h1>
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <span className="text-sky-300 font-bold">Scatr Inc.</span></p>
         </div>
       </div>
