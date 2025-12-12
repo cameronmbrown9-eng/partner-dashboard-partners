@@ -692,8 +692,8 @@ const printContactList = (partnersData) => {
 // Table of Contents Component
 const TableOfContents = () => {
   const sections = [
-    { id: 'news', label: 'News & Updates' },
     { id: 'csuch', label: 'Canadian Substance Use Costs and Harms' },
+    { id: 'news', label: 'News & Updates' },
     { id: 'timeline', label: 'Project Background & Timeline' },
     { id: 'presentation', label: 'Project Overview Presentation' },
     { id: 'publications', label: 'Project-Related Publications' },
@@ -1148,12 +1148,11 @@ const ProjectPartnerDashboard = () => {
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the project's network and infrastructure. While facilitating communication and collaboration across sites, and serving as a resource hub for project-related information.</p>
           <TableOfContents />
-          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>), Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (SUAP), has successfully assigned <strong>24 spectrometers</strong> across <strong>22 distinct harm reduction sites</strong> across Canada.</p>
+          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>), Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (SUAP), has successfully allocated <strong>24 spectrometers</strong> across <strong>22 distinct harm reduction sites</strong> across Canada.</p>
           <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers before project end: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
         </div>
       </div>
       <div className="p-6 space-y-6">
-        <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
         <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
             <h2 className="flex items-center gap-2 font-bold text-2xl">Canadian Substance Use Costs and Harms</h2>
@@ -1163,6 +1162,7 @@ const ProjectPartnerDashboard = () => {
             <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023</p>
           </div>
         </div>
+        <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
         <div id="timeline" className="scroll-mt-4"><ProjectTimeline /></div>
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
         <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
