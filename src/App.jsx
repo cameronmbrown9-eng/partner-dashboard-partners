@@ -1088,7 +1088,6 @@ const ProjectPartnerDashboard = () => {
     { title: "Health Canada - Apply for SCS", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/apply.html", description: "Federal application process for supervised consumption sites.", category: "Government" },
     { title: "CCRA 2024 Legislation", url: "https://www.ontario.ca/laws/statute/24c27", description: "Full text of Ontario's Community Care and Recovery Act.", category: "Government" },
     // === CATIE RESOURCES ===
-    { title: "CATIE Main Site", url: "https://www.catie.ca/", description: "Canada's source for HIV and hepatitis C information.", category: "CATIE" },
     { title: "CATIE - Harm Reduction Toolkit", url: "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers", description: "Comprehensive toolkit for implementing harm reduction approaches.", category: "CATIE" },
     { title: "CATIE - Ontario HR Program", url: "https://www.catie.ca/caties-ontario-harm-reduction-program", description: "Distribution of harm reduction supplies across Ontario.", category: "CATIE" },
     { title: "CATIE - Monitoring Drug Supply", url: "https://www.catie.ca/monitoring-and-responding-to-the-unregulated-drug-supply", description: "Resources on monitoring the unregulated drug supply.", category: "CATIE" },
