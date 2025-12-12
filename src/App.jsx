@@ -28,6 +28,7 @@ const ANNOUNCEMENT_CONFIG = {
 
 // News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
 const NEWS_UPDATES = [
+  { date: '2025-12-12', title: 'Exemption 56 Document Reminder', description: 'Please don\'t forget to send Cameron your site\'s updated Exemption 56 Approval Document(s) as soon as possible subsequent to their receipt.' },
   { date: '2025-12-11', title: 'Project Partner Dashboard Launched', description: 'The new interactive dashboard is now live, providing partners with centralized access to project information, documents, and contact details.' },
   { date: '2025-12-01', title: '22 Partner Sites Now Active', description: 'We have successfully onboarded 22 partner sites across 7 provinces, 20 cities, with 24 spectrometers deployed.' },
   { date: '2025-11-15', title: 'Drug-Checking Peer Training Program Begins', description: 'Virtual training sessions are now being scheduled for partner sites. Contact the Project Manager to arrange training for your team.' },
