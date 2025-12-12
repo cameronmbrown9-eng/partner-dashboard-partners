@@ -1139,7 +1139,7 @@ const ProjectPartnerDashboard = () => {
             <br />
             Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
           </h1>
-          <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <span className="text-sky-300 font-bold">Scatr Inc.</span></p>
+          <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-sky-300 font-bold hover:text-sky-100 hover:underline">Scatr Inc.</a></p>
         </div>
       </div>
       <div className="px-6 pt-6"><ProjectContactInfo /></div>
