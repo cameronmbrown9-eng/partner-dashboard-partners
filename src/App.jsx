@@ -110,8 +110,8 @@ const ProjectContactInfo = ({ isFooter = false }) => (
       <div className="bg-white p-4 rounded-xl border border-purple-200">
         <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
         <div className="text-gray-700 text-sm space-y-3">
-          <div><strong>Phase #1</strong><br /><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</strong> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
-          <div><strong>Phase #2</strong><br /><strong>Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</strong> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
+          <div><strong>Phase #1</strong><br /><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
+          <div><strong>Phase #2</strong><br /><strong>Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1145,7 +1145,7 @@ const ProjectPartnerDashboard = () => {
             <br /><br />
             <span className="text-slate-300">A Novel Two Phase Drug-Checking Initiative:</span>
             <br />
-            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
+            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:text-sky-100 hover:underline">SUAP</a>)
           </h1>
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-sky-300 font-bold hover:text-sky-100 hover:underline">Scatr Inc.</a></p>
         </div>
@@ -1156,7 +1156,7 @@ const ProjectPartnerDashboard = () => {
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the project's network and infrastructure. While facilitating communication and collaboration across sites, and serving as a resource hub for project-related information.</p>
           <TableOfContents />
-          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>), Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (SUAP), has successfully allocated <strong>24 spectrometers</strong> across <strong>22 distinct harm reduction sites</strong> across Canada.</p>
+          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>), Western University's Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 spectrometers</strong> across <strong>22 distinct harm reduction sites</strong> across Canada.</p>
           <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers before project end: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
         </div>
       </div>
