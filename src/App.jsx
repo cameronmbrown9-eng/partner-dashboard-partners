@@ -1183,7 +1183,7 @@ const ProjectPartnerDashboard = () => {
               title="Print Contact List"
             >
               <Printer size={18} />
-              Print List
+              Print List / Save as PDF
             </button>
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
