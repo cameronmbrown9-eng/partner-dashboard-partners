@@ -1137,7 +1137,7 @@ const ProjectPartnerDashboard = () => {
             <br /><br />
             A Novel Two Phase Drug-Checking Initiative:
             <br />
-            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program
+            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
           </h1>
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <span className="text-sky-300 font-bold">Scatr Inc.</span></p>
         </div>
