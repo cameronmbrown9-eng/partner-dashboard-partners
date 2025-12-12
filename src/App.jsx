@@ -128,6 +128,10 @@ const ProjectContactInfo = ({ isFooter = false }) => (
             <Mail size={14} />
             <a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a>
           </div>
+          <div className="flex items-center gap-2 mt-2 text-purple-700">
+            <ExternalLink size={14} />
+            <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
+          </div>
         </div>
         <div className="bg-white p-4 rounded-xl border border-purple-200">
           <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
@@ -141,6 +145,10 @@ const ProjectContactInfo = ({ isFooter = false }) => (
           <div className="flex items-center gap-2 text-purple-700">
             <Mail size={14} />
             <a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a>
+          </div>
+          <div className="flex items-center gap-2 mt-2 text-purple-700">
+            <ExternalLink size={14} />
+            <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
           </div>
         </div>
       </div>
