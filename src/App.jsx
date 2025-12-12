@@ -965,8 +965,8 @@ const ProjectPartnerDashboard = () => {
                   </div>
                 </div>
                 <div className="flex justify-between mt-2">
-                  <div className="text-center"><div className="font-bold text-purple-800 text-sm">Project Start</div><div className="text-xs text-purple-600">April 1, 2024</div></div>
-                  <div className="text-center"><div className="font-bold text-purple-800 text-sm">Project End</div><div className="text-xs text-purple-600">March 31, 2028</div></div>
+                  <div className="text-center"><div className="font-bold text-purple-800 text-sm">Start</div><div className="text-xs text-purple-600">April 1, 2024</div></div>
+                  <div className="text-center"><div className="font-bold text-purple-800 text-sm">End</div><div className="text-xs text-purple-600">March 31, 2028</div></div>
                 </div>
               </div>
             </div>
