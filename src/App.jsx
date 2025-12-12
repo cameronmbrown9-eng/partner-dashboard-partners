@@ -1143,7 +1143,7 @@ const ProjectPartnerDashboard = () => {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Western University
             <br /><br />
-            A Novel Two Phase Drug-Checking Initiative:
+            <span className="text-slate-300">A Novel Two Phase Drug-Checking Initiative:</span>
             <br />
             Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
           </h1>
