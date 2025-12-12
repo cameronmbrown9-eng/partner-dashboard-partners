@@ -1143,7 +1143,7 @@ const ProjectPartnerDashboard = () => {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Western University
             <br /><br />
-            <span className="bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-lg">A Novel Two Phase Drug-Checking Initiative:</span>
+            <span style={{ background: 'linear-gradient(90deg, #c0c0c0, #ffffff, #c0c0c0, #e8e8e8, #c0c0c0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundSize: '200% auto', textShadow: '0 0 20px rgba(255,255,255,0.3)' }}>A Novel Two Phase Drug-Checking Initiative:</span>
             <br />
             Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
           </h1>
