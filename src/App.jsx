@@ -108,7 +108,10 @@ const ProjectContactInfo = ({ isFooter = false }) => (
     <div className="space-y-4 text-sm">
       <div className="bg-white p-4 rounded-xl border border-purple-200">
         <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
-        <div className="text-gray-700 italic"><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers & Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</strong> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
+        <div className="text-gray-700 text-sm space-y-3">
+          <div><strong>Phase #1</strong><br /><em>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</em> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
+          <div><strong>Phase #2</strong><br /><em>Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</em> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-xl border border-purple-200">
