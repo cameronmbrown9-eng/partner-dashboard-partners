@@ -110,7 +110,7 @@ const ProjectContactInfo = ({ isFooter = false }) => (
       <div className="bg-white p-4 rounded-xl border border-purple-200">
         <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
         <div className="text-gray-700 text-sm space-y-3">
-          <div><strong>Phase #1</strong><br /><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # <a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">2223-HQ-000095</a>.</div>
+          <div><strong>Phase #1</strong><br /><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
           <div><strong>Phase #2</strong><br /><strong><a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</a></strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # <a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">2425-HQ-000058</a>.</div>
         </div>
       </div>
@@ -1108,17 +1108,12 @@ const ProjectPartnerDashboard = () => {
     // === HARM REDUCTION SERVICES ===
     { title: "Vancouver Coastal Health - Harm Reduction", url: "https://www.vch.ca/en/health-topics/harm-reduction", description: "Comprehensive harm reduction information from BC health authority.", category: "Harm Reduction" },
     { title: "Toward the Heart - Safer Use", url: "https://towardtheheart.com/safer-use", description: "BC harm reduction resources for safer drug use practices.", category: "Harm Reduction" },
-    { title: "Ontario Harm Reduction - Find Supplies", url: "https://findneedles.ca/", description: "Find harm reduction supplies across Ontario.", category: "Harm Reduction" },
     { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services.", category: "Harm Reduction" },
     { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Harm Reduction" },
-    { title: "LIHC - Safer Opioid Supply", url: "https://www.lihc.on.ca/safer-supply", description: "London InterCommunity Health Centre's safer supply program.", category: "Harm Reduction" },
     // === RESEARCH & PUBLICATIONS ===
     { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use.", category: "Research" },
     { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk.", category: "Research" },
     { title: "CIAJ - Ontario Drug Policy Analysis", url: "https://ciaj-icaj.ca/en/publications/", description: "Analysis of Ontario's drug policy changes and impacts.", category: "Research" },
-    // === NEWS & MEDIA ===
-    { title: "CBC - Drug-Testing Machine 'Game Changer'", url: "https://www.cbc.ca/news/", description: "Coverage of portable drug-testing machines revolutionizing harm reduction.", category: "News" },
-    { title: "CBC - Ontario SCS Policy Changes", url: "https://www.cbc.ca/news/canada/toronto/", description: "News coverage of Ontario policy changes affecting supervised consumption sites.", category: "News" }
   ];
 
   const RelatedLinks = () => (
