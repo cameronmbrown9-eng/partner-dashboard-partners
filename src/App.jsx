@@ -28,6 +28,7 @@ const ANNOUNCEMENT_CONFIG = {
 
 // News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
 const NEWS_UPDATES = [
+  { date: '2025-12-12', title: 'Share Your Story: PWLLE Voices Needed', description: 'At the heart of this project is a simple belief: the best improvements to drug-checking services come directly from the people who use them. We want to hear from People with Lived or Living Experience (PWLLEs) who are willing to share their stories and perspectives. Your insights help shape how these services evolve. Interested in having a conversation? Contact Cameron at cbrown58@uwo.ca — no pressure, just a chance to be heard.' },
   { date: '2025-12-12', title: 'Exemption 56 Document Reminder', description: 'Please don\'t forget to send Cameron your site\'s updated Exemption 56 Approval Document(s) as soon as possible subsequent to their receipt.' },
   { date: '2025-12-11', title: 'Project Partner Dashboard Launched', description: 'The new interactive dashboard is now live, providing partners with centralized access to project information, documents, and contact details.' },
   { date: '2025-12-01', title: '22 Partner Sites Now Active', description: 'We have successfully onboarded 22 partner sites across 7 provinces, 20 cities, with 24 spectrometers deployed.' },
