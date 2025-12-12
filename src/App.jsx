@@ -1112,7 +1112,6 @@ const ProjectPartnerDashboard = () => {
     { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services.", category: "Harm Reduction" },
     { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Harm Reduction" },
     { title: "LIHC - Safer Opioid Supply", url: "https://www.lihc.on.ca/safer-supply", description: "London InterCommunity Health Centre's safer supply program.", category: "Harm Reduction" },
-    { title: "SCS Dashboard Ontario", url: "https://scsdashboard.ca/", description: "Interactive dashboard tracking Ontario supervised consumption site data.", category: "Harm Reduction" },
     // === RESEARCH & PUBLICATIONS ===
     { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use.", category: "Research" },
     { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk.", category: "Research" },
