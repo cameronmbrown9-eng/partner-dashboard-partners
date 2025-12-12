@@ -109,8 +109,8 @@ const ProjectContactInfo = ({ isFooter = false }) => (
       <div className="bg-white p-4 rounded-xl border border-purple-200">
         <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
         <div className="text-gray-700 text-sm space-y-3">
-          <div><strong>Phase #1</strong><br /><em>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</em> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
-          <div><strong>Phase #2</strong><br /><em>Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</em> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
+          <div><strong>Phase #1</strong><br /><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</strong> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
+          <div><strong>Phase #2</strong><br /><strong>Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</strong> Health Canada, Substance Use and Addictions Program (SUAP). Contribution Agreement_Arrangement # 2425-HQ-000058.</div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -716,14 +716,14 @@ const TableOfContents = () => {
   return (
     <div className="mt-4 bg-white p-4 rounded-xl border-2 border-purple-300 shadow-md">
       <div className="font-bold text-purple-900 mb-3 text-sm">Quick Navigation:</div>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-3">
         {sections.map((section) => (
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className="text-sm text-purple-700 hover:text-purple-900 hover:bg-purple-100 px-3 py-1.5 rounded-full border border-purple-200 transition-colors text-left"
+            className="text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 active:bg-purple-800 px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-left flex items-center gap-2 border-2 border-purple-700 hover:scale-[1.02]"
           >
-            {section.label}
+            <span className="text-purple-200">→</span> {section.label}
           </button>
         ))}
       </div>
