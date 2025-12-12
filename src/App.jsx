@@ -1143,9 +1143,9 @@ const ProjectPartnerDashboard = () => {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Western University
             <br /><br />
-            <span className="text-slate-300">A Novel Two Phase Drug-Checking Initiative:</span>
+            <span className="bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-lg">A Novel Two Phase Drug-Checking Initiative:</span>
             <br />
-            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:text-sky-100 hover:underline">SUAP</a>)
+            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
           </h1>
           <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-sky-300 font-bold hover:text-sky-100 hover:underline">Scatr Inc.</a></p>
         </div>
