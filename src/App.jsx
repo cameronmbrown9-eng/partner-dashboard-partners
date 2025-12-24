@@ -1680,10 +1680,15 @@ const ProjectPartnerDashboard = () => {
       <div className="bg-white shadow-lg">
         <div className="px-8 py-8">
           <div className="flex items-start">
-            <img src="/western-logo.png" alt="Western University" className="h-24 w-auto" />
+            {/* Western University Logo with Text */}
+            <div className="flex flex-col items-center">
+              <img src="/western-logo.png" alt="Western University Crest" className="h-16 w-auto" />
+              <span className="text-purple-800 text-2xl italic font-serif mt-1">Western</span>
+              <span className="text-gray-500 text-xs tracking-widest">UNIVERSITY · CANADA</span>
+            </div>
           </div>
           <div className="mt-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight italic">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
               A Novel Concurrent Two Phase<br />Drug-Checking Initiative
             </h1>
             <div className="border-b-2 border-gray-300 my-6"></div>
@@ -1691,7 +1696,7 @@ const ProjectPartnerDashboard = () => {
               Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
             </p>
             <p className="text-base mt-4">
-              In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-purple-700 font-semibold hover:text-purple-900 hover:underline">Scatr Inc.</a>
+              In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-sky-400 font-semibold hover:text-sky-500 hover:underline">Scatr Inc.</a>
             </p>
           </div>
         </div>
