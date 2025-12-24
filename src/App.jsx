@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp, AlertTriangle, Printer, HelpCircle, Newspaper, GraduationCap, X } from 'lucide-react';
+import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp, AlertTriangle, Printer, HelpCircle, Newspaper, GraduationCap, X, Activity, Building2, Smartphone, TrendingUp, Globe, Target, Zap, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -28,6 +28,9 @@ const ANNOUNCEMENT_CONFIG = {
 
 // News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
 const NEWS_UPDATES = [
+  { date: '2025-12-13', title: 'New Resource: Standard Operating Procedures for Sample Preparation', description: 'We have published the official Standard Operating Procedures (SOP) for Sample Preparation document. This resource outlines the proper protocols for packaging and labelling samples for transport to the Western Laboratory. All partner sites are reminded to review and adhere to these SOPs to ensure sample integrity, regulatory compliance, and accurate analysis results.', link: { text: 'View the SOP Document', url: '/SOP-Sample-Preparation.pdf' } },
+  { date: '2025-12-12', title: 'Reminder: Sample Submission Accountability', description: 'Health Canada requires every sample to be accounted for. Please only use the sample submission feature in the Scatr portal when there is a real sample to submit. Accurate record-keeping is essential for regulatory compliance and the integrity of our network data.' },
+  { date: '2025-12-12', title: 'Health Canada Releases Updated National Opioid & Stimulant Harms Data', description: 'The Public Health Agency of Canada has published updated national surveillance data showing a 17% decrease in opioid toxicity deaths in 2024 compared to 2023. Key findings: deaths dropped from 8,623 (2023) to 7,146 (2024), averaging 20 deaths per day (down from 22). Hospitalizations also fell 15%, alongside similar decreases in EMS responses and ED visits. BC, Alberta, Saskatchewan, Ontario, New Brunswick, and Yukon all reported decreases, with some jurisdictions attributing the decline partly to lower fentanyl concentrations in the drug supply.', link: { text: 'View the Full Report', url: 'https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/' } },
   { date: '2025-12-12', title: 'Share Your Story: PWLLE Voices Needed', description: 'At the heart of this project is a simple belief: the best improvements to drug-checking services come directly from the people who use them. We want to hear from People with Lived or Living Experience (PWLLEs) who are willing to share their stories and perspectives. Your insights help shape how these services evolve. Interested in having a conversation? Contact Cameron at cbrown58@uwo.ca — no pressure, just a chance to be heard.' },
   { date: '2025-12-12', title: 'Exemption 56 Document Reminder', description: 'Please don\'t forget to send Cameron your site\'s updated Exemption 56 Approval Document(s) as soon as possible subsequent to their receipt.' },
   { date: '2025-12-11', title: 'Project Partner Dashboard Launched', description: 'The new interactive dashboard is now live, providing partners with centralized access to project information, documents, and contact details.' },
@@ -38,7 +41,6 @@ const NEWS_UPDATES = [
 
 // FAQ Data
 const FAQ_DATA = [
-  { question: 'How do I schedule Drug-Checking Peer (DCP) training for my PWLLE staff and/or community members?', answer: 'Contact the Project Manager at cbrown58@uwo.ca to schedule virtual training sessions. Training is delivered via Western Corporate Zoom and typically takes 2-3 hours.' },
   { question: 'What is an Exemption 56 and does my site need one?', answer: 'An Exemption under Section 56 of the Controlled Drugs and Substances Act allows your site to legally handle controlled substances for drug-checking purposes. All partner sites require an approved exemption before operating. Templates are available in the Research Documents section.' },
   { question: 'How do I update my site\'s contact information on the dashboard?', answer: 'Contact the Project Manager with your updated information and we will update the dashboard accordingly.' },
   { question: 'Can I share this dashboard with others at my organization?', answer: 'Yes, you may share access with colleagues directly involved in the drug-checking program at your site. However, please do not share access with individuals outside of the project network.' },
@@ -99,6 +101,54 @@ const ResetMapButton = () => {
   );
 };
 
+// Project Phases Component
+const ProjectPhases = () => (
+  <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200 mb-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center">
+        <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #1</h3>
+        <p className="text-gray-800 font-semibold mb-2">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</p>
+        <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
+        <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2223-HQ-000095</p>
+      </div>
+      <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center">
+        <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3>
+        <p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p>
+        <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
+        <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p>
+      </div>
+    </div>
+    {/* Health Canada SUAP Active Projects Table */}
+    <div className="mt-6 overflow-x-auto">
+      <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-md">
+        <thead>
+          <tr className="bg-purple-100">
+            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Organization</th>
+            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Project Name</th>
+            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Description</th>
+            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Substances</th>
+            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Location</th>
+            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Funding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="hover:bg-purple-50">
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">University of Western Ontario</td>
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Leading the Way: People with Lived and Living Experience at the Forefront of Drug-Checking Initiative</td>
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-700 align-top">
+              This initiative will integrate People with Lived and Living Experience (PWLLE) into drug-checking initiatives by training them in drug-checking technologies to enable them to implement drug-checking initiatives and training programs in participating harm reduction and public health centres in Alberta, Ontario, Manitoba and Nova Scotia.
+            </td>
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Multiple substances</td>
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">London, Ontario</td>
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top font-medium">$4,473,473</td>
+          </tr>
+        </tbody>
+      </table>
+      <p className="text-xs text-gray-500 mt-2 text-right">Source: <a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:underline">Health Canada SUAP Active Projects</a></p>
+    </div>
+  </div>
+);
+
 // Project Contact Info Component
 const ProjectContactInfo = ({ isFooter = false }) => (
   <div className={`bg-gradient-to-br ${isFooter ? 'from-purple-100 to-purple-200' : 'from-purple-50 to-white'} p-6 rounded-2xl shadow-lg border-2 border-purple-200 ${isFooter ? 'mt-6' : 'mb-4'}`}>
@@ -106,50 +156,41 @@ const ProjectContactInfo = ({ isFooter = false }) => (
       <Mail size={24} className="text-purple-700" />
       Project Contact Information
     </h3>
-    <div className="space-y-4 text-sm">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="bg-white p-4 rounded-xl border border-purple-200">
-        <div className="font-bold text-purple-900 mb-2">Project Titles:</div>
-        <div className="text-gray-700 text-sm space-y-3">
-          <div><strong>Phase #1</strong><br /><strong>Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers.</strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # 2223-HQ-000095.</div>
-          <div><strong>Phase #2</strong><br /><strong><a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives.</a></strong> Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>). Contribution Agreement_Arrangement # <a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">2425-HQ-000058</a>.</div>
+        <div className="font-bold text-purple-900 mb-2">Principal Investigator (PI):</div>
+        <div className="text-gray-800 font-medium">Professor Francois Lagugne-Labarthet</div>
+        <div className="text-gray-600">Faculty of Science, Western University</div>
+        <div className="text-gray-600">London, ON, Canada</div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700">
+          <Phone size={14} />
+          <span>519-661-2111 x81006</span>
+        </div>
+        <div className="flex items-center gap-2 text-purple-700">
+          <Mail size={14} />
+          <a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a>
+        </div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700">
+          <ExternalLink size={14} />
+          <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-white p-4 rounded-xl border border-purple-200">
-          <div className="font-bold text-purple-900 mb-2">Principal Investigator (PI):</div>
-          <div className="text-gray-800 font-medium">Professor Francois Lagugne-Labarthet</div>
-          <div className="text-gray-600">Faculty of Science, Western University</div>
-          <div className="text-gray-600">London, ON, Canada</div>
-          <div className="flex items-center gap-2 mt-2 text-purple-700">
-            <Phone size={14} />
-            <span>519-661-2111 x81006</span>
-          </div>
-          <div className="flex items-center gap-2 text-purple-700">
-            <Mail size={14} />
-            <a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a>
-          </div>
-          <div className="flex items-center gap-2 mt-2 text-purple-700">
-            <ExternalLink size={14} />
-            <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
-          </div>
+      <div className="bg-white p-4 rounded-xl border border-purple-200">
+        <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
+        <div className="text-gray-800 font-medium">Cameron Brown</div>
+        <div className="text-gray-600">Faculty of Science, Western University</div>
+        <div className="text-gray-600">London, ON, Canada</div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700">
+          <Phone size={14} />
+          <span>226-238-9970</span>
         </div>
-        <div className="bg-white p-4 rounded-xl border border-purple-200">
-          <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
-          <div className="text-gray-800 font-medium">Cameron Brown</div>
-          <div className="text-gray-600">Faculty of Science, Western University</div>
-          <div className="text-gray-600">London, ON, Canada</div>
-          <div className="flex items-center gap-2 mt-2 text-purple-700">
-            <Phone size={14} />
-            <span>226-238-9970</span>
-          </div>
-          <div className="flex items-center gap-2 text-purple-700">
-            <Mail size={14} />
-            <a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a>
-          </div>
-          <div className="flex items-center gap-2 mt-2 text-purple-700">
-            <ExternalLink size={14} />
-            <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
-          </div>
+        <div className="flex items-center gap-2 text-purple-700">
+          <Mail size={14} />
+          <a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a>
+        </div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700">
+          <ExternalLink size={14} />
+          <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
         </div>
       </div>
     </div>
@@ -222,6 +263,77 @@ const PowerPointViewer = () => {
             Click through the slides above to view the full project presentation. 
             <a href={pptxUrl} download className="ml-2 underline hover:text-purple-800">
               Download PowerPoint
+            </a>
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Scatr Technical Research Strategy PDF Viewer Component
+const ScatrResearchPDFViewer = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  
+  const pdfFileName = 'Scatr-Technical-Research-Strategy.pdf';
+  const siteUrl = 'https://partners.uwo-drugchecking.ca';
+  const pdfUrl = `${siteUrl}/${pdfFileName}`;
+  
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden mb-8">
+      <div 
+        className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <h2 className="flex items-center gap-2 font-bold text-2xl">
+          <FileText size={28} />
+          Scatr Technical Research Strategy
+        </h2>
+        <div className="flex items-center gap-2">
+          {isExpanded && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsFullscreen(!isFullscreen);
+              }}
+              className="p-2 hover:bg-purple-600 rounded-lg transition-colors"
+              title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+            >
+              {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+            </button>
+          )}
+          {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+        </div>
+      </div>
+      
+      {isExpanded && (
+        <div className={`bg-gradient-to-br from-white to-purple-50 ${isFullscreen ? 'fixed inset-0 z-50 p-4' : 'p-6'}`}>
+          {isFullscreen && (
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-purple-900">Scatr Technical Research Strategy</h2>
+              <button
+                onClick={() => setIsFullscreen(false)}
+                className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
+              >
+                <Minimize2 size={20} className="text-purple-700" />
+              </button>
+            </div>
+          )}
+          <div className={`${isFullscreen ? 'h-[calc(100%-60px)]' : 'h-[600px]'} w-full rounded-lg overflow-hidden border-2 border-purple-200 shadow-lg`}>
+            <iframe
+              src={pdfUrl}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              title="Scatr Technical Research Strategy"
+              className="bg-white"
+            />
+          </div>
+          <p className="text-sm text-purple-600 mt-3 text-center">
+            Scroll through the document above to view the full Scatr Technical Research Strategy. 
+            <a href={pdfUrl} download className="ml-2 underline hover:text-purple-800">
+              Download PDF
             </a>
           </p>
         </div>
@@ -464,7 +576,12 @@ const NewsUpdatesFeed = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-purple-900 mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
+                  <p className="text-sm text-gray-600">
+                    {item.description}
+                    {item.link && (
+                      <> <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline font-medium">{item.link.text} →</a></>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
@@ -698,18 +815,407 @@ const printContactList = (partnersData) => {
   setTimeout(() => printWindow.print(), 250);
 };
 
+// Progress Ring Component
+const ProgressRing = ({ progress, size = 120, strokeWidth = 10, color = '#7c3aed' }) => {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  const offset = circumference - (progress / 100) * circumference;
+  
+  return (
+    <svg width={size} height={size} className="transform -rotate-90">
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke="#e5e7eb"
+        strokeWidth={strokeWidth}
+      />
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        strokeLinecap="round"
+        className="transition-all duration-1000 ease-out"
+      />
+    </svg>
+  );
+};
+
+// Mini Sparkline Component
+const Sparkline = ({ data, color = '#7c3aed', height = 40 }) => {
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const range = max - min || 1;
+  const width = 100;
+  const points = data.map((val, i) => {
+    const x = (i / (data.length - 1)) * width;
+    const y = height - ((val - min) / range) * (height - 4) - 2;
+    return `${x},${y}`;
+  }).join(' ');
+  
+  return (
+    <svg width={width} height={height} className="overflow-visible">
+      <polyline
+        points={points}
+        fill="none"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx={width} cy={height - ((data[data.length - 1] - min) / range) * (height - 4) - 2} r="3" fill={color} />
+    </svg>
+  );
+};
+
+// Donut Chart Component
+const DonutChart = ({ data, size = 160 }) => {
+  const total = data.reduce((sum, item) => sum + item.value, 0);
+  const strokeWidth = 24;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  let currentOffset = 0;
+  
+  return (
+    <div className="relative" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="transform -rotate-90">
+        {data.map((item, idx) => {
+          const segmentLength = (item.value / total) * circumference;
+          const offset = currentOffset;
+          currentOffset += segmentLength;
+          return (
+            <circle
+              key={idx}
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              fill="none"
+              stroke={item.color}
+              strokeWidth={strokeWidth}
+              strokeDasharray={`${segmentLength} ${circumference - segmentLength}`}
+              strokeDashoffset={-offset}
+              className="transition-all duration-500"
+            />
+          );
+        })}
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-2xl font-bold text-gray-800">{total}</div>
+          <div className="text-xs text-gray-500">Total</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Mini Canada Map SVG Component
+const MiniCanadaMap = ({ activeProvinces }) => {
+  const provinceColors = {
+    BC: activeProvinces.includes('BC') ? '#7c3aed' : '#e5e7eb',
+    AB: activeProvinces.includes('AB') ? '#7c3aed' : '#e5e7eb',
+    SK: activeProvinces.includes('SK') ? '#7c3aed' : '#e5e7eb',
+    MB: activeProvinces.includes('MB') ? '#e5e7eb' : '#e5e7eb',
+    ON: activeProvinces.includes('ON') ? '#7c3aed' : '#e5e7eb',
+    QC: activeProvinces.includes('QC') ? '#7c3aed' : '#e5e7eb',
+    NB: activeProvinces.includes('NB') ? '#7c3aed' : '#e5e7eb',
+    NS: activeProvinces.includes('NS') ? '#7c3aed' : '#e5e7eb',
+    PE: activeProvinces.includes('PE') ? '#e5e7eb' : '#e5e7eb',
+    NL: activeProvinces.includes('NL') ? '#e5e7eb' : '#e5e7eb',
+    YT: activeProvinces.includes('YT') ? '#e5e7eb' : '#e5e7eb',
+    NT: activeProvinces.includes('NT') ? '#e5e7eb' : '#e5e7eb',
+    NU: activeProvinces.includes('NU') ? '#e5e7eb' : '#e5e7eb',
+  };
+  
+  return (
+    <svg viewBox="0 0 300 200" className="w-full h-auto">
+      {/* British Columbia */}
+      <path d="M20,60 L45,40 L50,80 L55,120 L35,140 L20,100 Z" fill={provinceColors.BC} stroke="#fff" strokeWidth="1"/>
+      {/* Alberta */}
+      <path d="M50,50 L80,50 L80,120 L50,120 Z" fill={provinceColors.AB} stroke="#fff" strokeWidth="1"/>
+      {/* Saskatchewan */}
+      <path d="M80,50 L110,50 L110,120 L80,120 Z" fill={provinceColors.SK} stroke="#fff" strokeWidth="1"/>
+      {/* Manitoba */}
+      <path d="M110,50 L140,50 L145,80 L140,120 L110,120 Z" fill={provinceColors.MB} stroke="#fff" strokeWidth="1"/>
+      {/* Ontario */}
+      <path d="M140,60 L180,50 L200,80 L190,130 L160,140 L140,120 Z" fill={provinceColors.ON} stroke="#fff" strokeWidth="1"/>
+      {/* Quebec */}
+      <path d="M200,40 L240,30 L260,60 L250,100 L220,120 L200,100 Z" fill={provinceColors.QC} stroke="#fff" strokeWidth="1"/>
+      {/* New Brunswick */}
+      <path d="M250,100 L270,95 L275,115 L255,120 Z" fill={provinceColors.NB} stroke="#fff" strokeWidth="1"/>
+      {/* Nova Scotia */}
+      <path d="M270,110 L290,105 L295,125 L275,130 Z" fill={provinceColors.NS} stroke="#fff" strokeWidth="1"/>
+      {/* Yukon */}
+      <path d="M25,20 L45,20 L50,45 L30,50 Z" fill={provinceColors.YT} stroke="#fff" strokeWidth="1"/>
+      {/* NWT */}
+      <path d="M50,15 L120,15 L120,45 L50,45 Z" fill={provinceColors.NT} stroke="#fff" strokeWidth="1"/>
+      {/* Nunavut */}
+      <path d="M120,10 L200,10 L200,45 L140,50 L120,40 Z" fill={provinceColors.NU} stroke="#fff" strokeWidth="1"/>
+      {/* Province labels for active ones */}
+      {activeProvinces.includes('BC') && <text x="35" y="95" className="text-[8px] font-bold fill-white">BC</text>}
+      {activeProvinces.includes('AB') && <text x="58" y="90" className="text-[8px] font-bold fill-white">AB</text>}
+      {activeProvinces.includes('SK') && <text x="88" y="90" className="text-[8px] font-bold fill-white">SK</text>}
+      {activeProvinces.includes('ON') && <text x="158" y="100" className="text-[8px] font-bold fill-white">ON</text>}
+      {activeProvinces.includes('QC') && <text x="220" y="75" className="text-[8px] font-bold fill-white">QC</text>}
+      {activeProvinces.includes('NB') && <text x="255" y="112" className="text-[6px] font-bold fill-white">NB</text>}
+      {activeProvinces.includes('NS') && <text x="275" y="122" className="text-[6px] font-bold fill-white">NS</text>}
+    </svg>
+  );
+};
+
+// Comprehensive Summary Metrics Component
+const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
+  // Network growth data (simulated quarterly growth)
+  const networkGrowth = [4, 8, 12, 16, 18, 20, 22, 22];
+  const deviceGrowth = [4, 10, 14, 18, 20, 22, 24, 24];
+  
+  // Calculate regional data
+  const regions = {
+    Western: { provinces: ['BC', 'AB'], sites: 0, devices: 0 },
+    Prairies: { provinces: ['SK', 'MB'], sites: 0, devices: 0 },
+    Central: { provinces: ['ON', 'QC'], sites: 0, devices: 0 },
+    Atlantic: { provinces: ['NB', 'NS', 'PE', 'NL'], sites: 0, devices: 0 },
+  };
+  
+  partnersData.forEach(site => {
+    Object.keys(regions).forEach(region => {
+      if (regions[region].provinces.includes(site.prov)) {
+        regions[region].sites++;
+        regions[region].devices += parseInt(site.devicesAssigned);
+      }
+    });
+  });
+
+  // Exemption type counts
+  const mobileCount = stats.mobileSites.length;
+  const nonMobileCount = stats.nonMobileSites.length;
+  const bothCount = partnersData.filter(s => s.exemptionType1 !== 'NA' && s.exemptionType2 !== 'NA').length;
+  
+  const exemptionData = [
+    { label: 'Non-Mobile Only', value: nonMobileCount - bothCount, color: '#3b82f6' },
+    { label: 'Mobile Only', value: mobileCount - bothCount, color: '#10b981' },
+    { label: 'Both Types', value: bothCount, color: '#8b5cf6' },
+  ];
+
+  // Province data for bars
+  const provinceData = Object.entries(sitesByProvince).map(([prov, sites]) => ({
+    prov,
+    count: sites.length,
+    devices: partnersData.filter(s => s.prov === prov).reduce((sum, s) => sum + parseInt(s.devicesAssigned), 0)
+  })).sort((a, b) => b.count - a.count);
+
+  const maxSites = Math.max(...provinceData.map(p => p.count));
+  const deviceProgress = (stats.totalDevices / 28) * 100;
+  const siteProgress = (stats.totalPartners / 28) * 100;
+
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-5">
+        <h2 className="flex items-center gap-3 font-bold text-2xl">
+          <Activity size={28} />
+          Network Summary & Analytics
+        </h2>
+        <p className="text-purple-200 text-sm mt-1">Real-time overview of the drug-checking network across Canada</p>
+      </div>
+      
+      <div className="p-6 bg-gradient-to-br from-gray-50 to-white">
+        {/* Top Row - Key Metrics with Progress Rings */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {/* Partner Sites */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-purple-100 p-3 rounded-xl">
+                <Building2 size={28} className="text-purple-600" />
+              </div>
+              <Sparkline data={networkGrowth} color="#7c3aed" />
+            </div>
+            <div className="text-4xl font-black text-gray-900">{stats.totalPartners}</div>
+            <div className="text-sm font-medium text-gray-500 mt-1">Partner Sites</div>
+          </div>
+
+          {/* Devices Deployed */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-indigo-100 p-3 rounded-xl">
+                <Zap size={28} className="text-indigo-600" />
+              </div>
+              <div className="relative">
+                <ProgressRing progress={deviceProgress} size={60} strokeWidth={6} color="#6366f1" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xs font-bold text-indigo-600">{Math.round(deviceProgress)}%</span>
+                </div>
+              </div>
+            </div>
+            <div className="text-4xl font-black text-gray-900">{stats.totalDevices}<span className="text-lg font-normal text-gray-400">/28</span></div>
+            <div className="text-sm font-medium text-gray-500 mt-1">Spectrometers Deployed</div>
+            <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
+              <div className="bg-indigo-500 h-2 rounded-full transition-all duration-500" style={{ width: `${deviceProgress}%` }}></div>
+            </div>
+          </div>
+
+          {/* Provinces Covered */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-emerald-100 p-3 rounded-xl">
+                <Globe size={28} className="text-emerald-600" />
+              </div>
+              <div className="text-right">
+                <div className="text-xs text-gray-400">Coverage</div>
+                <div className="text-sm font-bold text-emerald-600">{Math.round((stats.provinces.length / 13) * 100)}%</div>
+              </div>
+            </div>
+            <div className="text-4xl font-black text-gray-900">{stats.provinces.length}<span className="text-lg font-normal text-gray-400">/13</span></div>
+            <div className="text-sm font-medium text-gray-500 mt-1">Provinces & Territories</div>
+            <div className="flex flex-wrap gap-1 mt-3">
+              {stats.provinces.map(p => (
+                <span key={p} className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-medium">{p}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Cities */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between mb-4">
+              <div className="bg-amber-100 p-3 rounded-xl">
+                <Navigation size={28} className="text-amber-600" />
+              </div>
+              <Sparkline data={[8, 12, 14, 16, 18, 19, 20, 20]} color="#f59e0b" />
+            </div>
+            <div className="text-4xl font-black text-gray-900">20</div>
+            <div className="text-sm font-medium text-gray-500 mt-1">Cities Across Canada</div>
+            <div className="flex items-center gap-2 mt-3">
+              <Target size={14} className="text-amber-500" />
+              <span className="text-xs text-amber-600 font-medium">Coast to coast coverage</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Middle Row - Map and Regional Breakdown */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* Mini Canada Map */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <MapPin size={20} className="text-purple-600" />
+              Geographic Coverage
+            </h3>
+            <div className="flex items-center gap-6">
+              <div className="flex-1">
+                <MiniCanadaMap activeProvinces={stats.provinces} />
+              </div>
+              <div className="flex-1">
+                <div className="space-y-3">
+                  {Object.entries(regions).map(([region, data]) => (
+                    <div key={region}>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="font-medium text-gray-700">{region}</span>
+                        <span className="text-gray-500">{data.sites} sites</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className="bg-purple-500 h-2 rounded-full transition-all duration-500" 
+                          style={{ width: `${(data.sites / stats.totalPartners) * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded bg-purple-600"></div>
+                <span className="text-xs text-gray-500">Active Province</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded bg-gray-200"></div>
+                <span className="text-xs text-gray-500">No Coverage</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Exemption Types Donut */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <FileText size={20} className="text-purple-600" />
+              Exemption Types Distribution
+            </h3>
+            <div className="flex items-center justify-around">
+              <DonutChart data={exemptionData} size={160} />
+              <div className="space-y-4">
+                {exemptionData.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }}></div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-800">{item.label}</div>
+                      <div className="text-lg font-bold" style={{ color: item.color }}>{item.value} sites</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-gray-100 grid grid-cols-2 gap-4">
+              <div className="bg-blue-50 rounded-xl p-3 text-center">
+                <Smartphone size={20} className="mx-auto text-blue-600 mb-1" />
+                <div className="text-xl font-bold text-blue-700">{mobileCount}</div>
+                <div className="text-xs text-blue-600">Mobile Exemptions</div>
+              </div>
+              <div className="bg-emerald-50 rounded-xl p-3 text-center">
+                <Building2 size={20} className="mx-auto text-emerald-600 mb-1" />
+                <div className="text-xl font-bold text-emerald-700">{nonMobileCount}</div>
+                <div className="text-xs text-emerald-600">Non-Mobile Exemptions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Row - Province Breakdown */}
+        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <Activity size={20} className="text-purple-600" />
+            Province-by-Province Breakdown
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {provinceData.map(({ prov, count, devices }) => (
+              <div key={prov} className="bg-gray-50 rounded-xl p-4 hover:bg-purple-50 transition-colors">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-2xl font-black text-purple-700">{prov}</span>
+                  <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-lg text-xs font-bold">{devices} devices</span>
+                </div>
+                <div className="text-sm text-gray-600 mb-2">{count} partner site{count !== 1 ? 's' : ''}</div>
+                <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div 
+                    className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full transition-all duration-500" 
+                    style={{ width: `${(count / maxSites) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Table of Contents Component
 const TableOfContents = () => {
   const sections = [
-    { id: 'csuch', label: 'Canadian Substance Use Costs and Harms' },
+    { id: 'csuch', label: 'Picturing the Problem' },
     { id: 'news', label: 'News & Updates' },
     { id: 'timeline', label: 'Project Background & Timeline' },
     { id: 'presentation', label: 'Project Overview Presentation' },
+    { id: 'scatr-research', label: 'Scatr Technical Research Strategy' },
     { id: 'publications', label: 'Project-Related Publications' },
-    { id: 'documents', label: 'Research, Ethics & Related Documents' },
+    { id: 'documents', label: 'Research, Ethics & Exemptions Documents' },
     { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
     { id: 'table', label: 'Project Partner Contact Info' },
-    { id: 'metrics', label: 'Summary Metrics' },
+    { id: 'metrics', label: 'Network Summary & Analytics' },
     { id: 'faq', label: 'FAQ' },
     { id: 'discussion', label: 'Partner Discussion Board' },
     { id: 'links', label: 'Related Links & Resources' }
@@ -780,7 +1286,7 @@ const ProjectPartnerDashboard = () => {
     { id: 19, nameOrganization: "Breakaway", address: "21 Strickland Ave", city: "Toronto", prov: "ON", primaryContact: "Ruben Tarajano", email1: "Rubent@breakawaycs.ca", phone1: "647-883-1135", additionalContact: "Angie Porter", email2: "AngieP@breakawaycs.ca", phone2: "416-537-9346 Ext235", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 43.6532, lng: -79.3832 },
     { id: 20, nameOrganization: "AIDS New Brunswick", address: "354 King St", city: "Fredericton", prov: "NB", primaryContact: "Linda Thompson-Brown", email1: "linda@aidsnb.com", phone1: "506-455-2625", additionalContact: "Jess Gionet", email2: "Jess.gionet@aidsnb.com", phone2: "506-478-4765", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 45.9636, lng: -66.6431 },
     { id: 21, nameOrganization: "Avenue B Harm Reduction Inc.", address: "62 Waterloo St", city: "Saint John", prov: "NB", primaryContact: "Laura MacNeill", email1: "laura.macneill@avenueb.ca", phone1: "506-652-2437", additionalContact: "Allie Myles", email2: "allie.myles@avenueb.ca", phone2: "506-652-2437", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "Mobile", lat: 45.2733, lng: -66.0633 },
-    { id: 22, nameOrganization: "Boyle Street Service Society", address: "#201, 14065 Victoria Trail", city: "Edmonton", prov: "AB", primaryContact: "Sindi Addorisio", email1: "saddorisio@boylestreet.org", phone1: "587-340-2985", additionalContact: "Marliss Taylor", email2: "MTaylor@boylestreet.org", phone2: "708-915-2209", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 53.5461, lng: -113.4938 }
+    { id: 22, nameOrganization: "Boyle Street Service Society", address: "10740 99 St NW", city: "Edmonton", prov: "AB", primaryContact: "Sindi Addorisio", email1: "saddorisio@boylestreet.org", phone1: "587-340-2985", additionalContact: "Alyssa Miller", email2: "amiller@boylestreet.org", phone2: "780-424-4106", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 53.5461, lng: -113.4938 }
   ];
 
   const getSitesByProvince = () => {
@@ -1056,118 +1562,171 @@ const ProjectPartnerDashboard = () => {
   const ResearchDocuments = () => (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research, Ethics & Related Documents</h2>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research, Ethics & Exemptions Documents</h2>
       </div>
-      <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+      <div className="p-6 bg-gradient-to-br from-white to-purple-50 space-y-6">
+        {/* Ethics Section */}
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
+          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Ethics</h3>
           <div className="space-y-2">
             <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Device Use - Letter of Information & Consent (PDF)</a>
             <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Letter of Information & Consent (PDF)</a>
             <a href="/DCP-Survey.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Pre- and Post-Surveys (PDF)</a>
             <a href="/DCP-Certificate-Example.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Example Certificate of Achievement (PDF)</a>
             <a href="/Collaborative-Site-Agreement.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Collaborative Site Agreement - Example Template (PDF)</a>
+          </div>
+        </div>
+
+        {/* Exemptions Section */}
+        <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
+          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Exemptions</h3>
+          <div className="space-y-2">
             <a href="/Exemption-56-Template.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Exemption 56 Approved - Redacted Template (PDF)</a>
             <a href="/Exemption-56-Blank.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Exemption 56 Application - Blank Template (PDF)</a>
+          </div>
+        </div>
+
+        {/* Research Section */}
+        <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
+          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Research</h3>
+          <div className="space-y-2">
+            <a href="/SOP-Sample-Preparation.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Operational Excellence. Standard Operating Procedures for Sample Preparation (PDF)</a>
             <a href="/Scatr-Results-FAQ.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Results Explanation Document (PDF)</a>
             <a href="/Scatr-LOD-Study.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Series One LOD Study (PDF)</a>
             <a href="/Scatr-Technical-Research-Strategy.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Technical Research Strategy (PDF)</a>
+            <a href="/Canadian-Substance-Use-Costs-Harms-2007-2020.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Canadian Substance Use Costs and Harms Report 2007-2020 (PDF)</a>
+            <a href="/CIHR-SCS-Operational-Guidance-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />National Operational Guidance for the Implementation of Supervised Consumption Services - CIHR July 2023 (PDF)</a>
+            <a href="/CAPSA-Annual-Report-2023-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Community Addictions Peer Support Association (CAPSA). Annual Report 2023-2024 (PDF)</a>
+            <a href="/Ontario-CCRA-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Ontario Community Care and Recovery Act 2024 (PDF)</a>
+            <a href="/Canadian-Drugs-Substances-Strategy-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Government of Canada. The Canadian Drugs and Substances Strategy 2023 (PDF)</a>
           </div>
-          <p className="text-xs text-gray-500 mt-2 italic">Click to view or download PDF documents</p>
         </div>
+
+        <p className="text-xs text-gray-500 italic">Click to view or download PDF documents</p>
       </div>
     </div>
   );
 
   const linksData = [
-    // === PROJECT & SCATR RESOURCES ===
-    { title: "Western News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.", category: "Project & Scatr" },
-    { title: "Impact Canada - Drug Checking Challenge", url: "https://impact.canada.ca/en/challenges/drug-checking-challenge", description: "Official Government of Canada page for the Drug Checking Technology Challenge.", category: "Project & Scatr" },
-    { title: "Grand Prize Winner Announcement", url: "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html", description: "Health Canada announces Scatr Inc. as the $1 million grand prize winner.", category: "Project & Scatr" },
-    { title: "Scatr Portal (Partner Login)", url: "https://scatr.ca/auth", description: "Secure login for partners to access the drug-checking data management system.", category: "Project & Scatr" },
-    { title: "Scatr Live Dashboard", url: "https://scatr.live/", description: "Public dashboard with real-time drug-checking results across the network.", category: "Project & Scatr" },
-    // === DRUG CHECKING PROGRAMS ===
-    { title: "BCCSU Drug Checking", url: "https://drugcheckingbc.ca/", description: "BC Centre on Substance Use drug checking program information.", category: "Drug Checking" },
-    { title: "CCSA - Drug Checking", url: "https://www.ccsa.ca/drug-checking", description: "Canadian Centre on Substance Use resources on drug checking.", category: "Drug Checking" },
-    { title: "Sanguen - Drug Checking Program", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre - project partner.", category: "Drug Checking" },
-    { title: "CDA-AMC - Drug-Checking Technologies", url: "https://www.cadth.ca/", description: "Review of drug-checking technologies for unregulated substances.", category: "Drug Checking" },
-    // === GOVERNMENT & HEALTH CANADA ===
-    { title: "Health Canada - SUAP Active Projects", url: "https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html", description: "List of active projects funded through the Substance Use and Addictions Program.", category: "Government" },
-    { title: "Health Canada - Office of Controlled Substances", url: "https://www.canada.ca/en/health-canada/corporate/contact-us/office-controlled-substances.html", description: "Contact information for Health Canada's Office of Controlled Substances.", category: "Government" },
-    { title: "Health Canada - Opioid/Stimulant Harms", url: "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/", description: "Latest statistics on opioid and stimulant-related harms in Canada.", category: "Government" },
-    { title: "Health Canada - SCS Statistics", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/status-application.html", description: "Federal statistics on supervised consumption sites in Canada.", category: "Government" },
-    { title: "Health Canada - Apply for SCS", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/apply.html", description: "Federal application process for supervised consumption sites.", category: "Government" },
-    { title: "CCRA 2024 Legislation", url: "https://www.ontario.ca/laws/statute/24c27", description: "Full text of Ontario's Community Care and Recovery Act.", category: "Government" },
-    // === CATIE RESOURCES ===
-    { title: "CATIE - Harm Reduction Toolkit", url: "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers", description: "Comprehensive toolkit for implementing harm reduction approaches.", category: "CATIE" },
-    { title: "CATIE - Ontario HR Program", url: "https://www.catie.ca/caties-ontario-harm-reduction-program", description: "Distribution of harm reduction supplies across Ontario.", category: "CATIE" },
-    { title: "CATIE - Monitoring Drug Supply", url: "https://www.catie.ca/monitoring-and-responding-to-the-unregulated-drug-supply", description: "Resources on monitoring the unregulated drug supply.", category: "CATIE" },
-    // === CCSA RESOURCES ===
-    { title: "CCSA Main Site", url: "https://www.ccsa.ca/", description: "Canadian Centre on Substance Use and Addiction resources.", category: "CCSA" },
-    { title: "CSUCH - Costs and Harms Reports", url: "https://csuch.ca/publications/substance-use-costs-and-harms/", description: "Reports on economic and health burden of substance use.", category: "CCSA" },
-    // === HARM REDUCTION SERVICES ===
-    { title: "Vancouver Coastal Health - Harm Reduction", url: "https://www.vch.ca/en/health-topics/harm-reduction", description: "Comprehensive harm reduction information from BC health authority.", category: "Harm Reduction" },
-    { title: "Toward the Heart - Safer Use", url: "https://towardtheheart.com/safer-use", description: "BC harm reduction resources for safer drug use practices.", category: "Harm Reduction" },
-    { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services.", category: "Harm Reduction" },
-    { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Harm Reduction" },
-    // === RESEARCH & PUBLICATIONS ===
-    { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use.", category: "Research" },
-    { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk.", category: "Research" },
-    { title: "CIAJ - Ontario Drug Policy Analysis", url: "https://ciaj-icaj.ca/en/publications/", description: "Analysis of Ontario's drug policy changes and impacts.", category: "Research" },
+    // === WESTERN UNIVERSITY ===
+    { title: "Western News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.", category: "Western University" },
+    { title: "FLL Group Bio", url: "https://publish.uwo.ca/~flagugne/#about", description: "Principal Investigator's research group at Western University.", category: "Western University" },
+    // === SCATR INC. ===
+    { title: "Scatr Portal (Partner Login)", url: "https://scatr.ca/auth", description: "Secure login for partners to access the drug-checking data management system.", category: "Scatr Inc." },
+    { title: "Scatr Live Dashboard", url: "https://scatr.live/", description: "Public dashboard with real-time drug-checking results across the network.", category: "Scatr Inc." },
+    { title: "Grand Prize Winner Announcement", url: "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html", description: "Health Canada announces Scatr Inc. as the $1 million grand prize winner.", category: "Scatr Inc." },
+    { title: "Impact Canada - Drug Checking Challenge", url: "https://impact.canada.ca/en/challenges/drug-checking-challenge", description: "Official Government of Canada page for the Drug Checking Technology Challenge.", category: "Scatr Inc." },
+    // === PROJECT PARTNERS ===
+    { title: "Sanguen - Drug Checking Program", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre - project partner.", category: "Project Partners" },
+    { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Project Partners" },
+    // === HEALTH CANADA ===
+    { title: "Health Canada - SUAP Active Projects", url: "https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html", description: "List of active projects funded through the Substance Use and Addictions Program.", category: "Health Canada" },
+    { title: "Health Canada - Office of Controlled Substances", url: "https://www.canada.ca/en/health-canada/corporate/contact-us/office-controlled-substances.html", description: "Contact information for Health Canada's Office of Controlled Substances.", category: "Health Canada" },
+    { title: "Health Canada - Opioid/Stimulant Harms", url: "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/", description: "Latest statistics on opioid and stimulant-related harms in Canada.", category: "Health Canada" },
+    { title: "Health Canada - SCS Statistics", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/status-application.html", description: "Federal statistics on supervised consumption sites in Canada.", category: "Health Canada" },
+    { title: "Health Canada - Apply for SCS", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/apply.html", description: "Federal application process for supervised consumption sites.", category: "Health Canada" },
+    // === OTHER ===
+    { title: "BCCSU Drug Checking", url: "https://drugcheckingbc.ca/", description: "BC Centre on Substance Use drug checking program information.", category: "Other" },
+    { title: "CCSA - Drug Checking", url: "https://www.ccsa.ca/drug-checking", description: "Canadian Centre on Substance Use resources on drug checking.", category: "Other" },
+    { title: "CDA-AMC - Drug-Checking Technologies", url: "https://www.cadth.ca/", description: "Review of drug-checking technologies for unregulated substances.", category: "Other" },
+    { title: "CCRA 2024 Legislation", url: "https://www.ontario.ca/laws/statute/24c27", description: "Full text of Ontario's Community Care and Recovery Act.", category: "Other" },
+    { title: "CATIE - Harm Reduction Toolkit", url: "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers", description: "Comprehensive toolkit for implementing harm reduction approaches.", category: "Other" },
+    { title: "CATIE - Ontario HR Program", url: "https://www.catie.ca/caties-ontario-harm-reduction-program", description: "Distribution of harm reduction supplies across Ontario.", category: "Other" },
+    { title: "CATIE - Monitoring Drug Supply", url: "https://www.catie.ca/monitoring-and-responding-to-the-unregulated-drug-supply", description: "Resources on monitoring the unregulated drug supply.", category: "Other" },
+    { title: "CCSA Main Site", url: "https://www.ccsa.ca/", description: "Canadian Centre on Substance Use and Addiction resources.", category: "Other" },
+    { title: "CSUCH - Costs and Harms Reports", url: "https://csuch.ca/publications/substance-use-costs-and-harms/", description: "Reports on economic and health burden of substance use.", category: "Other" },
+    { title: "Vancouver Coastal Health - Harm Reduction", url: "https://www.vch.ca/en/health-topics/harm-reduction", description: "Comprehensive harm reduction information from BC health authority.", category: "Other" },
+    { title: "Toward the Heart - Safer Use", url: "https://towardtheheart.com/safer-use", description: "BC harm reduction resources for safer drug use practices.", category: "Other" },
+    { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services.", category: "Other" },
+    { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use.", category: "Other" },
+    { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk.", category: "Other" },
+    { title: "CIAJ - Ontario Drug Policy Analysis", url: "https://ciaj-icaj.ca/en/publications/", description: "Analysis of Ontario's drug policy changes and impacts.", category: "Other" },
   ];
 
-  const RelatedLinks = () => (
-    <div className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100">
-      <div className="flex items-center gap-3 mb-6"><ExternalLink className="text-purple-700" size={32} /><h2 className="font-bold text-2xl text-purple-900">Related Links & Resources</h2></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {linksData.map((link, idx) => (
-          <div key={idx} className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200 hover:shadow-lg transition-shadow">
-            <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 font-bold flex items-center gap-2 mb-2 text-sm">{link.title} <ExternalLink size={14} /></a>
-            <p className="text-xs text-gray-600">{link.description}</p>
-          </div>
-        ))}
+  const RelatedLinks = () => {
+    const categories = ['Western University', 'Scatr Inc.', 'Project Partners', 'Health Canada', 'Other'];
+    
+    return (
+      <div className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100">
+        <div className="flex items-center gap-3 mb-6"><ExternalLink className="text-purple-700" size={32} /><h2 className="font-bold text-2xl text-purple-900">Related Links & Resources</h2></div>
+        <div className="space-y-6">
+          {categories.map((category) => {
+            const categoryLinks = linksData.filter(link => link.category === category);
+            if (categoryLinks.length === 0) return null;
+            return (
+              <div key={category} className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
+                <h3 className="font-bold text-lg text-purple-900 mb-3">{category}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {categoryLinks.map((link, idx) => (
+                    <div key={idx} className="bg-white p-3 rounded-lg border border-purple-200 hover:shadow-lg transition-shadow">
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 font-bold flex items-center gap-2 mb-1 text-sm">{link.title} <ExternalLink size={14} /></a>
+                      <p className="text-xs text-gray-600">{link.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50" id="top">
       <BackToTop />
       {showAnnouncement && <AnnouncementBanner onDismiss={() => setShowAnnouncement(false)} />}
-      <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-purple-800 text-white p-6 shadow-2xl">
-        <div className="text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            Western University
-            <br /><br />
-            <span style={{ background: 'linear-gradient(90deg, #c0c0c0, #ffffff, #c0c0c0, #e8e8e8, #c0c0c0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundSize: '200% auto', textShadow: '0 0 20px rgba(255,255,255,0.3)' }}>A Novel Two Phase Drug-Checking Initiative:</span>
-            <br />
-            Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
-          </h1>
-          <p className="text-lg flex items-center justify-center gap-2 mt-4"><Users size={20} />In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-sky-300 font-bold hover:text-sky-100 hover:underline">Scatr Inc.</a></p>
+      {/* Header Section - Matching Keynote Design */}
+      <div className="bg-white shadow-lg">
+        <div className="px-8 py-8">
+          <div className="flex items-start">
+            <img src="/western-logo.png" alt="Western University" className="h-24 w-auto" />
+          </div>
+          <div className="mt-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight italic">
+              A Novel Concurrent Two Phase<br />Drug-Checking Initiative
+            </h1>
+            <div className="border-b-2 border-gray-300 my-6"></div>
+            <p className="text-lg md:text-xl text-black font-medium">
+              Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
+            </p>
+            <p className="text-base mt-4">
+              In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-purple-700 font-semibold hover:text-purple-900 hover:underline">Scatr Inc.</a>
+            </p>
+          </div>
         </div>
+        {/* Purple Bar */}
+        <div className="h-24 bg-purple-800"></div>
       </div>
-      <div className="px-6 pt-6"><ProjectContactInfo /></div>
+      <div className="px-6 pt-6"><ProjectPhases /></div>
+      <div className="px-6"><ProjectContactInfo /></div>
       <div className="text-center py-6 bg-gradient-to-r from-purple-50 to-white"><h2 className="text-5xl md:text-6xl font-black text-purple-900 tracking-tight">Interactive Project Partner Dashboard</h2></div>
       <div className="px-6 pb-4">
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the project's network and infrastructure. While facilitating communication and collaboration across sites, and serving as a resource hub for project-related information.</p>
           <TableOfContents />
-          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>), Western University's Phase #2 <em><a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</a></em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 spectrometers</strong> across <strong>22 distinct harm reduction sites</strong> across Canada.</p>
-          <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers before project end: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 devices</strong>.</p>
+          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>) Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 total spectrometers</strong> across Canada. Concluding project partner recruitment / spectrometer allocations for the current project Fiscal Year 2 (April 1st, 2025 - March 31st, 2026).</p>
+          <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 spectrometers</strong>.</p>
+          <p className="text-gray-800 leading-relaxed mt-4">The focus for the remainder of this <a href="#timeline" className="text-purple-700 hover:text-purple-900 underline font-semibold">Fiscal Year</a>, which ends on March 31st 2026, will be scheduling and conducting the Drug-Checking Peer Trainings (which includes the $3000 CAD per site, stipend), with our new cohort of project partners. If you are included in that cohort, Cameron will be contacting you shortly to begin scheduling and logistical planning.</p>
+          <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let me know if I can be of any further assistance at any time. Please also send me copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
         </div>
       </div>
       <div className="p-6 space-y-6">
         <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-            <h2 className="flex items-center gap-2 font-bold text-2xl">Canadian Substance Use Costs and Harms</h2>
+            <h2 className="flex items-center gap-2 font-bold text-2xl">Picturing the Problem</h2>
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-            <img src="/csuch-infographic.png" alt="Canadian Substance Use Costs and Harms Infographic" className="w-full rounded-lg shadow-lg" />
-            <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023</p>
+            <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+              <img src="/csuch-infographic.png" alt="Canadian Substance Use Costs and Harms Infographic" className="w-full rounded-lg shadow-lg cursor-pointer" />
+            </a>
+            <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023. <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">Explore the Data →</a></p>
           </div>
         </div>
         <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
         <div id="timeline" className="scroll-mt-4"><ProjectTimeline /></div>
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
+        <div id="scatr-research" className="scroll-mt-4"><ScatrResearchPDFViewer /></div>
         <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
         <div id="documents" className="scroll-mt-4"><ResearchDocuments /></div>
         <div id="map" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
@@ -1188,29 +1747,8 @@ const ProjectPartnerDashboard = () => {
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
-        <div id="metrics" className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100 scroll-mt-4">
-          <div className="flex items-center gap-3 mb-4"><Users className="text-purple-700" size={32} /><h2 className="font-bold text-2xl text-purple-900">Summary Metrics</h2></div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-5 rounded-xl shadow-lg border-2 border-purple-300 hover:shadow-2xl transition-shadow cursor-pointer" onClick={() => toggleMetric('total')}>
-              <div className="flex items-center justify-between"><div><div className="text-3xl font-bold text-purple-900">{stats.totalPartners}</div><div className="text-sm text-purple-700 font-medium mt-1">Total Partner Sites</div></div>{expandedMetrics.total ? <ChevronUp className="text-purple-700" /> : <ChevronDown className="text-purple-700" />}</div>
-              {expandedMetrics.total && <div className="mt-3 pt-3 border-t border-purple-300 text-xs text-purple-800 space-y-1">{partnersData.map(site => <div key={site.id}>• {site.nameOrganization}</div>)}</div>}
-            </div>
-            <div className="bg-gradient-to-br from-purple-200 to-purple-300 p-5 rounded-xl shadow-lg border-2 border-purple-400 hover:shadow-2xl transition-shadow"><div className="text-3xl font-bold text-purple-900">{stats.totalDevices} <span className="text-lg font-normal">(of 28 total)</span></div><div className="text-sm text-purple-700 font-medium mt-1">Devices Assigned</div></div>
-            <div className="bg-gradient-to-br from-indigo-100 to-indigo-200 p-5 rounded-xl shadow-lg border-2 border-indigo-300 hover:shadow-2xl transition-shadow cursor-pointer" onClick={() => toggleMetric('provinces')}>
-              <div className="flex items-center justify-between"><div><div className="text-3xl font-bold text-indigo-900">{stats.provinces.length}</div><div className="text-sm text-indigo-700 font-medium mt-1">Provinces/Territories</div></div>{expandedMetrics.provinces ? <ChevronUp className="text-indigo-700" /> : <ChevronDown className="text-indigo-700" />}</div>
-              {expandedMetrics.provinces && <div className="mt-3 pt-3 border-t border-indigo-300 text-xs text-indigo-800 space-y-2">{Object.entries(sitesByProvince).map(([prov, sites]) => <div key={prov}><div className="font-bold">{prov} ({sites.length}):</div>{sites.map((name, i) => <div key={i} className="ml-2">• {name}</div>)}</div>)}</div>}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gradient-to-br from-teal-100 to-teal-200 p-5 rounded-xl shadow-lg border-2 border-teal-300 hover:shadow-2xl transition-shadow cursor-pointer" onClick={() => toggleMetric('mobile')}>
-              <div className="flex items-center justify-between"><div><div className="text-2xl font-bold text-teal-900">{stats.mobileSites.length}</div><div className="text-sm text-teal-700 font-medium mt-1">Mobile Exemptions</div></div>{expandedMetrics.mobile ? <ChevronUp className="text-teal-700" /> : <ChevronDown className="text-teal-700" />}</div>
-              {expandedMetrics.mobile && <div className="mt-3 pt-3 border-t border-teal-300 text-xs text-teal-800 space-y-1">{stats.mobileSites.map(site => <div key={site.id}>• {site.nameOrganization}{site.hasBothExemptions ? '*' : ''}</div>)}<div className="mt-2 text-xs italic text-teal-600">* Has both exemption types</div></div>}
-            </div>
-            <div className="bg-gradient-to-br from-sky-100 to-sky-200 p-5 rounded-xl shadow-lg border-2 border-sky-300 hover:shadow-2xl transition-shadow cursor-pointer" onClick={() => toggleMetric('nonMobile')}>
-              <div className="flex items-center justify-between"><div><div className="text-2xl font-bold text-sky-900">{stats.nonMobileSites.length}</div><div className="text-sm text-sky-700 font-medium mt-1">Non-Mobile Exemptions</div></div>{expandedMetrics.nonMobile ? <ChevronUp className="text-sky-700" /> : <ChevronDown className="text-sky-700" />}</div>
-              {expandedMetrics.nonMobile && <div className="mt-3 pt-3 border-t border-sky-300 text-xs text-sky-800 space-y-1">{stats.nonMobileSites.map(site => <div key={site.id}>• {site.nameOrganization}{site.hasBothExemptions ? '*' : ''}</div>)}<div className="mt-2 text-xs italic text-sky-600">* Has both exemption types</div></div>}
-            </div>
-          </div>
+        <div id="metrics" className="scroll-mt-4">
+          <SummaryMetrics partnersData={partnersData} stats={stats} sitesByProvince={sitesByProvince} />
         </div>
         <div id="faq" className="scroll-mt-4"><FAQSection /></div>
         <div id="discussion" className="scroll-mt-4"><PartnerDiscussionBoard /></div>
