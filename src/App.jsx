@@ -28,6 +28,10 @@ const ANNOUNCEMENT_CONFIG = {
 
 // News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
 const NEWS_UPDATES = [
+  { date: '2026-03-17', title: '⚠️ Important Update: Ontario CTS Site Funding Announcement', description: 'On March 13, 2026, the Ontario Ministry of Health notified seven provincially-funded Consumption and Treatment Services (CTS) sites that provincial funding will terminate effective June 13, 2026. This announcement may affect certain Ontario project partner sites. Importantly, drug checking services are authorized under CDSA Section 56(1) — a separate federal pathway from supervised consumption. The Western University project team has prepared a detailed information document for affected partners outlining the regulatory landscape, your exemption status, and available options for continuing drug-checking services. Please contact Cameron directly with any questions.', link: { text: 'Download the Partner Information Document →', url: '/SCS-Closure-Partner-Update-Mar2026.pdf' } },
+  { date: '2026-03-12', title: '🚨 London Mass Overdose Event — Scatr Drug-Checking Plays Key Public Role', description: 'On March 11–12, 2026, London experienced a mass overdose emergency after a suspect drove through the downtown core distributing a toxic substance. Emergency services responded to 39 overdose-related calls in 24 hours and London hospitals activated a Code Orange Alert. Scatr drug-checking services at Carepoint (RHAC) played a direct public health role during the crisis. Lily Bialas, RHAC\'s Interim Director of Harm Reduction, was cited in CBC and CTV coverage highlighting the importance of on-site drug checking for providing timely, accurate information about drug supply trends — exactly what this network was built to do.', link: { text: 'CBC Coverage →', url: 'https://www.cbc.ca/news/canada/london/39-overdoses-free-drugs-london-ontario-9.7126514' } },
+  { date: '2026-03-18', title: '⚠️ Ontario CTS Funding Cuts — Drug-Checking Services Context', description: 'On March 13, 2026, the Ontario Ministry of Health notified seven provincially-funded Consumption and Treatment Services (CTS) sites that provincial funding will terminate effective June 13, 2026. Five of our Ontario partner sites may be affected. Critically, the Province confirmed in court proceedings that drug-checking services are NOT captured by the CCRA — they are authorized under a separate federal CDSA Section 56(1) pathway and may be able to continue independently of supervised consumption services. Please read the full information document and contact Cameron directly with any questions.', link: { text: 'Read the Full Information Document →', url: '/SCS-Closure-Information-Mar2026.pdf' } },
+  { date: '2026-02-08', title: '🎉 Paper Published in Harm Reduction Journal!', description: 'Our peer-reviewed manuscript has been published as open access in Harm Reduction Journal (Springer Nature). The paper — "Street drug monitoring with networked spectrometers powered by machine learning: a pilot study in Ontario, Canada" — reports on 7,752 samples analyzed across 10 Ontario sites over 14 months, comparing Raman spectroscopy against HPLC-MS and documenting participant consumption-related behavior changes. Congratulations to all co-authors and partner sites whose participation made this research possible!', link: { text: 'Read the Full Paper (Open Access) →', url: 'https://link.springer.com/article/10.1186/s12954-026-01403-3' } },
   { date: '2025-12-13', title: 'New Resource: Standard Operating Procedures for Sample Preparation', description: 'We have published the official Standard Operating Procedures (SOP) for Sample Preparation document. This resource outlines the proper protocols for packaging and labelling samples for transport to the Western Laboratory. All partner sites are reminded to review and adhere to these SOPs to ensure sample integrity, regulatory compliance, and accurate analysis results.', link: { text: 'View the SOP Document', url: '/SOP-Sample-Preparation.pdf' } },
   { date: '2025-12-12', title: 'Reminder: Sample Submission Accountability', description: 'Health Canada requires every sample to be accounted for. Please only use the sample submission feature in the Scatr portal when there is a real sample to submit. Accurate record-keeping is essential for regulatory compliance and the integrity of our network data.' },
   { date: '2025-12-12', title: 'Health Canada Releases Updated National Opioid & Stimulant Harms Data', description: 'The Public Health Agency of Canada has published updated national surveillance data showing a 17% decrease in opioid toxicity deaths in 2024 compared to 2023. Key findings: deaths dropped from 8,623 (2023) to 7,146 (2024), averaging 20 deaths per day (down from 22). Hospitalizations also fell 15%, alongside similar decreases in EMS responses and ED visits. BC, Alberta, Saskatchewan, Ontario, New Brunswick, and Yukon all reported decreases, with some jurisdictions attributing the decline partly to lower fentanyl concentrations in the drug supply.', link: { text: 'View the Full Report', url: 'https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/' } },
@@ -36,12 +40,11 @@ const NEWS_UPDATES = [
   { date: '2025-12-11', title: 'Project Partner Dashboard Launched', description: 'The new interactive dashboard is now live, providing partners with centralized access to project information, documents, and contact details.' },
   { date: '2025-12-01', title: '22 Partner Sites Now Active', description: 'We have successfully onboarded 22 partner sites across 7 provinces, 20 cities, with 24 spectrometers deployed.' },
   { date: '2025-11-15', title: 'Drug-Checking Peer Training Program Begins', description: 'Virtual training sessions are now being scheduled for partner sites. Contact the Project Manager to arrange training for your team.' },
-  { date: '2025-09-15', title: 'Manuscript Submitted to Harm Reduction Journal', description: 'Our peer-reviewed paper on street drug monitoring using Raman spectroscopy has been submitted for review.' },
+  { date: '2025-09-15', title: 'Manuscript Submitted to Harm Reduction Journal', description: 'Our peer-reviewed paper on street drug monitoring using Raman spectroscopy was submitted for review — now published February 8, 2026! See the News & Updates section above for the link.' },
 ];
 
 // FAQ Data
 const FAQ_DATA = [
-  { question: 'What is an Exemption 56 and does my site need one?', answer: 'An Exemption under Section 56 of the Controlled Drugs and Substances Act allows your site to legally handle controlled substances for drug-checking purposes. All partner sites require an approved exemption before operating. Templates are available in the Research Documents section.' },
   { question: 'How do I update my site\'s contact information on the dashboard?', answer: 'Contact the Project Manager with your updated information and we will update the dashboard accordingly.' },
   { question: 'Can I share this dashboard with others at my organization?', answer: 'Yes, you may share access with colleagues directly involved in the drug-checking program at your site. However, please do not share access with individuals outside of the project network.' },
   { question: 'What is the difference between Mobile and Non-Mobile exemptions?', answer: 'A Non-Mobile exemption allows drug-checking at a fixed location only. A Mobile exemption allows you to conduct drug-checking at various locations within your approved geographic area, such as outreach services or pop-up sites.' },
@@ -351,16 +354,55 @@ const ProjectPublications = () => (
         Project-Related Publications
       </h2>
     </div>
-    <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-      <div className="relative overflow-hidden rounded-xl border-2 border-gray-300 shadow-lg max-w-[50%] mx-auto">
-        <img src="/manuscript-preview.png" alt="Manuscript Preview" className="w-full blur-sm" />
-        <div className="absolute inset-0 bg-white opacity-75"></div>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-5xl font-bold text-red-500 opacity-80 rotate-[-30deg] text-center">UNDER REVIEW<br />Harm Reduction Journal</span>
+    <div className="p-6 bg-gradient-to-br from-white to-purple-50 space-y-4">
+      {/* Published Paper Card */}
+      <div className="bg-white rounded-xl border-2 border-green-300 shadow-lg p-6">
+        <div className="flex items-start gap-4">
+          <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap flex-shrink-0">
+            ✓ PUBLISHED
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">Open Access</span>
+              <span className="text-xs text-gray-500">Harm Reduction Journal · February 8, 2026</span>
+            </div>
+            <h3 className="font-bold text-purple-900 text-lg leading-snug mb-2">
+              Street drug monitoring with networked spectrometers powered by machine learning: a pilot study in Ontario, Canada
+            </h3>
+            <p className="text-sm text-gray-600 mb-3">
+              Aliyari E., Brown C., Van Boheemen M., Wardlaw L., Storm T., Hopkins A.M., Ezepue S., Dewar D., Sodtke L., McNab K., Watkins J., Pham A.T., Oudshoorn A., &amp; Lagugné-Labarthet F.
+            </p>
+            <p className="text-sm text-gray-500 italic mb-4">
+              <em>Harm Reduction Journal</em>, Volume 23, Article 45 (2026). DOI: 10.1186/s12954-026-01403-3
+            </p>
+            <p className="text-sm text-gray-700 mb-4">
+              Reports on 7,752 street drug samples analyzed across 10 Ontario harm reduction sites over 14 months (July 2023–August 2024) using networked Raman spectrometers with ML-enabled real-time analysis. Includes comparative validation against HPLC-MS and self-reported participant consumption-related behavior change data from 3,902 respondents.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://link.springer.com/article/10.1186/s12954-026-01403-3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition-colors text-sm font-medium"
+              >
+                <ExternalLink size={16} />
+                Read Full Paper
+              </a>
+              <a
+                href="https://link.springer.com/content/pdf/10.1186/s12954-026-01403-3.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-purple-700 border-2 border-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-colors text-sm font-medium"
+              >
+                <Download size={16} />
+                Download PDF
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <p className="text-sm text-gray-600 mt-4 text-center italic">
-        Publication details will be updated upon peer review completion and acceptance.
+      <p className="text-xs text-gray-500 text-center italic">
+        Additional publications will be listed here as the project progresses.
       </p>
     </div>
   </div>
@@ -455,15 +497,6 @@ const PartnerDiscussionBoard = () => {
                       We'll notify all partners when the discussion board is ready!
                     </p>
                   </div>
-                </div>
-              </div>
-              
-              <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                <div className="font-bold text-gray-700 mb-2">Planned Forum Categories:</div>
-                <div className="flex flex-wrap gap-2">
-                  {['General Discussion', 'Technical Support', 'Device Issues', 'Training & Onboarding', 'Best Practices', 'Success Stories', 'Policy Updates', 'Research & Data'].map((cat, idx) => (
-                    <span key={idx} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">{cat}</span>
-                  ))}
                 </div>
               </div>
             </div>
@@ -635,7 +668,7 @@ const FAQSection = () => {
         </div>
         <div className="mt-6 bg-gradient-to-br from-purple-100 to-purple-200 p-4 rounded-xl border-2 border-purple-300">
           <p className="text-sm text-purple-800">
-            <span className="font-bold">Still have questions?</span> Contact the Project Manager at{' '}
+            <span className="font-bold">Further Questions?</span> Contact the Project Manager at{' '}
             <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-purple-900">cbrown58@uwo.ca</a>
             {' '}or call <span className="font-medium">226-238-9970</span>.
           </p>
@@ -1137,6 +1170,21 @@ const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
                 <span className="text-xs text-gray-500">No Coverage</span>
               </div>
             </div>
+            {/* Province-by-Province Breakdown */}
+            <div className="mt-4 pt-4 border-t border-gray-100">
+              <h4 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <Activity size={16} className="text-purple-600" />
+                Province-by-Province Breakdown
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {provinceData.map(({ prov, count, devices }) => (
+                  <div key={prov} className="bg-gray-50 rounded-lg px-3 py-2 hover:bg-purple-50 transition-colors flex items-center gap-2">
+                    <span className="text-lg font-black text-purple-700">{prov}</span>
+                    <span className="text-xs text-gray-600">{devices} device{devices !== 1 ? 's' : ''} · {count} site{count !== 1 ? 's' : ''}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Exemption Types Donut */}
@@ -1173,31 +1221,6 @@ const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
             </div>
           </div>
         </div>
-
-        {/* Bottom Row - Province Breakdown */}
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <Activity size={20} className="text-purple-600" />
-            Province-by-Province Breakdown
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {provinceData.map(({ prov, count, devices }) => (
-              <div key={prov} className="bg-gray-50 rounded-xl p-4 hover:bg-purple-50 transition-colors">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-2xl font-black text-purple-700">{prov}</span>
-                  <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-lg text-xs font-bold">{devices} devices</span>
-                </div>
-                <div className="text-sm text-gray-600 mb-2">{count} partner site{count !== 1 ? 's' : ''}</div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full transition-all duration-500" 
-                    style={{ width: `${(count / maxSites) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -1207,8 +1230,8 @@ const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
 const TableOfContents = () => {
   const sections = [
     { id: 'csuch', label: 'Picturing the Problem' },
-    { id: 'news', label: 'News & Updates' },
     { id: 'timeline', label: 'Project Background & Timeline' },
+    { id: 'news', label: 'News & Updates' },
     { id: 'presentation', label: 'Project Overview Presentation' },
     { id: 'scatr-research', label: 'Scatr Technical Research Strategy' },
     { id: 'publications', label: 'Project-Related Publications' },
@@ -1266,7 +1289,7 @@ const ProjectPartnerDashboard = () => {
 
   const partnersData = [
     { id: 1, nameOrganization: "Western University", address: "1151 Richmond Street", city: "London", prov: "ON", primaryContact: "Francois Lagugne-Labarthet, Primary Investigator", email1: "flagugne@uwo.ca", phone1: "519-661-2111 x81006", additionalContact: "Cameron Brown, Project Manager", email2: "cbrown58@uwo.ca", phone2: "226-238-9970", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 42.9849, lng: -81.2453, isLead: true },
-    { id: 2, nameOrganization: "Regional HIV/AIDS Connection (RHAC)", address: "446 York Street", city: "London", prov: "ON", primaryContact: "Megan Van Boheemen", email1: "mvanboheemen@hivaidsconnection.ca", phone1: "226-377-8721", additionalContact: "Donovan Wiebe", email2: "DWiebe@hivaidsconnection.ca", phone2: "519-434-1601", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 42.9835, lng: -81.2497 },
+    { id: 2, nameOrganization: "Regional HIV/AIDS Connection (RHAC)", address: "446 York Street", city: "London", prov: "ON", primaryContact: "Lily Bialas, Interim Director of Harm Reduction", email1: "lbialas@hivaidsconnection.ca", phone1: "226-377-8721", additionalContact: "Donovan Wiebe", email2: "DWiebe@hivaidsconnection.ca", phone2: "519-434-1601", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 42.9835, lng: -81.2497 },
     { id: 3, nameOrganization: "Sandy Hill Community Health Centre", address: "221 Nelson Street", city: "Ottawa", prov: "ON", primaryContact: "Dean Dewar", email1: "ddewar@sandyhillchc.on.ca", phone1: "613-795-8985", additionalContact: "Fiona Miller", email2: "fmiller@sandyhillchc.on.ca", phone2: "613-277-8932", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 45.4215, lng: -75.6972 },
     { id: 4, nameOrganization: "Ottawa Inner City Health", address: "5 Myrand Ave", city: "Ottawa", prov: "ON", primaryContact: "Louise Beaudoin", email1: "lbeaudoin@oich.ca", phone1: "613-797-7514", additionalContact: "Chad Bouthillier", email2: "cbouthillier@oich.ca", phone2: "613-709-9656", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 45.4235, lng: -75.6919 },
     { id: 5, nameOrganization: "Lower Mainland Purpose Society", address: "40 Begbie Street", city: "New Westminster", prov: "BC", primaryContact: "Lynda Fletcher-Gordon", email1: "lyndafg@purposesociety.org", phone1: "604-526-2522", additionalContact: "Jasmine Kaur", email2: "jasmine.kaur@purposesociety.org", phone2: "236-883-5584", devicesAssigned: "1", exemptionType1: "Mobile", exemptionType2: "NA", lat: 49.2057, lng: -122.9110 },
@@ -1565,6 +1588,33 @@ const ProjectPartnerDashboard = () => {
         <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research, Ethics & Exemptions Documents</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50 space-y-6">
+        {/* Policy & Announcements Section */}
+        <div className="bg-gradient-to-br from-red-50 to-white p-4 rounded-xl border-2 border-red-200">
+          <h3 className="font-bold text-lg text-red-900 mb-3 flex items-center gap-2">
+            <AlertTriangle size={18} className="text-red-600" />
+            Policy & Announcements
+          </h3>
+          <div className="space-y-2">
+            <a href="/SCS-Closure-Partner-Update-Mar2026.pdf" target="_blank" className="flex items-center gap-2 text-red-700 hover:text-red-900 text-sm p-2 bg-white rounded border border-red-200 hover:bg-red-50"><Download size={16} />Ontario CTS Funding Announcement — Drug-Checking Partner Information Document (March 17, 2026)</a>
+          </div>
+        </div>
+
+        {/* Research Section */}
+        <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
+          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Research</h3>
+          <div className="space-y-2">
+            <a href="/SOP-Sample-Preparation.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Operational Excellence. Standard Operating Procedures for Sample Preparation (PDF)</a>
+            <a href="/Scatr-Results-FAQ.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Results Explanation Document (PDF)</a>
+            <a href="/Scatr-LOD-Study.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Series One LOD Study (PDF)</a>
+            <a href="/Scatr-Technical-Research-Strategy.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Technical Research Strategy (PDF)</a>
+            <a href="/Canadian-Substance-Use-Costs-Harms-2007-2020.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Canadian Substance Use Costs and Harms Report 2007-2020 (PDF)</a>
+            <a href="/CIHR-SCS-Operational-Guidance-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />National Operational Guidance for the Implementation of Supervised Consumption Services - CIHR July 2023 (PDF)</a>
+            <a href="/CAPSA-Annual-Report-2023-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Community Addictions Peer Support Association (CAPSA). Annual Report 2023-2024 (PDF)</a>
+            <a href="/Ontario-CCRA-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Ontario Community Care and Recovery Act 2024 (PDF)</a>
+            <a href="/Canadian-Drugs-Substances-Strategy-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Government of Canada. The Canadian Drugs and Substances Strategy 2023 (PDF)</a>
+          </div>
+        </div>
+
         {/* Ethics Section */}
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
           <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Ethics</h3>
@@ -1583,22 +1633,6 @@ const ProjectPartnerDashboard = () => {
           <div className="space-y-2">
             <a href="/Exemption-56-Template.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Exemption 56 Approved - Redacted Template (PDF)</a>
             <a href="/Exemption-56-Blank.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Exemption 56 Application - Blank Template (PDF)</a>
-          </div>
-        </div>
-
-        {/* Research Section */}
-        <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Research</h3>
-          <div className="space-y-2">
-            <a href="/SOP-Sample-Preparation.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Operational Excellence. Standard Operating Procedures for Sample Preparation (PDF)</a>
-            <a href="/Scatr-Results-FAQ.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Results Explanation Document (PDF)</a>
-            <a href="/Scatr-LOD-Study.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Series One LOD Study (PDF)</a>
-            <a href="/Scatr-Technical-Research-Strategy.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Technical Research Strategy (PDF)</a>
-            <a href="/Canadian-Substance-Use-Costs-Harms-2007-2020.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Canadian Substance Use Costs and Harms Report 2007-2020 (PDF)</a>
-            <a href="/CIHR-SCS-Operational-Guidance-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />National Operational Guidance for the Implementation of Supervised Consumption Services - CIHR July 2023 (PDF)</a>
-            <a href="/CAPSA-Annual-Report-2023-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Community Addictions Peer Support Association (CAPSA). Annual Report 2023-2024 (PDF)</a>
-            <a href="/Ontario-CCRA-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Ontario Community Care and Recovery Act 2024 (PDF)</a>
-            <a href="/Canadian-Drugs-Substances-Strategy-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Government of Canada. The Canadian Drugs and Substances Strategy 2023 (PDF)</a>
           </div>
         </div>
 
@@ -1673,47 +1707,135 @@ const ProjectPartnerDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50" id="top">
+    <div className="min-h-screen bg-white" id="top">
       <BackToTop />
       {showAnnouncement && <AnnouncementBanner onDismiss={() => setShowAnnouncement(false)} />}
       {/* Header Section - Matching Keynote Design */}
       <div className="bg-white shadow-lg">
         <div className="px-8 py-8">
-          <div className="flex items-start">
-            {/* Western University Logo with Text */}
-            <div className="flex flex-col items-center">
-              <img src="/western-logo.png" alt="Western University Crest" className="h-16 w-auto" />
-              <span className="text-purple-800 text-2xl italic font-serif mt-1">Western</span>
-              <span className="text-gray-500 text-xs tracking-widest">UNIVERSITY · CANADA</span>
+          <div className="flex items-stretch gap-8">
+            {/* Western University Logo */}
+            <img src="/western-logo.png" alt="Western University" style={{height: '365px', width: 'auto'}} />
+            {/* Text Content */}
+            <div className="flex flex-col justify-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
+                A Novel Concurrent Two Phase<br />Drug-Checking Initiative
+              </h1>
+              <div className="border-b-2 border-gray-300 my-2"></div>
+              <p className="text-lg md:text-xl text-black font-medium">
+                Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
+              </p>
+              <p className="text-base mt-1">
+                In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:text-blue-800 hover:underline">Scatr Inc.</a>
+              </p>
             </div>
-          </div>
-          <div className="mt-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-              A Novel Concurrent Two Phase<br />Drug-Checking Initiative
-            </h1>
-            <div className="border-b-2 border-gray-300 my-6"></div>
-            <p className="text-lg md:text-xl text-black font-medium">
-              Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
-            </p>
-            <p className="text-base mt-4">
-              In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-sky-400 font-semibold hover:text-sky-500 hover:underline">Scatr Inc.</a>
-            </p>
           </div>
         </div>
         {/* Purple Bar */}
         <div className="h-24 bg-purple-800"></div>
       </div>
-      <div className="px-6 pt-6"><ProjectPhases /></div>
-      <div className="px-6"><ProjectContactInfo /></div>
-      <div className="text-center py-6 bg-gradient-to-r from-purple-50 to-white"><h2 className="text-5xl md:text-6xl font-black text-purple-900 tracking-tight">Interactive Project Partner Dashboard</h2></div>
+      {/* Combined Project Intro & Info Section */}
+      <div className="px-6 pt-6">
+        <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
+          <h2 className="text-3xl font-bold text-purple-900 mb-6">Overview</h2>
+          {/* Phase Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center">
+              <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #1</h3>
+              <p className="text-gray-800 font-semibold mb-2">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</p>
+              <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
+              <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2223-HQ-000095</p>
+            </div>
+            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center">
+              <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3>
+              <p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p>
+              <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
+              <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p>
+            </div>
+          </div>
+          {/* Health Canada SUAP Table */}
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-md">
+              <thead>
+                <tr className="bg-purple-100">
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Organization</th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Project Name</th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Description</th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Substances</th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Location</th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Funding</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="hover:bg-purple-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">University of Western Ontario</td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Leading the Way: People with Lived and Living Experience at the Forefront of Drug-Checking Initiative</td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-700 align-top">
+                    This initiative will integrate People with Lived and Living Experience (PWLLE) into drug-checking initiatives by training them in drug-checking technologies to enable them to implement drug-checking initiatives and training programs in participating harm reduction and public health centres in Alberta, Ontario, Manitoba and Nova Scotia.
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Multiple substances</td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">London, Ontario</td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top font-medium">$4,473,473</td>
+                </tr>
+              </tbody>
+            </table>
+            <p className="text-xs text-gray-500 mt-2 text-right">Source: <a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:underline">Health Canada SUAP Active Projects</a></p>
+          </div>
+          {/* Project Status Text */}
+          <div className="mt-6">
+            <p className="text-gray-800 leading-relaxed">As of today (<strong>{todayFormatted}</strong>) Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 total spectrometers</strong> across Canada. Concluding project partner recruitment / spectrometer allocations for the current project Fiscal Year 2 (April 1st, 2025 - March 31st, 2026).</p>
+            <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 spectrometers</strong>.</p>
+            <p className="text-gray-800 leading-relaxed mt-4">The focus for the remainder of this <a href="#timeline" className="text-purple-700 hover:text-purple-900 underline font-semibold">Fiscal Year</a>, which ends on March 31st 2026, will be scheduling and conducting the Drug-Checking Peer Trainings (which includes the $3000 CAD per site, stipend), with our new cohort of project partners. If you are included in that cohort, Cameron will be contacting you shortly to begin scheduling and logistical planning.</p>
+            <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let Cameron know if he can be of any ongoing assistance at any time. Please also send Cameron copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
+          </div>
+          {/* Contact Info */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            <div className="bg-white p-4 rounded-xl border border-purple-200">
+              <div className="font-bold text-purple-900 mb-2">Principal Investigator (PI):</div>
+              <div className="text-gray-800 font-medium">Professor Francois Lagugne-Labarthet</div>
+              <div className="text-gray-600">Faculty of Science, Western University</div>
+              <div className="text-gray-600">London, ON, Canada</div>
+              <div className="flex items-center gap-2 mt-2 text-purple-700">
+                <Phone size={14} />
+                <span>519-661-2111 x81006</span>
+              </div>
+              <div className="flex items-center gap-2 text-purple-700">
+                <Mail size={14} />
+                <a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a>
+              </div>
+              <div className="flex items-center gap-2 mt-2 text-purple-700">
+                <ExternalLink size={14} />
+                <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-xl border border-purple-200">
+              <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
+              <div className="text-gray-800 font-medium">Cameron Brown</div>
+              <div className="text-gray-600">Faculty of Science, Western University</div>
+              <div className="text-gray-600">London, ON, Canada</div>
+              <div className="flex items-center gap-2 mt-2 text-purple-700">
+                <Phone size={14} />
+                <span>226-238-9970</span>
+              </div>
+              <div className="flex items-center gap-2 text-purple-700">
+                <Mail size={14} />
+                <a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a>
+              </div>
+              <div className="flex items-center gap-2 mt-2 text-purple-700">
+                <ExternalLink size={14} />
+                <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Purple Bar */}
+      <div className="h-24 bg-purple-800 mt-6"></div>
+      <div className="text-center py-6 bg-white"><h2 className="text-5xl md:text-6xl font-black text-purple-900 tracking-tight">Interactive Project Partner Dashboard</h2></div>
       <div className="px-6 pb-4">
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the project's network and infrastructure. While facilitating communication and collaboration across sites, and serving as a resource hub for project-related information.</p>
           <TableOfContents />
-          <p className="text-gray-800 leading-relaxed mt-4">As of today (<strong>{todayFormatted}</strong>) Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 total spectrometers</strong> across Canada. Concluding project partner recruitment / spectrometer allocations for the current project Fiscal Year 2 (April 1st, 2025 - March 31st, 2026).</p>
-          <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 spectrometers</strong>.</p>
-          <p className="text-gray-800 leading-relaxed mt-4">The focus for the remainder of this <a href="#timeline" className="text-purple-700 hover:text-purple-900 underline font-semibold">Fiscal Year</a>, which ends on March 31st 2026, will be scheduling and conducting the Drug-Checking Peer Trainings (which includes the $3000 CAD per site, stipend), with our new cohort of project partners. If you are included in that cohort, Cameron will be contacting you shortly to begin scheduling and logistical planning.</p>
-          <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let me know if I can be of any further assistance at any time. Please also send me copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
         </div>
       </div>
       <div className="p-6 space-y-6">
@@ -1728,8 +1850,8 @@ const ProjectPartnerDashboard = () => {
             <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023. <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">Explore the Data →</a></p>
           </div>
         </div>
-        <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
         <div id="timeline" className="scroll-mt-4"><ProjectTimeline /></div>
+        <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
         <div id="scatr-research" className="scroll-mt-4"><ScatrResearchPDFViewer /></div>
         <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
