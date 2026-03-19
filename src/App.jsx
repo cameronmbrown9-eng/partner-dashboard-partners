@@ -28,7 +28,7 @@ const ANNOUNCEMENT_CONFIG = {
 
 // News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
 const NEWS_UPDATES = [
-  { date: '2026-03-17', title: '⚠️ Important Update: Ontario CTS Site Funding Announcement', description: 'On March 13, 2026, the Ontario Ministry of Health notified seven provincially-funded Consumption and Treatment Services (CTS) sites that provincial funding will terminate effective June 13, 2026. This announcement may affect certain Ontario project partner sites. Importantly, drug checking services are authorized under CDSA Section 56(1) — a separate federal pathway from supervised consumption. The Western University project team has prepared a detailed information document for affected partners outlining the regulatory landscape, your exemption status, and available options for continuing drug-checking services. Please contact Cameron directly with any questions.', link: { text: 'Download the Partner Information Document →', url: '/SCS-Closure-Partner-Update-Mar2026.pdf' } },
+  { date: '2026-03-17', title: '⚠️ Important Update: Ontario CTS Site Funding Announcement', description: 'On March 13, 2026, the Ontario Ministry of Health notified seven provincially-funded Consumption and Treatment Services (CTS) sites that provincial funding will terminate effective June 13, 2026. This announcement may affect certain Ontario project partner sites. Importantly, drug checking services are authorized under CDSA Section 56(1) — a separate federal pathway from supervised consumption. The Western University project team has prepared a detailed information document for affected partners outlining the regulatory landscape, your exemption status, and available options for continuing drug-checking services. Please contact Cameron directly with any questions.', link: { text: 'Download the Partner Information Document →', url: '/SCS-Closure-Information-Mar2026.pdf' } },
   { date: '2026-03-12', title: '🚨 London Mass Overdose Event — Scatr Drug-Checking Plays Key Public Role', description: 'On March 11–12, 2026, London experienced a mass overdose emergency after a suspect drove through the downtown core distributing a toxic substance. Emergency services responded to 39 overdose-related calls in 24 hours and London hospitals activated a Code Orange Alert. Scatr drug-checking services at Carepoint (RHAC) played a direct public health role during the crisis. Lily Bialas, RHAC\'s Interim Director of Harm Reduction, was cited in CBC and CTV coverage highlighting the importance of on-site drug checking for providing timely, accurate information about drug supply trends — exactly what this network was built to do.', link: { text: 'CBC Coverage →', url: 'https://www.cbc.ca/news/canada/london/39-overdoses-free-drugs-london-ontario-9.7126514' } },
   { date: '2026-03-18', title: '📄 DCP Training Invoice Package Now Available', description: 'The Drug-Checking Peer (DCP) Training & Certification Invoice Submission Package is now available for download. East Coast and other upcoming training sites: please complete and return your invoice to Cameron at cbrown58@uwo.ca as soon as possible so that your $3,000 CAD stipend can be processed before month end. If your organization already has its own invoice format, feel free to use that — the package is provided as a guide for sites that need one.', link: { text: 'Download Invoice Package →', url: '/DCP-Invoice-Template.docx' } },
   { date: '2026-03-18', title: '⚠️ Ontario CTS Funding Cuts — Drug-Checking Services Context', description: 'On March 13, 2026, the Ontario Ministry of Health notified seven provincially-funded Consumption and Treatment Services (CTS) sites that provincial funding will terminate effective June 13, 2026. Five of our Ontario partner sites may be affected. Critically, the Province confirmed in court proceedings that drug-checking services are NOT captured by the CCRA — they are authorized under a separate federal CDSA Section 56(1) pathway and may be able to continue independently of supervised consumption services. Please read the full information document and contact Cameron directly with any questions.', link: { text: 'Read the Full Information Document →', url: '/SCS-Closure-Information-Mar2026.pdf' } },
@@ -111,7 +111,7 @@ const ProjectPhases = () => (
         <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3>
         <p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p>
         <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
-        <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p>
+        <p className="text-sm text-gray-600">Amendment of Contribution Agreement_Arrangement # 2425-HQ-000058</p>
       </div>
     </div>
     <div className="mt-6 overflow-x-auto">
@@ -172,7 +172,7 @@ const ProjectContactInfo = ({ isFooter = false }) => (
 );
 
 const PowerPointViewer = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const pptxUrl = `https://partners.uwo-drugchecking.ca/project-presentation.pptx?v=${Date.now()}`;
   const embedUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
@@ -180,9 +180,12 @@ const PowerPointViewer = () => {
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden mb-8">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
         <h2 className="flex items-center gap-2 font-bold text-2xl"><Presentation size={28} />Project Overview Presentation</h2>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {isExpanded && <button onClick={(e) => { e.stopPropagation(); setIsFullscreen(!isFullscreen); }} className="p-2 hover:bg-purple-600 rounded-lg transition-colors">{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>}
-          {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+          <div className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-lg">
+            <span className="text-sm font-medium">{isExpanded ? 'Collapse' : 'Expand'}</span>
+            {isExpanded ? <ChevronUp size={28} strokeWidth={2.5} /> : <ChevronDown size={28} strokeWidth={2.5} />}
+          </div>
         </div>
       </div>
       {isExpanded && (
@@ -199,16 +202,19 @@ const PowerPointViewer = () => {
 };
 
 const ScatrResearchPDFViewer = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const pdfUrl = `https://partners.uwo-drugchecking.ca/Scatr-Technical-Research-Strategy.pdf`;
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden mb-8">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
         <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Scatr Technical Research Strategy</h2>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {isExpanded && <button onClick={(e) => { e.stopPropagation(); setIsFullscreen(!isFullscreen); }} className="p-2 hover:bg-purple-600 rounded-lg transition-colors">{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>}
-          {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+          <div className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-lg">
+            <span className="text-sm font-medium">{isExpanded ? 'Collapse' : 'Expand'}</span>
+            {isExpanded ? <ChevronUp size={28} strokeWidth={2.5} /> : <ChevronDown size={28} strokeWidth={2.5} />}
+          </div>
         </div>
       </div>
       {isExpanded && (
@@ -255,12 +261,15 @@ const ProjectPublications = () => (
 );
 
 const PartnerDiscussionBoard = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
         <h2 className="flex items-center gap-2 font-bold text-2xl"><MessageSquare size={28} />Partner Discussion Board</h2>
-        {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+        <div className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-lg">
+          <span className="text-sm font-medium">{isExpanded ? 'Collapse' : 'Expand'}</span>
+          {isExpanded ? <ChevronUp size={28} strokeWidth={2.5} /> : <ChevronDown size={28} strokeWidth={2.5} />}
+        </div>
       </div>
       {isExpanded && (
         <div className="p-6 bg-gradient-to-br from-white to-purple-50">
@@ -620,15 +629,13 @@ const TableOfContents = () => {
     { id: 'csuch', label: 'Picturing the Problem' },
     { id: 'timeline', label: 'Project Background & Timeline' },
     { id: 'news', label: 'News & Updates' },
+    { id: 'publications', label: 'Project-Related Publications' },
     { id: 'presentation', label: 'Project Overview Presentation' },
     { id: 'scatr-research', label: 'Scatr Technical Research Strategy' },
-    { id: 'publications', label: 'Project-Related Publications' },
     { id: 'documents', label: 'Research, Ethics & Exemptions Documents' },
-    { id: 'map', label: 'Interactive Map View of Project Partner Sites' },
+    { id: 'map', label: 'Interactive Map View of Partner Sites' },
     { id: 'table', label: 'Project Partner Contact Info' },
     { id: 'metrics', label: 'Network Summary & Analytics' },
-    { id: 'faq', label: 'FAQ' },
-    { id: 'discussion', label: 'Partner Discussion Board' },
     { id: 'links', label: 'Related Links & Resources' }
   ];
   const scrollTo = (id) => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
@@ -715,6 +722,29 @@ const ProjectCountdown = () => {
 };
 // ─── End ProjectCountdown ─────────────────────────────────────────────────────
 
+const PicturingTheProblem = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  return (
+    <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
+        <h2 className="flex items-center gap-2 font-bold text-2xl">Picturing the Problem</h2>
+        <div className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-lg">
+          <span className="text-sm font-medium">{isExpanded ? 'Collapse' : 'Expand'}</span>
+          {isExpanded ? <ChevronUp size={28} strokeWidth={2.5} /> : <ChevronDown size={28} strokeWidth={2.5} />}
+        </div>
+      </div>
+      {isExpanded && (
+        <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+          <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+            <img src="/csuch-infographic.png" alt="Canadian Substance Use Costs and Harms Infographic" className="w-full rounded-lg shadow-lg cursor-pointer" />
+          </a>
+          <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023. <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">Explore the Data →</a></p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ProjectPartnerDashboard = () => {
   const [expandedMetrics, setExpandedMetrics] = useState({});
   const [expandedRow, setExpandedRow] = useState(null);
@@ -776,7 +806,10 @@ const ProjectPartnerDashboard = () => {
     const currentYear = today.getFullYear();
     const dayOfYear = Math.floor((today - new Date(currentYear, 0, 1)) / (1000 * 60 * 60 * 24)) + 1;
     const daysInYear = ((currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0) ? 366 : 365;
-    const hcProgressPercent = (((currentYear - 2022) + dayOfYear / daysInYear) / 6) * 100;
+    // Timeline spans 2022–2028 (6 years). Calculate exact position.
+    const timelineStart = new Date('2022-01-01');
+    const timelineEnd = new Date('2028-12-31');
+    const hcProgressPercent = Math.min(98, Math.max(2, ((today - timelineStart) / (timelineEnd - timelineStart)) * 100));
     const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     const challengeUrl = "https://impact.canada.ca/en/challenges/drug-checking-challenge";
     return (
@@ -935,7 +968,7 @@ const ProjectPartnerDashboard = () => {
         <div className="bg-gradient-to-br from-red-50 to-white p-4 rounded-xl border-2 border-red-200">
           <h3 className="font-bold text-lg text-red-900 mb-3 flex items-center gap-2"><AlertTriangle size={18} className="text-red-600" />Policy & Announcements</h3>
           <div className="space-y-2">
-            <a href="/SCS-Closure-Partner-Update-Mar2026.pdf" target="_blank" className="flex items-center gap-2 text-red-700 hover:text-red-900 text-sm p-2 bg-white rounded border border-red-200 hover:bg-red-50"><Download size={16} />Ontario CTS Funding Announcement — Drug-Checking Partner Information Document (March 17, 2026)</a>
+            <a href="/SCS-Closure-Information-Mar2026.pdf" target="_blank" className="flex items-center gap-2 text-red-700 hover:text-red-900 text-sm p-2 bg-white rounded border border-red-200 hover:bg-red-50"><Download size={16} />Ontario CTS Funding Announcement — Drug-Checking Partner Information Document (March 17, 2026)</a>
           </div>
         </div>
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
@@ -976,14 +1009,33 @@ const ProjectPartnerDashboard = () => {
   );
 
   const linksData = [
-    { title: "Western News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.", category: "Western University" },
+    { title: "Western University News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.", category: "Western University" },
     { title: "FLL Group Bio", url: "https://publish.uwo.ca/~flagugne/#about", description: "Principal Investigator's research group at Western University.", category: "Western University" },
     { title: "Scatr Portal (Partner Login)", url: "https://scatr.ca/auth", description: "Secure login for partners to access the drug-checking data management system.", category: "Scatr Inc." },
     { title: "Scatr Live Dashboard", url: "https://scatr.live/", description: "Public dashboard with real-time drug-checking results across the network.", category: "Scatr Inc." },
     { title: "Grand Prize Winner Announcement", url: "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html", description: "Health Canada announces Scatr Inc. as the $1 million grand prize winner.", category: "Scatr Inc." },
     { title: "Impact Canada - Drug Checking Challenge", url: "https://impact.canada.ca/en/challenges/drug-checking-challenge", description: "Official Government of Canada page for the Drug Checking Technology Challenge.", category: "Scatr Inc." },
-    { title: "Sanguen - Drug Checking Program", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre - project partner.", category: "Project Partners" },
-    { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Project Partners" },
+    { title: "Regional HIV/AIDS Connection (RHAC)", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's Carepoint supervised consumption and harm reduction service — project partner site.", category: "Project Partners" },
+    { title: "Sandy Hill Community Health Centre", url: "https://www.sandyhillchc.on.ca/", description: "Ottawa community health centre — project partner site.", category: "Project Partners" },
+    { title: "Ottawa Inner City Health", url: "https://oich.ca/", description: "Ottawa inner city health services — project partner site.", category: "Project Partners" },
+    { title: "Lower Mainland Purpose Society", url: "https://www.purposesociety.org/", description: "New Westminster, BC harm reduction and community services — project partner site.", category: "Project Partners" },
+    { title: "County of Grey — Public Health", url: "https://www.grey.ca/health-community-services/public-health", description: "Owen Sound, ON public health services — project partner site.", category: "Project Partners" },
+    { title: "Guelph Community Health Centre", url: "https://www.guelphchc.ca/", description: "Guelph, ON community health and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Sanguen Health Centre — Drug Checking", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre, Kitchener — project partner site.", category: "Project Partners" },
+    { title: "Moyo Health & Community Services", url: "https://moyohcs.ca/", description: "Brampton, ON community health and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Hamilton Urban Core Community Health Centre", url: "https://hucchc.com/", description: "Hamilton, ON community health and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Positive Living Niagara", url: "https://www.positivelivingniagara.com/", description: "St. Catharines, ON HIV/AIDS and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Ensemble Moncton", url: "https://www.ensemblegm.ca/", description: "Moncton, NB harm reduction and supervised consumption services — project partner site.", category: "Project Partners" },
+    { title: "Prairie Harm Reduction", url: "https://prairiehr.ca/", description: "Saskatoon, SK harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Cochrane District Services Board (CDSB)", url: "https://www.cdsb.care/", description: "Timmins, ON paramedic and community services — project partner site.", category: "Project Partners" },
+    { title: "Renfrew County & District Health Unit", url: "https://www.rcdhu.com/", description: "Renfrew, ON public health and paramedic services — project partner site.", category: "Project Partners" },
+    { title: "Peterborough AIDS Resource Network (PARN)", url: "https://www.parn.ca/", description: "Peterborough, ON HIV/AIDS and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Travail de rue de Chicoutimi", url: "https://www.travailderue-chicoutimi.org/", description: "Chicoutimi, QC community outreach and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "NHC Society (Northern Healthy Connections)", url: "https://nhcsociety.ca/", description: "Truro, NS harm reduction and community health services — project partner site.", category: "Project Partners" },
+    { title: "Breakaway Community Services", url: "https://www.breakawaycs.ca/", description: "Toronto, ON harm reduction and social services — project partner site.", category: "Project Partners" },
+    { title: "AIDS New Brunswick", url: "https://www.aidsnb.com/", description: "Fredericton, NB HIV/AIDS and harm reduction services — project partner site.", category: "Project Partners" },
+    { title: "Avenue B Harm Reduction", url: "https://avenueb.ca/", description: "Saint John, NB harm reduction and HIV/AIDS services — project partner site.", category: "Project Partners" },
+    { title: "Boyle Street Community Services", url: "https://www.boylestreet.org/", description: "Edmonton, AB community services and harm reduction — project partner site.", category: "Project Partners" },
     { title: "Health Canada - SUAP Active Projects", url: "https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html", description: "List of active projects funded through the Substance Use and Addictions Program.", category: "Health Canada" },
     { title: "Health Canada - Office of Controlled Substances", url: "https://www.canada.ca/en/health-canada/corporate/contact-us/office-controlled-substances.html", description: "Contact information for Health Canada's Office of Controlled Substances.", category: "Health Canada" },
     { title: "Health Canada - Opioid/Stimulant Harms", url: "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/", description: "Latest statistics on opioid and stimulant-related harms in Canada.", category: "Health Canada" },
@@ -1048,7 +1100,7 @@ const ProjectPartnerDashboard = () => {
           <h2 className="text-3xl font-bold text-purple-900 mb-6">Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center"><h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #1</h3><p className="text-gray-800 font-semibold mb-2">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</p><p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2223-HQ-000095</p></div>
-            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center"><h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3><p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p><p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p></div>
+            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center"><h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3><p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p><p className="text-sm text-gray-600">Amendment of Contribution Agreement_Arrangement # 2425-HQ-000058</p></div>
           </div>
           <div className="mt-6 overflow-x-auto">
             <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-md">
@@ -1060,7 +1112,10 @@ const ProjectPartnerDashboard = () => {
           <div className="mt-6">
             <p className="text-gray-800 leading-relaxed">As of today (<strong>{todayFormatted}</strong>) Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 total spectrometers</strong> across Canada.</p>
             <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 spectrometers</strong>.</p>
-            <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let Cameron know if he can be of any ongoing assistance at any time. Please also send Cameron copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
+            <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let Cameron know if he can be of any ongoing assistance at any time.</p>
+            <div className="mt-4 bg-yellow-50 border-4 border-yellow-400 rounded-xl p-4">
+              <p className="text-yellow-900 font-black text-lg leading-snug">⚠️ Please also send Cameron copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
             <div className="bg-white p-4 rounded-xl border border-purple-200">
@@ -1089,20 +1144,12 @@ const ProjectPartnerDashboard = () => {
         </div>
       </div>
       <div className="p-6 space-y-6">
-        <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
-          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl">Picturing the Problem</h2></div>
-          <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-            <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
-              <img src="/csuch-infographic.png" alt="Canadian Substance Use Costs and Harms Infographic" className="w-full rounded-lg shadow-lg cursor-pointer" />
-            </a>
-            <p className="text-sm text-gray-600 mt-4 text-center italic">Source: Canadian Centre on Substance Use and Addiction (CCSA), 2023. <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">Explore the Data →</a></p>
-          </div>
-        </div>
+        <PicturingTheProblem />
         <div id="timeline" className="scroll-mt-4"><ProjectTimeline /></div>
         <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
+        <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
         <div id="scatr-research" className="scroll-mt-4"><ScatrResearchPDFViewer /></div>
-        <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
         <div id="documents" className="scroll-mt-4"><ResearchDocuments /></div>
         <div id="map" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl"><MapPin size={28} />Interactive Map View of Project Partner Sites</h2></div>
@@ -1116,10 +1163,7 @@ const ProjectPartnerDashboard = () => {
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
         <div id="metrics" className="scroll-mt-4"><SummaryMetrics partnersData={partnersData} stats={stats} sitesByProvince={sitesByProvince} /></div>
-        <div id="faq" className="scroll-mt-4"><FAQSection /></div>
-        <div id="discussion" className="scroll-mt-4"><PartnerDiscussionBoard /></div>
         <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
-        <ProjectContactInfo isFooter={true} />
       </div>
     </div>
   );
