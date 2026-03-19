@@ -13,17 +13,17 @@ L.Icon.Default.mergeOptions({
 
 // Discourse Forum Configuration - UPDATE THESE VALUES AFTER SETUP
 const DISCOURSE_CONFIG = {
-  forumUrl: 'https://forum.uwo-drugchecking.ca', // Your Discourse forum URL
-  embedUrl: 'https://forum.uwo-drugchecking.ca/embed/comments', // Embed endpoint
-  isConfigured: false // Set to true once Discourse is set up
+  forumUrl: 'https://forum.uwo-drugchecking.ca',
+  embedUrl: 'https://forum.uwo-drugchecking.ca/embed/comments',
+  isConfigured: false
 };
 
 // Announcement Banner Configuration - UPDATE MESSAGE AS NEEDED
 const ANNOUNCEMENT_CONFIG = {
-  isActive: false, // Set to false to hide the banner
-  type: 'info', // 'info', 'warning', 'urgent'
+  isActive: false,
+  type: 'info',
   message: 'Welcome to the new Project Partner Dashboard! Explore the features and reach out if you have any questions.',
-  link: null, // Optional: { text: 'Learn More', url: 'https://...' }
+  link: null,
 };
 
 // News/Updates Feed Data - ADD NEW ITEMS AT THE TOP
@@ -44,40 +44,37 @@ const NEWS_UPDATES = [
   { date: '2025-09-15', title: 'Manuscript Submitted to Harm Reduction Journal', description: 'Our peer-reviewed paper on street drug monitoring using Raman spectroscopy was submitted for review — now published February 8, 2026! See the News & Updates section above for the link.' },
 ];
 
-// FAQ Data
 const FAQ_DATA = [
   { question: 'How do I update my site\'s contact information on the dashboard?', answer: 'Contact the Project Manager with your updated information and we will update the dashboard accordingly.' },
   { question: 'Can I share this dashboard with others at my organization?', answer: 'Yes, you may share access with colleagues directly involved in the drug-checking program at your site. However, please do not share access with individuals outside of the project network.' },
   { question: 'What is the difference between Mobile and Non-Mobile exemptions?', answer: 'A Non-Mobile exemption allows drug-checking at a fixed location only. A Mobile exemption allows you to conduct drug-checking at various locations within your approved geographic area, such as outreach services or pop-up sites.' },
 ];
 
-// Training Completion Status - UPDATE AS SITES COMPLETE TRAINING
 const TRAINING_STATUS = {
-  1: { completed: true, date: '2025-06-15' }, // Western University
-  2: { completed: true, date: '2025-07-20' }, // RHAC
-  3: { completed: true, date: '2025-08-10' }, // Sandy Hill
-  4: { completed: false, date: null }, // Ottawa Inner City Health
-  5: { completed: true, date: '2025-09-05' }, // Lower Mainland Purpose Society
-  6: { completed: false, date: null }, // County of Grey
-  7: { completed: true, date: '2025-08-25' }, // Guelph CHC
-  8: { completed: true, date: '2025-09-12' }, // Sanguen
-  9: { completed: false, date: null }, // Moyo Health
-  10: { completed: true, date: '2025-10-01' }, // Hamilton Urban Core
-  11: { completed: false, date: null }, // Positive Living Niagara
-  12: { completed: true, date: '2025-10-15' }, // Ensemble Moncton
-  13: { completed: false, date: null }, // Prairie Harm Reduction
-  14: { completed: false, date: null }, // Cochrane District Paramedic
-  15: { completed: false, date: null }, // Renfrew Paramedic
-  16: { completed: true, date: '2025-11-01' }, // PARN
-  17: { completed: false, date: null }, // Travailderue
-  18: { completed: false, date: null }, // NHC Society
-  19: { completed: true, date: '2025-11-10' }, // Breakaway
-  20: { completed: false, date: null }, // AIDS New Brunswick
-  21: { completed: false, date: null }, // Avenue B
-  22: { completed: false, date: null }, // Boyle Street
+  1: { completed: true, date: '2025-06-15' },
+  2: { completed: true, date: '2025-07-20' },
+  3: { completed: true, date: '2025-08-10' },
+  4: { completed: false, date: null },
+  5: { completed: true, date: '2025-09-05' },
+  6: { completed: false, date: null },
+  7: { completed: true, date: '2025-08-25' },
+  8: { completed: true, date: '2025-09-12' },
+  9: { completed: false, date: null },
+  10: { completed: true, date: '2025-10-01' },
+  11: { completed: false, date: null },
+  12: { completed: true, date: '2025-10-15' },
+  13: { completed: false, date: null },
+  14: { completed: false, date: null },
+  15: { completed: false, date: null },
+  16: { completed: true, date: '2025-11-01' },
+  17: { completed: false, date: null },
+  18: { completed: false, date: null },
+  19: { completed: true, date: '2025-11-10' },
+  20: { completed: false, date: null },
+  21: { completed: false, date: null },
+  22: { completed: false, date: null },
 };
 
-// Canadian Flag SVG Component (only for title)
 const CanadianFlag = ({ size = 20 }) => (
   <svg width={size * 1.5} height={size} viewBox="0 0 30 20" className="inline-block ml-2" style={{ verticalAlign: 'middle' }}>
     <rect width="30" height="20" fill="#fff"/>
@@ -87,15 +84,11 @@ const CanadianFlag = ({ size = 20 }) => (
   </svg>
 );
 
-// Map Reset Button Component
 const ResetMapButton = () => {
   const map = useMap();
-  const handleReset = () => {
-    map.setView([52.0, -95.0], 4);
-  };
   return (
-    <button 
-      onClick={handleReset}
+    <button
+      onClick={() => map.setView([52.0, -95.0], 4)}
       className="absolute top-4 right-4 z-[1000] bg-white p-2 rounded-lg shadow-lg border-2 border-purple-300 hover:bg-purple-50 transition-colors flex items-center gap-2"
       title="Reset Map View"
     >
@@ -105,7 +98,6 @@ const ResetMapButton = () => {
   );
 };
 
-// Project Phases Component
 const ProjectPhases = () => (
   <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200 mb-4">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -122,7 +114,6 @@ const ProjectPhases = () => (
         <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p>
       </div>
     </div>
-    {/* Health Canada SUAP Active Projects Table */}
     <div className="mt-6 overflow-x-auto">
       <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-md">
         <thead>
@@ -139,9 +130,7 @@ const ProjectPhases = () => (
           <tr className="hover:bg-purple-50">
             <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">University of Western Ontario</td>
             <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Leading the Way: People with Lived and Living Experience at the Forefront of Drug-Checking Initiative</td>
-            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-700 align-top">
-              This initiative will integrate People with Lived and Living Experience (PWLLE) into drug-checking initiatives by training them in drug-checking technologies to enable them to implement drug-checking initiatives and training programs in participating harm reduction and public health centres in Alberta, Ontario, Manitoba and Nova Scotia.
-            </td>
+            <td className="border border-gray-200 px-4 py-3 text-sm text-gray-700 align-top">This initiative will integrate People with Lived and Living Experience (PWLLE) into drug-checking initiatives by training them in drug-checking technologies to enable them to implement drug-checking initiatives and training programs in participating harm reduction and public health centres in Alberta, Ontario, Manitoba and Nova Scotia.</td>
             <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Multiple substances</td>
             <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">London, Ontario</td>
             <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top font-medium">$4,473,473</td>
@@ -153,7 +142,6 @@ const ProjectPhases = () => (
   </div>
 );
 
-// Project Contact Info Component
 const ProjectContactInfo = ({ isFooter = false }) => (
   <div className={`bg-gradient-to-br ${isFooter ? 'from-purple-100 to-purple-200' : 'from-purple-50 to-white'} p-6 rounded-2xl shadow-lg border-2 border-purple-200 ${isFooter ? 'mt-6' : 'mb-4'}`}>
     <h3 className="font-bold text-xl text-purple-900 mb-4 flex items-center gap-2">
@@ -166,466 +154,197 @@ const ProjectContactInfo = ({ isFooter = false }) => (
         <div className="text-gray-800 font-medium">Professor Francois Lagugne-Labarthet</div>
         <div className="text-gray-600">Faculty of Science, Western University</div>
         <div className="text-gray-600">London, ON, Canada</div>
-        <div className="flex items-center gap-2 mt-2 text-purple-700">
-          <Phone size={14} />
-          <span>519-661-2111 x81006</span>
-        </div>
-        <div className="flex items-center gap-2 text-purple-700">
-          <Mail size={14} />
-          <a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a>
-        </div>
-        <div className="flex items-center gap-2 mt-2 text-purple-700">
-          <ExternalLink size={14} />
-          <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
-        </div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700"><Phone size={14} /><span>519-661-2111 x81006</span></div>
+        <div className="flex items-center gap-2 text-purple-700"><Mail size={14} /><a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a></div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700"><ExternalLink size={14} /><a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a></div>
       </div>
       <div className="bg-white p-4 rounded-xl border border-purple-200">
         <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
         <div className="text-gray-800 font-medium">Cameron Brown</div>
         <div className="text-gray-600">Faculty of Science, Western University</div>
         <div className="text-gray-600">London, ON, Canada</div>
-        <div className="flex items-center gap-2 mt-2 text-purple-700">
-          <Phone size={14} />
-          <span>226-238-9970</span>
-        </div>
-        <div className="flex items-center gap-2 text-purple-700">
-          <Mail size={14} />
-          <a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a>
-        </div>
-        <div className="flex items-center gap-2 mt-2 text-purple-700">
-          <ExternalLink size={14} />
-          <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
-        </div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700"><Phone size={14} /><span>226-238-9970</span></div>
+        <div className="flex items-center gap-2 text-purple-700"><Mail size={14} /><a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a></div>
+        <div className="flex items-center gap-2 mt-2 text-purple-700"><ExternalLink size={14} /><a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a></div>
       </div>
     </div>
   </div>
 );
 
-// PowerPoint Viewer Component
 const PowerPointViewer = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  
-  const pptxFileName = 'project-presentation.pptx';
-  const siteUrl = 'https://partners.uwo-drugchecking.ca';
-  const cacheBuster = '?v=' + Date.now();
-  const pptxUrl = `${siteUrl}/${pptxFileName}${cacheBuster}`;
+  const pptxUrl = `https://partners.uwo-drugchecking.ca/project-presentation.pptx?v=${Date.now()}`;
   const embedUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(pptxUrl)}`;
-  
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden mb-8">
-      <div 
-        className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <h2 className="flex items-center gap-2 font-bold text-2xl">
-          <Presentation size={28} />
-          Project Overview Presentation
-        </h2>
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><Presentation size={28} />Project Overview Presentation</h2>
         <div className="flex items-center gap-2">
-          {isExpanded && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsFullscreen(!isFullscreen);
-              }}
-              className="p-2 hover:bg-purple-600 rounded-lg transition-colors"
-              title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-            >
-              {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
-            </button>
-          )}
+          {isExpanded && <button onClick={(e) => { e.stopPropagation(); setIsFullscreen(!isFullscreen); }} className="p-2 hover:bg-purple-600 rounded-lg transition-colors">{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>}
           {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
         </div>
       </div>
-      
       {isExpanded && (
         <div className={`bg-gradient-to-br from-white to-purple-50 ${isFullscreen ? 'fixed inset-0 z-50 p-4' : 'p-6'}`}>
-          {isFullscreen && (
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-purple-900">Project Overview Presentation</h2>
-              <button
-                onClick={() => setIsFullscreen(false)}
-                className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
-              >
-                <Minimize2 size={20} className="text-purple-700" />
-              </button>
-            </div>
-          )}
+          {isFullscreen && <div className="flex justify-between items-center mb-4"><h2 className="text-xl font-bold text-purple-900">Project Overview Presentation</h2><button onClick={() => setIsFullscreen(false)} className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"><Minimize2 size={20} className="text-purple-700" /></button></div>}
           <div className={`${isFullscreen ? 'h-[calc(100%-60px)]' : 'h-[600px]'} w-full rounded-lg overflow-hidden border-2 border-purple-200 shadow-lg`}>
-            <iframe
-              src={embedUrl}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allowFullScreen
-              title="Project Presentation"
-              className="bg-white"
-            />
+            <iframe src={embedUrl} width="100%" height="100%" frameBorder="0" allowFullScreen title="Project Presentation" className="bg-white" />
           </div>
-          <p className="text-sm text-purple-600 mt-3 text-center">
-            Click through the slides above to view the full project presentation. 
-            <a href={pptxUrl} download className="ml-2 underline hover:text-purple-800">
-              Download PowerPoint
-            </a>
-          </p>
+          <p className="text-sm text-purple-600 mt-3 text-center">Click through the slides above to view the full project presentation. <a href={pptxUrl} download className="ml-2 underline hover:text-purple-800">Download PowerPoint</a></p>
         </div>
       )}
     </div>
   );
 };
 
-// Scatr Technical Research Strategy PDF Viewer Component
 const ScatrResearchPDFViewer = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  
-  const pdfFileName = 'Scatr-Technical-Research-Strategy.pdf';
-  const siteUrl = 'https://partners.uwo-drugchecking.ca';
-  const pdfUrl = `${siteUrl}/${pdfFileName}`;
-  
+  const pdfUrl = `https://partners.uwo-drugchecking.ca/Scatr-Technical-Research-Strategy.pdf`;
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden mb-8">
-      <div 
-        className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <h2 className="flex items-center gap-2 font-bold text-2xl">
-          <FileText size={28} />
-          Scatr Technical Research Strategy
-        </h2>
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Scatr Technical Research Strategy</h2>
         <div className="flex items-center gap-2">
-          {isExpanded && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsFullscreen(!isFullscreen);
-              }}
-              className="p-2 hover:bg-purple-600 rounded-lg transition-colors"
-              title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-            >
-              {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
-            </button>
-          )}
+          {isExpanded && <button onClick={(e) => { e.stopPropagation(); setIsFullscreen(!isFullscreen); }} className="p-2 hover:bg-purple-600 rounded-lg transition-colors">{isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}</button>}
           {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
         </div>
       </div>
-      
       {isExpanded && (
         <div className={`bg-gradient-to-br from-white to-purple-50 ${isFullscreen ? 'fixed inset-0 z-50 p-4' : 'p-6'}`}>
-          {isFullscreen && (
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-purple-900">Scatr Technical Research Strategy</h2>
-              <button
-                onClick={() => setIsFullscreen(false)}
-                className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
-              >
-                <Minimize2 size={20} className="text-purple-700" />
-              </button>
-            </div>
-          )}
+          {isFullscreen && <div className="flex justify-between items-center mb-4"><h2 className="text-xl font-bold text-purple-900">Scatr Technical Research Strategy</h2><button onClick={() => setIsFullscreen(false)} className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"><Minimize2 size={20} className="text-purple-700" /></button></div>}
           <div className={`${isFullscreen ? 'h-[calc(100%-60px)]' : 'h-[600px]'} w-full rounded-lg overflow-hidden border-2 border-purple-200 shadow-lg`}>
-            <iframe
-              src={pdfUrl}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              title="Scatr Technical Research Strategy"
-              className="bg-white"
-            />
+            <iframe src={pdfUrl} width="100%" height="100%" frameBorder="0" title="Scatr Technical Research Strategy" className="bg-white" />
           </div>
-          <p className="text-sm text-purple-600 mt-3 text-center">
-            Scroll through the document above to view the full Scatr Technical Research Strategy. 
-            <a href={pdfUrl} download className="ml-2 underline hover:text-purple-800">
-              Download PDF
-            </a>
-          </p>
+          <p className="text-sm text-purple-600 mt-3 text-center">Scroll through the document above to view the full Scatr Technical Research Strategy. <a href={pdfUrl} download className="ml-2 underline hover:text-purple-800">Download PDF</a></p>
         </div>
       )}
     </div>
   );
 };
 
-// Project Publications Section
 const ProjectPublications = () => (
   <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
     <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-      <h2 className="flex items-center gap-2 font-bold text-2xl">
-        <BookOpen size={28} />
-        Project-Related Publications
-      </h2>
+      <h2 className="flex items-center gap-2 font-bold text-2xl"><BookOpen size={28} />Project-Related Publications</h2>
     </div>
     <div className="p-6 bg-gradient-to-br from-white to-purple-50 space-y-4">
-      {/* Published Paper Card */}
       <div className="bg-white rounded-xl border-2 border-green-300 shadow-lg p-6">
         <div className="flex items-start gap-4">
-          <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap flex-shrink-0">
-            ✓ PUBLISHED
-          </div>
+          <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap flex-shrink-0">✓ PUBLISHED</div>
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">Open Access</span>
               <span className="text-xs text-gray-500">Harm Reduction Journal · February 8, 2026</span>
             </div>
-            <h3 className="font-bold text-purple-900 text-lg leading-snug mb-2">
-              Street drug monitoring with networked spectrometers powered by machine learning: a pilot study in Ontario, Canada
-            </h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Aliyari E., Brown C., Van Boheemen M., Wardlaw L., Storm T., Hopkins A.M., Ezepue S., Dewar D., Sodtke L., McNab K., Watkins J., Pham A.T., Oudshoorn A., &amp; Lagugné-Labarthet F.
-            </p>
-            <p className="text-sm text-gray-500 italic mb-4">
-              <em>Harm Reduction Journal</em>, Volume 23, Article 45 (2026). DOI: 10.1186/s12954-026-01403-3
-            </p>
-            <p className="text-sm text-gray-700 mb-4">
-              Reports on 7,752 street drug samples analyzed across 10 Ontario harm reduction sites over 14 months (July 2023–August 2024) using networked Raman spectrometers with ML-enabled real-time analysis. Includes comparative validation against HPLC-MS and self-reported participant consumption-related behavior change data from 3,902 respondents.
-            </p>
+            <h3 className="font-bold text-purple-900 text-lg leading-snug mb-2">Street drug monitoring with networked spectrometers powered by machine learning: a pilot study in Ontario, Canada</h3>
+            <p className="text-sm text-gray-600 mb-3">Aliyari E., Brown C., Van Boheemen M., Wardlaw L., Storm T., Hopkins A.M., Ezepue S., Dewar D., Sodtke L., McNab K., Watkins J., Pham A.T., Oudshoorn A., &amp; Lagugné-Labarthet F.</p>
+            <p className="text-sm text-gray-500 italic mb-4"><em>Harm Reduction Journal</em>, Volume 23, Article 45 (2026). DOI: 10.1186/s12954-026-01403-3</p>
+            <p className="text-sm text-gray-700 mb-4">Reports on 7,752 street drug samples analyzed across 10 Ontario harm reduction sites over 14 months (July 2023–August 2024) using networked Raman spectrometers with ML-enabled real-time analysis. Includes comparative validation against HPLC-MS and self-reported participant consumption-related behavior change data from 3,902 respondents.</p>
             <div className="flex flex-wrap gap-3">
-              <a
-                href="https://link.springer.com/article/10.1186/s12954-026-01403-3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition-colors text-sm font-medium"
-              >
-                <ExternalLink size={16} />
-                Read Full Paper
-              </a>
-              <a
-                href="https://link.springer.com/content/pdf/10.1186/s12954-026-01403-3.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-purple-700 border-2 border-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-colors text-sm font-medium"
-              >
-                <Download size={16} />
-                Download PDF
-              </a>
+              <a href="https://link.springer.com/article/10.1186/s12954-026-01403-3" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-purple-700 text-white px-4 py-2 rounded-lg hover:bg-purple-800 transition-colors text-sm font-medium"><ExternalLink size={16} />Read Full Paper</a>
+              <a href="https://link.springer.com/content/pdf/10.1186/s12954-026-01403-3.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-purple-700 border-2 border-purple-700 px-4 py-2 rounded-lg hover:bg-purple-50 transition-colors text-sm font-medium"><Download size={16} />Download PDF</a>
             </div>
           </div>
         </div>
       </div>
-      <p className="text-xs text-gray-500 text-center italic">
-        Additional publications will be listed here as the project progresses.
-      </p>
+      <p className="text-xs text-gray-500 text-center italic">Additional publications will be listed here as the project progresses.</p>
     </div>
   </div>
 );
 
-// Partner Discussion Board Component (Discourse Integration)
 const PartnerDiscussionBoard = () => {
   const [isExpanded, setIsExpanded] = useState(true);
-  
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
-      <div 
-        className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <h2 className="flex items-center gap-2 font-bold text-2xl">
-          <MessageSquare size={28} />
-          Partner Discussion Board
-        </h2>
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><MessageSquare size={28} />Partner Discussion Board</h2>
         {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
       </div>
-      
       {isExpanded && (
         <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-          {DISCOURSE_CONFIG.isConfigured ? (
-            // Embedded Discourse Forum
-            <div className="space-y-4">
-              <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
-                <p className="text-sm text-purple-800">
-                  Welcome to the Partner Discussion Board! Use this space to ask questions, share experiences, 
-                  discuss best practices, and collaborate with other project partner sites across Canada.
-                </p>
-              </div>
-              <iframe
-                src={DISCOURSE_CONFIG.forumUrl}
-                width="100%"
-                height="600px"
-                frameBorder="0"
-                title="Partner Discussion Forum"
-                className="rounded-lg border-2 border-purple-200"
-              />
-              <div className="text-center">
-                <a 
-                  href={DISCOURSE_CONFIG.forumUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition-colors font-medium"
-                >
-                  <ExternalLink size={18} />
-                  Open Forum in New Tab
-                </a>
-              </div>
+          <div className="space-y-6">
+            <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-xl border-2 border-purple-300 text-center">
+              <MessageSquare size={64} className="mx-auto text-purple-600 mb-4" />
+              <h3 className="text-2xl font-bold text-purple-900 mb-2">Discussion Forum Coming Soon!</h3>
+              <p className="text-purple-700 mb-4">We're setting up a dedicated discussion board where project partners can ask questions, share updates, collaborate, and discuss best practices.</p>
             </div>
-          ) : (
-            // Pre-launch placeholder
-            <div className="space-y-6">
-              <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-xl border-2 border-purple-300 text-center">
-                <MessageSquare size={64} className="mx-auto text-purple-600 mb-4" />
-                <h3 className="text-2xl font-bold text-purple-900 mb-2">Discussion Forum Coming Soon!</h3>
-                <p className="text-purple-700 mb-4">
-                  We're setting up a dedicated discussion board powered by Discourse where project partners can:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-                  <div className="bg-white p-4 rounded-lg border border-purple-200">
-                    <div className="font-bold text-purple-900 mb-1">💬 Ask Questions</div>
-                    <div className="text-sm text-gray-600">Get help from the project team and other experienced sites</div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg border border-purple-200">
-                    <div className="font-bold text-purple-900 mb-1">📢 Share Updates</div>
-                    <div className="text-sm text-gray-600">Post announcements and updates from your site</div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg border border-purple-200">
-                    <div className="font-bold text-purple-900 mb-1">🤝 Collaborate</div>
-                    <div className="text-sm text-gray-600">Connect with peers across the network for knowledge sharing</div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg border border-purple-200">
-                    <div className="font-bold text-purple-900 mb-1">📋 Best Practices</div>
-                    <div className="text-sm text-gray-600">Discuss and document effective approaches and protocols</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
-                <div className="flex items-start gap-3">
-                  <div className="text-2xl">📧</div>
-                  <div>
-                    <div className="font-bold text-yellow-800 mb-1">In the meantime...</div>
-                    <p className="text-sm text-yellow-700">
-                      Please direct any questions or concerns to the Project Manager at{' '}
-                      <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-yellow-900">cbrown58@uwo.ca</a>
-                      {' '}or call <span className="font-medium">226-238-9970</span>.
-                      We'll notify all partners when the discussion board is ready!
-                    </p>
-                  </div>
+            <div className="bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">📧</div>
+                <div>
+                  <div className="font-bold text-yellow-800 mb-1">In the meantime...</div>
+                  <p className="text-sm text-yellow-700">Please direct any questions or concerns to the Project Manager at <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-yellow-900">cbrown58@uwo.ca</a> or call <span className="font-medium">226-238-9970</span>.</p>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-// Back to Top Button Component
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    const toggle = () => setIsVisible(window.scrollY > 300);
+    window.addEventListener('scroll', toggle);
+    return () => window.removeEventListener('scroll', toggle);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
   if (!isVisible) return null;
-
   return (
-    <button
-      onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 flex items-center gap-2 group"
-      title="Back to Top"
-    >
+    <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="fixed bottom-6 right-6 z-50 bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 flex items-center gap-2 group" title="Back to Top">
       <ArrowUp size={24} />
       <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-sm font-medium">Back to Top</span>
     </button>
   );
 };
 
-// Announcement Banner Component
 const AnnouncementBanner = ({ onDismiss }) => {
   if (!ANNOUNCEMENT_CONFIG.isActive) return null;
-  
-  const bgColors = {
-    info: 'bg-gradient-to-r from-blue-600 to-blue-700',
-    warning: 'bg-gradient-to-r from-yellow-500 to-yellow-600',
-    urgent: 'bg-gradient-to-r from-red-600 to-red-700'
-  };
-  
-  const icons = {
-    info: <Newspaper size={20} />,
-    warning: <AlertTriangle size={20} />,
-    urgent: <AlertTriangle size={20} />
-  };
-
+  const bgColors = { info: 'bg-gradient-to-r from-blue-600 to-blue-700', warning: 'bg-gradient-to-r from-yellow-500 to-yellow-600', urgent: 'bg-gradient-to-r from-red-600 to-red-700' };
+  const icons = { info: <Newspaper size={20} />, warning: <AlertTriangle size={20} />, urgent: <AlertTriangle size={20} /> };
   return (
     <div className={`${bgColors[ANNOUNCEMENT_CONFIG.type]} text-white px-4 py-3 shadow-lg`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           {icons[ANNOUNCEMENT_CONFIG.type]}
           <span className="text-sm font-medium">{ANNOUNCEMENT_CONFIG.message}</span>
-          {ANNOUNCEMENT_CONFIG.link && (
-            <a href={ANNOUNCEMENT_CONFIG.link.url} className="underline hover:no-underline text-sm font-bold">
-              {ANNOUNCEMENT_CONFIG.link.text}
-            </a>
-          )}
+          {ANNOUNCEMENT_CONFIG.link && <a href={ANNOUNCEMENT_CONFIG.link.url} className="underline hover:no-underline text-sm font-bold">{ANNOUNCEMENT_CONFIG.link.text}</a>}
         </div>
-        <button onClick={onDismiss} className="p-1 hover:bg-white/20 rounded transition-colors" title="Dismiss">
-          <X size={18} />
-        </button>
+        <button onClick={onDismiss} className="p-1 hover:bg-white/20 rounded transition-colors"><X size={18} /></button>
       </div>
     </div>
   );
 };
 
-// News/Updates Feed Component
 const NewsUpdatesFeed = () => {
   const [showAll, setShowAll] = useState(false);
   const displayedNews = showAll ? NEWS_UPDATES : NEWS_UPDATES.slice(0, 3);
-
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
-
+  const formatDate = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-        <h2 className="flex items-center gap-2 font-bold text-2xl">
-          <Newspaper size={28} />
-          News & Updates
-        </h2>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><Newspaper size={28} />News & Updates</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50">
         <div className="space-y-4">
           {displayedNews.map((item, idx) => (
             <div key={idx} className="bg-white p-4 rounded-xl border-2 border-purple-200 hover:shadow-lg transition-shadow">
               <div className="flex items-start gap-4">
-                <div className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
-                  {formatDate(item.date)}
-                </div>
+                <div className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">{formatDate(item.date)}</div>
                 <div>
                   <h3 className="font-bold text-purple-900 mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">
-                    {item.description}
-                    {item.link && (
-                      <> <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline font-medium">{item.link.text} →</a></>
-                    )}
-                  </p>
+                  <p className="text-sm text-gray-600">{item.description}{item.link && <> <a href={item.link.url} target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline font-medium">{item.link.text} →</a></>}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
         {NEWS_UPDATES.length > 3 && (
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="mt-4 w-full py-2 text-purple-700 hover:text-purple-900 font-medium text-sm flex items-center justify-center gap-2"
-          >
+          <button onClick={() => setShowAll(!showAll)} className="mt-4 w-full py-2 text-purple-700 hover:text-purple-900 font-medium text-sm flex items-center justify-center gap-2">
             {showAll ? <><ChevronUp size={18} /> Show Less</> : <><ChevronDown size={18} /> Show All Updates ({NEWS_UPDATES.length})</>}
           </button>
         )}
@@ -634,288 +353,114 @@ const NewsUpdatesFeed = () => {
   );
 };
 
-// FAQ Section Component
 const FAQSection = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
-
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-        <h2 className="flex items-center gap-2 font-bold text-2xl">
-          <HelpCircle size={28} />
-          Frequently Asked Questions
-        </h2>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><HelpCircle size={28} />Frequently Asked Questions</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50">
         <div className="space-y-3">
           {FAQ_DATA.map((faq, idx) => (
             <div key={idx} className="bg-white rounded-xl border-2 border-purple-200 overflow-hidden">
-              <button
-                onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                className="w-full px-4 py-3 text-left flex items-center justify-between gap-4 hover:bg-purple-50 transition-colors"
-              >
+              <button onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)} className="w-full px-4 py-3 text-left flex items-center justify-between gap-4 hover:bg-purple-50 transition-colors">
                 <span className="font-medium text-purple-900">{faq.question}</span>
                 {expandedFaq === idx ? <ChevronUp size={20} className="text-purple-600 flex-shrink-0" /> : <ChevronDown size={20} className="text-purple-600 flex-shrink-0" />}
               </button>
-              {expandedFaq === idx && (
-                <div className="px-4 pb-4 pt-0">
-                  <div className="bg-purple-50 p-4 rounded-lg text-sm text-gray-700 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                </div>
-              )}
+              {expandedFaq === idx && <div className="px-4 pb-4 pt-0"><div className="bg-purple-50 p-4 rounded-lg text-sm text-gray-700 leading-relaxed">{faq.answer}</div></div>}
             </div>
           ))}
         </div>
         <div className="mt-6 bg-gradient-to-br from-purple-100 to-purple-200 p-4 rounded-xl border-2 border-purple-300">
-          <p className="text-sm text-purple-800">
-            <span className="font-bold">Further Questions?</span> Contact the Project Manager at{' '}
-            <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-purple-900">cbrown58@uwo.ca</a>
-            {' '}or call <span className="font-medium">226-238-9970</span>.
-          </p>
+          <p className="text-sm text-purple-800"><span className="font-bold">Further Questions?</span> Contact the Project Manager at <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-purple-900">cbrown58@uwo.ca</a> or call <span className="font-medium">226-238-9970</span>.</p>
         </div>
       </div>
     </div>
   );
 };
 
-// Training Tracker Component
 const TrainingTracker = ({ partnersData }) => {
   const completedCount = Object.values(TRAINING_STATUS).filter(s => s.completed).length;
   const totalCount = Object.keys(TRAINING_STATUS).length;
   const progressPercent = (completedCount / totalCount) * 100;
-
-  const formatDate = (dateStr) => {
-    if (!dateStr) return null;
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
-
+  const formatDate = (d) => { if (!d) return null; return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-        <h2 className="flex items-center gap-2 font-bold text-2xl">
-          <GraduationCap size={28} />
-          Drug-Checking Peer (DCP) Training Status
-        </h2>
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><GraduationCap size={28} />Drug-Checking Peer (DCP) Training Status</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-        {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-purple-900">Network Training Progress</span>
             <span className="text-sm font-bold text-purple-700">{completedCount} of {totalCount} sites ({Math.round(progressPercent)}%)</span>
           </div>
           <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-500"
-              style={{ width: `${progressPercent}%` }}
-            ></div>
+            <div className="h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-500" style={{ width: `${progressPercent}%` }}></div>
           </div>
         </div>
-
-        {/* Sites Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {partnersData.map((site) => {
             const status = TRAINING_STATUS[site.id];
             return (
-              <div 
-                key={site.id}
-                className={`p-3 rounded-xl border-2 flex items-center gap-3 ${
-                  status?.completed 
-                    ? 'bg-green-50 border-green-300' 
-                    : 'bg-gray-50 border-gray-200'
-                }`}
-              >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                  status?.completed 
-                    ? 'bg-green-500 text-white' 
-                    : 'bg-gray-300 text-gray-500'
-                }`}>
+              <div key={site.id} className={`p-3 rounded-xl border-2 flex items-center gap-3 ${status?.completed ? 'bg-green-50 border-green-300' : 'bg-gray-50 border-gray-200'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${status?.completed ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-500'}`}>
                   {status?.completed ? <Check size={18} /> : <Clock size={18} />}
                 </div>
                 <div className="min-w-0">
-                  <div className={`font-medium text-sm truncate ${
-                    status?.completed ? 'text-green-900' : 'text-gray-700'
-                  }`}>
-                    {site.nameOrganization.length > 30 ? site.nameOrganization.substring(0, 27) + '...' : site.nameOrganization}
-                  </div>
-                  <div className="text-xs text-gray-500">
-                    {status?.completed 
-                      ? `Completed ${formatDate(status.date)}` 
-                      : 'Training Pending'
-                    }
-                  </div>
+                  <div className={`font-medium text-sm truncate ${status?.completed ? 'text-green-900' : 'text-gray-700'}`}>{site.nameOrganization.length > 30 ? site.nameOrganization.substring(0, 27) + '...' : site.nameOrganization}</div>
+                  <div className="text-xs text-gray-500">{status?.completed ? `Completed ${formatDate(status.date)}` : 'Training Pending'}</div>
                 </div>
               </div>
             );
           })}
         </div>
-
-        {/* Legend */}
-        <div className="mt-4 flex items-center gap-6 text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-green-500"></div>
-            <span className="text-gray-600">Training Completed</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-gray-300"></div>
-            <span className="text-gray-600">Training Pending</span>
-          </div>
-        </div>
-
-        {/* Contact Info */}
         <div className="mt-4 bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
-          <p className="text-sm text-yellow-800">
-            <span className="font-bold">Ready to schedule training?</span> Contact the Project Manager at{' '}
-            <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-yellow-900">cbrown58@uwo.ca</a>
-            {' '}to arrange a virtual training session for your team.
-          </p>
+          <p className="text-sm text-yellow-800"><span className="font-bold">Ready to schedule training?</span> Contact the Project Manager at <a href="mailto:cbrown58@uwo.ca" className="underline hover:text-yellow-900">cbrown58@uwo.ca</a> to arrange a virtual training session for your team.</p>
         </div>
       </div>
     </div>
   );
 };
 
-// Print Contact List Function
 const printContactList = (partnersData) => {
   const printWindow = window.open('', '_blank');
   const today = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  
-  const html = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Project Partner Contact List - ${today}</title>
-      <style>
-        body { font-family: Arial, sans-serif; font-size: 11px; margin: 20px; }
-        h1 { font-size: 18px; color: #5b21b6; margin-bottom: 5px; }
-        h2 { font-size: 12px; color: #666; font-weight: normal; margin-top: 0; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #ddd; padding: 6px; text-align: left; }
-        th { background-color: #5b21b6; color: white; font-size: 10px; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .footer { margin-top: 20px; font-size: 10px; color: #666; border-top: 1px solid #ddd; padding-top: 10px; }
-        @media print {
-          body { margin: 10px; }
-          table { font-size: 9px; }
-          th, td { padding: 4px; }
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Western University Drug-Checking Network</h1>
-      <h2>Project Partner Contact List - Generated ${today}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Organization</th>
-            <th>City, Prov</th>
-            <th>Primary Contact</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Additional Contact</th>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${partnersData.map(site => `
-            <tr>
-              <td><strong>${site.nameOrganization}</strong></td>
-              <td>${site.city}, ${site.prov}</td>
-              <td>${site.primaryContact}</td>
-              <td>${site.email1}</td>
-              <td>${site.phone1}</td>
-              <td>${site.additionalContact}</td>
-              <td>${site.email2}</td>
-              <td>${site.phone2}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-      <div class="footer">
-        <p><strong>Project Contact:</strong> Cameron Brown, Project Manager | cbrown58@uwo.ca | 226-238-9970</p>
-        <p><strong>Principal Investigator:</strong> Prof. Francois Lagugne-Labarthet | flagugne@uwo.ca | 519-661-2111 x81006</p>
-        <p><em>This document contains confidential contact information. Please do not share outside the project network.</em></p>
-      </div>
-    </body>
-    </html>
-  `;
-  
+  const html = `<!DOCTYPE html><html><head><title>Project Partner Contact List - ${today}</title><style>body{font-family:Arial,sans-serif;font-size:11px;margin:20px}h1{font-size:18px;color:#5b21b6;margin-bottom:5px}h2{font-size:12px;color:#666;font-weight:normal;margin-top:0}table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #ddd;padding:6px;text-align:left}th{background-color:#5b21b6;color:white;font-size:10px}tr:nth-child(even){background-color:#f9f9f9}.footer{margin-top:20px;font-size:10px;color:#666;border-top:1px solid #ddd;padding-top:10px}@media print{body{margin:10px}table{font-size:9px}th,td{padding:4px}}</style></head><body><h1>Western University Drug-Checking Network</h1><h2>Project Partner Contact List - Generated ${today}</h2><table><thead><tr><th>Organization</th><th>City, Prov</th><th>Primary Contact</th><th>Email</th><th>Phone</th><th>Additional Contact</th><th>Email</th><th>Phone</th></tr></thead><tbody>${partnersData.map(site => `<tr><td><strong>${site.nameOrganization}</strong></td><td>${site.city}, ${site.prov}</td><td>${site.primaryContact}</td><td>${site.email1}</td><td>${site.phone1}</td><td>${site.additionalContact}</td><td>${site.email2}</td><td>${site.phone2}</td></tr>`).join('')}</tbody></table><div class="footer"><p><strong>Project Contact:</strong> Cameron Brown, Project Manager | cbrown58@uwo.ca | 226-238-9970</p><p><strong>Principal Investigator:</strong> Prof. Francois Lagugne-Labarthet | flagugne@uwo.ca | 519-661-2111 x81006</p><p><em>This document contains confidential contact information. Please do not share outside the project network.</em></p></div></body></html>`;
   printWindow.document.write(html);
   printWindow.document.close();
   printWindow.focus();
   setTimeout(() => printWindow.print(), 250);
 };
 
-// Progress Ring Component
 const ProgressRing = ({ progress, size = 120, strokeWidth = 10, color = '#7c3aed' }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const offset = circumference - (progress / 100) * circumference;
-  
   return (
     <svg width={size} height={size} className="transform -rotate-90">
-      <circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        fill="none"
-        stroke="#e5e7eb"
-        strokeWidth={strokeWidth}
-      />
-      <circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        fill="none"
-        stroke={color}
-        strokeWidth={strokeWidth}
-        strokeDasharray={circumference}
-        strokeDashoffset={offset}
-        strokeLinecap="round"
-        className="transition-all duration-1000 ease-out"
-      />
+      <circle cx={size/2} cy={size/2} r={radius} fill="none" stroke="#e5e7eb" strokeWidth={strokeWidth} />
+      <circle cx={size/2} cy={size/2} r={radius} fill="none" stroke={color} strokeWidth={strokeWidth} strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round" className="transition-all duration-1000 ease-out" />
     </svg>
   );
 };
 
-// Mini Sparkline Component
 const Sparkline = ({ data, color = '#7c3aed', height = 40 }) => {
-  const max = Math.max(...data);
-  const min = Math.min(...data);
-  const range = max - min || 1;
-  const width = 100;
-  const points = data.map((val, i) => {
-    const x = (i / (data.length - 1)) * width;
-    const y = height - ((val - min) / range) * (height - 4) - 2;
-    return `${x},${y}`;
-  }).join(' ');
-  
+  const max = Math.max(...data), min = Math.min(...data), range = max - min || 1, width = 100;
+  const points = data.map((val, i) => `${(i/(data.length-1))*width},${height-((val-min)/range)*(height-4)-2}`).join(' ');
   return (
     <svg width={width} height={height} className="overflow-visible">
-      <polyline
-        points={points}
-        fill="none"
-        stroke={color}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx={width} cy={height - ((data[data.length - 1] - min) / range) * (height - 4) - 2} r="3" fill={color} />
+      <polyline points={points} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={width} cy={height-((data[data.length-1]-min)/range)*(height-4)-2} r="3" fill={color} />
     </svg>
   );
 };
 
-// Donut Chart Component
 const DonutChart = ({ data, size = 160 }) => {
   const total = data.reduce((sum, item) => sum + item.value, 0);
-  const strokeWidth = 24;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = radius * 2 * Math.PI;
+  const strokeWidth = 24, radius = (size - strokeWidth) / 2, circumference = radius * 2 * Math.PI;
   let currentOffset = 0;
-  
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="transform -rotate-90">
@@ -923,75 +468,31 @@ const DonutChart = ({ data, size = 160 }) => {
           const segmentLength = (item.value / total) * circumference;
           const offset = currentOffset;
           currentOffset += segmentLength;
-          return (
-            <circle
-              key={idx}
-              cx={size / 2}
-              cy={size / 2}
-              r={radius}
-              fill="none"
-              stroke={item.color}
-              strokeWidth={strokeWidth}
-              strokeDasharray={`${segmentLength} ${circumference - segmentLength}`}
-              strokeDashoffset={-offset}
-              className="transition-all duration-500"
-            />
-          );
+          return <circle key={idx} cx={size/2} cy={size/2} r={radius} fill="none" stroke={item.color} strokeWidth={strokeWidth} strokeDasharray={`${segmentLength} ${circumference - segmentLength}`} strokeDashoffset={-offset} className="transition-all duration-500" />;
         })}
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-2xl font-bold text-gray-800">{total}</div>
-          <div className="text-xs text-gray-500">Total</div>
-        </div>
+        <div className="text-center"><div className="text-2xl font-bold text-gray-800">{total}</div><div className="text-xs text-gray-500">Total</div></div>
       </div>
     </div>
   );
 };
 
-// Mini Canada Map SVG Component
 const MiniCanadaMap = ({ activeProvinces }) => {
-  const provinceColors = {
-    BC: activeProvinces.includes('BC') ? '#7c3aed' : '#e5e7eb',
-    AB: activeProvinces.includes('AB') ? '#7c3aed' : '#e5e7eb',
-    SK: activeProvinces.includes('SK') ? '#7c3aed' : '#e5e7eb',
-    MB: activeProvinces.includes('MB') ? '#e5e7eb' : '#e5e7eb',
-    ON: activeProvinces.includes('ON') ? '#7c3aed' : '#e5e7eb',
-    QC: activeProvinces.includes('QC') ? '#7c3aed' : '#e5e7eb',
-    NB: activeProvinces.includes('NB') ? '#7c3aed' : '#e5e7eb',
-    NS: activeProvinces.includes('NS') ? '#7c3aed' : '#e5e7eb',
-    PE: activeProvinces.includes('PE') ? '#e5e7eb' : '#e5e7eb',
-    NL: activeProvinces.includes('NL') ? '#e5e7eb' : '#e5e7eb',
-    YT: activeProvinces.includes('YT') ? '#e5e7eb' : '#e5e7eb',
-    NT: activeProvinces.includes('NT') ? '#e5e7eb' : '#e5e7eb',
-    NU: activeProvinces.includes('NU') ? '#e5e7eb' : '#e5e7eb',
-  };
-  
+  const c = (p) => activeProvinces.includes(p) ? '#7c3aed' : '#e5e7eb';
   return (
     <svg viewBox="0 0 300 200" className="w-full h-auto">
-      {/* British Columbia */}
-      <path d="M20,60 L45,40 L50,80 L55,120 L35,140 L20,100 Z" fill={provinceColors.BC} stroke="#fff" strokeWidth="1"/>
-      {/* Alberta */}
-      <path d="M50,50 L80,50 L80,120 L50,120 Z" fill={provinceColors.AB} stroke="#fff" strokeWidth="1"/>
-      {/* Saskatchewan */}
-      <path d="M80,50 L110,50 L110,120 L80,120 Z" fill={provinceColors.SK} stroke="#fff" strokeWidth="1"/>
-      {/* Manitoba */}
-      <path d="M110,50 L140,50 L145,80 L140,120 L110,120 Z" fill={provinceColors.MB} stroke="#fff" strokeWidth="1"/>
-      {/* Ontario */}
-      <path d="M140,60 L180,50 L200,80 L190,130 L160,140 L140,120 Z" fill={provinceColors.ON} stroke="#fff" strokeWidth="1"/>
-      {/* Quebec */}
-      <path d="M200,40 L240,30 L260,60 L250,100 L220,120 L200,100 Z" fill={provinceColors.QC} stroke="#fff" strokeWidth="1"/>
-      {/* New Brunswick */}
-      <path d="M250,100 L270,95 L275,115 L255,120 Z" fill={provinceColors.NB} stroke="#fff" strokeWidth="1"/>
-      {/* Nova Scotia */}
-      <path d="M270,110 L290,105 L295,125 L275,130 Z" fill={provinceColors.NS} stroke="#fff" strokeWidth="1"/>
-      {/* Yukon */}
-      <path d="M25,20 L45,20 L50,45 L30,50 Z" fill={provinceColors.YT} stroke="#fff" strokeWidth="1"/>
-      {/* NWT */}
-      <path d="M50,15 L120,15 L120,45 L50,45 Z" fill={provinceColors.NT} stroke="#fff" strokeWidth="1"/>
-      {/* Nunavut */}
-      <path d="M120,10 L200,10 L200,45 L140,50 L120,40 Z" fill={provinceColors.NU} stroke="#fff" strokeWidth="1"/>
-      {/* Province labels for active ones */}
+      <path d="M20,60 L45,40 L50,80 L55,120 L35,140 L20,100 Z" fill={c('BC')} stroke="#fff" strokeWidth="1"/>
+      <path d="M50,50 L80,50 L80,120 L50,120 Z" fill={c('AB')} stroke="#fff" strokeWidth="1"/>
+      <path d="M80,50 L110,50 L110,120 L80,120 Z" fill={c('SK')} stroke="#fff" strokeWidth="1"/>
+      <path d="M110,50 L140,50 L145,80 L140,120 L110,120 Z" fill={c('MB')} stroke="#fff" strokeWidth="1"/>
+      <path d="M140,60 L180,50 L200,80 L190,130 L160,140 L140,120 Z" fill={c('ON')} stroke="#fff" strokeWidth="1"/>
+      <path d="M200,40 L240,30 L260,60 L250,100 L220,120 L200,100 Z" fill={c('QC')} stroke="#fff" strokeWidth="1"/>
+      <path d="M250,100 L270,95 L275,115 L255,120 Z" fill={c('NB')} stroke="#fff" strokeWidth="1"/>
+      <path d="M270,110 L290,105 L295,125 L275,130 Z" fill={c('NS')} stroke="#fff" strokeWidth="1"/>
+      <path d="M25,20 L45,20 L50,45 L30,50 Z" fill={c('YT')} stroke="#fff" strokeWidth="1"/>
+      <path d="M50,15 L120,15 L120,45 L50,45 Z" fill={c('NT')} stroke="#fff" strokeWidth="1"/>
+      <path d="M120,10 L200,10 L200,45 L140,50 L120,40 Z" fill={c('NU')} stroke="#fff" strokeWidth="1"/>
       {activeProvinces.includes('BC') && <text x="35" y="95" className="text-[8px] font-bold fill-white">BC</text>}
       {activeProvinces.includes('AB') && <text x="58" y="90" className="text-[8px] font-bold fill-white">AB</text>}
       {activeProvinces.includes('SK') && <text x="88" y="90" className="text-[8px] font-bold fill-white">SK</text>}
@@ -1003,20 +504,14 @@ const MiniCanadaMap = ({ activeProvinces }) => {
   );
 };
 
-// Comprehensive Summary Metrics Component
 const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
-  // Network growth data (simulated quarterly growth)
   const networkGrowth = [4, 8, 12, 16, 18, 20, 22, 22];
-  const deviceGrowth = [4, 10, 14, 18, 20, 22, 24, 24];
-  
-  // Calculate regional data
   const regions = {
     Western: { provinces: ['BC', 'AB'], sites: 0, devices: 0 },
     Prairies: { provinces: ['SK', 'MB'], sites: 0, devices: 0 },
     Central: { provinces: ['ON', 'QC'], sites: 0, devices: 0 },
     Atlantic: { provinces: ['NB', 'NS', 'PE', 'NL'], sites: 0, devices: 0 },
   };
-  
   partnersData.forEach(site => {
     Object.keys(regions).forEach(region => {
       if (regions[region].provinces.includes(site.prov)) {
@@ -1025,158 +520,67 @@ const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
       }
     });
   });
-
-  // Exemption type counts
   const mobileCount = stats.mobileSites.length;
   const nonMobileCount = stats.nonMobileSites.length;
   const bothCount = partnersData.filter(s => s.exemptionType1 !== 'NA' && s.exemptionType2 !== 'NA').length;
-  
   const exemptionData = [
     { label: 'Non-Mobile Only', value: nonMobileCount - bothCount, color: '#3b82f6' },
     { label: 'Mobile Only', value: mobileCount - bothCount, color: '#10b981' },
     { label: 'Both Types', value: bothCount, color: '#8b5cf6' },
   ];
-
-  // Province data for bars
-  const provinceData = Object.entries(sitesByProvince).map(([prov, sites]) => ({
-    prov,
-    count: sites.length,
-    devices: partnersData.filter(s => s.prov === prov).reduce((sum, s) => sum + parseInt(s.devicesAssigned), 0)
-  })).sort((a, b) => b.count - a.count);
-
-  const maxSites = Math.max(...provinceData.map(p => p.count));
+  const provinceData = Object.entries(sitesByProvince).map(([prov, sites]) => ({ prov, count: sites.length, devices: partnersData.filter(s => s.prov === prov).reduce((sum, s) => sum + parseInt(s.devicesAssigned), 0) })).sort((a, b) => b.count - a.count);
   const deviceProgress = (stats.totalDevices / 28) * 100;
-  const siteProgress = (stats.totalPartners / 28) * 100;
 
   return (
     <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
       <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-5">
-        <h2 className="flex items-center gap-3 font-bold text-2xl">
-          <Activity size={28} />
-          Network Summary & Analytics
-        </h2>
+        <h2 className="flex items-center gap-3 font-bold text-2xl"><Activity size={28} />Network Summary & Analytics</h2>
         <p className="text-purple-200 text-sm mt-1">Real-time overview of the drug-checking network across Canada</p>
       </div>
-      
       <div className="p-6 bg-gradient-to-br from-gray-50 to-white">
-        {/* Top Row - Key Metrics with Progress Rings */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {/* Partner Sites */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-            <div className="flex items-center justify-between mb-4">
-              <div className="bg-purple-100 p-3 rounded-xl">
-                <Building2 size={28} className="text-purple-600" />
-              </div>
-              <Sparkline data={networkGrowth} color="#7c3aed" />
-            </div>
+            <div className="flex items-center justify-between mb-4"><div className="bg-purple-100 p-3 rounded-xl"><Building2 size={28} className="text-purple-600" /></div><Sparkline data={networkGrowth} color="#7c3aed" /></div>
             <div className="text-4xl font-black text-gray-900">{stats.totalPartners}</div>
             <div className="text-sm font-medium text-gray-500 mt-1">Partner Sites</div>
           </div>
-
-          {/* Devices Deployed */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-            <div className="flex items-center justify-between mb-4">
-              <div className="bg-indigo-100 p-3 rounded-xl">
-                <Zap size={28} className="text-indigo-600" />
-              </div>
-              <div className="relative">
-                <ProgressRing progress={deviceProgress} size={60} strokeWidth={6} color="#6366f1" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xs font-bold text-indigo-600">{Math.round(deviceProgress)}%</span>
-                </div>
-              </div>
-            </div>
+            <div className="flex items-center justify-between mb-4"><div className="bg-indigo-100 p-3 rounded-xl"><Zap size={28} className="text-indigo-600" /></div><div className="relative"><ProgressRing progress={deviceProgress} size={60} strokeWidth={6} color="#6366f1" /><div className="absolute inset-0 flex items-center justify-center"><span className="text-xs font-bold text-indigo-600">{Math.round(deviceProgress)}%</span></div></div></div>
             <div className="text-4xl font-black text-gray-900">{stats.totalDevices}<span className="text-lg font-normal text-gray-400">/28</span></div>
             <div className="text-sm font-medium text-gray-500 mt-1">Spectrometers Deployed</div>
-            <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
-              <div className="bg-indigo-500 h-2 rounded-full transition-all duration-500" style={{ width: `${deviceProgress}%` }}></div>
-            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2 mt-3"><div className="bg-indigo-500 h-2 rounded-full transition-all duration-500" style={{ width: `${deviceProgress}%` }}></div></div>
           </div>
-
-          {/* Provinces Covered */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-            <div className="flex items-center justify-between mb-4">
-              <div className="bg-emerald-100 p-3 rounded-xl">
-                <Globe size={28} className="text-emerald-600" />
-              </div>
-              <div className="text-right">
-                <div className="text-xs text-gray-400">Coverage</div>
-                <div className="text-sm font-bold text-emerald-600">{Math.round((stats.provinces.length / 13) * 100)}%</div>
-              </div>
-            </div>
+            <div className="flex items-center justify-between mb-4"><div className="bg-emerald-100 p-3 rounded-xl"><Globe size={28} className="text-emerald-600" /></div><div className="text-right"><div className="text-xs text-gray-400">Coverage</div><div className="text-sm font-bold text-emerald-600">{Math.round((stats.provinces.length / 13) * 100)}%</div></div></div>
             <div className="text-4xl font-black text-gray-900">{stats.provinces.length}<span className="text-lg font-normal text-gray-400">/13</span></div>
             <div className="text-sm font-medium text-gray-500 mt-1">Provinces & Territories</div>
-            <div className="flex flex-wrap gap-1 mt-3">
-              {stats.provinces.map(p => (
-                <span key={p} className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-medium">{p}</span>
-              ))}
-            </div>
+            <div className="flex flex-wrap gap-1 mt-3">{stats.provinces.map(p => <span key={p} className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-medium">{p}</span>)}</div>
           </div>
-
-          {/* Cities */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-            <div className="flex items-center justify-between mb-4">
-              <div className="bg-amber-100 p-3 rounded-xl">
-                <Navigation size={28} className="text-amber-600" />
-              </div>
-              <Sparkline data={[8, 12, 14, 16, 18, 19, 20, 20]} color="#f59e0b" />
-            </div>
+            <div className="flex items-center justify-between mb-4"><div className="bg-amber-100 p-3 rounded-xl"><Navigation size={28} className="text-amber-600" /></div><Sparkline data={[8,12,14,16,18,19,20,20]} color="#f59e0b" /></div>
             <div className="text-4xl font-black text-gray-900">20</div>
             <div className="text-sm font-medium text-gray-500 mt-1">Cities Across Canada</div>
-            <div className="flex items-center gap-2 mt-3">
-              <Target size={14} className="text-amber-500" />
-              <span className="text-xs text-amber-600 font-medium">Coast to coast coverage</span>
-            </div>
+            <div className="flex items-center gap-2 mt-3"><Target size={14} className="text-amber-500" /><span className="text-xs text-amber-600 font-medium">Coast to coast coverage</span></div>
           </div>
         </div>
-
-        {/* Middle Row - Map and Regional Breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* Mini Canada Map */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-              <MapPin size={20} className="text-purple-600" />
-              Geographic Coverage
-            </h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><MapPin size={20} className="text-purple-600" />Geographic Coverage</h3>
             <div className="flex items-center gap-6">
-              <div className="flex-1">
-                <MiniCanadaMap activeProvinces={stats.provinces} />
-              </div>
+              <div className="flex-1"><MiniCanadaMap activeProvinces={stats.provinces} /></div>
               <div className="flex-1">
                 <div className="space-y-3">
                   {Object.entries(regions).map(([region, data]) => (
                     <div key={region}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="font-medium text-gray-700">{region}</span>
-                        <span className="text-gray-500">{data.sites} sites</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-purple-500 h-2 rounded-full transition-all duration-500" 
-                          style={{ width: `${(data.sites / stats.totalPartners) * 100}%` }}
-                        ></div>
-                      </div>
+                      <div className="flex justify-between text-sm mb-1"><span className="font-medium text-gray-700">{region}</span><span className="text-gray-500">{data.sites} sites</span></div>
+                      <div className="w-full bg-gray-200 rounded-full h-2"><div className="bg-purple-500 h-2 rounded-full transition-all duration-500" style={{ width: `${(data.sites/stats.totalPartners)*100}%` }}></div></div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-purple-600"></div>
-                <span className="text-xs text-gray-500">Active Province</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded bg-gray-200"></div>
-                <span className="text-xs text-gray-500">No Coverage</span>
-              </div>
-            </div>
-            {/* Province-by-Province Breakdown */}
             <div className="mt-4 pt-4 border-t border-gray-100">
-              <h4 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-                <Activity size={16} className="text-purple-600" />
-                Province-by-Province Breakdown
-              </h4>
+              <h4 className="text-sm font-bold text-gray-800 mb-3 flex items-center gap-2"><Activity size={16} className="text-purple-600" />Province-by-Province Breakdown</h4>
               <div className="flex flex-wrap gap-2">
                 {provinceData.map(({ prov, count, devices }) => (
                   <div key={prov} className="bg-gray-50 rounded-lg px-3 py-2 hover:bg-purple-50 transition-colors flex items-center gap-2">
@@ -1187,38 +591,22 @@ const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
               </div>
             </div>
           </div>
-
-          {/* Exemption Types Donut */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-              <FileText size={20} className="text-purple-600" />
-              Exemption Types Distribution
-            </h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><FileText size={20} className="text-purple-600" />Exemption Types Distribution</h3>
             <div className="flex items-center justify-around">
               <DonutChart data={exemptionData} size={160} />
               <div className="space-y-4">
                 {exemptionData.map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }}></div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-800">{item.label}</div>
-                      <div className="text-lg font-bold" style={{ color: item.color }}>{item.value} sites</div>
-                    </div>
+                    <div><div className="text-sm font-medium text-gray-800">{item.label}</div><div className="text-lg font-bold" style={{ color: item.color }}>{item.value} sites</div></div>
                   </div>
                 ))}
               </div>
             </div>
             <div className="mt-4 pt-4 border-t border-gray-100 grid grid-cols-2 gap-4">
-              <div className="bg-blue-50 rounded-xl p-3 text-center">
-                <Smartphone size={20} className="mx-auto text-blue-600 mb-1" />
-                <div className="text-xl font-bold text-blue-700">{mobileCount}</div>
-                <div className="text-xs text-blue-600">Mobile Exemptions</div>
-              </div>
-              <div className="bg-emerald-50 rounded-xl p-3 text-center">
-                <Building2 size={20} className="mx-auto text-emerald-600 mb-1" />
-                <div className="text-xl font-bold text-emerald-700">{nonMobileCount}</div>
-                <div className="text-xs text-emerald-600">Non-Mobile Exemptions</div>
-              </div>
+              <div className="bg-blue-50 rounded-xl p-3 text-center"><Smartphone size={20} className="mx-auto text-blue-600 mb-1" /><div className="text-xl font-bold text-blue-700">{mobileCount}</div><div className="text-xs text-blue-600">Mobile Exemptions</div></div>
+              <div className="bg-emerald-50 rounded-xl p-3 text-center"><Building2 size={20} className="mx-auto text-emerald-600 mb-1" /><div className="text-xl font-bold text-emerald-700">{nonMobileCount}</div><div className="text-xs text-emerald-600">Non-Mobile Exemptions</div></div>
             </div>
           </div>
         </div>
@@ -1227,7 +615,6 @@ const SummaryMetrics = ({ partnersData, stats, sitesByProvince }) => {
   );
 };
 
-// Table of Contents Component
 const TableOfContents = () => {
   const sections = [
     { id: 'csuch', label: 'Picturing the Problem' },
@@ -1244,24 +631,13 @@ const TableOfContents = () => {
     { id: 'discussion', label: 'Partner Discussion Board' },
     { id: 'links', label: 'Related Links & Resources' }
   ];
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
+  const scrollTo = (id) => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
   return (
     <div className="mt-4 bg-white p-4 rounded-xl border-2 border-purple-300 shadow-md">
       <div className="font-bold text-purple-900 mb-3 text-sm">Quick Navigation:</div>
       <div className="grid grid-cols-2 gap-3">
         {sections.map((section) => (
-          <button
-            key={section.id}
-            onClick={() => scrollToSection(section.id)}
-            className="text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 active:bg-purple-800 px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-left flex items-center gap-2 border-2 border-purple-700 hover:scale-[1.02]"
-          >
+          <button key={section.id} onClick={() => scrollTo(section.id)} className="text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 active:bg-purple-800 px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-left flex items-center gap-2 border-2 border-purple-700 hover:scale-[1.02]">
             <span className="text-purple-200">→</span> {section.label}
           </button>
         ))}
@@ -1270,7 +646,7 @@ const TableOfContents = () => {
   );
 };
 
-
+// ─── ProjectCountdown ─────────────────────────────────────────────────────────
 const ProjectCountdown = () => {
   const PROJECT_END = new Date("2028-03-31T23:59:59");
   const calculate = () => {
@@ -1296,7 +672,7 @@ const ProjectCountdown = () => {
     { label: "Years",  value: time.years,  cls: "from-purple-600 to-purple-800" },
     { label: "Months", value: time.months, cls: "from-purple-500 to-purple-700" },
     { label: "Weeks",  value: time.weeks,  cls: "from-purple-400 to-purple-600" },
-    { label: "Days",   value: time.days,   cls: "from-yellow-500 to-yellow-600"  },
+    { label: "Days",   value: time.days,   cls: "from-yellow-500 to-yellow-600" },
   ];
   const urgency = time.totalDays < 90 ? "border-red-400 bg-red-50" : time.totalDays < 180 ? "border-orange-400 bg-orange-50" : "border-purple-200 bg-white";
   return (
@@ -1337,23 +713,14 @@ const ProjectCountdown = () => {
     </div>
   );
 };
+// ─── End ProjectCountdown ─────────────────────────────────────────────────────
 
 const ProjectPartnerDashboard = () => {
   const [expandedMetrics, setExpandedMetrics] = useState({});
   const [expandedRow, setExpandedRow] = useState(null);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
 
-  const toggleMetric = (metricId) => {
-    setExpandedMetrics(prev => ({
-      ...prev,
-      [metricId]: !prev[metricId]
-    }));
-  };
-
-  const toggleRow = (rowId) => {
-    setExpandedRow(expandedRow === rowId ? null : rowId);
-  };
-
+  const toggleRow = (rowId) => setExpandedRow(expandedRow === rowId ? null : rowId);
   const todayFormatted = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
   const partnersData = [
@@ -1383,189 +750,97 @@ const ProjectPartnerDashboard = () => {
 
   const getSitesByProvince = () => {
     const byProvince = {};
-    partnersData.forEach(site => {
-      if (!byProvince[site.prov]) byProvince[site.prov] = [];
-      byProvince[site.prov].push(site.nameOrganization);
-    });
+    partnersData.forEach(site => { if (!byProvince[site.prov]) byProvince[site.prov] = []; byProvince[site.prov].push(site.nameOrganization); });
     return byProvince;
   };
 
   const sitesByProvince = getSitesByProvince();
   const getMobileSites = () => partnersData.filter(site => site.exemptionType1 === "Mobile" || site.exemptionType2 === "Mobile");
   const getNonMobileSites = () => partnersData.filter(site => site.exemptionType1 === "Non-Mobile" || site.exemptionType2 === "Non-Mobile");
-
   const getStatistics = () => {
     const provinces = [...new Set(partnersData.map(s => s.prov))];
     const totalDevices = partnersData.reduce((sum, s) => sum + parseInt(s.devicesAssigned), 0);
     return { totalPartners: partnersData.length, provinces, totalDevices, mobileSites: getMobileSites(), nonMobileSites: getNonMobileSites() };
   };
-
   const stats = getStatistics();
-  const challengeUrl = "https://impact.canada.ca/en/challenges/drug-checking-challenge";
 
   const ProjectTimeline = () => {
     const today = new Date();
-    const projectStart = new Date('2024-04-01');
-    const projectEnd = new Date('2028-03-31');
-    
-    // Calculate fiscal year progress (4 fiscal years, each 25% of visual width)
-    const fy1End = new Date('2025-03-31');
-    const fy2End = new Date('2026-03-31');
-    const fy3End = new Date('2027-03-31');
-    
+    const fy1End = new Date('2025-03-31'), fy2End = new Date('2026-03-31'), fy3End = new Date('2027-03-31'), projectEnd = new Date('2028-03-31');
     let fyNumber, fyProgress;
-    if (today <= fy1End) {
-      fyNumber = 0;
-      const fy1Start = new Date('2024-04-01');
-      fyProgress = (today - fy1Start) / (fy1End - fy1Start);
-    } else if (today <= fy2End) {
-      fyNumber = 1;
-      const fy2Start = new Date('2025-04-01');
-      fyProgress = (today - fy2Start) / (fy2End - fy2Start);
-    } else if (today <= fy3End) {
-      fyNumber = 2;
-      const fy3Start = new Date('2026-04-01');
-      fyProgress = (today - fy3Start) / (fy3End - fy3Start);
-    } else {
-      fyNumber = 3;
-      const fy4Start = new Date('2027-04-01');
-      fyProgress = (today - fy4Start) / (projectEnd - fy4Start);
-    }
+    if (today <= fy1End) { fyNumber = 0; fyProgress = (today - new Date('2024-04-01')) / (fy1End - new Date('2024-04-01')); }
+    else if (today <= fy2End) { fyNumber = 1; fyProgress = (today - new Date('2025-04-01')) / (fy2End - new Date('2025-04-01')); }
+    else if (today <= fy3End) { fyNumber = 2; fyProgress = (today - new Date('2026-04-01')) / (fy3End - new Date('2026-04-01')); }
+    else { fyNumber = 3; fyProgress = (today - new Date('2027-04-01')) / (projectEnd - new Date('2027-04-01')); }
     const progressPercent = Math.min(Math.max(((fyNumber + fyProgress) / 4) * 100, 0), 100);
-    
-    // Calculate HC timeline progress based on visual year positions (7 year markers, evenly spaced)
-    const hcStartYear = 2022;
-    const hcEndYear = 2028;
-    const totalYearSpan = hcEndYear - hcStartYear; // 6 years
     const currentYear = today.getFullYear();
-    const startOfYear = new Date(currentYear, 0, 1);
-    const dayOfYear = Math.floor((today - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+    const dayOfYear = Math.floor((today - new Date(currentYear, 0, 1)) / (1000 * 60 * 60 * 24)) + 1;
     const daysInYear = ((currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0) ? 366 : 365;
-    const yearFraction = dayOfYear / daysInYear;
-    const yearsFromStart = Math.min(Math.max((currentYear - hcStartYear) + yearFraction, 0), totalYearSpan);
-    const hcProgressPercent = (yearsFromStart / totalYearSpan) * 100;
-    
-    const formatDate = (date) => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-
+    const hcProgressPercent = (((currentYear - 2022) + dayOfYear / daysInYear) / 6) * 100;
+    const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const challengeUrl = "https://impact.canada.ca/en/challenges/drug-checking-challenge";
     return (
       <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
         <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
           <h2 className="flex items-center gap-2 font-bold text-2xl"><Clock size={28} />Project Background & Timeline</h2>
         </div>
         <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-          <div className="relative">
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">
-                Drug Checking Technology Challenge (2018-2021)
-                <a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 flex items-center gap-1">Learn More <ExternalLink size={14} /></a>
-              </h3>
-              <div className="relative">
-                <div className="absolute top-1/2 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 transform -translate-y-1/2"></div>
-                <div className="relative flex justify-between items-center py-8">
-                  <div className="flex flex-col items-center">
-                    <div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2 flex items-center gap-1">2018 <Check size={16} className="text-green-300" /></div>
-                    <div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[180px] text-center">
-                      <div className="font-bold text-purple-900 text-sm flex items-center justify-center gap-1">Challenge Launched <a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800"><ExternalLink size={14} /></a></div>
-                      <div className="text-xs text-purple-700 mt-1">October 2018</div>
-                      <div className="text-xs text-purple-600">Health Canada</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="mb-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[150px] text-center">
-                      <div className="font-bold text-purple-900 text-sm flex items-center justify-center gap-1">Application Deadline <a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800"><ExternalLink size={14} /></a></div>
-                    </div>
-                    <div className="w-5 h-5 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2 flex items-center gap-1">2019 <Check size={16} className="text-green-300" /></div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2 flex items-center gap-1">2020 <Check size={16} className="text-green-300" /></div>
-                    <div className="w-5 h-5 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[150px] text-center">
-                      <div className="font-bold text-purple-900 text-sm flex items-center justify-center gap-1">Pilot-Phase <a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800"><ExternalLink size={14} /></a></div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="mb-4 bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl shadow-lg border-2 border-yellow-400 max-w-[220px] text-center">
-                      <div className="flex items-center justify-center gap-1 mb-1"><Trophy className="text-yellow-600" size={16} /><span className="font-bold text-yellow-800 text-sm">Scatr Wins!</span><a href="https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html" target="_blank" rel="noopener noreferrer" className="text-yellow-600 hover:text-yellow-800"><ExternalLink size={14} /></a></div>
-                      <div className="text-xs text-yellow-700">$1,000,000 Prize</div>
-                    </div>
-                    <div className="w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center"><Trophy className="text-white" size={12} /></div>
-                    <div className="bg-purple-700 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2 flex items-center gap-1">2021 <Check size={16} className="text-green-300" /></div>
-                  </div>
-                </div>
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">Drug Checking Technology Challenge (2018-2021)<a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 flex items-center gap-1">Learn More <ExternalLink size={14} /></a></h3>
+            <div className="relative">
+              <div className="absolute top-1/2 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 transform -translate-y-1/2"></div>
+              <div className="relative flex justify-between items-center py-8">
+                <div className="flex flex-col items-center"><div className="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2 flex items-center gap-1">2018 <Check size={16} className="text-green-300" /></div><div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div><div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[180px] text-center"><div className="font-bold text-purple-900 text-sm">Challenge Launched</div><div className="text-xs text-purple-700 mt-1">October 2018</div><div className="text-xs text-purple-600">Health Canada</div></div></div>
+                <div className="flex flex-col items-center"><div className="mb-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[150px] text-center"><div className="font-bold text-purple-900 text-sm">Application Deadline</div></div><div className="w-5 h-5 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div><div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2 flex items-center gap-1">2019 <Check size={16} className="text-green-300" /></div></div>
+                <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mb-2 flex items-center gap-1">2020 <Check size={16} className="text-green-300" /></div><div className="w-5 h-5 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div><div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[150px] text-center"><div className="font-bold text-purple-900 text-sm">Pilot-Phase</div></div></div>
+                <div className="flex flex-col items-center"><div className="mb-4 bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl shadow-lg border-2 border-yellow-400 max-w-[220px] text-center"><div className="flex items-center justify-center gap-1 mb-1"><Trophy className="text-yellow-600" size={16} /><span className="font-bold text-yellow-800 text-sm">Scatr Wins!</span></div><div className="text-xs text-yellow-700">$1,000,000 Prize</div></div><div className="w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center"><Trophy className="text-white" size={12} /></div><div className="bg-purple-700 text-white font-bold text-lg px-4 py-2 rounded-full shadow-lg mt-2 flex items-center gap-1">2021 <Check size={16} className="text-green-300" /></div></div>
               </div>
             </div>
-            <div className="mt-8 mb-8">
-              <h3 className="text-xl font-bold text-purple-900 mb-4">
-                Health Canada Contribution Agreements w/ Western University (2022-2028)
-              </h3>
-              <div className="relative pt-12">
-                <div className="absolute top-0 flex flex-col items-center z-10" style={{ left: `${hcProgressPercent}%`, transform: 'translateX(-50%)' }}>
-                  <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-bold whitespace-nowrap">We Are Here</div>
-                  <div className="text-xs text-green-700 font-medium whitespace-nowrap">{formatDate(today)}</div>
-                  <div className="w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-green-500 mt-1"></div>
-                  <div className="w-1 h-6 bg-green-500"></div>
-                </div>
-                <div className="absolute top-12 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800"></div>
-                <div className="relative flex justify-between items-start pt-8" style={{ marginTop: '8px' }}>
-                  <div className="flex flex-col items-center">
-                    <div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2 flex items-center gap-1">2022 <Check size={14} className="text-green-300" /></div>
-                    <div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[220px] text-center">
-                      <div className="font-bold text-purple-900 text-sm">Phase #1</div>
-                      <div className="text-xs text-purple-600 mt-1">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2 flex items-center gap-1">2023 <Check size={14} className="text-green-300" /></div>
-                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
-                  </div>
-                  <div className="flex flex-col items-center relative">
-                    <div className="mb-2 bg-gradient-to-br from-purple-200 to-purple-300 p-3 rounded-xl shadow-lg border-2 border-purple-400 max-w-[220px] text-center">
-                      <div className="font-bold text-purple-900 text-sm">Phase #2</div>
-                      <div className="text-xs text-purple-600 mt-1">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</div>
-                    </div>
-                    <div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mt-2 flex items-center gap-1">2024 <Check size={14} className="text-green-300" /></div>
-                    <div className="absolute top-full mt-2 flex flex-col items-center">
-                      <div className="w-1 h-16 bg-purple-500"></div>
-                      <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-purple-500"></div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2 flex items-center gap-1">2025 {currentYear >= 2025 && <Check size={14} className="text-green-300" />}</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
-                  <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2026</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
-                  <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2027</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
-                  <div className="flex flex-col items-center">
-                    <div className="bg-purple-800 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2028</div>
-                    <div className="w-5 h-5 bg-purple-800 rounded-full border-4 border-white shadow-lg"></div>
-                    <div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-2 rounded-xl shadow-lg border-2 border-purple-300 max-w-[100px] text-center"><div className="font-bold text-purple-900 text-xs">Project End</div><div className="text-xs text-purple-600">Mar 31, 2028</div></div>
-                  </div>
-                </div>
+          </div>
+          <div className="mt-8 mb-8">
+            <h3 className="text-xl font-bold text-purple-900 mb-4">Health Canada Contribution Agreements w/ Western University (2022-2028)</h3>
+            <div className="relative pt-12">
+              <div className="absolute top-0 flex flex-col items-center z-10" style={{ left: `${hcProgressPercent}%`, transform: 'translateX(-50%)' }}>
+                <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-2 py-1 rounded-lg shadow-lg text-xs font-bold whitespace-nowrap">We Are Here</div>
+                <div className="text-xs text-green-700 font-medium whitespace-nowrap">{formatDate(today)}</div>
+                <div className="w-1 h-6 bg-green-500 mt-1"></div>
+              </div>
+              <div className="absolute top-12 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800"></div>
+              <div className="relative flex justify-between items-start pt-8" style={{ marginTop: '8px' }}>
+                <div className="flex flex-col items-center"><div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2022</div><div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div><div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl shadow-lg border-2 border-purple-300 max-w-[220px] text-center"><div className="font-bold text-purple-900 text-sm">Phase #1</div><div className="text-xs text-purple-600 mt-1">Creating a Drug Checking Network Using ML Enabled Spectrometers</div></div></div>
+                <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2023</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
+                <div className="flex flex-col items-center"><div className="mb-2 bg-gradient-to-br from-purple-200 to-purple-300 p-3 rounded-xl shadow-lg border-2 border-purple-400 max-w-[220px] text-center"><div className="font-bold text-purple-900 text-sm">Phase #2</div><div className="text-xs text-purple-600 mt-1">Leading the Way: PWLLE at the Forefront</div></div><div className="w-5 h-5 bg-purple-600 rounded-full border-4 border-white shadow-lg"></div><div className="bg-purple-600 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mt-2">2024</div></div>
+                <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2025</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
+                <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2026</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
+                <div className="flex flex-col items-center"><div className="bg-purple-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2027</div><div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div></div>
+                <div className="flex flex-col items-center"><div className="bg-purple-800 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg mb-2">2028</div><div className="w-5 h-5 bg-purple-800 rounded-full border-4 border-white shadow-lg"></div><div className="mt-4 bg-gradient-to-br from-purple-100 to-purple-200 p-2 rounded-xl shadow-lg border-2 border-purple-300 max-w-[100px] text-center"><div className="font-bold text-purple-900 text-xs">Project End</div><div className="text-xs text-purple-600">Mar 31, 2028</div></div></div>
               </div>
             </div>
-            <div className="mt-24">
-              <h3 className="text-xl font-bold text-purple-900 mb-4">Phase #2 (CURRENT) Project Fiscal Years (April 1, 2024 - March 31, 2028)</h3>
-              <div className="relative pt-16 pb-8">
-                <div className="absolute top-0 flex flex-col items-center z-10" style={{ left: `${progressPercent}%`, transform: 'translateX(-50%)' }}>
-                  <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-3 py-1.5 rounded-lg shadow-lg text-sm font-bold whitespace-nowrap">We Are Here</div>
-                  <div className="text-xs text-green-700 font-medium mt-1 whitespace-nowrap">{formatDate(today)}</div>
-                  <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-green-500 mt-1"></div>
-                  <div className="w-1 h-8 bg-green-500"></div>
+          </div>
+          <div className="mt-24">
+            <h3 className="text-xl font-bold text-purple-900 mb-4">Phase #2 (CURRENT) Project Fiscal Years (April 1, 2024 - March 31, 2028)</h3>
+            <div className="relative pt-16 pb-8">
+              <div className="absolute top-0 flex flex-col items-center z-10" style={{ left: `${progressPercent}%`, transform: 'translateX(-50%)' }}>
+                <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-3 py-1.5 rounded-lg shadow-lg text-sm font-bold whitespace-nowrap">We Are Here</div>
+                <div className="text-xs text-green-700 font-medium mt-1 whitespace-nowrap">{formatDate(today)}</div>
+                <div className="w-1 h-8 bg-green-500 mt-1"></div>
+              </div>
+              <div className="relative h-16 bg-gray-200 rounded-full overflow-hidden shadow-inner mt-8">
+                <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-l-full" style={{ width: `${progressPercent}%` }}></div>
+                <div className="absolute inset-0 flex">
+                  {['Fiscal Year 1\nApr 1, 2024 - Mar 31, 2025','Fiscal Year 2\nApr 1, 2025 - Mar 31, 2026','Fiscal Year 3\nApr 1, 2026 - Mar 31, 2027','Fiscal Year 4\nApr 1, 2027 - Mar 31, 2028'].map((fy, i) => (
+                    <div key={i} className={`flex-1 ${i < 3 ? 'border-r-2 border-white' : ''} flex items-center justify-center`}>
+                      <div className="text-center">
+                        <div className="font-bold text-purple-900 text-sm">{fy.split('\n')[0]}</div>
+                        <div className="text-xs text-purple-700">{fy.split('\n')[1]}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="relative h-16 bg-gray-200 rounded-full overflow-hidden shadow-inner mt-8">
-                  <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-l-full" style={{ width: `${progressPercent}%` }}></div>
-                  <div className="absolute inset-0 flex">
-                    <div className="flex-1 border-r-2 border-white flex items-center justify-center"><div className="text-center"><div className="font-bold text-purple-900 text-sm">Fiscal Year 1</div><div className="text-xs text-purple-700">Apr 1, 2024 - Mar 31, 2025</div></div></div>
-                    <div className="flex-1 border-r-2 border-white flex items-center justify-center"><div className="text-center"><div className="font-bold text-purple-900 text-sm">Fiscal Year 2</div><div className="text-xs text-purple-700">Apr 1, 2025 - Mar 31, 2026</div></div></div>
-                    <div className="flex-1 border-r-2 border-white flex items-center justify-center"><div className="text-center"><div className="font-bold text-purple-900 text-sm">Fiscal Year 3</div><div className="text-xs text-purple-700">Apr 1, 2026 - Mar 31, 2027</div></div></div>
-                    <div className="flex-1 flex items-center justify-center"><div className="text-center"><div className="font-bold text-purple-900 text-sm">Fiscal Year 4</div><div className="text-xs text-purple-700">Apr 1, 2027 - Mar 31, 2028</div></div></div>
-                  </div>
-                </div>
-                <div className="flex justify-between mt-2">
-                  <div className="text-center"><div className="font-bold text-purple-800 text-sm">Start</div><div className="text-xs text-purple-600">April 1, 2024</div></div>
-                  <div className="text-center"><div className="font-bold text-purple-800 text-sm">End</div><div className="text-xs text-purple-600">March 31, 2028</div></div>
-                </div>
+              </div>
+              <div className="flex justify-between mt-2">
+                <div className="text-center"><div className="font-bold text-purple-800 text-sm">Start</div><div className="text-xs text-purple-600">April 1, 2024</div></div>
+                <div className="text-center"><div className="font-bold text-purple-800 text-sm">End</div><div className="text-xs text-purple-600">March 31, 2028</div></div>
               </div>
             </div>
           </div>
@@ -1630,18 +905,18 @@ const ProjectPartnerDashboard = () => {
             {partnersData.map((site, idx) => (
               <tr key={site.id} onClick={() => toggleRow(site.id)} className={`cursor-pointer transition-all duration-200 ${expandedRow === site.id ? 'bg-purple-200 scale-[1.02] shadow-lg z-10 relative' : site.isLead ? 'bg-purple-200 border-4 border-purple-600' : idx % 2 === 0 ? 'bg-purple-50 hover:bg-purple-100' : 'bg-white hover:bg-purple-50'}`}>
                 <td className={`border border-purple-200 p-2 font-bold text-purple-900 ${expandedRow === site.id ? 'text-base py-4' : ''}`}>{site.nameOrganization}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.address}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.city}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.prov}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.primaryContact}</td>
-                <td className={`border border-purple-200 p-2 font-medium text-blue-700 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.email1}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.phone1}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.additionalContact}</td>
-                <td className={`border border-purple-200 p-2 font-medium text-blue-700 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.email2}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.phone2}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.address}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.city}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.prov}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.primaryContact}</td>
+                <td className={`border border-purple-200 p-2 text-blue-700 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.email1}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.phone1}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.additionalContact}</td>
+                <td className={`border border-purple-200 p-2 text-blue-700 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.email2}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.phone2}</td>
                 <td className={`border border-purple-200 p-2 font-bold text-center ${expandedRow === site.id ? 'py-4' : ''}`}>{site.devicesAssigned}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.exemptionType1}</td>
-                <td className={`border border-purple-200 p-2 font-medium ${expandedRow === site.id ? 'py-4' : ''}`}>{site.exemptionType2}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.exemptionType1}</td>
+                <td className={`border border-purple-200 p-2 ${expandedRow === site.id ? 'py-4' : ''}`}>{site.exemptionType2}</td>
               </tr>
             ))}
           </tbody>
@@ -1657,36 +932,28 @@ const ProjectPartnerDashboard = () => {
         <h2 className="flex items-center gap-2 font-bold text-2xl"><FileText size={28} />Research, Ethics & Exemptions Documents</h2>
       </div>
       <div className="p-6 bg-gradient-to-br from-white to-purple-50 space-y-6">
-        {/* Policy & Announcements Section */}
         <div className="bg-gradient-to-br from-red-50 to-white p-4 rounded-xl border-2 border-red-200">
-          <h3 className="font-bold text-lg text-red-900 mb-3 flex items-center gap-2">
-            <AlertTriangle size={18} className="text-red-600" />
-            Policy & Announcements
-          </h3>
+          <h3 className="font-bold text-lg text-red-900 mb-3 flex items-center gap-2"><AlertTriangle size={18} className="text-red-600" />Policy & Announcements</h3>
           <div className="space-y-2">
             <a href="/SCS-Closure-Partner-Update-Mar2026.pdf" target="_blank" className="flex items-center gap-2 text-red-700 hover:text-red-900 text-sm p-2 bg-white rounded border border-red-200 hover:bg-red-50"><Download size={16} />Ontario CTS Funding Announcement — Drug-Checking Partner Information Document (March 17, 2026)</a>
           </div>
         </div>
-
-        {/* Research Section */}
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Research</h3>
+          <h3 className="font-bold text-lg text-purple-900 mb-3">Research</h3>
           <div className="space-y-2">
-            <a href="/SOP-Sample-Preparation.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Operational Excellence. Standard Operating Procedures for Sample Preparation (PDF)</a>
+            <a href="/SOP-Sample-Preparation.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Standard Operating Procedures for Sample Preparation (PDF)</a>
             <a href="/Scatr-Results-FAQ.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Results Explanation Document (PDF)</a>
             <a href="/Scatr-LOD-Study.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Series One LOD Study (PDF)</a>
             <a href="/Scatr-Technical-Research-Strategy.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Scatr Technical Research Strategy (PDF)</a>
             <a href="/Canadian-Substance-Use-Costs-Harms-2007-2020.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Canadian Substance Use Costs and Harms Report 2007-2020 (PDF)</a>
-            <a href="/CIHR-SCS-Operational-Guidance-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />National Operational Guidance for the Implementation of Supervised Consumption Services - CIHR July 2023 (PDF)</a>
+            <a href="/CIHR-SCS-Operational-Guidance-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />National Operational Guidance for Supervised Consumption Services - CIHR July 2023 (PDF)</a>
             <a href="/CAPSA-Annual-Report-2023-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Community Addictions Peer Support Association (CAPSA). Annual Report 2023-2024 (PDF)</a>
             <a href="/Ontario-CCRA-2024.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Ontario Community Care and Recovery Act 2024 (PDF)</a>
             <a href="/Canadian-Drugs-Substances-Strategy-2023.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Government of Canada. The Canadian Drugs and Substances Strategy 2023 (PDF)</a>
           </div>
         </div>
-
-        {/* Ethics Section */}
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Ethics</h3>
+          <h3 className="font-bold text-lg text-purple-900 mb-3">Ethics</h3>
           <div className="space-y-2">
             <a href="/LOI-Phase1.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Device Use - Letter of Information & Consent (PDF)</a>
             <a href="/LOI-DCP-Training.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Drug-Checking Peer Training - Letter of Information & Consent (PDF)</a>
@@ -1696,60 +963,41 @@ const ProjectPartnerDashboard = () => {
             <a href="/DCP-Invoice-Template.docx" download className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />DCP Training &amp; Certification — Invoice Submission Package (Word)</a>
           </div>
         </div>
-
-        {/* Exemptions Section */}
         <div className="bg-gradient-to-br from-purple-50 to-white p-4 rounded-xl border-2 border-purple-200">
-          <h3 className="font-bold text-lg text-purple-900 mb-3 flex items-center gap-2">Exemptions</h3>
+          <h3 className="font-bold text-lg text-purple-900 mb-3">Exemptions</h3>
           <div className="space-y-2">
             <a href="/Exemption-56-Template.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Exemption 56 Approved - Redacted Template (PDF)</a>
             <a href="/Exemption-56-Blank.pdf" target="_blank" className="flex items-center gap-2 text-purple-700 hover:text-purple-900 text-sm p-2 bg-white rounded border border-purple-200 hover:bg-purple-50"><Download size={16} />Exemption 56 Application - Blank Template (PDF)</a>
           </div>
         </div>
-
         <p className="text-xs text-gray-500 italic">Click to view or download PDF documents</p>
       </div>
     </div>
   );
 
   const linksData = [
-    // === WESTERN UNIVERSITY ===
     { title: "Western News: Health Canada Grant", url: "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/", description: "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.", category: "Western University" },
     { title: "FLL Group Bio", url: "https://publish.uwo.ca/~flagugne/#about", description: "Principal Investigator's research group at Western University.", category: "Western University" },
-    // === SCATR INC. ===
     { title: "Scatr Portal (Partner Login)", url: "https://scatr.ca/auth", description: "Secure login for partners to access the drug-checking data management system.", category: "Scatr Inc." },
     { title: "Scatr Live Dashboard", url: "https://scatr.live/", description: "Public dashboard with real-time drug-checking results across the network.", category: "Scatr Inc." },
     { title: "Grand Prize Winner Announcement", url: "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html", description: "Health Canada announces Scatr Inc. as the $1 million grand prize winner.", category: "Scatr Inc." },
     { title: "Impact Canada - Drug Checking Challenge", url: "https://impact.canada.ca/en/challenges/drug-checking-challenge", description: "Official Government of Canada page for the Drug Checking Technology Challenge.", category: "Scatr Inc." },
-    // === PROJECT PARTNERS ===
     { title: "Sanguen - Drug Checking Program", url: "https://www.sanguen.com/drug-checking", description: "Drug checking services at Sanguen Health Centre - project partner.", category: "Project Partners" },
     { title: "RHAC - Carepoint Service", url: "https://www.hivaidsconnection.ca/carepoint", description: "London's supervised consumption service - project partner site.", category: "Project Partners" },
-    // === HEALTH CANADA ===
     { title: "Health Canada - SUAP Active Projects", url: "https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html", description: "List of active projects funded through the Substance Use and Addictions Program.", category: "Health Canada" },
     { title: "Health Canada - Office of Controlled Substances", url: "https://www.canada.ca/en/health-canada/corporate/contact-us/office-controlled-substances.html", description: "Contact information for Health Canada's Office of Controlled Substances.", category: "Health Canada" },
     { title: "Health Canada - Opioid/Stimulant Harms", url: "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/", description: "Latest statistics on opioid and stimulant-related harms in Canada.", category: "Health Canada" },
     { title: "Health Canada - SCS Statistics", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/status-application.html", description: "Federal statistics on supervised consumption sites in Canada.", category: "Health Canada" },
-    { title: "Health Canada - Apply for SCS", url: "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/apply.html", description: "Federal application process for supervised consumption sites.", category: "Health Canada" },
-    // === OTHER ===
     { title: "BCCSU Drug Checking", url: "https://drugcheckingbc.ca/", description: "BC Centre on Substance Use drug checking program information.", category: "Other" },
     { title: "CCSA - Drug Checking", url: "https://www.ccsa.ca/drug-checking", description: "Canadian Centre on Substance Use resources on drug checking.", category: "Other" },
-    { title: "CDA-AMC - Drug-Checking Technologies", url: "https://www.cadth.ca/", description: "Review of drug-checking technologies for unregulated substances.", category: "Other" },
     { title: "CCRA 2024 Legislation", url: "https://www.ontario.ca/laws/statute/24c27", description: "Full text of Ontario's Community Care and Recovery Act.", category: "Other" },
     { title: "CATIE - Harm Reduction Toolkit", url: "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers", description: "Comprehensive toolkit for implementing harm reduction approaches.", category: "Other" },
-    { title: "CATIE - Ontario HR Program", url: "https://www.catie.ca/caties-ontario-harm-reduction-program", description: "Distribution of harm reduction supplies across Ontario.", category: "Other" },
-    { title: "CATIE - Monitoring Drug Supply", url: "https://www.catie.ca/monitoring-and-responding-to-the-unregulated-drug-supply", description: "Resources on monitoring the unregulated drug supply.", category: "Other" },
-    { title: "CCSA Main Site", url: "https://www.ccsa.ca/", description: "Canadian Centre on Substance Use and Addiction resources.", category: "Other" },
     { title: "CSUCH - Costs and Harms Reports", url: "https://csuch.ca/publications/substance-use-costs-and-harms/", description: "Reports on economic and health burden of substance use.", category: "Other" },
-    { title: "Vancouver Coastal Health - Harm Reduction", url: "https://www.vch.ca/en/health-topics/harm-reduction", description: "Comprehensive harm reduction information from BC health authority.", category: "Other" },
-    { title: "Toward the Heart - Safer Use", url: "https://towardtheheart.com/safer-use", description: "BC harm reduction resources for safer drug use practices.", category: "Other" },
-    { title: "Waterloo Region - CTS Services", url: "https://www.regionofwaterloo.ca/en/health-and-wellness/consumption-and-treatment-services.aspx", description: "Regional supervised consumption and treatment services.", category: "Other" },
     { title: "Harm Reduction Journal", url: "https://harmreductionjournal.biomedcentral.com/", description: "Open-access journal on harm reduction approaches to drug use.", category: "Other" },
-    { title: "Johns Hopkins - Fentanyl Test Strips", url: "https://publichealth.jhu.edu/2018/low-tech-low-cost-test-strips-show-promise-for-reducing-fentanyl-overdoses", description: "Research on fentanyl test strips reducing overdose risk.", category: "Other" },
-    { title: "CIAJ - Ontario Drug Policy Analysis", url: "https://ciaj-icaj.ca/en/publications/", description: "Analysis of Ontario's drug policy changes and impacts.", category: "Other" },
   ];
 
   const RelatedLinks = () => {
     const categories = ['Western University', 'Scatr Inc.', 'Project Partners', 'Health Canada', 'Other'];
-    
     return (
       <div className="bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-100">
         <div className="flex items-center gap-3 mb-6"><ExternalLink className="text-purple-700" size={32} /><h2 className="font-bold text-2xl text-purple-900">Related Links & Resources</h2></div>
@@ -1780,139 +1028,69 @@ const ProjectPartnerDashboard = () => {
     <div className="min-h-screen bg-white" id="top">
       <BackToTop />
       {showAnnouncement && <AnnouncementBanner onDismiss={() => setShowAnnouncement(false)} />}
-      {/* Header Section - Matching Keynote Design */}
       <div className="bg-white shadow-lg">
         <div className="px-8 py-8">
           <div className="flex items-stretch gap-8">
-            {/* Western University Logo */}
             <img src="/western-logo.png" alt="Western University" style={{height: '365px', width: 'auto'}} />
-            {/* Text Content */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-                A Novel Concurrent Two Phase<br />Drug-Checking Initiative
-              </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">A Novel Concurrent Two Phase<br />Drug-Checking Initiative</h1>
               <div className="border-b-2 border-gray-300 my-2"></div>
-              <p className="text-lg md:text-xl text-black font-medium">
-                Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)
-              </p>
-              <p className="text-base mt-1">
-                In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:text-blue-800 hover:underline">Scatr Inc.</a>
-              </p>
+              <p className="text-lg md:text-xl text-black font-medium">Contribution Agreement Funding Provided by Health Canada's Substance Use and Addictions Program (SUAP)</p>
+              <p className="text-base mt-1">In partnership with <a href="https://scatr.ca/" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:text-blue-800 hover:underline">Scatr Inc.</a></p>
             </div>
           </div>
         </div>
-        {/* Purple Bar */}
         <div className="h-24 bg-purple-800"></div>
       </div>
-      {/* Combined Project Intro & Info Section */}
+      <ProjectCountdown />
       <div className="px-6 pt-6">
         <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
           <h2 className="text-3xl font-bold text-purple-900 mb-6">Overview</h2>
-          {/* Phase Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center">
-              <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #1</h3>
-              <p className="text-gray-800 font-semibold mb-2">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</p>
-              <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
-              <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2223-HQ-000095</p>
-            </div>
-            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center">
-              <h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3>
-              <p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p>
-              <p className="text-sm text-gray-600">Health Canada, Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>)</p>
-              <p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p>
-            </div>
+            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center"><h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #1</h3><p className="text-gray-800 font-semibold mb-2">Creating a Drug Checking Network Using Machine Learning Enabled Spectrometers</p><p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2223-HQ-000095</p></div>
+            <div className="bg-white p-5 rounded-xl border-2 border-purple-300 shadow-md text-center"><h3 className="font-bold text-2xl text-purple-900 mb-3">Phase #2</h3><p className="text-gray-800 font-semibold mb-2">Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives</p><p className="text-sm text-gray-600">Contribution Agreement_Arrangement # 2425-HQ-000058</p></div>
           </div>
-          {/* Health Canada SUAP Table */}
           <div className="mt-6 overflow-x-auto">
             <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-md">
-              <thead>
-                <tr className="bg-purple-100">
-                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Organization</th>
-                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Project Name</th>
-                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Description</th>
-                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Substances</th>
-                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Location</th>
-                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Funding</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="hover:bg-purple-50">
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">University of Western Ontario</td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Leading the Way: People with Lived and Living Experience at the Forefront of Drug-Checking Initiative</td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-700 align-top">
-                    This initiative will integrate People with Lived and Living Experience (PWLLE) into drug-checking initiatives by training them in drug-checking technologies to enable them to implement drug-checking initiatives and training programs in participating harm reduction and public health centres in Alberta, Ontario, Manitoba and Nova Scotia.
-                  </td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Multiple substances</td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">London, Ontario</td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top font-medium">$4,473,473</td>
-                </tr>
-              </tbody>
+              <thead><tr className="bg-purple-100"><th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Organization</th><th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Project Name</th><th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Description</th><th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Substances</th><th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Location</th><th className="border border-gray-200 px-4 py-3 text-left text-sm font-bold text-purple-900">Funding</th></tr></thead>
+              <tbody><tr className="hover:bg-purple-50"><td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">University of Western Ontario</td><td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Leading the Way: People with Lived and Living Experience at the Forefront of Drug-Checking Initiative</td><td className="border border-gray-200 px-4 py-3 text-sm text-gray-700 align-top">This initiative will integrate People with Lived and Living Experience (PWLLE) into drug-checking initiatives by training them in drug-checking technologies to enable them to implement drug-checking initiatives and training programs in participating harm reduction and public health centres in Alberta, Ontario, Manitoba and Nova Scotia.</td><td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">Multiple substances</td><td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top">London, Ontario</td><td className="border border-gray-200 px-4 py-3 text-sm text-gray-800 align-top font-medium">$4,473,473</td></tr></tbody>
             </table>
             <p className="text-xs text-gray-500 mt-2 text-right">Source: <a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:underline">Health Canada SUAP Active Projects</a></p>
           </div>
-          {/* Project Status Text */}
           <div className="mt-6">
-            <p className="text-gray-800 leading-relaxed">As of today (<strong>{todayFormatted}</strong>) Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 total spectrometers</strong> across Canada. Concluding project partner recruitment / spectrometer allocations for the current project Fiscal Year 2 (April 1st, 2025 - March 31st, 2026).</p>
+            <p className="text-gray-800 leading-relaxed">As of today (<strong>{todayFormatted}</strong>) Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded via Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has successfully allocated <strong>24 total spectrometers</strong> across Canada.</p>
             <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 spectrometers</strong>.</p>
-            <p className="text-gray-800 leading-relaxed mt-4">The focus for the remainder of this <a href="#timeline" className="text-purple-700 hover:text-purple-900 underline font-semibold">Fiscal Year</a>, which ends on March 31st 2026, will be scheduling and conducting the Drug-Checking Peer Trainings (which includes the $3000 CAD per site, stipend), with our new cohort of project partners. If you are included in that cohort, Cameron will be contacting you shortly to begin scheduling and logistical planning.</p>
             <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let Cameron know if he can be of any ongoing assistance at any time. Please also send Cameron copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
           </div>
-          {/* Contact Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
             <div className="bg-white p-4 rounded-xl border border-purple-200">
               <div className="font-bold text-purple-900 mb-2">Principal Investigator (PI):</div>
               <div className="text-gray-800 font-medium">Professor Francois Lagugne-Labarthet</div>
-              <div className="text-gray-600">Faculty of Science, Western University</div>
-              <div className="text-gray-600">London, ON, Canada</div>
-              <div className="flex items-center gap-2 mt-2 text-purple-700">
-                <Phone size={14} />
-                <span>519-661-2111 x81006</span>
-              </div>
-              <div className="flex items-center gap-2 text-purple-700">
-                <Mail size={14} />
-                <a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a>
-              </div>
-              <div className="flex items-center gap-2 mt-2 text-purple-700">
-                <ExternalLink size={14} />
-                <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
-              </div>
+              <div className="text-gray-600">Faculty of Science, Western University · London, ON</div>
+              <div className="flex items-center gap-2 mt-2 text-purple-700"><Phone size={14} /><span>519-661-2111 x81006</span></div>
+              <div className="flex items-center gap-2 text-purple-700"><Mail size={14} /><a href="mailto:flagugne@uwo.ca" className="hover:underline">flagugne@uwo.ca</a></div>
             </div>
             <div className="bg-white p-4 rounded-xl border border-purple-200">
               <div className="font-bold text-purple-900 mb-2">Project Manager:</div>
               <div className="text-gray-800 font-medium">Cameron Brown</div>
-              <div className="text-gray-600">Faculty of Science, Western University</div>
-              <div className="text-gray-600">London, ON, Canada</div>
-              <div className="flex items-center gap-2 mt-2 text-purple-700">
-                <Phone size={14} />
-                <span>226-238-9970</span>
-              </div>
-              <div className="flex items-center gap-2 text-purple-700">
-                <Mail size={14} />
-                <a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a>
-              </div>
-              <div className="flex items-center gap-2 mt-2 text-purple-700">
-                <ExternalLink size={14} />
-                <a href="https://publish.uwo.ca/~flagugne/#about" target="_blank" rel="noopener noreferrer" className="hover:underline">FLL Group Bio</a>
-              </div>
+              <div className="text-gray-600">Faculty of Science, Western University · London, ON</div>
+              <div className="flex items-center gap-2 mt-2 text-purple-700"><Phone size={14} /><span>226-238-9970</span></div>
+              <div className="flex items-center gap-2 text-purple-700"><Mail size={14} /><a href="mailto:cbrown58@uwo.ca" className="hover:underline">cbrown58@uwo.ca</a></div>
             </div>
           </div>
         </div>
       </div>
-      {/* Purple Bar */}
       <div className="h-24 bg-purple-800 mt-6"></div>
       <div className="text-center py-6 bg-white"><h2 className="text-5xl md:text-6xl font-black text-purple-900 tracking-tight">Interactive Project Partner Dashboard</h2></div>
       <div className="px-6 pb-4">
         <div className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
-          <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the project's network and infrastructure. While facilitating communication and collaboration across sites, and serving as a resource hub for project-related information.</p>
+          <p className="text-gray-800 leading-relaxed">Welcome to the Project Partner Dashboard — a centralized platform designed to provide all project partners with comprehensive visibility into the project's network and infrastructure.</p>
           <TableOfContents />
         </div>
       </div>
       <div className="p-6 space-y-6">
         <div id="csuch" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
-          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-            <h2 className="flex items-center gap-2 font-bold text-2xl">Picturing the Problem</h2>
-          </div>
+          <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4"><h2 className="flex items-center gap-2 font-bold text-2xl">Picturing the Problem</h2></div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50">
             <a href="https://www.csuch.ca/explore-the-data" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
               <img src="/csuch-infographic.png" alt="Canadian Substance Use Costs and Harms Infographic" className="w-full rounded-lg shadow-lg cursor-pointer" />
@@ -1933,20 +1111,11 @@ const ProjectPartnerDashboard = () => {
         <div id="table" className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden scroll-mt-4">
           <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 flex items-center justify-between">
             <h2 className="flex items-center gap-2 font-bold text-2xl"><List size={28} />Project Partner Contact Info</h2>
-            <button
-              onClick={() => printContactList(partnersData)}
-              className="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium"
-              title="Print Contact List"
-            >
-              <Printer size={18} />
-              Print List / Save as PDF
-            </button>
+            <button onClick={() => printContactList(partnersData)} className="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium" title="Print Contact List"><Printer size={18} />Print List / Save as PDF</button>
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
-        <div id="metrics" className="scroll-mt-4">
-          <SummaryMetrics partnersData={partnersData} stats={stats} sitesByProvince={sitesByProvince} />
-        </div>
+        <div id="metrics" className="scroll-mt-4"><SummaryMetrics partnersData={partnersData} stats={stats} sitesByProvince={sitesByProvince} /></div>
         <div id="faq" className="scroll-mt-4"><FAQSection /></div>
         <div id="discussion" className="scroll-mt-4"><PartnerDiscussionBoard /></div>
         <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
