@@ -1119,7 +1119,7 @@ const ProjectPartnerDashboard = () => {
             <p className="text-gray-800 leading-relaxed mt-4">Looking ahead, the project aims to deploy 4 more spectrometers: 2 in Fiscal Year 3 (April 1st 2026 to March 31st 2027) and 2 in Fiscal Year 4 (April 1st 2027 to March 31st 2028), bringing the total network capacity upon project completion, to <strong>28 spectrometers</strong>.</p>
             <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let Cameron know if he can be of any ongoing assistance at any time.</p>
             <div className="mt-4 bg-yellow-50 border-4 border-yellow-400 rounded-xl p-4">
-              <p className="text-yellow-900 font-black text-lg leading-snug">⚠️ Please also send Cameron copies of all approval notices and relevant communications as soon as possible, subsequent to receipt. Thank you kindly.</p>
+              <p className="text-yellow-900 font-black text-lg leading-snug">⚠️ Please send Cameron copies of all Exemption-related approval documents, notices, or likewise as soon as possible, subsequent to receipt. Thank you kindly.</p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
