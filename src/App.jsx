@@ -795,6 +795,7 @@ const ProjectPartnerDashboard = () => {
   const stats = getStatistics();
 
   const ProjectTimeline = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
     const today = new Date();
     const fy1End = new Date('2025-03-31'), fy2End = new Date('2026-03-31'), fy3End = new Date('2027-03-31'), projectEnd = new Date('2028-03-31');
     let fyNumber, fyProgress;
@@ -814,10 +815,14 @@ const ProjectPartnerDashboard = () => {
     const challengeUrl = "https://impact.canada.ca/en/challenges/drug-checking-challenge";
     return (
       <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+        <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 cursor-pointer flex items-center justify-between" onClick={() => setIsExpanded(!isExpanded)}>
           <h2 className="flex items-center gap-2 font-bold text-2xl"><Clock size={28} />Project Background & Timeline</h2>
+          <div className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-lg">
+            <span className="text-sm font-medium">{isExpanded ? 'Collapse' : 'Expand'}</span>
+            {isExpanded ? <ChevronUp size={28} strokeWidth={2.5} /> : <ChevronDown size={28} strokeWidth={2.5} />}
+          </div>
         </div>
-        <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+        {isExpanded && <div className="p-6 bg-gradient-to-br from-white to-purple-50">
           <div className="mb-8">
             <h3 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">Drug Checking Technology Challenge (2018-2021)<a href={challengeUrl} target="_blank" rel="noopener noreferrer" className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 flex items-center gap-1">Learn More <ExternalLink size={14} /></a></h3>
             <div className="relative">
@@ -877,7 +882,7 @@ const ProjectPartnerDashboard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     );
   };
@@ -1147,6 +1152,7 @@ const ProjectPartnerDashboard = () => {
         <PicturingTheProblem />
         <div id="timeline" className="scroll-mt-4"><ProjectTimeline /></div>
         <div id="news" className="scroll-mt-4"><NewsUpdatesFeed /></div>
+        <div id="metrics" className="scroll-mt-4"><SummaryMetrics partnersData={partnersData} stats={stats} sitesByProvince={sitesByProvince} /></div>
         <div id="publications" className="scroll-mt-4"><ProjectPublications /></div>
         <div id="presentation" className="scroll-mt-4"><PowerPointViewer /></div>
         <div id="scatr-research" className="scroll-mt-4"><ScatrResearchPDFViewer /></div>
@@ -1162,7 +1168,6 @@ const ProjectPartnerDashboard = () => {
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
-        <div id="metrics" className="scroll-mt-4"><SummaryMetrics partnersData={partnersData} stats={stats} sitesByProvince={sitesByProvince} /></div>
         <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
       </div>
     </div>
