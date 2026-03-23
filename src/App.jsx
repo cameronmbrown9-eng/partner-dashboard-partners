@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp, AlertTriangle, Printer, HelpCircle, Newspaper, GraduationCap, X, Activity, Building2, Smartphone, TrendingUp, Globe, Target, Zap, Navigation } from 'lucide-react';
+import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, CheckCircle, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp, AlertTriangle, Printer, HelpCircle, Newspaper, GraduationCap, X, Activity, Building2, Smartphone, TrendingUp, Globe, Target, Zap, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -74,6 +74,77 @@ const TRAINING_STATUS = {
   21: { completed: false, date: null },
   22: { completed: false, date: null },
 };
+
+// PWLLE Drug-Checking Peer Training Sessions data
+const PWLLE_TRAINING_SESSIONS = [
+  { id: 1, site: "Sanguen Health Centre", location: "Kitchener, ON", sessionNum: 1, scheduledDate: "2025-01-20", purpose: "Focus Group", completed: "Complete", attendants: 10, newAttendants: 10, notes: "2025-01-20 Sanguen Focus Group Session One Notes" },
+  { id: 2, site: "Grey County", location: "Owen Sound, ON", sessionNum: 1, scheduledDate: "2025-02-03", purpose: "Focus Group", completed: "Complete", attendants: 10, newAttendants: 10, notes: "2025-02-04 Grey Bruce Focus Group Session One Notes" },
+  { id: 3, site: "Regional HIV/AIDS Connection", location: "London, ON", sessionNum: 1, scheduledDate: "2025-02-18", purpose: "Focus Group", completed: "Complete", attendants: 20, newAttendants: 20, notes: "2025-02-19 London Focus Group Session One Notes" },
+  { id: 4, site: "Sanguen Health Centre", location: "Kitchener, ON", sessionNum: 2, scheduledDate: "2025-02-14", purpose: "Feedback on Materials", completed: "Complete", attendants: 10, newAttendants: 9, notes: "2025-02-14 Sanguen Focus Group Session Two Notes" },
+  { id: 5, site: "Grey County", location: "Owen Sound, ON", sessionNum: 2, scheduledDate: "2025-03-28", purpose: "DCP Certification", completed: "Complete", attendants: 14, newAttendants: 4, notes: "DCP Pre- and Post-Surveys" },
+  { id: 6, site: "Regional HIV/AIDS Connection", location: "London, ON", sessionNum: 2, scheduledDate: "2025-03-06", purpose: "Feedback on Materials", completed: "Complete", attendants: 5, newAttendants: 0, notes: "2025-03-06 London Feedback Session Note" },
+  { id: 7, site: "Sanguen Health Centre", location: "Kitchener, ON", sessionNum: 3, scheduledDate: "2025-03-17", purpose: "DCP Certification", completed: "Complete", attendants: 10, newAttendants: 3, notes: "DCP Pre- and Post-Surveys" },
+  { id: 8, site: "Grey County", location: "Owen Sound, ON", sessionNum: 3, scheduledDate: "2025-05-30", purpose: "DCP Certification", completed: "Complete", attendants: 12, newAttendants: 12, notes: "DCP Pre- and Post-Surveys" },
+  { id: 9, site: "Regional HIV/AIDS Connection", location: "London, ON", sessionNum: 3, scheduledDate: "2025-04-15", purpose: "DCP Certification", completed: "Complete", attendants: 20, newAttendants: 6, notes: "DCP Pre- and Post-Surveys" },
+];
+
+const formatDateDisplay = (dateStr) => {
+  if (!dateStr) return '-';
+  const d = new Date(dateStr);
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+};
+
+const PWLLETrainingSessionsTracker = () => (
+  <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+    <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+      <h2 className="flex items-center gap-2 font-bold text-2xl"><Users size={28} />PWLLE Drug-Checking Peer Training Sessions</h2>
+      <p className="text-purple-200 text-sm mt-1">111 Total Attendants | 74 Unique PWLLE Trained</p>
+    </div>
+    <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+              <th className="border border-purple-300 p-3 text-left">Site</th>
+              <th className="border border-purple-300 p-3 text-left">Location</th>
+              <th className="border border-purple-300 p-3 text-center">Session #</th>
+              <th className="border border-purple-300 p-3 text-left">Scheduled Date</th>
+              <th className="border border-purple-300 p-3 text-left">Purpose</th>
+              <th className="border border-purple-300 p-3 text-center">Status</th>
+              <th className="border border-purple-300 p-3 text-center"># Attendants</th>
+              <th className="border border-purple-300 p-3 text-center"># New</th>
+              <th className="border border-purple-300 p-3 text-left">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PWLLE_TRAINING_SESSIONS.map((session, idx) => (
+              <tr key={session.id} className={idx % 2 === 0 ? 'bg-purple-50' : 'bg-white'}>
+                <td className="border border-purple-200 p-3 font-semibold text-purple-900">{session.site}</td>
+                <td className="border border-purple-200 p-3">{session.location}</td>
+                <td className="border border-purple-200 p-3 text-center font-bold">{session.sessionNum}</td>
+                <td className="border border-purple-200 p-3">{formatDateDisplay(session.scheduledDate)}</td>
+                <td className="border border-purple-200 p-3">
+                  <span className={`px-2 py-1 rounded text-xs font-medium ${session.purpose === 'Focus Group' ? 'bg-blue-100 text-blue-800' : session.purpose === 'Feedback on Materials' ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800'}`}>
+                    {session.purpose}
+                  </span>
+                </td>
+                <td className="border border-purple-200 p-3 text-center">
+                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium flex items-center justify-center gap-1">
+                    <CheckCircle size={12} />{session.completed}
+                  </span>
+                </td>
+                <td className="border border-purple-200 p-3 text-center font-bold text-purple-700">{session.attendants}</td>
+                <td className="border border-purple-200 p-3 text-center font-medium">{session.newAttendants}</td>
+                <td className="border border-purple-200 p-3 text-xs text-gray-600">{session.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+);
 
 const CanadianFlag = ({ size = 20 }) => (
   <svg width={size * 1.5} height={size} viewBox="0 0 30 20" className="inline-block ml-2" style={{ verticalAlign: 'middle' }}>
@@ -635,6 +706,7 @@ const TableOfContents = () => {
     { id: 'documents', label: 'Research, Ethics & Exemptions Documents' },
     { id: 'map', label: 'Interactive Map View of Partner Sites' },
     { id: 'table', label: 'Project Partner Contact Info' },
+    { id: 'pwlle-sessions', label: 'PWLLE Training Sessions' },
     { id: 'metrics', label: 'Network Summary & Analytics' },
     { id: 'links', label: 'Related Links & Resources' }
   ];
@@ -1168,6 +1240,7 @@ const ProjectPartnerDashboard = () => {
           </div>
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
+        <div id="pwlle-sessions" className="scroll-mt-4"><PWLLETrainingSessionsTracker /></div>
         <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
       </div>
     </div>
