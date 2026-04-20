@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {
+  supabase,
+  hasSupabaseConfig,
+  listShipments,
+  insertShipment,
+  updateShipment,
+  logCustodyEvent,
+  listCustodyEvents,
+} from './supabaseClient';
 import { MapPin, List, Users, ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, RotateCcw, Presentation, Maximize2, Minimize2, Check, CheckCircle, FileText, Mail, Phone, BookOpen, Download, MessageSquare, ArrowUp, AlertTriangle, Printer, HelpCircle, Newspaper, GraduationCap, X, Activity, Building2, Smartphone, TrendingUp, Globe, Target, Zap, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -77,15 +86,26 @@ const TRAINING_STATUS = {
 
 // PWLLE Drug-Checking Peer Training Sessions data
 const PWLLE_TRAINING_SESSIONS = [
-  { id: 1, site: "Sanguen Health Centre", location: "Kitchener, ON", sessionNum: 1, scheduledDate: "2025-01-20", purpose: "Focus Group", completed: "Complete", attendants: 10, newAttendants: 10, notes: "2025-01-20 Sanguen Focus Group Session One Notes" },
-  { id: 2, site: "Grey County", location: "Owen Sound, ON", sessionNum: 1, scheduledDate: "2025-02-03", purpose: "Focus Group", completed: "Complete", attendants: 10, newAttendants: 10, notes: "2025-02-04 Grey Bruce Focus Group Session One Notes" },
-  { id: 3, site: "Regional HIV/AIDS Connection", location: "London, ON", sessionNum: 1, scheduledDate: "2025-02-18", purpose: "Focus Group", completed: "Complete", attendants: 20, newAttendants: 20, notes: "2025-02-19 London Focus Group Session One Notes" },
-  { id: 4, site: "Sanguen Health Centre", location: "Kitchener, ON", sessionNum: 2, scheduledDate: "2025-02-14", purpose: "Feedback on Materials", completed: "Complete", attendants: 10, newAttendants: 9, notes: "2025-02-14 Sanguen Focus Group Session Two Notes" },
-  { id: 5, site: "Grey County", location: "Owen Sound, ON", sessionNum: 2, scheduledDate: "2025-03-28", purpose: "DCP Certification", completed: "Complete", attendants: 14, newAttendants: 4, notes: "DCP Pre- and Post-Surveys" },
-  { id: 6, site: "Regional HIV/AIDS Connection", location: "London, ON", sessionNum: 2, scheduledDate: "2025-03-06", purpose: "Feedback on Materials", completed: "Complete", attendants: 5, newAttendants: 0, notes: "2025-03-06 London Feedback Session Note" },
-  { id: 7, site: "Sanguen Health Centre", location: "Kitchener, ON", sessionNum: 3, scheduledDate: "2025-03-17", purpose: "DCP Certification", completed: "Complete", attendants: 10, newAttendants: 3, notes: "DCP Pre- and Post-Surveys" },
-  { id: 8, site: "Grey County", location: "Owen Sound, ON", sessionNum: 3, scheduledDate: "2025-05-30", purpose: "DCP Certification", completed: "Complete", attendants: 12, newAttendants: 12, notes: "DCP Pre- and Post-Surveys" },
-  { id: 9, site: "Regional HIV/AIDS Connection", location: "London, ON", sessionNum: 3, scheduledDate: "2025-04-15", purpose: "DCP Certification", completed: "Complete", attendants: 20, newAttendants: 6, notes: "DCP Pre- and Post-Surveys" },
+  // PHASE 1 — Jan–May 2025 · Focus Groups → Feedback → DCP Certification at 3 Ontario pilot sites
+  { id: 1,  phase: 1, site: "Sanguen Health Centre",              location: "Kitchener, ON",       sessionNum: 1, scheduledDate: "2025-01-19", purpose: "Focus Group",           status: "Complete",    attendants: 10,   newAttendants: 10,   stipend: 1000, notes: "2025-01-20 Sanguen Focus Group Session One Notes" },
+  { id: 2,  phase: 1, site: "Grey County",                        location: "Owen Sound, ON",      sessionNum: 1, scheduledDate: "2025-02-02", purpose: "Focus Group",           status: "Complete",    attendants: 10,   newAttendants: 10,   stipend: 1000, notes: "2025-02-04 Grey Bruce Focus Group Session One Notes" },
+  { id: 3,  phase: 1, site: "Sanguen Health Centre",              location: "Kitchener, ON",       sessionNum: 2, scheduledDate: "2025-02-13", purpose: "Feedback on Materials", status: "Complete",    attendants: 10,   newAttendants: 9,    stipend: 1000, notes: "2025-02-14 Sanguen Focus Group Session Two Notes" },
+  { id: 4,  phase: 1, site: "Regional HIV/AIDS Connection (RHAC)", location: "London, ON",         sessionNum: 1, scheduledDate: "2025-02-17", purpose: "Focus Group",           status: "Complete",    attendants: 20,   newAttendants: 20,   stipend: 1000, notes: "2025-02-19 London Focus Group Session One Notes" },
+  { id: 5,  phase: 1, site: "Regional HIV/AIDS Connection (RHAC)", location: "London, ON",         sessionNum: 2, scheduledDate: "2025-03-05", purpose: "Feedback on Materials", status: "Complete",    attendants: 5,    newAttendants: 0,    stipend: 1000, notes: "2025-03-06 London Feedback Session Note" },
+  { id: 6,  phase: 1, site: "Sanguen Health Centre",              location: "Kitchener, ON",       sessionNum: 3, scheduledDate: "2025-03-16", purpose: "DCP Certification",     status: "Complete",    attendants: 10,   newAttendants: 3,    stipend: 1000, notes: "DCP Pre- and Post-Surveys" },
+  { id: 7,  phase: 1, site: "Grey County",                        location: "Owen Sound, ON",      sessionNum: 2, scheduledDate: "2025-03-27", purpose: "DCP Certification",     status: "Complete",    attendants: 14,   newAttendants: 4,    stipend: 1000, notes: "DCP Pre- and Post-Surveys" },
+  { id: 8,  phase: 1, site: "Regional HIV/AIDS Connection (RHAC)", location: "London, ON",         sessionNum: 3, scheduledDate: "2025-04-14", purpose: "DCP Certification",     status: "Complete",    attendants: 20,   newAttendants: 6,    stipend: 1000, notes: "DCP Pre- and Post-Surveys" },
+  { id: 9,  phase: 1, site: "Grey County",                        location: "Owen Sound, ON",      sessionNum: 3, scheduledDate: "2025-05-29", purpose: "DCP Certification",     status: "Complete",    attendants: 12,   newAttendants: 12,   stipend: 1000, notes: "DCP Pre- and Post-Surveys" },
+  // PHASE 2 — Mar 2026 onward · DCP Certification at Year 2 sites (9 sessions, 2 complete)
+  { id: 10, phase: 2, site: "Avenue B Harm Reduction Inc.",       location: "Saint John, NB",      sessionNum: 1, scheduledDate: "2026-03-27", purpose: "DCP Certification",     status: "Complete",    attendants: 17,   newAttendants: 17,   stipend: 3000, notes: "Awaiting receipt of LOICs and Surveys for final signature and input" },
+  { id: 11, phase: 2, site: "Ensemble",                   location: "Moncton, NB",         sessionNum: 1, scheduledDate: "2026-04-10", purpose: "DCP Certification",     status: "Complete",    attendants: 15,   newAttendants: 15,   stipend: 3000, notes: "Awaiting receipt of LOICs and Surveys for final signature and input" },
+  { id: 12, phase: 2, site: "Lower Mainland Purpose Society",     location: "New Westminster, BC", sessionNum: 1, scheduledDate: "2026-04-21", purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 3000, notes: "Preferred date: Tuesday April 21, 2026; time TBD" },
+  { id: 13, phase: 2, site: "AIDS New Brunswick",                 location: "Fredericton, NB",         sessionNum: 1, scheduledDate: null,         purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 3000, notes: "Training upcoming" },
+  { id: 14, phase: 2, site: "Breakaway",                          location: "Toronto, ON",         sessionNum: 1, scheduledDate: null,         purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 3000, notes: "Training upcoming" },
+  { id: 15, phase: 2, site: "Moyo Health",                        location: "Brampton, ON",        sessionNum: 1, scheduledDate: null,         purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 3000, notes: "Training upcoming" },
+  { id: 16, phase: 2, site: "Regional HIV/AIDS Connection (RHAC)", location: "London, ON",         sessionNum: 4, scheduledDate: null,         purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 6000, notes: "Training upcoming (double-session budget: $6,000)" },
+  { id: 17, phase: 2, site: "Renfrew Paramedic Services",         location: "Renfrew, ON",         sessionNum: 1, scheduledDate: null,         purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 3000, notes: "Training upcoming" },
+  { id: 18, phase: 2, site: "Sanguen Health Centre",              location: "Kitchener, ON",       sessionNum: 4, scheduledDate: null,         purpose: "DCP Certification",     status: "To schedule", attendants: null, newAttendants: null, stipend: 3000, notes: "Training upcoming" },
 ];
 
 const formatDateDisplay = (dateStr) => {
@@ -95,56 +115,180 @@ const formatDateDisplay = (dateStr) => {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 };
 
-const PWLLETrainingSessionsTracker = () => (
-  <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
-    <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
-      <h2 className="flex items-center gap-2 font-bold text-2xl"><Users size={28} />PWLLE Drug-Checking Peer Training Sessions</h2>
-      <p className="text-purple-200 text-sm mt-1">111 Total Attendants | 74 Unique PWLLE Trained</p>
-    </div>
-    <div className="p-6 bg-gradient-to-br from-white to-purple-50">
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-sm">
-          <thead>
-            <tr className="bg-gradient-to-r from-purple-600 to-purple-800 text-white">
-              <th className="border border-purple-300 p-3 text-left">Site</th>
-              <th className="border border-purple-300 p-3 text-left">Location</th>
-              <th className="border border-purple-300 p-3 text-center">Session #</th>
-              <th className="border border-purple-300 p-3 text-left">Scheduled Date</th>
-              <th className="border border-purple-300 p-3 text-left">Purpose</th>
-              <th className="border border-purple-300 p-3 text-center">Status</th>
-              <th className="border border-purple-300 p-3 text-center"># Attendants</th>
-              <th className="border border-purple-300 p-3 text-center"># New</th>
-              <th className="border border-purple-300 p-3 text-left">Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {PWLLE_TRAINING_SESSIONS.map((session, idx) => (
-              <tr key={session.id} className={idx % 2 === 0 ? 'bg-purple-50' : 'bg-white'}>
-                <td className="border border-purple-200 p-3 font-semibold text-purple-900">{session.site}</td>
-                <td className="border border-purple-200 p-3">{session.location}</td>
-                <td className="border border-purple-200 p-3 text-center font-bold">{session.sessionNum}</td>
-                <td className="border border-purple-200 p-3">{formatDateDisplay(session.scheduledDate)}</td>
-                <td className="border border-purple-200 p-3">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${session.purpose === 'Focus Group' ? 'bg-blue-100 text-blue-800' : session.purpose === 'Feedback on Materials' ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800'}`}>
-                    {session.purpose}
-                  </span>
-                </td>
-                <td className="border border-purple-200 p-3 text-center">
-                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium flex items-center justify-center gap-1">
-                    <CheckCircle size={12} />{session.completed}
-                  </span>
-                </td>
-                <td className="border border-purple-200 p-3 text-center font-bold text-purple-700">{session.attendants}</td>
-                <td className="border border-purple-200 p-3 text-center font-medium">{session.newAttendants}</td>
-                <td className="border border-purple-200 p-3 text-xs text-gray-600">{session.notes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+const PWLLETrainingSessionsTracker = () => {
+  const [showTable, setShowTable] = useState(false);
+
+  const completed = PWLLE_TRAINING_SESSIONS.filter(s => s.status === 'Complete');
+  const toSchedule = PWLLE_TRAINING_SESSIONS.filter(s => s.status !== 'Complete');
+  const totalSessions = PWLLE_TRAINING_SESSIONS.length;
+  const totalComplete = completed.length;
+  const totalAttendants = completed.reduce((a, s) => a + (s.attendants || 0), 0);
+  const totalUnique = completed.reduce((a, s) => a + (s.newAttendants || 0), 0);
+  const stipendsPaid = completed.reduce((a, s) => a + (s.stipend || 0), 0);
+  const stipendsCommitted = PWLLE_TRAINING_SESSIONS.reduce((a, s) => a + (s.stipend || 0), 0);
+
+  const siteMap = new Map();
+  PWLLE_TRAINING_SESSIONS.forEach(s => {
+    if (!siteMap.has(s.site)) {
+      siteMap.set(s.site, { site: s.site, location: s.location, p1Unique: 0, p2Unique: 0, p1Sessions: 0, p2Sessions: 0, pendingSessions: 0 });
+    }
+    const entry = siteMap.get(s.site);
+    if (s.status === 'Complete') {
+      if (s.phase === 1) { entry.p1Unique += (s.newAttendants || 0); entry.p1Sessions += 1; }
+      else { entry.p2Unique += (s.newAttendants || 0); entry.p2Sessions += 1; }
+    } else {
+      entry.pendingSessions += 1;
+    }
+  });
+  const siteData = Array.from(siteMap.values()).sort((a, b) => (b.p1Unique + b.p2Unique) - (a.p1Unique + a.p2Unique));
+  const maxTotal = Math.max(...siteData.map(s => s.p1Unique + s.p2Unique), 1);
+
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+        <h2 className="flex items-center gap-2 font-bold text-2xl"><Users size={28} />PWLLE Drug-Checking Peer Training Sessions</h2>
+        <p className="text-purple-200 text-sm mt-1">{totalComplete} of {totalSessions} sessions complete · {totalUnique} unique PWLLE trained · Phases 1 &amp; 2 combined</p>
+      </div>
+      <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+        {/* KPI cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white rounded-xl p-4 border-2 border-purple-200 shadow-md">
+            <div className="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-1">Total Sessions</div>
+            <div className="text-3xl font-bold text-purple-900">{totalSessions}</div>
+            <div className="text-xs text-gray-600 mt-1">{totalComplete} complete · {toSchedule.length} to schedule</div>
+          </div>
+          <div className="bg-white rounded-xl p-4 border-2 border-purple-200 shadow-md">
+            <div className="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-1">Unique PWLLE</div>
+            <div className="text-3xl font-bold text-purple-900">{totalUnique}</div>
+            <div className="text-xs text-gray-600 mt-1">across {siteData.filter(s => s.p1Unique + s.p2Unique > 0).length} sites</div>
+          </div>
+          <div className="bg-white rounded-xl p-4 border-2 border-purple-200 shadow-md">
+            <div className="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-1">Total Attendants</div>
+            <div className="text-3xl font-bold text-purple-900">{totalAttendants}</div>
+            <div className="text-xs text-gray-600 mt-1">including repeats</div>
+          </div>
+          <div className="bg-white rounded-xl p-4 border-2 border-purple-200 shadow-md">
+            <div className="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-1">Stipends</div>
+            <div className="text-3xl font-bold text-purple-900">${(stipendsPaid/1000).toFixed(0)}k<span className="text-base text-gray-500"> / ${(stipendsCommitted/1000).toFixed(0)}k</span></div>
+            <div className="mt-2 h-2 bg-purple-100 rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-purple-500 to-purple-700" style={{ width: `${(stipendsPaid/stipendsCommitted*100).toFixed(0)}%` }}></div>
+            </div>
+            <div className="text-xs text-gray-600 mt-1">paid / committed</div>
+          </div>
+        </div>
+
+        {/* Horizontal bar chart — unique PWLLE by site */}
+        <div className="bg-white rounded-xl p-5 border-2 border-purple-200 shadow-md mb-6">
+          <h3 className="font-bold text-purple-900 mb-1">Unique PWLLE Trained by Site</h3>
+          <p className="text-xs text-gray-600 mb-4">Phase 1 (Jan–May 2025) + Phase 2 (Mar 2026 onward) — completed sessions only. Sites with only upcoming sessions shown as placeholders.</p>
+          <div className="space-y-2">
+            {siteData.map(s => {
+              const total = s.p1Unique + s.p2Unique;
+              const p1Pct = (s.p1Unique / maxTotal) * 100;
+              const p2Pct = (s.p2Unique / maxTotal) * 100;
+              const hasData = total > 0;
+              return (
+                <div key={s.site} className="flex items-center gap-3">
+                  <div className="w-40 md:w-52 flex-shrink-0 text-right">
+                    <div className="text-xs md:text-sm font-semibold text-purple-900 leading-tight truncate">{s.site}</div>
+                    <div className="text-xs text-gray-500 truncate">{s.location}</div>
+                  </div>
+                  <div className="flex-1 relative h-7 bg-purple-50 rounded-md overflow-hidden border border-purple-100">
+                    {hasData ? (
+                      <>
+                        <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-end pr-2" style={{ width: `${p1Pct}%` }}>
+                          {s.p1Unique > 0 && <span className="text-white text-xs font-bold">{s.p1Unique}</span>}
+                        </div>
+                        <div className="absolute top-0 h-full bg-gradient-to-r from-teal-400 to-teal-600 flex items-center justify-end pr-2" style={{ left: `${p1Pct}%`, width: `${p2Pct}%` }}>
+                          {s.p2Unique > 0 && <span className="text-white text-xs font-bold">{s.p2Unique}</span>}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-xs font-semibold text-purple-400 italic">{s.pendingSessions} session{s.pendingSessions > 1 ? 's' : ''} to schedule</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="w-10 text-right text-sm font-bold text-purple-900">{total || '—'}</div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap items-center gap-4 mt-5 pt-4 border-t border-purple-100 text-xs">
+            <div className="flex items-center gap-2"><div className="w-4 h-4 rounded bg-gradient-to-r from-purple-500 to-purple-700"></div><span className="text-gray-700">Phase 1 (2025)</span></div>
+            <div className="flex items-center gap-2"><div className="w-4 h-4 rounded bg-gradient-to-r from-teal-400 to-teal-600"></div><span className="text-gray-700">Phase 2 (2026)</span></div>
+            <div className="flex items-center gap-2"><div className="w-4 h-4 rounded bg-purple-50 border border-purple-100"></div><span className="text-gray-700">Upcoming — not yet conducted</span></div>
+          </div>
+        </div>
+
+        {/* Collapsible details table */}
+        <button
+          onClick={() => setShowTable(!showTable)}
+          className="w-full flex items-center justify-between gap-2 p-3 bg-white rounded-xl border-2 border-purple-200 hover:bg-purple-50 transition-colors shadow-md"
+        >
+          <span className="font-semibold text-purple-900 text-sm">{showTable ? 'Hide' : 'Show'} session-by-session details ({totalSessions} rows)</span>
+          {showTable ? <ChevronUp size={18} className="text-purple-700" /> : <ChevronDown size={18} className="text-purple-700" />}
+        </button>
+
+        {showTable && (
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+                  <th className="border border-purple-300 p-3 text-center">Phase</th>
+                  <th className="border border-purple-300 p-3 text-left">Site</th>
+                  <th className="border border-purple-300 p-3 text-left">Location</th>
+                  <th className="border border-purple-300 p-3 text-center">Session #</th>
+                  <th className="border border-purple-300 p-3 text-left">Date</th>
+                  <th className="border border-purple-300 p-3 text-left">Purpose</th>
+                  <th className="border border-purple-300 p-3 text-center">Status</th>
+                  <th className="border border-purple-300 p-3 text-center">Attend.</th>
+                  <th className="border border-purple-300 p-3 text-center">Unique</th>
+                  <th className="border border-purple-300 p-3 text-right">Stipend</th>
+                  <th className="border border-purple-300 p-3 text-left">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {PWLLE_TRAINING_SESSIONS.map((session, idx) => (
+                  <tr key={session.id} className={idx % 2 === 0 ? 'bg-purple-50' : 'bg-white'}>
+                    <td className="border border-purple-200 p-3 text-center"><span className={`px-2 py-1 rounded text-xs font-bold ${session.phase === 1 ? 'bg-purple-200 text-purple-900' : 'bg-teal-200 text-teal-900'}`}>P{session.phase}</span></td>
+                    <td className="border border-purple-200 p-3 font-semibold text-purple-900">{session.site}</td>
+                    <td className="border border-purple-200 p-3">{session.location}</td>
+                    <td className="border border-purple-200 p-3 text-center font-bold">{session.sessionNum}</td>
+                    <td className="border border-purple-200 p-3">{session.scheduledDate ? formatDateDisplay(session.scheduledDate) : 'TBD'}</td>
+                    <td className="border border-purple-200 p-3">
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${session.purpose === 'Focus Group' ? 'bg-blue-100 text-blue-800' : session.purpose === 'Feedback on Materials' ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800'}`}>
+                        {session.purpose}
+                      </span>
+                    </td>
+                    <td className="border border-purple-200 p-3 text-center">
+                      {session.status === 'Complete' ? (
+                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium inline-flex items-center gap-1"><CheckCircle size={12} />Complete</span>
+                      ) : (
+                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs font-medium inline-flex items-center gap-1"><Clock size={12} />To schedule</span>
+                      )}
+                    </td>
+                    <td className="border border-purple-200 p-3 text-center font-bold text-purple-700">{session.attendants ?? '—'}</td>
+                    <td className="border border-purple-200 p-3 text-center font-medium">{session.newAttendants ?? '—'}</td>
+                    <td className="border border-purple-200 p-3 text-right text-gray-700">${session.stipend.toLocaleString()}</td>
+                    <td className="border border-purple-200 p-3 text-xs text-gray-600">{session.notes}</td>
+                  </tr>
+                ))}
+                <tr className="bg-purple-100 font-bold">
+                  <td colSpan="7" className="border border-purple-300 p-3 text-right text-purple-900">Cumulative Totals:</td>
+                  <td className="border border-purple-300 p-3 text-center text-purple-900">{totalAttendants}</td>
+                  <td className="border border-purple-300 p-3 text-center text-purple-900">{totalUnique}</td>
+                  <td className="border border-purple-300 p-3 text-right text-purple-900">${stipendsCommitted.toLocaleString()}</td>
+                  <td className="border border-purple-300 p-3 text-xs text-purple-900">{totalSessions} sessions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const CanadianFlag = ({ size = 20 }) => (
   <svg width={size * 1.5} height={size} viewBox="0 0 30 20" className="inline-block ml-2" style={{ verticalAlign: 'middle' }}>
@@ -708,6 +852,7 @@ const TableOfContents = () => {
     { id: 'table', label: 'Project Partner Contact Info' },
     { id: 'pwlle-sessions', label: 'PWLLE Training Sessions' },
     { id: 'metrics', label: 'Network Summary & Analytics' },
+    { id: 'chain-of-custody', label: 'Sample Chain of Custody' },
     { id: 'links', label: 'Related Links & Resources' }
   ];
   const scrollTo = (id) => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
@@ -817,6 +962,674 @@ const PicturingTheProblem = () => {
   );
 };
 
+// ═══════════════════════════════════════════════════════════════════════════
+// SAMPLE CHAIN OF CUSTODY — Password-gated module
+// Embedded section for Partner Dashboard App.jsx.
+// Anchors on id="chain-of-custody" · follows existing purple-card visual pattern.
+//
+// Data model lives in Supabase (public.shipments + public.custody_events).
+// Schema verified against HC clarification items in response_to_exemption.docx
+// (project_admin/003, Sep 29 2025).
+// ═══════════════════════════════════════════════════════════════════════════
+
+const CUSTODY_PASSWORD = import.meta.env.VITE_CUSTODY_PASSWORD || 'WUDC-custody-2026';
+
+// Derive a stable-ish browser fingerprint (NOT real fingerprinting — just a
+// breadcrumb for the audit log to distinguish devices).
+const getFingerprint = () => {
+  try {
+    const stored = localStorage.getItem('wudc_fp');
+    if (stored) return stored;
+    const fp = 'fp-' + Math.random().toString(36).slice(2, 10) + '-' + Date.now().toString(36);
+    localStorage.setItem('wudc_fp', fp);
+    return fp;
+  } catch {
+    return 'fp-unknown';
+  }
+};
+
+const formatDT = (iso) => {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString('en-CA', {
+    year: 'numeric', month: 'short', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false,
+  });
+};
+
+const STATUS_META = {
+  packaged:   { label: 'Packaged',           color: 'bg-slate-100 text-slate-800 border-slate-300' },
+  in_transit: { label: 'In Transit',          color: 'bg-amber-100 text-amber-800 border-amber-300' },
+  delivered:  { label: 'Delivered (pending intake)', color: 'bg-blue-100 text-blue-800 border-blue-300' },
+  verified:   { label: 'Verified & Logged',  color: 'bg-green-100 text-green-800 border-green-300' },
+  exception:  { label: '⚠ Exception',         color: 'bg-red-100 text-red-800 border-red-300' },
+};
+
+const SampleChainOfCustody = ({ partnersData }) => {
+  const [unlocked, setUnlocked] = useState(false);
+  const [pwInput, setPwInput] = useState('');
+  const [pwError, setPwError] = useState('');
+
+  const [shipments, setShipments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loadError, setLoadError] = useState('');
+  const [expandedShipmentId, setExpandedShipmentId] = useState(null);
+  const [view, setView] = useState('list'); // 'list' | 'new' | 'detail'
+  const [busy, setBusy] = useState(false);
+
+  const fingerprint = getFingerprint();
+
+  // On unlock, fetch shipments.
+  useEffect(() => {
+    if (!unlocked) return;
+    (async () => {
+      setLoading(true);
+      setLoadError('');
+      const { data, error } = await listShipments();
+      if (error) setLoadError(error.message || String(error));
+      else setShipments(data || []);
+      setLoading(false);
+    })();
+  }, [unlocked]);
+
+  const refreshShipments = async () => {
+    const { data, error } = await listShipments();
+    if (!error) setShipments(data || []);
+  };
+
+  const handleUnlock = (e) => {
+    e.preventDefault();
+    if (pwInput === CUSTODY_PASSWORD) {
+      setUnlocked(true);
+      setPwError('');
+      setPwInput('');
+    } else {
+      setPwError('Incorrect password. Contact Cameron (cbrown58@uwo.ca) if you need access.');
+    }
+  };
+
+  // ─── Password gate ────────────────────────────────────────────────────
+  if (!unlocked) {
+    return (
+      <div id="chain-of-custody" className="scroll-mt-4 bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+        <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4">
+          <h2 className="flex items-center gap-2 font-bold text-2xl">
+            <FileText size={28} />Sample Chain of Custody
+          </h2>
+          <p className="text-purple-200 text-sm mt-1">
+            Password-protected · Health Canada §56(1) compliant transport log
+          </p>
+        </div>
+        <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+          <div className="max-w-md mx-auto bg-white rounded-xl p-6 border-2 border-purple-200 shadow-md">
+            <div className="flex items-start gap-3 mb-4">
+              <div className="bg-purple-100 p-2 rounded-lg">
+                <AlertTriangle size={24} className="text-purple-700" />
+              </div>
+              <div>
+                <div className="font-bold text-purple-900">Access required</div>
+                <div className="text-sm text-gray-600">
+                  This section contains controlled-substance custody records and requires the module password.
+                </div>
+              </div>
+            </div>
+            <form onSubmit={handleUnlock} className="space-y-3">
+              <input
+                type="password"
+                value={pwInput}
+                onChange={(e) => setPwInput(e.target.value)}
+                placeholder="Module password"
+                className="w-full px-4 py-2 border-2 border-purple-200 rounded-lg focus:border-purple-500 focus:outline-none"
+                autoFocus
+              />
+              {pwError && <div className="text-sm text-red-700">{pwError}</div>}
+              <button
+                type="submit"
+                className="w-full bg-purple-700 text-white font-bold py-2 rounded-lg hover:bg-purple-800"
+              >
+                Unlock
+              </button>
+            </form>
+            <p className="text-xs text-gray-500 mt-4">
+              The module password is distributed separately. Contact Cameron at{' '}
+              <a href="mailto:cbrown58@uwo.ca" className="text-purple-700 hover:underline">cbrown58@uwo.ca</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ─── Unlocked header ──────────────────────────────────────────────────
+  const activeShipment = shipments.find((s) => s.id === expandedShipmentId);
+
+  return (
+    <div id="chain-of-custody" className="scroll-mt-4 bg-white rounded-2xl shadow-2xl border-4 border-purple-100 overflow-hidden">
+      <div className="bg-gradient-to-r from-purple-700 to-purple-900 text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <h2 className="flex items-center gap-2 font-bold text-2xl">
+            <FileText size={28} />Sample Chain of Custody
+          </h2>
+          <p className="text-purple-200 text-sm mt-1">
+            {shipments.length} shipment{shipments.length !== 1 ? 's' : ''} on file
+            {!hasSupabaseConfig && (
+              <span className="ml-2 bg-red-600 px-2 py-0.5 rounded text-xs font-bold">
+                ⚠ Offline mode — Supabase not configured
+              </span>
+            )}
+          </p>
+        </div>
+        <div className="flex gap-2">
+          {view !== 'list' && (
+            <button
+              onClick={() => { setView('list'); setExpandedShipmentId(null); }}
+              className="bg-white/20 hover:bg-white/30 px-3 py-2 rounded-lg text-sm font-medium"
+            >
+              ← Back to list
+            </button>
+          )}
+          {view === 'list' && (
+            <button
+              onClick={() => setView('new')}
+              className="bg-white text-purple-800 hover:bg-purple-50 font-bold px-4 py-2 rounded-lg text-sm"
+            >
+              + New Shipment
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="p-6 bg-gradient-to-br from-white to-purple-50">
+        {view === 'new' && (
+          <NewShipmentForm
+            partnersData={partnersData}
+            fingerprint={fingerprint}
+            onCreated={async () => {
+              await refreshShipments();
+              setView('list');
+            }}
+            onCancel={() => setView('list')}
+            busy={busy}
+            setBusy={setBusy}
+          />
+        )}
+
+        {view === 'detail' && activeShipment && (
+          <ShipmentDetail
+            shipment={activeShipment}
+            fingerprint={fingerprint}
+            onUpdated={refreshShipments}
+          />
+        )}
+
+        {view === 'list' && (
+          <>
+            {loading && (
+              <div className="text-center py-8 text-gray-600">Loading shipments…</div>
+            )}
+            {loadError && (
+              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 text-sm text-red-800 mb-4">
+                <div className="font-bold">Could not load shipments</div>
+                <div>{loadError}</div>
+                <div className="mt-2 text-xs">
+                  Check that <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code>{' '}
+                  are set in <code>.env.local</code>.
+                </div>
+              </div>
+            )}
+            {!loading && !loadError && shipments.length === 0 && (
+              <div className="text-center py-12 bg-white border-2 border-dashed border-purple-200 rounded-xl">
+                <FileText size={48} className="mx-auto text-purple-300 mb-3" />
+                <div className="text-purple-900 font-bold">No shipments recorded yet</div>
+                <div className="text-sm text-gray-600 mt-1">
+                  Click "+ New Shipment" above to create the first entry.
+                </div>
+              </div>
+            )}
+            {!loading && shipments.length > 0 && (
+              <div className="overflow-x-auto rounded-xl border-2 border-purple-200 shadow-md">
+                <table className="w-full border-collapse text-sm bg-white">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-purple-700 to-purple-900 text-white">
+                      <th className="p-3 text-left">Shipment Date</th>
+                      <th className="p-3 text-left">From Site</th>
+                      <th className="p-3 text-center">Samples</th>
+                      <th className="p-3 text-left">Courier</th>
+                      <th className="p-3 text-left">Pickup</th>
+                      <th className="p-3 text-left">Arrival</th>
+                      <th className="p-3 text-center">Status</th>
+                      <th className="p-3"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {shipments.map((s, idx) => {
+                      const meta = STATUS_META[s.status] || STATUS_META.packaged;
+                      return (
+                        <tr key={s.id} className={idx % 2 === 0 ? 'bg-purple-50' : 'bg-white'}>
+                          <td className="border border-purple-100 p-3">{formatDT(s.created_at)}</td>
+                          <td className="border border-purple-100 p-3 font-medium text-purple-900">{s.scs_site_name}</td>
+                          <td className="border border-purple-100 p-3 text-center font-bold">{s.sample_count}</td>
+                          <td className="border border-purple-100 p-3">{s.courier_name}</td>
+                          <td className="border border-purple-100 p-3">{formatDT(s.pickup_at)}</td>
+                          <td className="border border-purple-100 p-3">{formatDT(s.arrival_at)}</td>
+                          <td className="border border-purple-100 p-3 text-center">
+                            <span className={`px-2 py-1 border rounded text-xs font-bold ${meta.color}`}>{meta.label}</span>
+                          </td>
+                          <td className="border border-purple-100 p-3 text-right">
+                            <button
+                              onClick={() => { setExpandedShipmentId(s.id); setView('detail'); }}
+                              className="text-purple-700 hover:text-purple-900 font-semibold text-xs"
+                            >
+                              Open →
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// ─── New Shipment Form ───────────────────────────────────────────────────
+const NewShipmentForm = ({ partnersData, fingerprint, onCreated, onCancel, busy, setBusy }) => {
+  const [form, setForm] = useState({
+    scs_site_id: '',
+    scs_site_name: '',
+    sample_ids_raw: '',
+    sample_descriptions_raw: '',
+    packaged_by_name: '',
+    packaged_at: new Date().toISOString().slice(0, 16),
+    removed_from_storage_by_name: '',
+    removed_from_storage_at: new Date().toISOString().slice(0, 16),
+    courier_name: '',
+    pickup_at: new Date().toISOString().slice(0, 16),
+    courier_consent_signature: '',
+    courier_consent_affirmed: false,
+  });
+  const [error, setError] = useState('');
+
+  const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
+
+  const handleSiteChange = (siteId) => {
+    const site = partnersData.find((p) => String(p.id) === String(siteId));
+    set('scs_site_id', siteId);
+    set('scs_site_name', site ? site.nameOrganization : '');
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    const sample_ids = form.sample_ids_raw.split(',').map((s) => s.trim()).filter(Boolean);
+    const sample_descriptions = form.sample_descriptions_raw.split(',').map((s) => s.trim()).filter(Boolean);
+
+    if (sample_ids.length === 0) return setError('At least one sample ID is required.');
+    if (sample_ids.length !== sample_descriptions.length) {
+      return setError(`Sample IDs (${sample_ids.length}) and descriptions (${sample_descriptions.length}) must be the same count.`);
+    }
+    if (!form.scs_site_name) return setError('Select the originating SCS site.');
+    if (!form.packaged_by_name.trim()) return setError('Enter the name of the staff member who packaged the sample.');
+    if (!form.removed_from_storage_by_name.trim()) return setError('Enter the name of the staff member who removed the sample from secure storage.');
+    if (!form.courier_name.trim()) return setError('Enter the courier name.');
+    if (!form.courier_consent_signature.trim()) return setError('Courier must provide typed signature.');
+    if (!form.courier_consent_affirmed) return setError('Courier consent checkbox must be affirmed.');
+
+    setBusy(true);
+    const payload = {
+      scs_site_id: form.scs_site_id,
+      scs_site_name: form.scs_site_name,
+      sample_ids,
+      sample_descriptions,
+      packaged_by_name: form.packaged_by_name.trim(),
+      packaged_at: new Date(form.packaged_at).toISOString(),
+      removed_from_storage_by_name: form.removed_from_storage_by_name.trim(),
+      removed_from_storage_at: new Date(form.removed_from_storage_at).toISOString(),
+      courier_name: form.courier_name.trim(),
+      courier_consent_signature: form.courier_consent_signature.trim(),
+      courier_consent_affirmed: form.courier_consent_affirmed,
+      courier_consent_at: new Date().toISOString(),
+      pickup_at: new Date(form.pickup_at).toISOString(),
+      status: 'in_transit',
+      created_by_fingerprint: fingerprint,
+    };
+
+    const { data, error: insertError } = await insertShipment(payload);
+    if (insertError) {
+      setError(insertError.message || String(insertError));
+      setBusy(false);
+      return;
+    }
+
+    await logCustodyEvent({
+      shipment_id: data.id,
+      event_type: 'picked_up',
+      actor_name: form.courier_name.trim(),
+      actor_role: 'courier',
+      actor_signature: form.courier_consent_signature.trim(),
+      actor_affirmed: true,
+      actor_fingerprint: fingerprint,
+      notes: `Shipment of ${sample_ids.length} sample(s) picked up from ${form.scs_site_name}.`,
+    });
+
+    setBusy(false);
+    onCreated();
+  };
+
+  const inputCls = 'w-full px-3 py-2 border-2 border-purple-200 rounded-lg focus:border-purple-500 focus:outline-none text-sm';
+  const labelCls = 'block text-sm font-semibold text-purple-900 mb-1';
+
+  return (
+    <form onSubmit={submit} className="space-y-6 bg-white p-6 rounded-xl border-2 border-purple-200">
+      <h3 className="font-bold text-xl text-purple-900">New Shipment — Pickup at SCS Site</h3>
+
+      {/* Site */}
+      <div>
+        <label className={labelCls}>Originating SCS Partner Site *</label>
+        <select className={inputCls} value={form.scs_site_id} onChange={(e) => handleSiteChange(e.target.value)} required>
+          <option value="">-- Select site --</option>
+          {partnersData.filter((p) => !p.isLead).map((p) => (
+            <option key={p.id} value={p.id}>{p.nameOrganization} ({p.city}, {p.prov})</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Samples */}
+      <div className="grid md:grid-cols-2 gap-4">
+        <div>
+          <label className={labelCls}>Sample IDs (comma-separated, format: site + sample #) *</label>
+          <input className={inputCls} value={form.sample_ids_raw} onChange={(e) => set('sample_ids_raw', e.target.value)} placeholder="e.g. SAN-001, SAN-002, SAN-003" required />
+        </div>
+        <div>
+          <label className={labelCls}>Sample Descriptions (comma-separated, same count) *</label>
+          <input className={inputCls} value={form.sample_descriptions_raw} onChange={(e) => set('sample_descriptions_raw', e.target.value)} placeholder="e.g. white powder, bright yellow, grey rocks" required />
+        </div>
+      </div>
+
+      {/* Packaged */}
+      <div className="border-t pt-4">
+        <div className="text-xs uppercase tracking-wider text-purple-700 font-bold mb-3">HC-mandated: Who packaged & stored the sample</div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className={labelCls}>Staff member who packaged & stored *</label>
+            <input className={inputCls} value={form.packaged_by_name} onChange={(e) => set('packaged_by_name', e.target.value)} required />
+          </div>
+          <div>
+            <label className={labelCls}>Packaged at (date/time) *</label>
+            <input type="datetime-local" className={inputCls} value={form.packaged_at} onChange={(e) => set('packaged_at', e.target.value)} required />
+          </div>
+        </div>
+      </div>
+
+      {/* Removed from storage */}
+      <div className="border-t pt-4">
+        <div className="text-xs uppercase tracking-wider text-purple-700 font-bold mb-3">HC-mandated: Who removed from secure storage</div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className={labelCls}>Staff member who removed from storage *</label>
+            <input className={inputCls} value={form.removed_from_storage_by_name} onChange={(e) => set('removed_from_storage_by_name', e.target.value)} required />
+          </div>
+          <div>
+            <label className={labelCls}>Removed from storage at *</label>
+            <input type="datetime-local" className={inputCls} value={form.removed_from_storage_at} onChange={(e) => set('removed_from_storage_at', e.target.value)} required />
+          </div>
+        </div>
+      </div>
+
+      {/* Courier */}
+      <div className="border-t pt-4">
+        <div className="text-xs uppercase tracking-wider text-purple-700 font-bold mb-3">HC-mandated: Courier identity & pickup</div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className={labelCls}>Courier (or transporting staff) name *</label>
+            <input className={inputCls} value={form.courier_name} onChange={(e) => set('courier_name', e.target.value)} required />
+          </div>
+          <div>
+            <label className={labelCls}>Pickup date/time (leaves SCS site) *</label>
+            <input type="datetime-local" className={inputCls} value={form.pickup_at} onChange={(e) => set('pickup_at', e.target.value)} required />
+          </div>
+        </div>
+        <div className="mt-4 bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+          <div className="font-bold text-purple-900 mb-2">Courier E-signature — Consent of Transport</div>
+          <div className="text-xs text-gray-700 mb-3">
+            By typing my full legal name and affirming the checkbox below, I acknowledge that I am taking custody of the
+            above-listed controlled substance sample(s) for transport to Western University under the authority of Health
+            Canada's §56(1) exemption, and that this typed signature is legally equivalent to my handwritten signature.
+          </div>
+          <input className={inputCls} value={form.courier_consent_signature} onChange={(e) => set('courier_consent_signature', e.target.value)} placeholder="Type full legal name" required />
+          <label className="flex items-center gap-2 mt-3 text-sm">
+            <input type="checkbox" checked={form.courier_consent_affirmed} onChange={(e) => set('courier_consent_affirmed', e.target.checked)} />
+            <span>I affirm the above statement and accept custody of these samples. *</span>
+          </label>
+        </div>
+      </div>
+
+      {error && <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-sm text-red-800">{error}</div>}
+
+      <div className="flex gap-3">
+        <button type="submit" disabled={busy} className="bg-purple-700 hover:bg-purple-800 text-white font-bold px-6 py-2 rounded-lg disabled:opacity-50">
+          {busy ? 'Saving…' : 'Create shipment & record pickup'}
+        </button>
+        <button type="button" onClick={onCancel} className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold px-6 py-2 rounded-lg">
+          Cancel
+        </button>
+      </div>
+    </form>
+  );
+};
+
+// ─── Shipment Detail (view + mark arrival + mark verified) ────────────────
+const ShipmentDetail = ({ shipment, fingerprint, onUpdated }) => {
+  const [events, setEvents] = useState([]);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+
+  const [arrivalForm, setArrivalForm] = useState({
+    arrival_at: new Date().toISOString().slice(0, 16),
+    intake_by_name: '',
+    intake_signature: '',
+    intake_affirmed: false,
+    intake_matches_paper: true,
+    intake_notes: '',
+  });
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await listCustodyEvents(shipment.id);
+      setEvents(data || []);
+    })();
+  }, [shipment.id]);
+
+  const markArrival = async (e) => {
+    e.preventDefault();
+    setError('');
+    if (!arrivalForm.intake_by_name.trim()) return setError('Intake staff name required.');
+    if (!arrivalForm.intake_signature.trim()) return setError('Intake signature required.');
+    if (!arrivalForm.intake_affirmed) return setError('Intake affirmation checkbox required.');
+
+    setBusy(true);
+    const patch = {
+      arrival_at: new Date(arrivalForm.arrival_at).toISOString(),
+      intake_by_name: arrivalForm.intake_by_name.trim(),
+      intake_signature: arrivalForm.intake_signature.trim(),
+      intake_affirmed: arrivalForm.intake_affirmed,
+      intake_matches_paper: arrivalForm.intake_matches_paper,
+      intake_notes: arrivalForm.intake_notes.trim(),
+      intake_at: new Date().toISOString(),
+      status: arrivalForm.intake_matches_paper ? 'verified' : 'exception',
+      updated_by_fingerprint: fingerprint,
+    };
+    const { error: updateError } = await updateShipment(shipment.id, patch);
+    if (updateError) { setError(updateError.message); setBusy(false); return; }
+
+    await logCustodyEvent({
+      shipment_id: shipment.id,
+      event_type: arrivalForm.intake_matches_paper ? 'verified' : 'exception_raised',
+      actor_name: arrivalForm.intake_by_name.trim(),
+      actor_role: 'western_intake',
+      actor_signature: arrivalForm.intake_signature.trim(),
+      actor_affirmed: true,
+      actor_fingerprint: fingerprint,
+      notes: arrivalForm.intake_notes || (arrivalForm.intake_matches_paper
+        ? 'Samples received & cross-checked against printed + online records.'
+        : 'Discrepancy noted on intake.'),
+    });
+
+    setBusy(false);
+    onUpdated();
+  };
+
+  const printChainOfCustody = () => {
+    const html = `<!DOCTYPE html><html><head><title>Chain of Custody — ${shipment.scs_site_name}</title>
+<style>body{font-family:Arial,sans-serif;font-size:11px;max-width:800px;margin:20px auto;padding:20px}
+h1{color:#5b21b6;font-size:18px;margin-bottom:5px}h2{font-size:12px;color:#666;margin-top:0}
+table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #ddd;padding:6px;text-align:left;font-size:10px}
+th{background:#5b21b6;color:#fff}.sig{border:1px solid #333;padding:10px;margin-top:8px;min-height:40px;font-family:cursive;font-size:14px}
+.section{margin-top:16px;padding:12px;border:2px solid #e9d5ff;border-radius:4px}
+@media print{body{margin:10px}}</style></head><body>
+<h1>Western University Drug-Checking Network</h1>
+<h2>Sample Chain of Custody Record — Health Canada §56(1) Transport Log</h2>
+<div class="section">
+<strong>Shipment ID:</strong> ${shipment.id}<br/>
+<strong>Created:</strong> ${formatDT(shipment.created_at)}<br/>
+<strong>Originating Site:</strong> ${shipment.scs_site_name}<br/>
+<strong>Status:</strong> ${STATUS_META[shipment.status]?.label || shipment.status}
+</div>
+<div class="section"><strong>Samples transported (${shipment.sample_count}):</strong>
+<table><thead><tr><th>Sample ID</th><th>Description</th></tr></thead><tbody>
+${shipment.sample_ids.map((id, i) => `<tr><td>${id}</td><td>${shipment.sample_descriptions[i] || '—'}</td></tr>`).join('')}
+</tbody></table></div>
+<div class="section"><strong>Packaged & stored by:</strong> ${shipment.packaged_by_name} at ${formatDT(shipment.packaged_at)}<br/>
+<strong>Removed from storage by:</strong> ${shipment.removed_from_storage_by_name} at ${formatDT(shipment.removed_from_storage_at)}</div>
+<div class="section"><strong>Courier:</strong> ${shipment.courier_name}<br/>
+<strong>Pickup:</strong> ${formatDT(shipment.pickup_at)}<br/>
+<strong>Courier e-signature (typed):</strong><div class="sig">${shipment.courier_consent_signature}</div>
+<em>Consent affirmed:</em> ${shipment.courier_consent_affirmed ? 'YES' : 'NO'} · <em>at:</em> ${formatDT(shipment.courier_consent_at)}</div>
+${shipment.arrival_at ? `
+<div class="section"><strong>Arrival at Western:</strong> ${formatDT(shipment.arrival_at)}<br/>
+<strong>Western intake:</strong> ${shipment.intake_by_name || '—'}<br/>
+<strong>Intake e-signature (typed):</strong><div class="sig">${shipment.intake_signature || '—'}</div>
+<em>Samples match paper + online records:</em> ${shipment.intake_matches_paper ? 'YES' : 'NO — EXCEPTION'}<br/>
+${shipment.intake_notes ? `<em>Notes:</em> ${shipment.intake_notes}` : ''}</div>` : '<div class="section"><em>Not yet received at Western.</em></div>'}
+<div style="margin-top:30px;font-size:9px;color:#666;border-top:1px solid #ccc;padding-top:10px">
+Generated ${new Date().toLocaleString('en-CA')} · Western University Drug-Checking Project · Retained for duration of §56(1) exemption per HC record-keeping requirements.
+</div></body></html>`;
+    const w = window.open('', '_blank');
+    w.document.write(html);
+    w.document.close();
+    setTimeout(() => w.print(), 250);
+  };
+
+  const meta = STATUS_META[shipment.status] || STATUS_META.packaged;
+  const isAwaitingIntake = ['in_transit', 'delivered'].includes(shipment.status);
+
+  return (
+    <div className="space-y-4">
+      <div className="bg-white p-5 rounded-xl border-2 border-purple-200 shadow-md">
+        <div className="flex justify-between items-start mb-3">
+          <div>
+            <div className="text-xs text-purple-600 font-bold uppercase tracking-wider">Shipment detail</div>
+            <div className="font-bold text-xl text-purple-900">{shipment.scs_site_name}</div>
+            <div className="text-xs text-gray-500 font-mono">{shipment.id}</div>
+          </div>
+          <div className="flex gap-2 items-start">
+            <span className={`px-3 py-1 border rounded text-xs font-bold ${meta.color}`}>{meta.label}</span>
+            <button onClick={printChainOfCustody} className="bg-purple-700 hover:bg-purple-800 text-white text-xs font-bold px-3 py-1 rounded flex items-center gap-1">
+              <Printer size={14} />Print chain-of-custody
+            </button>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <div className="font-semibold text-purple-900">Samples ({shipment.sample_count})</div>
+            <ul className="list-disc list-inside text-gray-700 mt-1">
+              {shipment.sample_ids.map((id, i) => (
+                <li key={i}><strong>{id}</strong> — {shipment.sample_descriptions[i] || '—'}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-1 text-gray-700">
+            <div><strong>Packaged by:</strong> {shipment.packaged_by_name} <span className="text-gray-500">at {formatDT(shipment.packaged_at)}</span></div>
+            <div><strong>Removed from storage:</strong> {shipment.removed_from_storage_by_name} <span className="text-gray-500">at {formatDT(shipment.removed_from_storage_at)}</span></div>
+            <div><strong>Courier:</strong> {shipment.courier_name}</div>
+            <div><strong>Pickup:</strong> {formatDT(shipment.pickup_at)}</div>
+            <div><strong>Courier consent:</strong> <em>{shipment.courier_consent_signature}</em> · {shipment.courier_consent_affirmed ? '✓ affirmed' : '✗ unaffirmed'}</div>
+            {shipment.arrival_at && <div><strong>Arrival at Western:</strong> {formatDT(shipment.arrival_at)}</div>}
+            {shipment.intake_by_name && <div><strong>Intake:</strong> {shipment.intake_by_name} · <em>{shipment.intake_signature}</em></div>}
+            {shipment.intake_notes && <div><strong>Intake notes:</strong> {shipment.intake_notes}</div>}
+          </div>
+        </div>
+      </div>
+
+      {/* Intake form if awaiting */}
+      {isAwaitingIntake && (
+        <form onSubmit={markArrival} className="bg-blue-50 border-2 border-blue-300 p-5 rounded-xl">
+          <h3 className="font-bold text-lg text-blue-900 mb-3">Western Intake — Mark Arrival & Verify</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-blue-900 mb-1">Arrival date/time at Western *</label>
+              <input type="datetime-local" className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg text-sm" value={arrivalForm.arrival_at} onChange={(e) => setArrivalForm((f) => ({ ...f, arrival_at: e.target.value }))} required />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-blue-900 mb-1">Intake staff name *</label>
+              <input className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg text-sm" value={arrivalForm.intake_by_name} onChange={(e) => setArrivalForm((f) => ({ ...f, intake_by_name: e.target.value }))} placeholder="e.g. Elnaz Aliyari" required />
+            </div>
+          </div>
+          <label className="flex items-center gap-2 mt-3 text-sm text-blue-900">
+            <input type="checkbox" checked={arrivalForm.intake_matches_paper} onChange={(e) => setArrivalForm((f) => ({ ...f, intake_matches_paper: e.target.checked }))} />
+            <span>Physical samples match printed courier form AND match the online record (cross-check pass)</span>
+          </label>
+          {!arrivalForm.intake_matches_paper && (
+            <div className="mt-3">
+              <label className="block text-sm font-semibold text-red-900 mb-1">⚠ Discrepancy notes *</label>
+              <textarea className="w-full px-3 py-2 border-2 border-red-300 rounded-lg text-sm" rows={3} value={arrivalForm.intake_notes} onChange={(e) => setArrivalForm((f) => ({ ...f, intake_notes: e.target.value }))} />
+            </div>
+          )}
+          <div className="mt-4 bg-white border-2 border-blue-200 rounded-lg p-3">
+            <label className="block text-sm font-semibold text-blue-900 mb-1">Intake e-signature (typed full legal name) *</label>
+            <input className="w-full px-3 py-2 border-2 border-blue-200 rounded-lg text-sm" value={arrivalForm.intake_signature} onChange={(e) => setArrivalForm((f) => ({ ...f, intake_signature: e.target.value }))} required />
+            <label className="flex items-center gap-2 mt-2 text-sm">
+              <input type="checkbox" checked={arrivalForm.intake_affirmed} onChange={(e) => setArrivalForm((f) => ({ ...f, intake_affirmed: e.target.checked }))} />
+              <span>I affirm that I have received these samples and performed the cross-check described above. *</span>
+            </label>
+          </div>
+          {error && <div className="mt-3 bg-red-50 border-2 border-red-200 rounded-lg p-3 text-sm text-red-800">{error}</div>}
+          <button type="submit" disabled={busy} className="mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-2 rounded-lg disabled:opacity-50">
+            {busy ? 'Saving…' : 'Record intake & verify'}
+          </button>
+        </form>
+      )}
+
+      {/* Custody event log */}
+      <div className="bg-white p-5 rounded-xl border-2 border-purple-200 shadow-md">
+        <h3 className="font-bold text-purple-900 mb-3">Chain-of-custody audit log ({events.length} event{events.length !== 1 ? 's' : ''})</h3>
+        {events.length === 0 && <div className="text-sm text-gray-500">No events recorded yet.</div>}
+        {events.length > 0 && (
+          <div className="space-y-2">
+            {events.map((ev) => (
+              <div key={ev.id} className="flex gap-3 text-xs border-l-4 border-purple-300 pl-3 py-1">
+                <div className="font-mono text-gray-500 whitespace-nowrap">{formatDT(ev.occurred_at)}</div>
+                <div className="font-bold text-purple-900 uppercase">{ev.event_type.replace(/_/g, ' ')}</div>
+                <div className="text-gray-700">by {ev.actor_name} ({ev.actor_role.replace(/_/g, ' ')})</div>
+                {ev.notes && <div className="text-gray-500 italic">· {ev.notes}</div>}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+
 const ProjectPartnerDashboard = () => {
   const [expandedMetrics, setExpandedMetrics] = useState({});
   const [expandedRow, setExpandedRow] = useState(null);
@@ -841,13 +1654,13 @@ const ProjectPartnerDashboard = () => {
     { id: 13, nameOrganization: "Prairie Harm Reduction", address: "1516 20th St W", city: "Saskatoon", prov: "SK", primaryContact: "Kayla DeMong", email1: "admin@prairiehr.ca", phone1: "306-242-5005 Ext 4", additionalContact: "Julene Rawson", email2: "operations@prairiehr.ca", phone2: "306-242-5005 Ext4", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 52.1332, lng: -106.6700 },
     { id: 14, nameOrganization: "Cochrane District Paramedic Service", address: "500 Algonquin Blvd East", city: "Timmins", prov: "ON", primaryContact: "Seamus Murphy", email1: "seamus.murphy@cdsb.care", phone1: "705-268-772 x296", additionalContact: "Chantal Riva", email2: "Chantal.riva@cdsb.care", phone2: "705-268-722 x150", devicesAssigned: "1", exemptionType1: "Mobile", exemptionType2: "NA", lat: 48.4758, lng: -81.3304 },
     { id: 15, nameOrganization: "Renfrew Paramedic Services", address: "450 O'Brien Rd", city: "Renfrew", prov: "ON", primaryContact: "Stephanie Rose", email1: "SRose@countyofrenfrew.on.ca", phone1: "613-818-9813", additionalContact: "Kaylie Kuehl, Community Paramedicine Program Clinical Coordinator", email2: "KKuehl@countyofrenfrew.on.ca", phone2: "613-818-9813", devicesAssigned: "1", exemptionType1: "Mobile", exemptionType2: "NA", lat: 45.4729, lng: -76.6867 },
-    { id: 16, nameOrganization: "Peterborough AIDS Resource Network", address: "60 Hunter St E 2nd Floor", city: "Peterborough", prov: "ON", primaryContact: "Dane Record", email1: "executivedirector@parn.ca", phone1: "705-559-0656", additionalContact: "Aizha Polluck", email2: "aizha@parn.ca", phone2: "705-749-9110 Ext206", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 44.3091, lng: -78.3197 },
-    { id: 17, nameOrganization: "Travailderue", address: "221 Rue Tessier", city: "Chicoutimi", prov: "QC", primaryContact: "Stephanie Bouchard", email1: "stephanie.bouchard@strchic.com", phone1: "418-545-0999", additionalContact: "Janick Meunier", email2: "janick.meunier@strchic.com", phone2: "418-545-0999", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 48.4284, lng: -71.0649 },
+    { id: 16, nameOrganization: "Peterborough AIDS Resource Network", address: "60 Hunter St E 2nd Floor", city: "Peterborough", prov: "ON", primaryContact: "Dane Record", email1: "executivedirector@parn.ca", phone1: "705-559-0656", additionalContact: "Aizha Pollock", email2: "aizha@parn.ca", phone2: "705-749-9110 Ext206", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 44.3091, lng: -78.3197 },
+    { id: 17, nameOrganization: "Travailderue", address: "221 Rue Tessier", city: "Chicoutimi", prov: "QC", primaryContact: "Stéphanie Bouchard", email1: "stephanie.bouchard@strchic.com", phone1: "418-545-0999", additionalContact: "Janick Meunier", email2: "janick.meunier@strchic.com", phone2: "418-545-0999", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 48.4284, lng: -71.0649 },
     { id: 18, nameOrganization: "NHC Society", address: "76 Esplanade", city: "Truro", prov: "NS", primaryContact: "Albert McNutt, Executive Director", email1: "super@nhcsociety.ca", phone1: "902-895-0931", additionalContact: "TBD", email2: "TBD", phone2: "902-324-7201", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 45.3669, lng: -63.2755 },
     { id: 19, nameOrganization: "Breakaway", address: "21 Strickland Ave", city: "Toronto", prov: "ON", primaryContact: "Ruben Tarajano", email1: "Rubent@breakawaycs.ca", phone1: "647-883-1135", additionalContact: "Angie Porter", email2: "AngieP@breakawaycs.ca", phone2: "416-537-9346 Ext235", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 43.6532, lng: -79.3832 },
     { id: 20, nameOrganization: "AIDS New Brunswick", address: "354 King St", city: "Fredericton", prov: "NB", primaryContact: "Linda Thompson-Brown", email1: "linda@aidsnb.com", phone1: "506-455-2625", additionalContact: "Jess Gionet", email2: "Jess.gionet@aidsnb.com", phone2: "506-478-4765", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 45.9636, lng: -66.6431 },
-    { id: 21, nameOrganization: "Avenue B Harm Reduction Inc.", address: "62 Waterloo St", city: "Saint John", prov: "NB", primaryContact: "Laura MacNeill", email1: "laura.macneill@avenueb.ca", phone1: "506-652-2437", additionalContact: "Allie Myles", email2: "allie.myles@avenueb.ca", phone2: "506-652-2437", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "Mobile", lat: 45.2733, lng: -66.0633 },
-    { id: 22, nameOrganization: "Boyle Street Service Society", address: "10740 99 St NW", city: "Edmonton", prov: "AB", primaryContact: "Sindi Addorisio", email1: "saddorisio@boylestreet.org", phone1: "587-340-2985", additionalContact: "Alyssa Miller", email2: "amiller@boylestreet.org", phone2: "780-424-4106", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 53.5461, lng: -113.4938 }
+    { id: 21, nameOrganization: "Avenue B Harm Reduction Inc.", address: "62 Waterloo St", city: "Saint John", prov: "NB", primaryContact: "Laura MacNeill", email1: "laura.macneill@avenueb.ca", phone1: "506-652-2437", additionalContact: "Allie Myles", email2: "allie.myles@avenueb.ca", phone2: "506-652-2437", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "NA", lat: 45.2733, lng: -66.0633 },
+    { id: 22, nameOrganization: "Boyle Street Service Society", address: "10740 99 St NW", city: "Edmonton", prov: "AB", primaryContact: "Sindi Addorisio", email1: "saddorisio@boylestreet.org", phone1: "587-340-2985", additionalContact: "Alyssa Miller", email2: "amiller@boylestreet.org", phone2: "780-424-4106", devicesAssigned: "1", exemptionType1: "Non-Mobile", exemptionType2: "Mobile", lat: 53.5461, lng: -113.4938 }
   ];
 
   const getSitesByProvince = () => {
@@ -1241,6 +2054,7 @@ const ProjectPartnerDashboard = () => {
           <div className="p-6 bg-gradient-to-br from-white to-purple-50"><TableView /></div>
         </div>
         <div id="pwlle-sessions" className="scroll-mt-4"><PWLLETrainingSessionsTracker /></div>
+        <SampleChainOfCustody partnersData={partnersData} />
         <div id="links" className="scroll-mt-4"><RelatedLinks /></div>
       </div>
     </div>
