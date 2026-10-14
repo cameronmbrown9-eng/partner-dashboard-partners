@@ -165,10 +165,10 @@
    "scheduledDate": "2026-04-30",
    "purpose": "DCP Certification",
    "status": "Complete",
-   "attendants": null,
-   "newAttendants": null,
+   "attendants": 5,
+   "newAttendants": 5,
    "stipend": 3000,
-   "notes": "Held 30 Apr 2026 by Zoom (10 am–1 pm PDT); LOICs and surveys shipped 12 Jun 2026 — paper copies in the office, attendance to enter"
+   "notes": "Held 30 Apr 2026 by Zoom (10 am–1 pm PDT); 5 participants (Cameron Brown, 14 Oct 2026) — to confirm against the paper LOICs and surveys shipped 12 Jun 2026"
   },
   {
    "id": 13,
@@ -256,6 +256,6 @@
   }
  ],
  "reviewNotes": [
-  "Sessions held after 10 Apr 2026 other than Lower Mainland Purpose Society (30 Apr) and AIDS New Brunswick (31 Jul) are not on file; LMPS attendance comes from the paper LOICs and surveys once entered"
+  "Sessions held after 10 Apr 2026 other than Lower Mainland Purpose Society (30 Apr) and AIDS New Brunswick (31 Jul) are not on file; LMPS participant count (5) to confirm against the paper LOICs and surveys"
  ]
 }

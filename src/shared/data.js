@@ -13,6 +13,7 @@ export const partnersMeta = partnersJson;
 export const ALL_PARTNERS = partnersJson.partners;
 export const NEWS_UPDATES = newsJson.items;
 export const PWLLE_TRAINING_SESSIONS = trainingJson.sessions;
+export const trainingMeta = trainingJson;
 export const DOCUMENT_GROUPS = documentsJson.groups;
 export const LINKS = linksJson.links;
 export const METRICS = metricsJson;

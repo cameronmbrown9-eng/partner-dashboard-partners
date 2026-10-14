@@ -14,7 +14,6 @@ export const DEFAULT_TOC = [
   { id: 'documents', label: 'Research, Ethics & Exemptions Documents' },
   { id: 'map', label: 'Interactive Map View of Partner Sites' },
   { id: 'table', label: 'Project Partner Contact Info' },
-  { id: 'pwlle-sessions', label: 'PWLLE Training Sessions' },
   { id: 'chain-of-custody', label: 'Submit Samples for Courier Pickup' },
   { id: 'links', label: 'Related Links & Resources' },
 ];

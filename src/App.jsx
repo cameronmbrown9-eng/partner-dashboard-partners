@@ -21,7 +21,7 @@ import L from 'leaflet';
 // Shared, data-driven building blocks (identical copies live in both dashboard repos)
 import { SectionCard, SkipLink, DataStamp, fmtDate } from './shared/ui.jsx';
 import { ACTIVE_PARTNERS, LISTED_PARTNERS, METRICS, partnersMeta, networkStats } from './shared/data.js';
-import { NewsFeed, DocumentsSection, RelatedLinks, NetworkSummary, PwlleTrainingSessions, MapSection, ContactsSection } from './shared/sections.jsx';
+import { NewsFeed, DocumentsSection, RelatedLinks, NetworkSummary, MapSection, ContactsSection } from './shared/sections.jsx';
 import { PdfCard, ProjectPublications, BackToTop, AnnouncementBanner, TableOfContents, ProjectCountdown, PicturingTheProblem, ProjectTimeline } from './shared/common.jsx';
 
 // Fix for default marker icons in react-leaflet
@@ -1917,7 +1917,6 @@ const ProjectPartnerDashboard = () => {
         <DocumentsSection />
         <MapSection />
         <ContactsSection />
-        <PwlleTrainingSessions />
         <SampleChainOfCustody partnersData={custodyPartners} />
         <RelatedLinks />
         <footer className="pt-4 border-t border-purple-100">
