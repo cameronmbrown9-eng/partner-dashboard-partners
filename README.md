@@ -37,7 +37,7 @@ bash _scripts/sync_shared.sh
 
 Local: `npm ci`, then `npm run dev` or `npm run build`. Environment variables come from `.env.local` (see `.env.example`): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_CUSTODY_PASSWORD`. The chain-of-custody password has no fallback in the source; an empty value locks the module.
 
-Deploy: pushing to `main` runs `.github/workflows/deploy.yml`, which builds and publishes `dist/` to the `gh-pages` branch (custom domain via `public/CNAME`). The three variables above must exist as repository secrets; until they do, the workflow validates the data files and skips the build and publish, so the live site is never replaced by a locked build. `npm run deploy` (gh-pages from a local build) still works as a fallback and is how the site was published on 14 Oct 2026.
+Deploy: pushing to `main` runs `.github/workflows/deploy.yml`, which builds and publishes `dist/` to the `gh-pages` branch (custom domain via `public/CNAME`). The three variables above exist as repository secrets (added 14 Oct 2026); if any is missing the workflow validates the data files and skips the build and publish, so the live site is never replaced by a locked build. `npm run deploy` (gh-pages from a local build) remains a fallback; if it refuses to push after an Actions deploy, run `npx gh-pages-clean` and retry.
 
 ## Conventions
 
