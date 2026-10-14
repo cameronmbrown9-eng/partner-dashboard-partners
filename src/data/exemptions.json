@@ -1,0 +1,336 @@
+{
+ "lastUpdated": "2026-10-14",
+ "folder": "HealthCan-UWO/Legal & Regulatory",
+ "exemptions": [
+  {
+   "partnerKey": "western",
+   "site": "Western University",
+   "type": "Fixed (laboratory)",
+   "number": "24-103323-618",
+   "validTo": "2027-05-31",
+   "status": "active",
+   "file": "WESTERN UNIVERSITY_ONTARIO_Fixed_Exemption_24-103323-618_Valid Through_2027-05-31.pdf",
+   "note": ""
+  },
+  {
+   "partnerKey": null,
+   "site": "Scatr Inc. (Toronto)",
+   "type": "Fixed",
+   "number": "26-102514-605",
+   "validTo": "2027-07-31",
+   "status": "active",
+   "file": "SCATR INC_ONTARIO_Fixed_Exemption_26-102514-605_Valid Through_2027-07-31.pdf",
+   "note": ""
+  },
+  {
+   "partnerKey": "rhac",
+   "site": "Regional HIV/AIDS Connection (RHAC)",
+   "type": "Fixed",
+   "number": "24-108536-846",
+   "validTo": "2026-11-30",
+   "status": "active",
+   "file": "RHAC LONDON_ONTARIO_Fixed_Exemption_24-108536-846_Valid Through_2026-11-30.pdf",
+   "note": "Carepoint; decision 20 Nov 2025; renewal due"
+  },
+  {
+   "partnerKey": "sandyhill",
+   "site": "Sandy Hill Community Health Centre",
+   "type": "Fixed",
+   "number": "25-103345-595",
+   "validTo": "2025-11-30",
+   "status": "expired-renewal-submitted",
+   "file": "SANDYHILL CHC OTTAWA_ONTARIO_Fixed_Exemption_25-103345-595_EXPIRED 2025-11-30_Renewal Submitted to HC.pdf",
+   "note": "Expired 30 Nov 2025; renewal submitted — HC correspondence on the renewal not on file; site scanning in Oct 2026 — status requested 14 Oct 2026"
+  },
+  {
+   "partnerKey": "oich",
+   "site": "Ottawa Inner City Health",
+   "type": "Fixed",
+   "number": "24-107784-124",
+   "validTo": "2027-09-30",
+   "status": "active",
+   "file": "INNER CITY HEALTH OTTAWA_ONTARIO_Fixed_Exemption_24-107784-124_Valid Through_2027-09-30.pdf",
+   "note": "Trailer 2.0 supervised consumption site; decision 30 Sep 2024"
+  },
+  {
+   "partnerKey": "lmps",
+   "site": "Lower Mainland Purpose Society",
+   "type": "Provincial (Fraser Health)",
+   "number": "",
+   "validTo": "2026-09-30",
+   "status": "to-confirm",
+   "file": "PURPOSE SOCIETY_BRITISH COLUMBIA_Fixed_Exemption_Provincial_Auto-Extended_Valid Through_2026-09-30.pdf",
+   "note": "Fraser Health extension confirmed by email 15 Oct 2025 to 30 Sep 2026; current extension not on file — requested 14 Oct 2026"
+  },
+  {
+   "partnerKey": "grey",
+   "site": "County of Grey",
+   "type": "Fixed",
+   "number": "26-103466-47",
+   "validTo": "2027-07-31",
+   "status": "active",
+   "file": "GREY COUNTY_ONTARIO_Fixed_Exemption_26-103466-47_Valid Through_2027-07-31.pdf",
+   "note": ""
+  },
+  {
+   "partnerKey": "grey",
+   "site": "County of Grey",
+   "type": "Mobile",
+   "number": "26-103467-655",
+   "validTo": "2027-07-31",
+   "status": "active",
+   "file": "GREY COUNTY_ONTARIO_Mobile_Exemption_26-103467-655_Valid Through_2027-07-31.pdf",
+   "note": ""
+  },
+  {
+   "partnerKey": "grey",
+   "site": "County of Grey",
+   "type": "Mobile (outreach truck)",
+   "number": "26-103465-672",
+   "validTo": "2027-07-31",
+   "status": "active",
+   "file": "GREY COUNTY_ONTARIO_Mobile (Outreach Truck)_Exemption_26-103465-672_Valid Through_2027-07-31.pdf",
+   "note": ""
+  },
+  {
+   "partnerKey": "guelph",
+   "site": "Guelph Community Health Centre",
+   "type": "Fixed",
+   "number": "23-100103-782",
+   "validTo": "2026-01-31",
+   "status": "expired-renewal-submitted",
+   "file": "GUELPH CHC_ONTARIO_Fixed_Exemption_23-100103-782_EXPIRED 2026-01-31_Renewal Submitted to HC.pdf",
+   "note": "Expired 31 Jan 2026; renewal submitted — HC correspondence on the renewal not on file; no scans since 13 Feb 2026 — status requested 14 Oct 2026"
+  },
+  {
+   "partnerKey": "sanguen",
+   "site": "Sanguen Health Centre",
+   "type": "Fixed",
+   "number": "25-106363-560",
+   "validTo": "2026-10-31",
+   "status": "active",
+   "file": "SANGUEN CHC_ONTARIO_Fixed_Exemption_Valid Through_2026-10-31.pdf",
+   "note": "Decision 20 Oct 2025; renewal due"
+  },
+  {
+   "partnerKey": "sanguen",
+   "site": "Sanguen Health Centre",
+   "type": "Mobile",
+   "number": "25-106361-136",
+   "validTo": "2026-10-31",
+   "status": "active",
+   "file": "SANGUEN CHC_ONTARIO_Mobile_Exemption_Valid Through_2026-10-31.pdf",
+   "note": "Decision 20 Oct 2025; renewal due"
+  },
+  {
+   "partnerKey": "moyo",
+   "site": "Moyo Health & Community Services",
+   "type": "Fixed",
+   "number": "25-107136-238",
+   "validTo": "2027-01-31",
+   "status": "active",
+   "file": "MOYO_Approved Drug Checking Exemption Feb 2026 25-107136-238_MHCS_Decision_2026-01-30.pdf",
+   "note": "Decision 30 Jan 2026; service resumed 20 Jul 2026"
+  },
+  {
+   "partnerKey": "hamilton",
+   "site": "Hamilton Urban Core Community Health Centre",
+   "type": "Mobile",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "Mobile application draft received 13 Oct 2026 (Wilson Lapointe) for review; Health Canada revision round",
+   "file": null
+  },
+  {
+   "partnerKey": "pln",
+   "site": "Positive Living Niagara",
+   "type": "Fixed (SCS)",
+   "number": "23-107999-566",
+   "validTo": "2026-09-30",
+   "status": "expired",
+   "file": "POSITIVE LIVING NIAGARA_ONTARIO_Fixed_SCS Exemption_23-107999-566_Valid Through_2026-09-30.pdf",
+   "note": "Expired 30 Sep 2026; provincial CTS funding ended 13 Jun 2026 — status of the fixed site requested from Talia Storm 14 Oct 2026"
+  },
+  {
+   "partnerKey": "pln",
+   "site": "Positive Living Niagara",
+   "type": "Mobile (Van 1)",
+   "number": "26-103667-672",
+   "validTo": "2027-07-31",
+   "status": "active",
+   "file": "POSITIVE LIVING NIAGARA (VAN 1)_ONTARIO_Mobile_Exemption_26-103667-672_Valid Through_2027-07-31.pdf",
+   "note": "Granted 17 Jul 2026"
+  },
+  {
+   "partnerKey": "pln",
+   "site": "Positive Living Niagara",
+   "type": "Mobile (Van 2)",
+   "number": "26-103669-961",
+   "validTo": "2027-07-31",
+   "status": "active",
+   "file": "POSITIVE LIVING NIAGARA (VAN 2)_ONTARIO_Mobile_Exemption_26-103669-961_Valid Through_2027-07-31.pdf",
+   "note": "Granted 17 Jul 2026"
+  },
+  {
+   "partnerKey": "ensemble",
+   "site": "Ensemble Moncton",
+   "type": "Provincial (fixed)",
+   "number": "",
+   "validTo": "2026-09-30",
+   "status": "to-confirm",
+   "file": "ENSEMBLE_NEW BRUNSWICK_Fixed_Exemption_Provincial_Valid Through_2026-09-30.pdf",
+   "note": "Provincial UPHNS authorization agreement 2025-26 expired 30 Sep 2026; 2026-27 renewal not on file — requested 14 Oct 2026"
+  },
+  {
+   "partnerKey": "prairiehr",
+   "site": "Prairie Harm Reduction",
+   "type": "Non-mobile",
+   "number": "25-101363-315",
+   "validTo": "2026-03-31",
+   "status": "closed",
+   "file": "PRAIREHARMREDUCTION_SASKATCHEWAN_Non-MOBILE_Exemption_25-101363-315_EXPIRED 2026-03-31_SITE CLOSED - device repossessed.pdf",
+   "note": "Suspended 30 Mar 2026; site closed; device retrieved 12 Jun 2026"
+  },
+  {
+   "partnerKey": "cochrane",
+   "site": "Cochrane District Paramedic Service",
+   "type": "Mobile",
+   "number": "26-100192-418",
+   "validTo": "2027-03-31",
+   "status": "active",
+   "file": "COCHRANE DISTRICT PARAMEDIC SERVICE_ONTARIO_Mobile_Exemption_26-100192-418_Valid Through_2027-03-31.pdf",
+   "note": "Decision 6 Mar 2026"
+  },
+  {
+   "partnerKey": "renfrew",
+   "site": "Renfrew County Paramedic Service",
+   "type": "Mobile",
+   "number": "",
+   "validTo": null,
+   "status": "to-confirm",
+   "note": "Exemption held (scanning resumed Jan 2026); decision letter not on file — requested 14 Oct 2026",
+   "file": null
+  },
+  {
+   "partnerKey": "parn",
+   "site": "Peterborough AIDS Resource Network (PARN)",
+   "type": "Fixed",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "No application submitted as of Aug 2026; application discussed Jul–Aug 2026",
+   "file": null
+  },
+  {
+   "partnerKey": "tdr",
+   "site": "Travail de rue de Chicoutimi",
+   "type": "Fixed (federal)",
+   "number": "24-105336-110",
+   "validTo": "2027-06-30",
+   "status": "active",
+   "file": "TRAVAILDERUE_QUEBEC_Fixed_Exemption_FEDERAL_Valid Through_2027-06-30.pdf",
+   "note": "La Baraque; decision 28 Jun 2024"
+  },
+  {
+   "partnerKey": "nhc",
+   "site": "NHC Society (Northern Healthy Connections)",
+   "type": "Fixed",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "Application pending decision",
+   "file": null
+  },
+  {
+   "partnerKey": "breakaway",
+   "site": "Breakaway Community Services",
+   "type": "Fixed",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "Awaiting decision after the Health Canada site visit",
+   "file": null
+  },
+  {
+   "partnerKey": "aidsnb",
+   "site": "AIDS New Brunswick",
+   "type": "Fixed (in-office) and mobile",
+   "number": "",
+   "validTo": null,
+   "status": "to-confirm",
+   "note": "Received 10 Mar 2026 (\"mobile and in office service\", Linda Thompson-Brown 13 Oct 2026); letters not on file — requested 14 Oct 2026",
+   "file": null
+  },
+  {
+   "partnerKey": "avenueb",
+   "site": "Avenue B Harm Reduction Inc.",
+   "type": "Provincial (fixed)",
+   "number": "",
+   "validTo": "2026-03-31",
+   "status": "to-confirm",
+   "file": "AVENUE B_NEW BRUNSWICK_Fixed_Exemption_PROVINCIAL_Valid Through_2026-03-31.pdf",
+   "note": "NB Department of Health drug-checking agreement (Apr 2025 grant year); renewal/extension not on file — requested 14 Oct 2026"
+  },
+  {
+   "partnerKey": "loft",
+   "site": "LOFT Community Services",
+   "type": "Mobile",
+   "number": "26-104371-467",
+   "validTo": "2027-09-30",
+   "status": "active",
+   "file": "LOFT COMMUNITY SERVICES_ONTARIO_Mobile_Exemption_26-104371-467_Valid Through_2027-09-30.pdf",
+   "note": "Decision 17 Sep 2026; RPIC Debra Walko"
+  },
+  {
+   "partnerKey": "cmhahp",
+   "site": "CMHA Huron Perth Addiction and Mental Health Services",
+   "type": "",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "Application to follow the Dec 2026 installation",
+   "file": null
+  },
+  {
+   "partnerKey": "bras",
+   "site": "BRAS Outaouais",
+   "type": "",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "Application to follow the Dec 2026 installation",
+   "file": null
+  },
+  {
+   "partnerKey": "wechu",
+   "site": "Windsor-Essex County Health Unit",
+   "type": "Mobile",
+   "number": "",
+   "validTo": null,
+   "status": "pending",
+   "note": "Agreement and University of Windsor REB application in preparation",
+   "file": null
+  },
+  {
+   "partnerKey": "boyle",
+   "site": "Boyle Street Community Services",
+   "type": "Fixed (okimaw peyesew kamik)",
+   "number": "26-104315-740",
+   "validTo": "2027-09-30",
+   "status": "active",
+   "file": "BOYLE STREET COMMUNITY SERVICES_ALBERTA_Fixed_Exemption_26-104315-740_Valid Through_2027-09-30.pdf",
+   "note": "Decision 2 Sep 2026; RPIC Lesley Dacks, RN; recovered from the 2 Sep 2026 email and filed 13 Oct 2026"
+  },
+  {
+   "partnerKey": "boyle",
+   "site": "Boyle Street Community Services",
+   "type": "Mobile (Streetworks Outreach Van)",
+   "number": "26-104316-564",
+   "validTo": "2027-09-30",
+   "status": "active",
+   "file": "BOYLE STREET COMMUNITY SERVICES_ALBERTA_Mobile (Streetworks Outreach Van)_Exemption_26-104316-564_Valid Through_2027-09-30.pdf",
+   "note": "Decision 2 Sep 2026; recovered from the 2 Sep 2026 email and filed 13 Oct 2026"
+  }
+ ]
+}

@@ -1,0 +1,2505 @@
+{
+ "generatedAt": "2026-10-13T22:48:44-04:00",
+ "pullTimestamp": "2026-10-13T22:43:08-04:00",
+ "dataAsOf": "2026-10-13",
+ "source": "scatr.ca allScanData via scatr_full_pull/run.sh (Nov 2022 \u2192 present); POC = results non-empty; organisation = username",
+ "fiscalYearNow": "FY2026-27",
+ "totals": {
+  "scanRecordsAllTime": 19767,
+  "pocAllTime": 16512,
+  "pocPhase2SinceJun27_2024": 9940,
+  "pocByFiscalYear": {
+   "FY2022-23": 1,
+   "FY2023-24": 4508,
+   "FY2024-25": 6962,
+   "FY2025-26": 3738,
+   "FY2026-27": 1303
+  },
+  "pocFiscalYearToDate": 1303,
+  "pocLast12Months": 3196,
+  "devicesOnScatrDashboard": 25,
+  "labRecordsAllTime": 2271,
+  "sitesWithPocAllTime": 23,
+  "sitesWithPocLast12Months": 18
+ },
+ "networkMonthly": [
+  {
+   "month": "2023-03",
+   "poc": 1
+  },
+  {
+   "month": "2023-04",
+   "poc": 0
+  },
+  {
+   "month": "2023-05",
+   "poc": 53
+  },
+  {
+   "month": "2023-06",
+   "poc": 90
+  },
+  {
+   "month": "2023-07",
+   "poc": 240
+  },
+  {
+   "month": "2023-08",
+   "poc": 264
+  },
+  {
+   "month": "2023-09",
+   "poc": 425
+  },
+  {
+   "month": "2023-10",
+   "poc": 386
+  },
+  {
+   "month": "2023-11",
+   "poc": 489
+  },
+  {
+   "month": "2023-12",
+   "poc": 536
+  },
+  {
+   "month": "2024-01",
+   "poc": 567
+  },
+  {
+   "month": "2024-02",
+   "poc": 687
+  },
+  {
+   "month": "2024-03",
+   "poc": 771
+  },
+  {
+   "month": "2024-04",
+   "poc": 823
+  },
+  {
+   "month": "2024-05",
+   "poc": 779
+  },
+  {
+   "month": "2024-06",
+   "poc": 542
+  },
+  {
+   "month": "2024-07",
+   "poc": 573
+  },
+  {
+   "month": "2024-08",
+   "poc": 673
+  },
+  {
+   "month": "2024-09",
+   "poc": 581
+  },
+  {
+   "month": "2024-10",
+   "poc": 483
+  },
+  {
+   "month": "2024-11",
+   "poc": 639
+  },
+  {
+   "month": "2024-12",
+   "poc": 448
+  },
+  {
+   "month": "2025-01",
+   "poc": 387
+  },
+  {
+   "month": "2025-02",
+   "poc": 516
+  },
+  {
+   "month": "2025-03",
+   "poc": 518
+  },
+  {
+   "month": "2025-04",
+   "poc": 247
+  },
+  {
+   "month": "2025-05",
+   "poc": 302
+  },
+  {
+   "month": "2025-06",
+   "poc": 354
+  },
+  {
+   "month": "2025-07",
+   "poc": 332
+  },
+  {
+   "month": "2025-08",
+   "poc": 278
+  },
+  {
+   "month": "2025-09",
+   "poc": 332
+  },
+  {
+   "month": "2025-10",
+   "poc": 375
+  },
+  {
+   "month": "2025-11",
+   "poc": 326
+  },
+  {
+   "month": "2025-12",
+   "poc": 294
+  },
+  {
+   "month": "2026-01",
+   "poc": 247
+  },
+  {
+   "month": "2026-02",
+   "poc": 268
+  },
+  {
+   "month": "2026-03",
+   "poc": 383
+  },
+  {
+   "month": "2026-04",
+   "poc": 329
+  },
+  {
+   "month": "2026-05",
+   "poc": 253
+  },
+  {
+   "month": "2026-06",
+   "poc": 225
+  },
+  {
+   "month": "2026-07",
+   "poc": 101
+  },
+  {
+   "month": "2026-08",
+   "poc": 128
+  },
+  {
+   "month": "2026-09",
+   "poc": 205
+  },
+  {
+   "month": "2026-10",
+   "poc": 62
+  }
+ ],
+ "labMonthly": [
+  {
+   "month": "2023-03",
+   "labRecords": 0
+  },
+  {
+   "month": "2023-04",
+   "labRecords": 0
+  },
+  {
+   "month": "2023-05",
+   "labRecords": 0
+  },
+  {
+   "month": "2023-06",
+   "labRecords": 0
+  },
+  {
+   "month": "2023-07",
+   "labRecords": 83
+  },
+  {
+   "month": "2023-08",
+   "labRecords": 79
+  },
+  {
+   "month": "2023-09",
+   "labRecords": 81
+  },
+  {
+   "month": "2023-10",
+   "labRecords": 66
+  },
+  {
+   "month": "2023-11",
+   "labRecords": 148
+  },
+  {
+   "month": "2023-12",
+   "labRecords": 109
+  },
+  {
+   "month": "2024-01",
+   "labRecords": 68
+  },
+  {
+   "month": "2024-02",
+   "labRecords": 95
+  },
+  {
+   "month": "2024-03",
+   "labRecords": 87
+  },
+  {
+   "month": "2024-04",
+   "labRecords": 136
+  },
+  {
+   "month": "2024-05",
+   "labRecords": 100
+  },
+  {
+   "month": "2024-06",
+   "labRecords": 44
+  },
+  {
+   "month": "2024-07",
+   "labRecords": 77
+  },
+  {
+   "month": "2024-08",
+   "labRecords": 72
+  },
+  {
+   "month": "2024-09",
+   "labRecords": 66
+  },
+  {
+   "month": "2024-10",
+   "labRecords": 66
+  },
+  {
+   "month": "2024-11",
+   "labRecords": 87
+  },
+  {
+   "month": "2024-12",
+   "labRecords": 47
+  },
+  {
+   "month": "2025-01",
+   "labRecords": 47
+  },
+  {
+   "month": "2025-02",
+   "labRecords": 53
+  },
+  {
+   "month": "2025-03",
+   "labRecords": 63
+  },
+  {
+   "month": "2025-04",
+   "labRecords": 23
+  },
+  {
+   "month": "2025-05",
+   "labRecords": 34
+  },
+  {
+   "month": "2025-06",
+   "labRecords": 54
+  },
+  {
+   "month": "2025-07",
+   "labRecords": 53
+  },
+  {
+   "month": "2025-08",
+   "labRecords": 50
+  },
+  {
+   "month": "2025-09",
+   "labRecords": 49
+  },
+  {
+   "month": "2025-10",
+   "labRecords": 33
+  },
+  {
+   "month": "2025-11",
+   "labRecords": 42
+  },
+  {
+   "month": "2025-12",
+   "labRecords": 35
+  },
+  {
+   "month": "2026-01",
+   "labRecords": 16
+  },
+  {
+   "month": "2026-02",
+   "labRecords": 33
+  },
+  {
+   "month": "2026-03",
+   "labRecords": 39
+  },
+  {
+   "month": "2026-04",
+   "labRecords": 38
+  },
+  {
+   "month": "2026-05",
+   "labRecords": 37
+  },
+  {
+   "month": "2026-06",
+   "labRecords": 21
+  },
+  {
+   "month": "2026-07",
+   "labRecords": 0
+  },
+  {
+   "month": "2026-08",
+   "labRecords": 1
+  },
+  {
+   "month": "2026-09",
+   "labRecords": 27
+  },
+  {
+   "month": "2026-10",
+   "labRecords": 12
+  }
+ ],
+ "sites": [
+  {
+   "username": "sanguenhealth",
+   "site": "Sanguen Health Centre",
+   "known": true,
+   "pocAllTime": 4143,
+   "pocFiscalYearToDate": 589,
+   "pocLast12Months": 1055,
+   "firstScan": "2023-07-22",
+   "lastScan": "2026-10-13",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 57
+    },
+    {
+     "month": "2025-12",
+     "poc": 86
+    },
+    {
+     "month": "2026-01",
+     "poc": 62
+    },
+    {
+     "month": "2026-02",
+     "poc": 65
+    },
+    {
+     "month": "2026-03",
+     "poc": 114
+    },
+    {
+     "month": "2026-04",
+     "poc": 100
+    },
+    {
+     "month": "2026-05",
+     "poc": 92
+    },
+    {
+     "month": "2026-06",
+     "poc": 85
+    },
+    {
+     "month": "2026-07",
+     "poc": 44
+    },
+    {
+     "month": "2026-08",
+     "poc": 87
+    },
+    {
+     "month": "2026-09",
+     "poc": 135
+    },
+    {
+     "month": "2026-10",
+     "poc": 46
+    }
+   ],
+   "deviceIds": [
+    6,
+    3,
+    7,
+    1
+   ]
+  },
+  {
+   "username": "londoncts",
+   "site": "Regional HIV/AIDS Connection (RHAC)",
+   "known": true,
+   "pocAllTime": 2726,
+   "pocFiscalYearToDate": 162,
+   "pocLast12Months": 514,
+   "firstScan": "2023-06-03",
+   "lastScan": "2026-10-09",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 71
+    },
+    {
+     "month": "2025-12",
+     "poc": 64
+    },
+    {
+     "month": "2026-01",
+     "poc": 38
+    },
+    {
+     "month": "2026-02",
+     "poc": 45
+    },
+    {
+     "month": "2026-03",
+     "poc": 77
+    },
+    {
+     "month": "2026-04",
+     "poc": 34
+    },
+    {
+     "month": "2026-05",
+     "poc": 53
+    },
+    {
+     "month": "2026-06",
+     "poc": 32
+    },
+    {
+     "month": "2026-07",
+     "poc": 14
+    },
+    {
+     "month": "2026-08",
+     "poc": 12
+    },
+    {
+     "month": "2026-09",
+     "poc": 13
+    },
+    {
+     "month": "2026-10",
+     "poc": 4
+    }
+   ],
+   "deviceIds": [
+    5,
+    10,
+    3
+   ]
+  },
+  {
+   "username": "scatr",
+   "site": "Western University",
+   "known": true,
+   "pocAllTime": 2351,
+   "pocFiscalYearToDate": 97,
+   "pocLast12Months": 317,
+   "firstScan": "2023-03-25",
+   "lastScan": "2026-08-25",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 30
+    },
+    {
+     "month": "2025-12",
+     "poc": 22
+    },
+    {
+     "month": "2026-01",
+     "poc": 42
+    },
+    {
+     "month": "2026-02",
+     "poc": 27
+    },
+    {
+     "month": "2026-03",
+     "poc": 48
+    },
+    {
+     "month": "2026-04",
+     "poc": 37
+    },
+    {
+     "month": "2026-05",
+     "poc": 30
+    },
+    {
+     "month": "2026-06",
+     "poc": 28
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 2
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    9,
+    2,
+    4,
+    1,
+    27,
+    5,
+    28,
+    24,
+    19,
+    26,
+    25,
+    17,
+    23,
+    22,
+    20,
+    21,
+    18,
+    10
+   ]
+  },
+  {
+   "username": "sandyhill",
+   "site": "Sandy Hill Community Health Centre",
+   "known": true,
+   "pocAllTime": 1630,
+   "pocFiscalYearToDate": 132,
+   "pocLast12Months": 306,
+   "firstScan": "2023-05-27",
+   "lastScan": "2026-10-08",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 33
+    },
+    {
+     "month": "2025-12",
+     "poc": 28
+    },
+    {
+     "month": "2026-01",
+     "poc": 22
+    },
+    {
+     "month": "2026-02",
+     "poc": 21
+    },
+    {
+     "month": "2026-03",
+     "poc": 35
+    },
+    {
+     "month": "2026-04",
+     "poc": 40
+    },
+    {
+     "month": "2026-05",
+     "poc": 19
+    },
+    {
+     "month": "2026-06",
+     "poc": 18
+    },
+    {
+     "month": "2026-07",
+     "poc": 18
+    },
+    {
+     "month": "2026-08",
+     "poc": 2
+    },
+    {
+     "month": "2026-09",
+     "poc": 32
+    },
+    {
+     "month": "2026-10",
+     "poc": 3
+    }
+   ],
+   "deviceIds": [
+    11,
+    10
+   ]
+  },
+  {
+   "username": "ottawainnercityhealth",
+   "site": "Ottawa Inner City Health",
+   "known": true,
+   "pocAllTime": 1627,
+   "pocFiscalYearToDate": 108,
+   "pocLast12Months": 404,
+   "firstScan": "2023-05-27",
+   "lastScan": "2026-06-12",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 31
+    },
+    {
+     "month": "2025-12",
+     "poc": 43
+    },
+    {
+     "month": "2026-01",
+     "poc": 47
+    },
+    {
+     "month": "2026-02",
+     "poc": 58
+    },
+    {
+     "month": "2026-03",
+     "poc": 63
+    },
+    {
+     "month": "2026-04",
+     "poc": 70
+    },
+    {
+     "month": "2026-05",
+     "poc": 17
+    },
+    {
+     "month": "2026-06",
+     "poc": 21
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    8,
+    11,
+    19,
+    3
+   ]
+  },
+  {
+   "username": "hamiltoncts",
+   "site": "Hamilton Urban Core Community Health Centre",
+   "known": true,
+   "pocAllTime": 1372,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 0,
+   "firstScan": "2023-05-20",
+   "lastScan": "2025-03-31",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    7
+   ]
+  },
+  {
+   "username": "niagaracts",
+   "site": "Positive Living Niagara",
+   "known": true,
+   "pocAllTime": 1120,
+   "pocFiscalYearToDate": 65,
+   "pocLast12Months": 158,
+   "firstScan": "2023-07-29",
+   "lastScan": "2026-07-03",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 23
+    },
+    {
+     "month": "2025-12",
+     "poc": 14
+    },
+    {
+     "month": "2026-01",
+     "poc": 10
+    },
+    {
+     "month": "2026-02",
+     "poc": 15
+    },
+    {
+     "month": "2026-03",
+     "poc": 17
+    },
+    {
+     "month": "2026-04",
+     "poc": 28
+    },
+    {
+     "month": "2026-05",
+     "poc": 22
+    },
+    {
+     "month": "2026-06",
+     "poc": 14
+    },
+    {
+     "month": "2026-07",
+     "poc": 1
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    1,
+    6,
+    16,
+    2
+   ]
+  },
+  {
+   "username": "guelphchc",
+   "site": "Guelph Community Health Centre",
+   "known": true,
+   "pocAllTime": 554,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 3,
+   "firstScan": "2023-11-04",
+   "lastScan": "2026-02-13",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 1
+    },
+    {
+     "month": "2026-02",
+     "poc": 2
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    3,
+    8
+   ]
+  },
+  {
+   "username": "purposesociety",
+   "site": "Lower Mainland Purpose Society",
+   "known": true,
+   "pocAllTime": 208,
+   "pocFiscalYearToDate": 2,
+   "pocLast12Months": 17,
+   "firstScan": "2023-06-17",
+   "lastScan": "2026-06-17",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 4
+    },
+    {
+     "month": "2025-12",
+     "poc": 5
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 3
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 2
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    4
+   ]
+  },
+  {
+   "username": "moyo",
+   "site": "Moyo Health",
+   "known": true,
+   "pocAllTime": 198,
+   "pocFiscalYearToDate": 1,
+   "pocLast12Months": 1,
+   "firstScan": "2024-03-21",
+   "lastScan": "2026-10-05",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 1
+    }
+   ],
+   "deviceIds": [
+    12
+   ]
+  },
+  {
+   "username": "tdr",
+   "site": "Travail de rue Chicoutimi",
+   "known": true,
+   "pocAllTime": 154,
+   "pocFiscalYearToDate": 29,
+   "pocLast12Months": 125,
+   "firstScan": "2025-08-26",
+   "lastScan": "2026-09-30",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 23
+    },
+    {
+     "month": "2025-12",
+     "poc": 5
+    },
+    {
+     "month": "2026-01",
+     "poc": 16
+    },
+    {
+     "month": "2026-02",
+     "poc": 6
+    },
+    {
+     "month": "2026-03",
+     "poc": 12
+    },
+    {
+     "month": "2026-04",
+     "poc": 5
+    },
+    {
+     "month": "2026-05",
+     "poc": 5
+    },
+    {
+     "month": "2026-06",
+     "poc": 8
+    },
+    {
+     "month": "2026-07",
+     "poc": 3
+    },
+    {
+     "month": "2026-08",
+     "poc": 1
+    },
+    {
+     "month": "2026-09",
+     "poc": 7
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    26
+   ]
+  },
+  {
+   "username": "prairiehr",
+   "site": "Prairie Harm Reduction",
+   "known": true,
+   "pocAllTime": 121,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 81,
+   "firstScan": "2025-08-14",
+   "lastScan": "2026-03-17",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 32
+    },
+    {
+     "month": "2025-12",
+     "poc": 19
+    },
+    {
+     "month": "2026-01",
+     "poc": 3
+    },
+    {
+     "month": "2026-02",
+     "poc": 8
+    },
+    {
+     "month": "2026-03",
+     "poc": 4
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    27
+   ]
+  },
+  {
+   "username": "avenueb",
+   "site": "Avenue B Harm Reduction Inc.",
+   "known": true,
+   "pocAllTime": 120,
+   "pocFiscalYearToDate": 59,
+   "pocLast12Months": 119,
+   "firstScan": "2025-09-25",
+   "lastScan": "2026-08-26",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 18
+    },
+    {
+     "month": "2025-12",
+     "poc": 4
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 3
+    },
+    {
+     "month": "2026-03",
+     "poc": 8
+    },
+    {
+     "month": "2026-04",
+     "poc": 12
+    },
+    {
+     "month": "2026-05",
+     "poc": 11
+    },
+    {
+     "month": "2026-06",
+     "poc": 14
+    },
+    {
+     "month": "2026-07",
+     "poc": 9
+    },
+    {
+     "month": "2026-08",
+     "poc": 13
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    24
+   ]
+  },
+  {
+   "username": "greycounty",
+   "site": "County of Grey",
+   "known": true,
+   "pocAllTime": 74,
+   "pocFiscalYearToDate": 10,
+   "pocLast12Months": 16,
+   "firstScan": "2024-07-17",
+   "lastScan": "2026-08-05",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 2
+    },
+    {
+     "month": "2026-01",
+     "poc": 1
+    },
+    {
+     "month": "2026-02",
+     "poc": 3
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 8
+    },
+    {
+     "month": "2026-08",
+     "poc": 2
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    13
+   ]
+  },
+  {
+   "username": "ensemble",
+   "site": "Ensemble Moncton",
+   "known": true,
+   "pocAllTime": 34,
+   "pocFiscalYearToDate": 3,
+   "pocLast12Months": 22,
+   "firstScan": "2025-07-29",
+   "lastScan": "2026-08-03",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 4
+    },
+    {
+     "month": "2025-12",
+     "poc": 2
+    },
+    {
+     "month": "2026-01",
+     "poc": 3
+    },
+    {
+     "month": "2026-02",
+     "poc": 7
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 2
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 1
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    20
+   ]
+  },
+  {
+   "username": "rps",
+   "site": "Renfrew Paramedic Services",
+   "known": true,
+   "pocAllTime": 27,
+   "pocFiscalYearToDate": 11,
+   "pocLast12Months": 22,
+   "firstScan": "2025-07-17",
+   "lastScan": "2026-07-08",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 2
+    },
+    {
+     "month": "2026-02",
+     "poc": 7
+    },
+    {
+     "month": "2026-03",
+     "poc": 2
+    },
+    {
+     "month": "2026-04",
+     "poc": 1
+    },
+    {
+     "month": "2026-05",
+     "poc": 4
+    },
+    {
+     "month": "2026-06",
+     "poc": 3
+    },
+    {
+     "month": "2026-07",
+     "poc": 3
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    22
+   ]
+  },
+  {
+   "username": "aidsnb",
+   "site": "AIDS New Brunswick",
+   "known": true,
+   "pocAllTime": 20,
+   "pocFiscalYearToDate": 17,
+   "pocLast12Months": 17,
+   "firstScan": "2025-09-26",
+   "lastScan": "2026-10-07",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 1
+    },
+    {
+     "month": "2026-09",
+     "poc": 13
+    },
+    {
+     "month": "2026-10",
+     "poc": 3
+    }
+   ],
+   "deviceIds": [
+    19
+   ]
+  },
+  {
+   "username": "loft",
+   "site": "LOFT Community Services",
+   "known": true,
+   "pocAllTime": 12,
+   "pocFiscalYearToDate": 12,
+   "pocLast12Months": 12,
+   "firstScan": "2026-07-10",
+   "lastScan": "2026-10-09",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 1
+    },
+    {
+     "month": "2026-08",
+     "poc": 7
+    },
+    {
+     "month": "2026-09",
+     "poc": 1
+    },
+    {
+     "month": "2026-10",
+     "poc": 3
+    }
+   ],
+   "deviceIds": [
+    27,
+    2
+   ]
+  },
+  {
+   "username": "boylestreet",
+   "site": "Boyle Street Service Society",
+   "known": true,
+   "pocAllTime": 7,
+   "pocFiscalYearToDate": 6,
+   "pocLast12Months": 7,
+   "firstScan": "2026-02-10",
+   "lastScan": "2026-10-08",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 1
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 4
+    },
+    {
+     "month": "2026-10",
+     "poc": 2
+    }
+   ],
+   "deviceIds": [
+    28
+   ]
+  },
+  {
+   "username": "breakawaycs",
+   "site": "Breakaway",
+   "known": true,
+   "pocAllTime": 5,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 0,
+   "firstScan": "2025-08-21",
+   "lastScan": "2025-08-21",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    5
+   ]
+  },
+  {
+   "username": "parn",
+   "site": "Peterborough AIDS Resource Network",
+   "known": true,
+   "pocAllTime": 4,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 0,
+   "firstScan": "2025-07-25",
+   "lastScan": "2025-07-25",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    18
+   ]
+  },
+  {
+   "username": "cdsb",
+   "site": "Cochrane District Paramedic Service",
+   "known": true,
+   "pocAllTime": 3,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 0,
+   "firstScan": "2025-06-24",
+   "lastScan": "2025-06-24",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    21
+   ]
+  },
+  {
+   "username": "nhcs",
+   "site": "NHC Society",
+   "known": true,
+   "pocAllTime": 2,
+   "pocFiscalYearToDate": 0,
+   "pocLast12Months": 0,
+   "firstScan": "2025-07-30",
+   "lastScan": "2025-07-30",
+   "monthly": [
+    {
+     "month": "2025-11",
+     "poc": 0
+    },
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    23
+   ]
+  }
+ ],
+ "devices": [
+  {
+   "deviceId": 1,
+   "serial": "WCFY6P4Y4GFD",
+   "dashboardName": "Positive Living Niagara Series One",
+   "dashboardOrganization": "Positive Living Niagara",
+   "dashboardUsername": "niagaracts",
+   "canonicalUsername": "niagaracts",
+   "canonicalSite": "Positive Living Niagara",
+   "mostRecentUsername": "sanguenhealth",
+   "mostRecentUsernameLastScan": "2026-10-13",
+   "pocAllTime": 1077,
+   "lastScan": "2026-10-13",
+   "usernames": [
+    {
+     "username": "niagaracts",
+     "poc": 1036,
+     "lastScan": "2026-06-12"
+    },
+    {
+     "username": "scatr",
+     "poc": 33,
+     "lastScan": "2023-06-17"
+    },
+    {
+     "username": "sanguenhealth",
+     "poc": 8,
+     "lastScan": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "deviceId": 2,
+   "serial": "VT73E0MYFCFD",
+   "dashboardName": "Scatr Demo Unit",
+   "dashboardOrganization": "LOFT Community Services",
+   "dashboardUsername": "loft",
+   "canonicalUsername": "scatr",
+   "canonicalSite": "Western University",
+   "mostRecentUsername": "loft",
+   "mostRecentUsernameLastScan": "2026-07-10",
+   "pocAllTime": 99,
+   "lastScan": "2026-07-10",
+   "usernames": [
+    {
+     "username": "scatr",
+     "poc": 90,
+     "lastScan": "2024-11-07"
+    },
+    {
+     "username": "niagaracts",
+     "poc": 8,
+     "lastScan": "2024-09-18"
+    },
+    {
+     "username": "loft",
+     "poc": 1,
+     "lastScan": "2026-07-10"
+    }
+   ]
+  },
+  {
+   "deviceId": 3,
+   "serial": "77MTFY4YFGFD",
+   "dashboardName": "Moyo Health & Community Services's Series One",
+   "dashboardOrganization": "Moyo Health & Community Services",
+   "dashboardUsername": "moyo",
+   "canonicalUsername": "guelphchc",
+   "canonicalSite": "Guelph Community Health Centre",
+   "mostRecentUsername": "guelphchc",
+   "mostRecentUsernameLastScan": "2026-02-13",
+   "pocAllTime": 1067,
+   "lastScan": "2026-02-13",
+   "usernames": [
+    {
+     "username": "guelphchc",
+     "poc": 549,
+     "lastScan": "2026-02-13"
+    },
+    {
+     "username": "sanguenhealth",
+     "poc": 512,
+     "lastScan": "2023-12-05"
+    },
+    {
+     "username": "londoncts",
+     "poc": 5,
+     "lastScan": "2023-06-03"
+    },
+    {
+     "username": "ottawainnercityhealth",
+     "poc": 1,
+     "lastScan": "2023-05-27"
+    }
+   ]
+  },
+  {
+   "deviceId": 4,
+   "serial": "NN619S6174FD",
+   "dashboardName": "Lower Mainland Purpose Society's Series One",
+   "dashboardOrganization": "Lower Mainland Purpose Society",
+   "dashboardUsername": "purposesociety",
+   "canonicalUsername": "purposesociety",
+   "canonicalSite": "Lower Mainland Purpose Society",
+   "mostRecentUsername": "purposesociety",
+   "mostRecentUsernameLastScan": "2026-06-17",
+   "pocAllTime": 251,
+   "lastScan": "2026-06-17",
+   "usernames": [
+    {
+     "username": "purposesociety",
+     "poc": 208,
+     "lastScan": "2026-06-17"
+    },
+    {
+     "username": "scatr",
+     "poc": 43,
+     "lastScan": "2023-06-17"
+    }
+   ]
+  },
+  {
+   "deviceId": 5,
+   "serial": "88X7YQ625MFD",
+   "dashboardName": "Breakaway Series One",
+   "dashboardOrganization": "Breakaway Community Services",
+   "dashboardUsername": "breakawaycs",
+   "canonicalUsername": "londoncts",
+   "canonicalSite": "Regional HIV/AIDS Connection (RHAC)",
+   "mostRecentUsername": "breakawaycs",
+   "mostRecentUsernameLastScan": "2025-08-21",
+   "pocAllTime": 1721,
+   "lastScan": "2025-08-21",
+   "usernames": [
+    {
+     "username": "londoncts",
+     "poc": 1709,
+     "lastScan": "2025-02-19"
+    },
+    {
+     "username": "scatr",
+     "poc": 7,
+     "lastScan": "2025-07-14"
+    },
+    {
+     "username": "breakawaycs",
+     "poc": 5,
+     "lastScan": "2025-08-21"
+    }
+   ]
+  },
+  {
+   "deviceId": 6,
+   "serial": "MZ9Z78P25MFD",
+   "dashboardName": "Sanguen Health Centre's Series One",
+   "dashboardOrganization": "Sanguen Health Centre",
+   "dashboardUsername": "sanguenhealth",
+   "canonicalUsername": "sanguenhealth",
+   "canonicalSite": "Sanguen Health Centre",
+   "mostRecentUsername": "sanguenhealth",
+   "mostRecentUsernameLastScan": "2026-10-08",
+   "pocAllTime": 3645,
+   "lastScan": "2026-10-08",
+   "usernames": [
+    {
+     "username": "sanguenhealth",
+     "poc": 3590,
+     "lastScan": "2026-10-08"
+    },
+    {
+     "username": "niagaracts",
+     "poc": 55,
+     "lastScan": "2023-08-19"
+    }
+   ]
+  },
+  {
+   "deviceId": 7,
+   "serial": "M2XWE5PD6RFD",
+   "dashboardName": "Hamilton Urban Core Community Health Centre's Series One",
+   "dashboardOrganization": "Hamilton Urban Core Community Health Centre",
+   "dashboardUsername": "hamiltoncts",
+   "canonicalUsername": "hamiltoncts",
+   "canonicalSite": "Hamilton Urban Core Community Health Centre",
+   "mostRecentUsername": "sanguenhealth",
+   "mostRecentUsernameLastScan": "2025-08-27",
+   "pocAllTime": 1405,
+   "lastScan": "2025-08-27",
+   "usernames": [
+    {
+     "username": "hamiltoncts",
+     "poc": 1372,
+     "lastScan": "2025-03-31"
+    },
+    {
+     "username": "sanguenhealth",
+     "poc": 33,
+     "lastScan": "2025-08-27"
+    }
+   ]
+  },
+  {
+   "deviceId": 8,
+   "serial": "WG5TSW6DJ8FD",
+   "dashboardName": "Ottawa Inner City Health's Series One",
+   "dashboardOrganization": "Ottawa Inner City Health",
+   "dashboardUsername": "ottawainnercityhealth",
+   "canonicalUsername": "ottawainnercityhealth",
+   "canonicalSite": "Ottawa Inner City Health",
+   "mostRecentUsername": "ottawainnercityhealth",
+   "mostRecentUsernameLastScan": "2026-06-12",
+   "pocAllTime": 1209,
+   "lastScan": "2026-06-12",
+   "usernames": [
+    {
+     "username": "ottawainnercityhealth",
+     "poc": 1204,
+     "lastScan": "2026-06-12"
+    },
+    {
+     "username": "guelphchc",
+     "poc": 5,
+     "lastScan": "2023-11-04"
+    }
+   ]
+  },
+  {
+   "deviceId": 9,
+   "serial": "K8N6986DMRFD",
+   "dashboardName": "Western University Series One",
+   "dashboardOrganization": "Western University",
+   "dashboardUsername": "scatr",
+   "canonicalUsername": "scatr",
+   "canonicalSite": "Western University",
+   "mostRecentUsername": "scatr",
+   "mostRecentUsernameLastScan": "2026-06-23",
+   "pocAllTime": 2134,
+   "lastScan": "2026-06-23",
+   "usernames": [
+    {
+     "username": "scatr",
+     "poc": 2134,
+     "lastScan": "2026-06-23"
+    }
+   ]
+  },
+  {
+   "deviceId": 10,
+   "serial": "RNSR8R6DMWFD",
+   "dashboardName": "Regional HIV/AIDS Connection's Series One",
+   "dashboardOrganization": "Regional HIV/AIDS Connection",
+   "dashboardUsername": "londoncts",
+   "canonicalUsername": "londoncts",
+   "canonicalSite": "Regional HIV/AIDS Connection (RHAC)",
+   "mostRecentUsername": "londoncts",
+   "mostRecentUsernameLastScan": "2026-10-09",
+   "pocAllTime": 1605,
+   "lastScan": "2026-10-09",
+   "usernames": [
+    {
+     "username": "londoncts",
+     "poc": 1012,
+     "lastScan": "2026-10-09"
+    },
+    {
+     "username": "sandyhill",
+     "poc": 592,
+     "lastScan": "2024-04-05"
+    },
+    {
+     "username": "scatr",
+     "poc": 1,
+     "lastScan": "2023-05-27"
+    }
+   ]
+  },
+  {
+   "deviceId": 11,
+   "serial": "J6N29H27GMFE",
+   "dashboardName": "Sandy Hill Community Health Centre's Series One",
+   "dashboardOrganization": "Sandy Hill Community Health Centre",
+   "dashboardUsername": "sandyhill",
+   "canonicalUsername": "sandyhill",
+   "canonicalSite": "Sandy Hill Community Health Centre",
+   "mostRecentUsername": "sandyhill",
+   "mostRecentUsernameLastScan": "2026-10-08",
+   "pocAllTime": 1419,
+   "lastScan": "2026-10-08",
+   "usernames": [
+    {
+     "username": "sandyhill",
+     "poc": 1038,
+     "lastScan": "2026-10-08"
+    },
+    {
+     "username": "ottawainnercityhealth",
+     "poc": 381,
+     "lastScan": "2024-02-07"
+    }
+   ]
+  },
+  {
+   "deviceId": 12,
+   "serial": "GWAPGCKM2GFE",
+   "dashboardName": "Guelph Community Health Centre's Series One",
+   "dashboardOrganization": "Guelph Community Health Centre",
+   "dashboardUsername": "guelphchc",
+   "canonicalUsername": "moyo",
+   "canonicalSite": "Moyo Health",
+   "mostRecentUsername": "moyo",
+   "mostRecentUsernameLastScan": "2026-10-05",
+   "pocAllTime": 198,
+   "lastScan": "2026-10-05",
+   "usernames": [
+    {
+     "username": "moyo",
+     "poc": 198,
+     "lastScan": "2026-10-05"
+    }
+   ]
+  },
+  {
+   "deviceId": 13,
+   "serial": "WBGVJXPMPGFE",
+   "dashboardName": "Grey County's Series One",
+   "dashboardOrganization": "Grey County",
+   "dashboardUsername": "greycounty",
+   "canonicalUsername": "greycounty",
+   "canonicalSite": "County of Grey",
+   "mostRecentUsername": "greycounty",
+   "mostRecentUsernameLastScan": "2026-08-05",
+   "pocAllTime": 74,
+   "lastScan": "2026-08-05",
+   "usernames": [
+    {
+     "username": "greycounty",
+     "poc": 74,
+     "lastScan": "2026-08-05"
+    }
+   ]
+  },
+  {
+   "deviceId": 16,
+   "serial": "T9BHV6NGWMFF",
+   "dashboardName": "Positive Living Niagara Mobile Series One",
+   "dashboardOrganization": "Positive Living Niagara",
+   "dashboardUsername": "niagaracts",
+   "canonicalUsername": "niagaracts",
+   "canonicalSite": "Positive Living Niagara",
+   "mostRecentUsername": "niagaracts",
+   "mostRecentUsernameLastScan": "2026-07-03",
+   "pocAllTime": 21,
+   "lastScan": "2026-07-03",
+   "usernames": [
+    {
+     "username": "niagaracts",
+     "poc": 21,
+     "lastScan": "2026-07-03"
+    }
+   ]
+  },
+  {
+   "deviceId": 17,
+   "serial": "ANWSBX5GWRFF",
+   "dashboardName": "Scatr Series One",
+   "dashboardOrganization": "Western University",
+   "dashboardUsername": "scatr",
+   "canonicalUsername": "scatr",
+   "canonicalSite": "Western University",
+   "mostRecentUsername": "scatr",
+   "mostRecentUsernameLastScan": "2025-06-09",
+   "pocAllTime": 3,
+   "lastScan": "2025-06-09",
+   "usernames": [
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-06-09"
+    }
+   ]
+  },
+  {
+   "deviceId": 18,
+   "serial": "F4FDTFNGWRFF",
+   "dashboardName": "Peterborough AIDS Resource Network Series One",
+   "dashboardOrganization": "Peterborough AIDS Resource Network",
+   "dashboardUsername": "parn",
+   "canonicalUsername": "parn",
+   "canonicalSite": "Peterborough AIDS Resource Network",
+   "mostRecentUsername": "parn",
+   "mostRecentUsernameLastScan": "2025-07-25",
+   "pocAllTime": 7,
+   "lastScan": "2025-07-25",
+   "usernames": [
+    {
+     "username": "parn",
+     "poc": 4,
+     "lastScan": "2025-07-25"
+    },
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-05-09"
+    }
+   ]
+  },
+  {
+   "deviceId": 19,
+   "serial": "GWPF1RNGX8FF",
+   "dashboardName": "AIDS New Brunswick Series One",
+   "dashboardOrganization": "AIDS New Brunswick",
+   "dashboardUsername": "aidsnb",
+   "canonicalUsername": "ottawainnercityhealth",
+   "canonicalSite": "Ottawa Inner City Health",
+   "mostRecentUsername": "aidsnb",
+   "mostRecentUsernameLastScan": "2026-10-07",
+   "pocAllTime": 64,
+   "lastScan": "2026-10-07",
+   "usernames": [
+    {
+     "username": "ottawainnercityhealth",
+     "poc": 41,
+     "lastScan": "2025-07-07"
+    },
+    {
+     "username": "aidsnb",
+     "poc": 20,
+     "lastScan": "2026-10-07"
+    },
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-07-14"
+    }
+   ]
+  },
+  {
+   "deviceId": 20,
+   "serial": "P9E4A20S9MFG",
+   "dashboardName": "Ensemble Moncton Series One",
+   "dashboardOrganization": "Ensemble Moncton",
+   "dashboardUsername": "ensemble",
+   "canonicalUsername": "ensemble",
+   "canonicalSite": "Ensemble Moncton",
+   "mostRecentUsername": "ensemble",
+   "mostRecentUsernameLastScan": "2026-08-03",
+   "pocAllTime": 37,
+   "lastScan": "2026-08-03",
+   "usernames": [
+    {
+     "username": "ensemble",
+     "poc": 34,
+     "lastScan": "2026-08-03"
+    },
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-05-12"
+    }
+   ]
+  },
+  {
+   "deviceId": 21,
+   "serial": "56KBC7GT14FG",
+   "dashboardName": "Cochrane District Services Board Series One",
+   "dashboardOrganization": "Cochrane District Services Board",
+   "dashboardUsername": "cdsb",
+   "canonicalUsername": "cdsb",
+   "canonicalSite": "Cochrane District Paramedic Service",
+   "mostRecentUsername": "cdsb",
+   "mostRecentUsernameLastScan": "2025-06-24",
+   "pocAllTime": 6,
+   "lastScan": "2025-06-24",
+   "usernames": [
+    {
+     "username": "cdsb",
+     "poc": 3,
+     "lastScan": "2025-06-24"
+    },
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-05-09"
+    }
+   ]
+  },
+  {
+   "deviceId": 22,
+   "serial": "7CQDZFGT2GFG",
+   "dashboardName": "Renfrew Paramedic Service Series One",
+   "dashboardOrganization": "Renfrew Paramedic Services",
+   "dashboardUsername": "rps",
+   "canonicalUsername": "rps",
+   "canonicalSite": "Renfrew Paramedic Services",
+   "mostRecentUsername": "rps",
+   "mostRecentUsernameLastScan": "2026-07-08",
+   "pocAllTime": 30,
+   "lastScan": "2026-07-08",
+   "usernames": [
+    {
+     "username": "rps",
+     "poc": 27,
+     "lastScan": "2026-07-08"
+    },
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-05-12"
+    }
+   ]
+  },
+  {
+   "deviceId": 23,
+   "serial": "W54DM9GT2GFG",
+   "dashboardName": "Northern Healthy Connections Society Series One",
+   "dashboardOrganization": "Northern Healthy Connections Society",
+   "dashboardUsername": "nhcs",
+   "canonicalUsername": "scatr",
+   "canonicalSite": "Western University",
+   "mostRecentUsername": "nhcs",
+   "mostRecentUsernameLastScan": "2025-07-30",
+   "pocAllTime": 5,
+   "lastScan": "2025-07-30",
+   "usernames": [
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-06-09"
+    },
+    {
+     "username": "nhcs",
+     "poc": 2,
+     "lastScan": "2025-07-30"
+    }
+   ]
+  },
+  {
+   "deviceId": 24,
+   "serial": "65Q11N2JT8FG",
+   "dashboardName": "Avenue B Series One",
+   "dashboardOrganization": "Avenue B Harm Reduction",
+   "dashboardUsername": "avenueb",
+   "canonicalUsername": "avenueb",
+   "canonicalSite": "Avenue B Harm Reduction Inc.",
+   "mostRecentUsername": "avenueb",
+   "mostRecentUsernameLastScan": "2026-08-26",
+   "pocAllTime": 124,
+   "lastScan": "2026-08-26",
+   "usernames": [
+    {
+     "username": "avenueb",
+     "poc": 120,
+     "lastScan": "2026-08-26"
+    },
+    {
+     "username": "scatr",
+     "poc": 4,
+     "lastScan": "2025-07-14"
+    }
+   ]
+  },
+  {
+   "deviceId": 26,
+   "serial": "ATPBJ8JJT8FG",
+   "dashboardName": "Travail de rue Chicoutimi Series One",
+   "dashboardOrganization": "Travail de rue Chicoutimi",
+   "dashboardUsername": "tdr",
+   "canonicalUsername": "tdr",
+   "canonicalSite": "Travail de rue Chicoutimi",
+   "mostRecentUsername": "tdr",
+   "mostRecentUsernameLastScan": "2026-09-30",
+   "pocAllTime": 157,
+   "lastScan": "2026-09-30",
+   "usernames": [
+    {
+     "username": "tdr",
+     "poc": 154,
+     "lastScan": "2026-09-30"
+    },
+    {
+     "username": "scatr",
+     "poc": 3,
+     "lastScan": "2025-07-14"
+    }
+   ]
+  },
+  {
+   "deviceId": 27,
+   "serial": "C2Q1MR2JT8FG",
+   "dashboardName": "Prairie Harm Reduction Series One",
+   "dashboardOrganization": "Prairie Harm Reduction",
+   "dashboardUsername": "prairiehr",
+   "canonicalUsername": "prairiehr",
+   "canonicalSite": "Prairie Harm Reduction",
+   "mostRecentUsername": "loft",
+   "mostRecentUsernameLastScan": "2026-10-09",
+   "pocAllTime": 140,
+   "lastScan": "2026-10-09",
+   "usernames": [
+    {
+     "username": "prairiehr",
+     "poc": 121,
+     "lastScan": "2026-03-17"
+    },
+    {
+     "username": "loft",
+     "poc": 11,
+     "lastScan": "2026-10-09"
+    },
+    {
+     "username": "scatr",
+     "poc": 8,
+     "lastScan": "2026-08-25"
+    }
+   ]
+  },
+  {
+   "deviceId": 28,
+   "serial": "DK8ST72JT8FG",
+   "dashboardName": "Boyle Street Community Services Series One",
+   "dashboardOrganization": "Boyle Street Community Services",
+   "dashboardUsername": "boylestreet",
+   "canonicalUsername": "boylestreet",
+   "canonicalSite": "Boyle Street Service Society",
+   "mostRecentUsername": "boylestreet",
+   "mostRecentUsernameLastScan": "2026-10-08",
+   "pocAllTime": 11,
+   "lastScan": "2026-10-08",
+   "usernames": [
+    {
+     "username": "boylestreet",
+     "poc": 7,
+     "lastScan": "2026-10-08"
+    },
+    {
+     "username": "scatr",
+     "poc": 4,
+     "lastScan": "2026-01-13"
+    }
+   ]
+  }
+ ]
+}

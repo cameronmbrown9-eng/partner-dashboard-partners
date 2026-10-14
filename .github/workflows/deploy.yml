@@ -1,0 +1,58 @@
+# Build and publish the partner dashboard to GitHub Pages (gh-pages branch) on every push to main.
+# Secrets to add once under Settings → Secrets and variables → Actions (until they exist the workflow
+# validates the data files and skips the build and publish):
+#   VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_CUSTODY_PASSWORD
+# The CNAME file in public/ keeps the custom domain (partners.uwo-drugchecking.ca).
+name: Deploy partner dashboard
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Check secrets
+        id: secrets
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_CUSTODY_PASSWORD: ${{ secrets.VITE_CUSTODY_PASSWORD }}
+        run: |
+          if [ -z "$VITE_SUPABASE_URL" ] || [ -z "$VITE_SUPABASE_ANON_KEY" ] || [ -z "$VITE_CUSTODY_PASSWORD" ]; then
+            echo "::warning::Repository secret(s) VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY and VITE_CUSTODY_PASSWORD not set. Build and publish skipped so the live site is not replaced by a locked build; deploy with npm run deploy from a local build until they are added."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - run: npm ci
+      - name: Check data files
+        run: node -e "for (const f of ['partners','news','training_sessions','documents','links','metrics','exemptions']) JSON.parse(require('fs').readFileSync('src/data/'+f+'.json','utf8')); console.log('data ok')"
+      - name: Build
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_CUSTODY_PASSWORD: ${{ secrets.VITE_CUSTODY_PASSWORD }}
+        run: npm run build
+      - name: Publish to gh-pages
+        if: steps.secrets.outputs.ready == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true

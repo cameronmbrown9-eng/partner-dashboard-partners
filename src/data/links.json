@@ -1,0 +1,243 @@
+{
+ "lastUpdated": "2026-10-13",
+ "links": [
+  {
+   "title": "Western University News: Health Canada Grant",
+   "url": "https://news.westernu.ca/2023/04/health-canada-grant-funds-innovative-drug-checking-technology/",
+   "description": "Chemistry professor Francois Lagugné-Labarthet teams up with Scatr Inc. to pilot drug-checking technology.",
+   "category": "Western University"
+  },
+  {
+   "title": "FLL Group Bio",
+   "url": "https://publish.uwo.ca/~flagugne/#about",
+   "description": "Principal Investigator's research group at Western University.",
+   "category": "Western University"
+  },
+  {
+   "title": "Scatr Portal (Partner Login)",
+   "url": "https://scatr.ca/auth",
+   "description": "Secure login for partners to access the drug-checking data management system.",
+   "category": "Scatr Inc."
+  },
+  {
+   "title": "Scatr Live Dashboard",
+   "url": "https://scatr.live/",
+   "description": "Public dashboard with real-time drug-checking results across the network.",
+   "category": "Scatr Inc."
+  },
+  {
+   "title": "Grand Prize Winner Announcement",
+   "url": "https://www.canada.ca/en/health-canada/news/2021/07/government-of-canada-announces-the-grand-prize-winner-of-the-drug-checking-technology-challenge.html",
+   "description": "Health Canada announces Scatr Inc. as the $1 million grand prize winner.",
+   "category": "Scatr Inc."
+  },
+  {
+   "title": "Impact Canada - Drug Checking Challenge",
+   "url": "https://impact.canada.ca/en/challenges/drug-checking-challenge",
+   "description": "Official Government of Canada page for the Drug Checking Technology Challenge.",
+   "category": "Scatr Inc."
+  },
+  {
+   "title": "Regional HIV/AIDS Connection (RHAC)",
+   "url": "https://www.hivaidsconnection.ca/carepoint",
+   "description": "London's Carepoint supervised consumption and harm reduction service — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Sandy Hill Community Health Centre",
+   "url": "https://www.sandyhillchc.on.ca/",
+   "description": "Ottawa community health centre — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Ottawa Inner City Health",
+   "url": "https://oich.ca/",
+   "description": "Ottawa inner city health services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Lower Mainland Purpose Society",
+   "url": "https://www.purposesociety.org/",
+   "description": "New Westminster, BC harm reduction and community services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "County of Grey — Public Health",
+   "url": "https://www.grey.ca/health-community-services/public-health",
+   "description": "Owen Sound, ON public health services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Guelph Community Health Centre",
+   "url": "https://www.guelphchc.ca/",
+   "description": "Guelph, ON community health and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Sanguen Health Centre — Drug Checking",
+   "url": "https://www.sanguen.com/drug-checking",
+   "description": "Drug checking services at Sanguen Health Centre, Kitchener — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Moyo Health & Community Services",
+   "url": "https://moyohcs.ca/",
+   "description": "Brampton, ON community health and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Hamilton Urban Core Community Health Centre",
+   "url": "https://hucchc.com/",
+   "description": "Hamilton, ON community health and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Positive Living Niagara",
+   "url": "https://www.positivelivingniagara.com/",
+   "description": "St. Catharines, ON HIV/AIDS and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Ensemble Moncton",
+   "url": "https://www.ensemblegm.ca/",
+   "description": "Moncton, NB harm reduction and supervised consumption services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Cochrane District Services Board (CDSB)",
+   "url": "https://www.cdsb.care/",
+   "description": "Timmins, ON paramedic and community services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "County of Renfrew — Paramedic Service",
+   "url": "https://www.countyofrenfrew.on.ca/",
+   "description": "Renfrew County Paramedic Service (mobile drug checking) — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Peterborough AIDS Resource Network (PARN)",
+   "url": "https://www.parn.ca/",
+   "description": "Peterborough, ON HIV/AIDS and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Travail de rue de Chicoutimi",
+   "url": "https://www.travailderue-chicoutimi.org/",
+   "description": "Chicoutimi, QC community outreach and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "NHC Society (Northern Healthy Connections)",
+   "url": "https://nhcsociety.ca/",
+   "description": "Truro, NS harm reduction and community health services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Breakaway Community Services",
+   "url": "https://www.breakawaycs.ca/",
+   "description": "Toronto, ON harm reduction and social services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "AIDS New Brunswick",
+   "url": "https://www.aidsnb.com/",
+   "description": "Fredericton, NB HIV/AIDS and harm reduction services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Avenue B Harm Reduction",
+   "url": "https://avenueb.ca/",
+   "description": "Saint John, NB harm reduction and HIV/AIDS services — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Boyle Street Community Services",
+   "url": "https://www.boylestreet.org/",
+   "description": "Edmonton, AB community services and harm reduction — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "Health Canada - SUAP Active Projects",
+   "url": "https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program/active-projects.html",
+   "description": "List of active projects funded through the Substance Use and Addictions Program.",
+   "category": "Health Canada"
+  },
+  {
+   "title": "Health Canada - Office of Controlled Substances",
+   "url": "https://www.canada.ca/en/health-canada/corporate/contact-us/office-controlled-substances.html",
+   "description": "Contact information for Health Canada's Office of Controlled Substances.",
+   "category": "Health Canada"
+  },
+  {
+   "title": "Health Canada - Opioid/Stimulant Harms",
+   "url": "https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/",
+   "description": "Latest statistics on opioid and stimulant-related harms in Canada.",
+   "category": "Health Canada"
+  },
+  {
+   "title": "Health Canada - SCS Statistics",
+   "url": "https://www.canada.ca/en/health-canada/services/substance-use/supervised-consumption-sites/status-application.html",
+   "description": "Federal statistics on supervised consumption sites in Canada.",
+   "category": "Health Canada"
+  },
+  {
+   "title": "BCCSU Drug Checking",
+   "url": "https://drugcheckingbc.ca/",
+   "description": "BC Centre on Substance Use drug checking program information.",
+   "category": "Other"
+  },
+  {
+   "title": "CCSA - Drug Checking",
+   "url": "https://www.ccsa.ca/drug-checking",
+   "description": "Canadian Centre on Substance Use resources on drug checking.",
+   "category": "Other"
+  },
+  {
+   "title": "CCRA 2024 Legislation",
+   "url": "https://www.ontario.ca/laws/statute/24c27",
+   "description": "Full text of Ontario's Community Care and Recovery Act.",
+   "category": "Other"
+  },
+  {
+   "title": "CATIE - Harm Reduction Toolkit",
+   "url": "https://www.catie.ca/harm-reduction-fundamentals-a-toolkit-for-service-providers",
+   "description": "Comprehensive toolkit for implementing harm reduction approaches.",
+   "category": "Other"
+  },
+  {
+   "title": "CSUCH - Costs and Harms Reports",
+   "url": "https://csuch.ca/publications/substance-use-costs-and-harms/",
+   "description": "Reports on economic and health burden of substance use.",
+   "category": "Other"
+  },
+  {
+   "title": "Harm Reduction Journal",
+   "url": "https://harmreductionjournal.biomedcentral.com/",
+   "description": "Open-access journal on harm reduction approaches to drug use.",
+   "category": "Other"
+  },
+  {
+   "title": "LOFT Community Services",
+   "url": "https://www.loftcs.org/",
+   "description": "Mobile drug checking in York Region (Newmarket) — project partner site.",
+   "category": "Project Partners"
+  },
+  {
+   "title": "CMHA Huron Perth Addiction and Mental Health Services",
+   "url": "https://cmhahuronperth.com/",
+   "description": "Stratford, ON — project partner site (device installation Dec 2026).",
+   "category": "Project Partners"
+  },
+  {
+   "title": "BRAS Outaouais",
+   "url": "https://www.lebras.qc.ca/",
+   "description": "Gatineau, QC harm reduction services — project partner site (device installation Dec 2026).",
+   "category": "Project Partners"
+  }
+ ],
+ "reviewNotes": [
+  "URLs for LOFT, CMHA Huron Perth and BRAS are the organizations' email domains — confirm",
+  "Scatr Live Dashboard link (scatr.live) kept; confirm it is still a public page"
+ ]
+}

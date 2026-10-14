@@ -1,0 +1,155 @@
+{
+ "lastUpdated": "2026-10-13",
+ "notes": [
+  {
+   "site": "Sanguen Health Centre",
+   "partnerKey": "sanguen",
+   "priority": "high",
+   "owner": "Cameron",
+   "due": "2026-10-31",
+   "items": [
+    "Fixed and mobile exemptions expire 31 Oct 2026 — renewal",
+    "Device issues reported 5 Oct; Positive Living Niagara spare on loan since 9 Oct; Sanguen unit repaired under maintenance (Katelyn coordinating)"
+   ]
+  },
+  {
+   "site": "AIDS New Brunswick",
+   "partnerKey": "aidsnb",
+   "priority": "medium",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "Second device requested 13 Oct 2026 (Fredericton–Miramichi, Edmundston planned); reply sent: demand is the deciding factor, geography secondary",
+    "Exemption letter (10 Mar 2026) not on file — request a copy"
+   ]
+  },
+  {
+   "site": "Hamilton Urban Core Community Health Centre",
+   "partnerKey": "hamilton",
+   "priority": "high",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "Exemption application in a Health Canada revision round; offered 13 Oct to complete the forms — awaiting materials from Wilson Lapointe / Dr. Ezepue",
+    "No scans since Apr 2025"
+   ]
+  },
+  {
+   "site": "County of Grey",
+   "partnerKey": "grey",
+   "priority": "medium",
+   "owner": "Cameron / Francois",
+   "due": null,
+   "items": [
+    "Presentation to the larger group (meets every second Tuesday 10:00) — date requested 5 Oct",
+    "Outreach-truck exemption active to 31 Jul 2027"
+   ]
+  },
+  {
+   "site": "Positive Living Niagara",
+   "partnerKey": "pln",
+   "priority": "medium",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "Fixed SCS exemption expired 30 Sep 2026 — renewal status",
+    "Van 1 and Van 2 exemptions active to 31 Jul 2027 — start dates for mobile service",
+    "Device 1 on loan to Sanguen"
+   ]
+  },
+  {
+   "site": "Breakaway Community Services",
+   "partnerKey": "breakaway",
+   "priority": "medium",
+   "owner": "Health Canada",
+   "due": null,
+   "items": [
+    "Awaiting decision after the site visit; no scans since Aug 2025"
+   ]
+  },
+  {
+   "site": "NHC Society",
+   "partnerKey": "nhc",
+   "priority": "medium",
+   "owner": "Health Canada",
+   "due": null,
+   "items": [
+    "Application pending decision; no scans since Jul 2025"
+   ]
+  },
+  {
+   "site": "Windsor-Essex County Health Unit",
+   "partnerKey": "wechu",
+   "priority": "high",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "Site agreement sent 7 Oct (unsigned); University of Windsor REB package returned 8 Oct",
+    "Follow-up call: convey the 13 Oct HSREB approval (W11), relabelled Protocol V5 / LOIC V3; TCPS2 certificates (Francois, Abe, Dan); AWS region confirmation from Scatr"
+   ]
+  },
+  {
+   "site": "CMHA Huron Perth / BRAS Outaouais",
+   "partnerKey": "cmhahp",
+   "priority": "medium",
+   "owner": "Scatr",
+   "due": "2026-12-01",
+   "items": [
+    "Delivery and training first and second weeks of Dec; Scatr to schedule in Nov (weather contingency for Gatineau)",
+    "Signed CMHA HP agreement copy to Francois"
+   ]
+  },
+  {
+   "site": "LOFT Community Services",
+   "partnerKey": "loft",
+   "priority": "low",
+   "owner": "Scatr",
+   "due": null,
+   "items": [
+    "Relief-staff training 6 Oct — confirm completed",
+    "Scanning on device 27 since 25 Aug 2026"
+   ]
+  },
+  {
+   "site": "Casey House (prospective)",
+   "partnerKey": null,
+   "priority": "low",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "Introduced by Deb Walko (LOFT) 8 Oct; onboarding document sent; call offered"
+   ]
+  },
+  {
+   "site": "Western laboratory",
+   "partnerKey": "western",
+   "priority": "medium",
+   "owner": "Francois",
+   "due": null,
+   "items": [
+    "Mass spectrometry paused since Jul 2026; analyst recruitment",
+    "Drug Analysis Service agreement: 20 samples per month; 29 sent per trip, 30 minimum suggested"
+   ]
+  },
+  {
+   "site": "Moyo Health",
+   "partnerKey": "moyo",
+   "priority": "low",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "Resumed 20 Jul 2026; first 2026 scan recorded 5 Oct"
+   ]
+  },
+  {
+   "site": "Peterborough AIDS Resource Network",
+   "partnerKey": "parn",
+   "priority": "medium",
+   "owner": "Cameron",
+   "due": null,
+   "items": [
+    "No exemption application submitted as of Aug 2026; no scans since Jul 2025"
+   ]
+  }
+ ]
+}

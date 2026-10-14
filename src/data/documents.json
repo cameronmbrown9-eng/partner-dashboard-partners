@@ -1,0 +1,122 @@
+{
+ "lastUpdated": "2026-10-13",
+ "groups": [
+  {
+   "title": "Policy & Announcements",
+   "tone": "red",
+   "items": [
+    {
+     "label": "Ontario CTS Funding Announcement — Drug-Checking Partner Information Document (17 Mar 2026)",
+     "url": "/SCS-Closure-Information-Mar2026.pdf"
+    }
+   ]
+  },
+  {
+   "title": "Ethics (approved versions)",
+   "tone": "purple",
+   "items": [
+    {
+     "label": "Drug-Checking Device Use — Letter of Information & Consent, V3 (approved 13 Oct 2026)",
+     "url": "/LOI-Phase1.pdf",
+     "version": "V3 · 7 Oct 2026"
+    },
+    {
+     "label": "Study Protocol — Drug Checking Network, V5 (approved 13 Oct 2026)",
+     "url": "/Study-Protocol-V5.pdf",
+     "version": "V5 · 7 Oct 2026",
+     "pendingFile": true
+    },
+    {
+     "label": "HSREB Amendment Approval Letter (13 Oct 2026)",
+     "url": "/HSREB-Approval-13Oct2026.pdf",
+     "pendingFile": true
+    },
+    {
+     "label": "Drug-Checking Peer Training — Letter of Information & Consent, In-Person Trainer V4 (18 Dec 2025)",
+     "url": "/LOI-DCP-Training-InPerson-V4.pdf",
+     "version": "V4",
+     "pendingFile": true
+    },
+    {
+     "label": "Drug-Checking Peer Training — Letter of Information & Consent, Virtual Trainer V5 (5 Jan 2026)",
+     "url": "/LOI-DCP-Training-Virtual-V5.pdf",
+     "version": "V5",
+     "pendingFile": true
+    },
+    {
+     "label": "Drug-Checking Peer Training — Pre- and Post-Course Surveys",
+     "url": "/DCP-Survey.pdf"
+    },
+    {
+     "label": "Drug-Checking Peer Training — Example Certificate of Achievement",
+     "url": "/DCP-Certificate-Example.pdf"
+    },
+    {
+     "label": "Collaborative Site Agreement — Example Template",
+     "url": "/Collaborative-Site-Agreement.pdf"
+    },
+    {
+     "label": "DCP Training & Certification — Invoice Submission Package (Word)",
+     "url": "/DCP-Invoice-Template.docx",
+     "download": true
+    }
+   ]
+  },
+  {
+   "title": "Research",
+   "tone": "purple",
+   "items": [
+    {
+     "label": "Standard Operating Procedures for Sample Preparation",
+     "url": "/SOP-Sample-Preparation.pdf"
+    },
+    {
+     "label": "Scatr Results Explanation Document",
+     "url": "/Scatr-Results-FAQ.pdf"
+    },
+    {
+     "label": "Scatr Series One LOD Study",
+     "url": "/Scatr-LOD-Study.pdf"
+    },
+    {
+     "label": "Scatr Technical Research Strategy",
+     "url": "/Scatr-Technical-Research-Strategy.pdf"
+    },
+    {
+     "label": "Canadian Substance Use Costs and Harms Report 2007–2020",
+     "url": "/Canadian-Substance-Use-Costs-Harms-2007-2020.pdf"
+    },
+    {
+     "label": "National Operational Guidance for Supervised Consumption Services — CIHR, July 2023",
+     "url": "/CIHR-SCS-Operational-Guidance-2023.pdf"
+    },
+    {
+     "label": "CAPSA Annual Report 2023–2024",
+     "url": "/CAPSA-Annual-Report-2023-2024.pdf"
+    },
+    {
+     "label": "Ontario Community Care and Recovery Act, 2024",
+     "url": "/Ontario-CCRA-2024.pdf"
+    },
+    {
+     "label": "The Canadian Drugs and Substances Strategy, 2023",
+     "url": "/Canadian-Drugs-Substances-Strategy-2023.pdf"
+    }
+   ]
+  },
+  {
+   "title": "Exemptions",
+   "tone": "purple",
+   "items": [
+    {
+     "label": "Exemption 56 Approved — Redacted Template",
+     "url": "/Exemption-56-Template.pdf"
+    },
+    {
+     "label": "Exemption 56 Application — Blank Template",
+     "url": "/Exemption-56-Blank.pdf"
+    }
+   ]
+  }
+ ]
+}

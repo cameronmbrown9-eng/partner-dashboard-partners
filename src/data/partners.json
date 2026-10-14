@@ -1,0 +1,1102 @@
+{
+ "lastUpdated": "2026-10-14",
+ "plannedDevicesTotal": 28,
+ "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028 (to confirm against the Oct 2026 allocation)",
+ "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pull 13 Oct 2026, partner correspondence",
+ "partners": [
+  {
+   "id": 1,
+   "key": "western",
+   "username": "scatr",
+   "nameOrganization": "Western University",
+   "shortName": "Western",
+   "address": "1151 Richmond Street",
+   "city": "London",
+   "prov": "ON",
+   "postal": "N6A 3K7",
+   "primaryContact": "Francois Lagugne-Labarthet, Principal Investigator",
+   "email1": "flagugne@uwo.ca",
+   "phone1": "519-661-2111 x81006",
+   "additionalContact": "Cameron Brown, Project Manager",
+   "email2": "cbrown58@uwo.ca",
+   "phone2": "226-238-9970",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    9
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 42.9849,
+   "lng": -81.2453,
+   "isLead": true,
+   "notes": [
+    "Laboratory exemption 24-103323-618 valid to 31 May 2027",
+    "Mass spectrometry confirmation service paused since Jul 2026 (analyst position being recruited)"
+   ],
+   "reviewNotes": [
+    "Device 17 (ANWSBX5GWRFF) is a Scatr test unit registered to Western; not counted"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 9,
+     "serial": "K8N6986DMRFD",
+     "scatrName": "Western University Series One",
+     "lastScan": "2026-06-23",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "key": "rhac",
+   "username": "londoncts",
+   "nameOrganization": "Regional HIV/AIDS Connection (RHAC)",
+   "shortName": "RHAC",
+   "address": "446 York Street (Carepoint)",
+   "city": "London",
+   "prov": "ON",
+   "postal": "N6B 1R3",
+   "primaryContact": "Lily Bialas, Interim Director of Harm Reduction",
+   "email1": "lbialas@hivaidsconnection.ca",
+   "phone1": "226-377-8721",
+   "additionalContact": "Donovan Wiebe",
+   "email2": "DWiebe@hivaidsconnection.ca",
+   "phone2": "519-434-1601",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    10
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 42.9835,
+   "lng": -81.2497,
+   "notes": [
+    "Organization offices 201-602 Queens Ave, London",
+    "Exemption 24-108536-846 (Carepoint, decision 20 Nov 2025) valid to 30 Nov 2026 (renewal due); Executive Director Martin McIntosh is the exemption holder"
+   ],
+   "reviewNotes": [
+    "Protocol V5 lists an \"Extra Unit\" for RHAC; no second device appears in scatr.ca — confirm"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 10,
+     "serial": "RNSR8R6DMWFD",
+     "scatrName": "Regional HIV/AIDS Connection's Series One",
+     "lastScan": "2026-10-09",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "key": "sandyhill",
+   "username": "sandyhill",
+   "nameOrganization": "Sandy Hill Community Health Centre",
+   "shortName": "Sandy Hill CHC",
+   "address": "221 Nelson Street",
+   "city": "Ottawa",
+   "prov": "ON",
+   "postal": "K1N 1C7",
+   "primaryContact": "Dean Dewar",
+   "email1": "ddewar@sandyhillchc.on.ca",
+   "phone1": "613-795-8985",
+   "additionalContact": "Fiona Miller",
+   "email2": "fmiller@sandyhillchc.on.ca",
+   "phone2": "613-277-8932",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    11
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 45.4215,
+   "lng": -75.6972,
+   "notes": [
+    "Exemption 25-103345-595 expired 30 Nov 2025; renewal submitted to Health Canada"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 11,
+     "serial": "J6N29H27GMFE",
+     "scatrName": "Sandy Hill Community Health Centre's Series One",
+     "lastScan": "2026-10-08",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "key": "oich",
+   "username": "ottawainnercityhealth",
+   "nameOrganization": "Ottawa Inner City Health",
+   "shortName": "OICH",
+   "address": "256 King Edward Avenue (Trailer 2.0)",
+   "city": "Ottawa",
+   "prov": "ON",
+   "postal": "",
+   "primaryContact": "Louise Beaudoin",
+   "email1": "lbeaudoin@oich.ca",
+   "phone1": "613-797-7514",
+   "additionalContact": "Chad Bouthillier",
+   "email2": "cbouthillier@oich.ca",
+   "phone2": "613-709-9656",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    8
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 45.4295,
+   "lng": -75.6855,
+   "notes": [
+    "Exemption 24-107784-124 (Trailer 2.0 supervised consumption site) valid to 30 Sep 2027",
+    "Organization offices 550 Old St Patrick Street, Ottawa K1N 5N7",
+    "No scans since 12 Jun 2026 (provincial CTS funding ended 13 Jun 2026)"
+   ],
+   "reviewNotes": [
+    "Address changed from 5 Myrand Ave to the Protocol V5 location"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 8,
+     "serial": "WG5TSW6DJ8FD",
+     "scatrName": "Ottawa Inner City Health's Series One",
+     "lastScan": "2026-06-12",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "key": "lmps",
+   "username": "purposesociety",
+   "nameOrganization": "Lower Mainland Purpose Society",
+   "shortName": "Purpose Society",
+   "address": "40 Begbie Street",
+   "city": "New Westminster",
+   "prov": "BC",
+   "postal": "V3M 3L9",
+   "primaryContact": "Lynda Fletcher-Gordon",
+   "email1": "lyndafg@purposesociety.org",
+   "phone1": "604-526-2522",
+   "additionalContact": "Jasmine Kaur",
+   "email2": "jasmine.kaur@purposesociety.org",
+   "phone2": "236-883-5584",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    4
+   ],
+   "exemptionType1": "Mobile",
+   "lat": 49.2057,
+   "lng": -122.911,
+   "notes": [
+    "Provincial exemption (Fraser Health), renewed automatically"
+   ],
+   "reviewNotes": [
+    "Dashboard and the Aug 2026 utilization report class the site as Mobile; the filed letter is named \"Fixed_Exemption_Provincial\" — confirm the type"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 4,
+     "serial": "NN619S6174FD",
+     "scatrName": "Lower Mainland Purpose Society's Series One",
+     "lastScan": "2026-06-17",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "key": "grey",
+   "username": "greycounty",
+   "nameOrganization": "County of Grey",
+   "shortName": "Grey County",
+   "address": "595 9th Avenue East",
+   "city": "Owen Sound",
+   "prov": "ON",
+   "postal": "N4K 3E3",
+   "primaryContact": "Kevin McNab, Director of Paramedic Services",
+   "email1": "kevin.mcnab@grey.ca",
+   "phone1": "548-877-0846",
+   "additionalContact": "Teresa Tibbo",
+   "email2": "Teresa.Tibbo@grey.ca",
+   "phone2": "519-379-8743",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    13
+   ],
+   "exemptionType1": "Non-Mobile",
+   "exemptionType2": "Mobile",
+   "lat": 44.5667,
+   "lng": -80.9333,
+   "notes": [
+    "Fixed 26-103466-47, mobile 26-103467-655 and outreach-truck 26-103465-672 exemptions valid to 31 Jul 2027"
+   ],
+   "reviewNotes": [
+    "Phone updated from 519-379-0279 to the number in Kevin McNab's Oct 2026 signature"
+   ],
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 13,
+     "serial": "WBGVJXPMPGFE",
+     "scatrName": "Grey County's Series One",
+     "lastScan": "2026-08-05",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "key": "guelph",
+   "username": "guelphchc",
+   "nameOrganization": "Guelph Community Health Centre",
+   "shortName": "Guelph CHC",
+   "address": "176 Wyndham Street North",
+   "city": "Guelph",
+   "prov": "ON",
+   "postal": "N1H 8N9",
+   "primaryContact": "Lindsey Sodtke",
+   "email1": "lsodtke@guelphchc.ca",
+   "phone1": "519-821-6638 Ext302",
+   "additionalContact": "Christiane Kraft, Clinical Supervisor, HART Hub and Integrated Programs",
+   "email2": "ckraft@guelphchc.ca",
+   "phone2": "519-821-6638 Ext341",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    3
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 43.5448,
+   "lng": -80.2482,
+   "notes": [
+    "Exemption 23-100103-782 expired 31 Jan 2026; renewal submitted to Health Canada"
+   ],
+   "reviewNotes": [
+    "Email domain guelphchc.ca confirmed (lsodtke@guelphchc.ca delivered 2 Jul 2026); Lindsey's auto-reply came from lindsey.sodtke@gchc.ca — newer address, confirm which she prefers",
+    "Christiane Kraft spelled per her email signature (file had Cristiane)"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 3,
+     "serial": "77MTFY4YFGFD",
+     "scatrName": "Moyo Health & Community Services's Series One",
+     "lastScan": "2026-02-13",
+     "note": "scatr.ca label reads \"Moyo\" — label swap, device is at Guelph (Standard Work §23b)"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "key": "sanguen",
+   "username": "sanguenhealth",
+   "nameOrganization": "Sanguen Health Centre",
+   "shortName": "Sanguen",
+   "address": "130 Victoria Street South",
+   "city": "Kitchener",
+   "prov": "ON",
+   "postal": "N2G 2B5",
+   "primaryContact": "Leigh Wardlaw",
+   "email1": "l.wardlaw@sanguen.com",
+   "phone1": "226-789-5250",
+   "additionalContact": "Violet Umanetz",
+   "email2": "v.umanetz@sanguen.com",
+   "phone2": "519-547-7222",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    6
+   ],
+   "exemptionType1": "Non-Mobile",
+   "exemptionType2": "Mobile",
+   "lat": 43.4516,
+   "lng": -80.4925,
+   "notes": [
+    "Fixed exemption 25-106363-560 and mobile exemption 25-106361-136 (20 Oct 2025) valid to 31 Oct 2026 (renewal due)",
+    "Positive Living Niagara device on loan since 9 Oct 2026 while the Sanguen unit is repaired"
+   ],
+   "reviewNotes": [
+    "Address changed from 150 Duke Street West to the Protocol V5 / exemption-letter location"
+   ],
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 6,
+     "serial": "MZ9Z78P25MFD",
+     "scatrName": "Sanguen Health Centre's Series One",
+     "lastScan": "2026-10-08",
+     "note": ""
+    },
+    {
+     "deviceId": 1,
+     "serial": "WCFY6P4Y4GFD",
+     "scatrName": "Positive Living Niagara Series One",
+     "lastScan": "2026-10-13",
+     "note": "On loan from Positive Living Niagara since 9 Oct 2026",
+     "loaner": true
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "key": "moyo",
+   "username": "moyo",
+   "nameOrganization": "Moyo Health & Community Services",
+   "shortName": "Moyo Health",
+   "address": "7700 Hurontario St. #601",
+   "city": "Brampton",
+   "prov": "ON",
+   "postal": "L6Y 4M3",
+   "primaryContact": "Jillian Watkins",
+   "email1": "jillianw@moyohcs.ca",
+   "phone1": "905-361-0523 x215",
+   "additionalContact": "Adam Chalcraft",
+   "email2": "adamc@moyohcs.ca",
+   "phone2": "905-781-0223",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    12
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 43.7315,
+   "lng": -79.7624,
+   "notes": [
+    "Exemption 25-107136-238 (decision 30 Jan 2026) valid to 31 Jan 2027",
+    "Drug checking resumed 20 Jul 2026"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 12,
+     "serial": "GWAPGCKM2GFE",
+     "scatrName": "Guelph Community Health Centre's Series One",
+     "lastScan": "2026-10-05",
+     "note": "scatr.ca label reads \"Guelph\" — label swap, device is at Moyo (Standard Work §23b)"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "key": "hamilton",
+   "username": "hamiltoncts",
+   "nameOrganization": "Hamilton Urban Core Community Health Centre",
+   "shortName": "Hamilton Urban Core",
+   "address": "430 Cannon Street East",
+   "city": "Hamilton",
+   "prov": "ON",
+   "postal": "L8L 2C8",
+   "primaryContact": "Dr. Sandy Ezepue, Executive Director",
+   "email1": "ezepues@hucchc.com",
+   "phone1": "905-522-3233 Ext246",
+   "additionalContact": "Wilson Lapointe, Senior Manager, Integrated Care and Client Experience",
+   "email2": "wlapointe@hucchc.com",
+   "phone2": "877-842-5438 ext. 607 · cell 365-323-3967",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    7
+   ],
+   "exemptionType1": "Mobile",
+   "lat": 43.2557,
+   "lng": -79.8711,
+   "notes": [
+    "Mobile exemption application with Health Canada (revision round, Oct 2026)",
+    "Supervised consumption closed Mar 2025 under the Community Care and Recovery Act",
+    "Main site 430 Cannon St E; satellite 70 James St S (hucchc.com)",
+    "Protocol V5 lists 181 Main St W #121 — not an HUC location on their website; correct at the next amendment"
+   ],
+   "reviewNotes": [
+    "Address confirmed from hucchc.com and the healthline listing (13 Oct 2026)"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 7,
+     "serial": "M2XWE5PD6RFD",
+     "scatrName": "Hamilton Urban Core Community Health Centre's Series One",
+     "lastScan": "2025-08-27",
+     "note": "No scans since Apr 2025; 33 Sanguen loaner scans Aug 2025"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "key": "pln",
+   "username": "niagaracts",
+   "nameOrganization": "Positive Living Niagara",
+   "shortName": "Positive Living Niagara",
+   "address": "120 Queenston St",
+   "city": "St. Catharines",
+   "prov": "ON",
+   "postal": "L2R 2Z3",
+   "primaryContact": "Talia Storm, Director of StreetWorks Services",
+   "email1": "tstorm@positivelivingniagara.com",
+   "phone1": "905-984-8684 Ext128",
+   "additionalContact": "Myrtle Stage, Supervisor of Community Engagement",
+   "email2": "mstage@positivelivingniagara.com",
+   "phone2": "905-984-8684 ext. 312 · cell 289-783-4803",
+   "devicesAssigned": 2,
+   "deviceIds": [
+    1,
+    16
+   ],
+   "exemptionType1": "Non-Mobile",
+   "exemptionType2": "Mobile",
+   "lat": 43.1594,
+   "lng": -79.2469,
+   "hasBothExemptions": true,
+   "notes": [
+    "Mobile exemptions Van 1 26-103667-672 and Van 2 26-103669-961 (17 Jul 2026) valid to 31 Jul 2027",
+    "Fixed SCS exemption 23-107999-566 expired 30 Sep 2026; provincial CTS funding ended 13 Jun 2026 (status of the fixed site to confirm)",
+    "Device 1 on loan to Sanguen since 9 Oct 2026",
+    "Keira Knowles also on the drug-checking threads"
+   ],
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 1,
+     "serial": "WCFY6P4Y4GFD",
+     "scatrName": "Positive Living Niagara Series One",
+     "lastScan": "2026-10-13",
+     "note": "On loan to Sanguen Health Centre since 9 Oct 2026"
+    },
+    {
+     "deviceId": 16,
+     "serial": "T9BHV6NGWMFF",
+     "scatrName": "Positive Living Niagara Mobile Series One",
+     "lastScan": "2026-07-03",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "key": "ensemble",
+   "username": "ensemble",
+   "nameOrganization": "Ensemble Moncton",
+   "shortName": "Ensemble",
+   "address": "80 Weldon Street",
+   "city": "Moncton",
+   "prov": "NB",
+   "postal": "",
+   "primaryContact": "Scott Phipps",
+   "email1": "sphipps@ensemblegm.ca",
+   "phone1": "506-859-9616",
+   "additionalContact": "Josue Goguen",
+   "email2": "jgoguen@ensemblegm.ca",
+   "phone2": "506-227-6416",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    20
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 46.0878,
+   "lng": -64.7782,
+   "notes": [
+    "Provincial fixed exemption valid to 30 Sep 2026 (renewal status to confirm)"
+   ],
+   "reviewNotes": [
+    "Devices corrected from 2 to 1 (Standard Work §23: the second serial was AIDS New Brunswick's); mobile exemption shown as pending in Mar 2026 — status to confirm"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 20,
+     "serial": "P9E4A20S9MFG",
+     "scatrName": "Ensemble Moncton Series One",
+     "lastScan": "2026-08-03",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "key": "prairiehr",
+   "username": "prairiehr",
+   "nameOrganization": "Prairie Harm Reduction",
+   "shortName": "Prairie Harm Reduction",
+   "address": "1516 20th St W",
+   "city": "Saskatoon",
+   "prov": "SK",
+   "postal": "",
+   "primaryContact": "Kayla DeMong",
+   "email1": "admin@prairiehr.ca",
+   "phone1": "306-242-5005 Ext 4",
+   "additionalContact": "Julene Rawson",
+   "email2": "operations@prairiehr.ca",
+   "phone2": "306-242-5005 Ext4",
+   "devicesAssigned": 0,
+   "deviceIds": [],
+   "exemptionType1": "Non-Mobile",
+   "lat": 52.1332,
+   "lng": -106.67,
+   "status": "closed",
+   "statusNote": "Exemption suspended 30 Mar 2026; site closed; device retrieved 12 Jun 2026 and reassigned to LOFT",
+   "notes": [
+    "Exemption 25-101363-315 expired 31 Mar 2026"
+   ],
+   "exemptionType2": "NA",
+   "reviewNotes": [],
+   "devices": []
+  },
+  {
+   "id": 14,
+   "key": "cochrane",
+   "username": "cdsb",
+   "nameOrganization": "Cochrane District Paramedic Service",
+   "shortName": "Cochrane Paramedics",
+   "address": "500 Algonquin Blvd East",
+   "city": "Timmins",
+   "prov": "ON",
+   "postal": "P4N 1B7",
+   "primaryContact": "Seamus Murphy, Deputy Chief, Standards and Community Services",
+   "email1": "seamus.murphy@cdsb.care",
+   "phone1": "705-268-7722 ext. 296 · mobile 705-363-0745",
+   "additionalContact": "Chantal Riva",
+   "email2": "Chantal.riva@cdsb.care",
+   "phone2": "705-268-7722 ext. 150",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    21
+   ],
+   "exemptionType1": "Mobile",
+   "lat": 48.4758,
+   "lng": -81.3304,
+   "notes": [
+    "Mobile exemption 26-100192-418 (decision 6 Mar 2026) valid to 31 Mar 2027"
+   ],
+   "reviewNotes": [
+    "Main number 705-268-7722 from Seamus Murphy's signature and the CDSB listing; Chantal Riva's extension 150 carried over from the old record"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 21,
+     "serial": "56KBC7GT14FG",
+     "scatrName": "Cochrane District Services Board Series One",
+     "lastScan": "2025-06-24",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "key": "renfrew",
+   "username": "rps",
+   "nameOrganization": "Renfrew County Paramedic Service",
+   "shortName": "Renfrew Paramedics",
+   "address": "450 O'Brien Rd, Suite 1",
+   "city": "Renfrew",
+   "prov": "ON",
+   "postal": "K8V 3Z2",
+   "primaryContact": "Stephanie Rose, Commander, Community Paramedic Program",
+   "email1": "SRose@countyofrenfrew.on.ca",
+   "phone1": "613-818-9813 · program line 1-844-860-2778",
+   "additionalContact": "Kaylie Kuehl, Community Paramedicine Program Clinical Coordinator",
+   "email2": "KKuehl@countyofrenfrew.on.ca",
+   "phone2": "613-818-9813",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    22
+   ],
+   "exemptionType1": "Mobile",
+   "lat": 45.4729,
+   "lng": -76.6867,
+   "notes": [
+    "Exemption held; scanning resumed Jan 2026 (decision letter not on file)",
+    "Community Paramedic Program base, 450 O'Brien Rd Suite 1 (champlainhealthline.ca); County HQ 9 International Drive, Pembroke",
+    "Exemption held (scanning resumed Jan 2026); decision letter requested",
+    "Declined the Mar 2026 DCP training slot (year-end workload); to reschedule"
+   ],
+   "reviewNotes": [
+    "Name shown as Renfrew County Paramedic Service (dashboard had \"Renfrew Paramedic Services\")"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 22,
+     "serial": "7CQDZFGT2GFG",
+     "scatrName": "Renfrew Paramedic Service Series One",
+     "lastScan": "2026-07-08",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "key": "parn",
+   "username": "parn",
+   "nameOrganization": "Peterborough AIDS Resource Network (PARN)",
+   "shortName": "PARN",
+   "address": "60 Hunter St E 2nd Floor",
+   "city": "Peterborough",
+   "prov": "ON",
+   "postal": "",
+   "primaryContact": "Dane Record",
+   "email1": "executivedirector@parn.ca",
+   "phone1": "705-559-0656",
+   "additionalContact": "Aizha Pollock, Manager of Harm Reduction Services",
+   "email2": "aizha@parn.ca",
+   "phone2": "705-749-9110 ext. 206 · cell 705-768-1719",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    18
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 44.3091,
+   "lng": -78.3197,
+   "notes": [
+    "No exemption application submitted as of Aug 2026; application discussed with Aizha Pollock Jul–Aug 2026"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 18,
+     "serial": "F4FDTFNGWRFF",
+     "scatrName": "Peterborough AIDS Resource Network Series One",
+     "lastScan": "2025-07-25",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "key": "tdr",
+   "username": "tdr",
+   "nameOrganization": "Travail de rue de Chicoutimi",
+   "shortName": "Travail de rue",
+   "address": "221 rue Tessier",
+   "city": "Chicoutimi",
+   "prov": "QC",
+   "postal": "G7H 1K4",
+   "primaryContact": "Stéphanie Bouchard",
+   "email1": "stephanie.bouchard@strchic.com",
+   "phone1": "418-545-0999",
+   "additionalContact": "Janick Meunier",
+   "email2": "janick.meunier@strchic.com",
+   "phone2": "418-545-0999",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    26
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 48.4284,
+   "lng": -71.0649,
+   "notes": [
+    "Federal fixed exemption 24-105336-110 (La Baraque, 28 Jun 2024) valid to 30 Jun 2027"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 26,
+     "serial": "ATPBJ8JJT8FG",
+     "scatrName": "Travail de rue Chicoutimi Series One",
+     "lastScan": "2026-09-30",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "key": "nhc",
+   "username": "nhcs",
+   "nameOrganization": "NHC Society (Northern Healthy Connections)",
+   "shortName": "NHC Society",
+   "address": "76 Esplanade",
+   "city": "Truro",
+   "prov": "NS",
+   "postal": "",
+   "primaryContact": "Albert McNutt, Executive Director",
+   "email1": "super@nhcsociety.ca",
+   "phone1": "902-895-0931 · cell 902-324-7201",
+   "additionalContact": "",
+   "email2": "",
+   "phone2": "",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    23
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 45.3669,
+   "lng": -63.2755,
+   "notes": [
+    "Albert McNutt is the sole contact (Mar 2026); Alana Weatherbee has left",
+    "Exemption application pending decision"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 23,
+     "serial": "W54DM9GT2GFG",
+     "scatrName": "Northern Healthy Connections Society Series One",
+     "lastScan": "2025-07-30",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "key": "breakaway",
+   "username": "breakawaycs",
+   "nameOrganization": "Breakaway Community Services",
+   "shortName": "Breakaway",
+   "address": "21 Strickland Ave",
+   "city": "Toronto",
+   "prov": "ON",
+   "postal": "",
+   "primaryContact": "Ruben Tarajano",
+   "email1": "Rubent@breakawaycs.ca",
+   "phone1": "647-883-1135",
+   "additionalContact": "Angie Porter",
+   "email2": "AngieP@breakawaycs.ca",
+   "phone2": "416-537-9346 Ext235",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    5
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 43.6395,
+   "lng": -79.4358,
+   "notes": [
+    "Awaiting Health Canada decision after the site visit"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 5,
+     "serial": "88X7YQ625MFD",
+     "scatrName": "Breakaway Series One",
+     "lastScan": "2025-08-21",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "key": "aidsnb",
+   "username": "aidsnb",
+   "nameOrganization": "AIDS New Brunswick",
+   "shortName": "AIDS NB",
+   "address": "Suite 203-440 Wilsey Road",
+   "city": "Fredericton",
+   "prov": "NB",
+   "postal": "E3B 7G5",
+   "primaryContact": "Linda Thompson-Brown, Executive Director",
+   "email1": "linda@aidsnb.com",
+   "phone1": "506-455-2625 · cell 506-440-3774",
+   "additionalContact": "Jess Gionet",
+   "email2": "Jess.gionet@aidsnb.com",
+   "phone2": "506-478-4765",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    19
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 45.9636,
+   "lng": -66.6431,
+   "notes": [
+    "Exemption received 10 Mar 2026 (letter not on file)",
+    "Offices: Suite 203-440 Wilsey Road, Fredericton; also Bathurst and Miramichi; Edmundston planned",
+    "Second device requested 13 Oct 2026; demand is the deciding factor",
+    "Fredericton office Suite 203-440 Wilsey Road (aidsnb.com, letterhead, email signature); Miramichi office 121 Jail Street E1V 3M4; Edmundston planned for spring 2027",
+    "Exemptions for a mobile and an in-office service received 10 Mar 2026 (letters requested)",
+    "Protocol V5 lists 354 King Street — not on the organization's website; correct at the next amendment"
+   ],
+   "reviewNotes": [
+    "Address per aidsnb.com and Linda Thompson-Brown's signature; 354 King St (Protocol V5) could not be confirmed"
+   ],
+   "exemptionType2": "Mobile",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 19,
+     "serial": "GWPF1RNGX8FF",
+     "scatrName": "AIDS New Brunswick Series One",
+     "lastScan": "2026-10-07",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "key": "avenueb",
+   "username": "avenueb",
+   "nameOrganization": "Avenue B Harm Reduction Inc.",
+   "shortName": "Avenue B",
+   "address": "62 Waterloo St",
+   "city": "Saint John",
+   "prov": "NB",
+   "postal": "",
+   "primaryContact": "Laura MacNeill",
+   "email1": "laura.macneill@avenueb.ca",
+   "phone1": "506-652-2437",
+   "additionalContact": "Allie Myles",
+   "email2": "allie.myles@avenueb.ca",
+   "phone2": "506-652-2437",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    24
+   ],
+   "exemptionType1": "Non-Mobile",
+   "lat": 45.2733,
+   "lng": -66.0633,
+   "notes": [
+    "Provincial exemption, renewed automatically"
+   ],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "reviewNotes": [],
+   "devices": [
+    {
+     "deviceId": 24,
+     "serial": "65Q11N2JT8FG",
+     "scatrName": "Avenue B Series One",
+     "lastScan": "2026-08-26",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "key": "boyle",
+   "username": "boylestreet",
+   "nameOrganization": "Boyle Street Community Services",
+   "shortName": "Boyle Street",
+   "address": "10740 99 Street NW (okimaw peyesew kamik / King Thunderbird Centre)",
+   "city": "Edmonton",
+   "prov": "AB",
+   "postal": "T5H 1N7",
+   "primaryContact": "Sindi Addorisio",
+   "email1": "saddorisio@boylestreet.org",
+   "phone1": "587-340-2985",
+   "additionalContact": "Alyssa Miller",
+   "email2": "amiller@boylestreet.org",
+   "phone2": "780-424-4106",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    28
+   ],
+   "exemptionType1": "Non-Mobile",
+   "exemptionType2": "Mobile",
+   "lat": 53.5461,
+   "lng": -113.4938,
+   "coordsApprox": false,
+   "notes": [
+    "Fixed exemption 26-104315-740 (okimaw peyesew kamik) and mobile exemption 26-104316-564 (Streetworks Outreach Van), both 2 Sep 2026, valid to 30 Sep 2027; RPIC Lesley Dacks, RN",
+    "Streetworks program at okimaw peyesew kamik, Mon–Fri 9–4; outreach van 780-990-6641",
+    "Protocol V5 lists #201, 14065 Victoria Trail — that is the finance office in the site agreement; correct at the next amendment"
+   ],
+   "reviewNotes": [
+    "Address restored to 10740 99 St NW: boylestreet.org (Streetworks location) and the HC decision letters"
+   ],
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 28,
+     "serial": "DK8ST72JT8FG",
+     "scatrName": "Boyle Street Community Services Series One",
+     "lastScan": "2026-10-08",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "key": "loft",
+   "username": "loft",
+   "nameOrganization": "LOFT Community Services",
+   "shortName": "LOFT",
+   "address": "Mobile unit parked at 102 Main Street South",
+   "city": "Newmarket",
+   "prov": "ON",
+   "postal": "",
+   "primaryContact": "Nancy Blades, Director, Health and Community Services – Specialized Services",
+   "email1": "NBlades@loftcs.org",
+   "phone1": "416-979-1994 ext. 2086",
+   "additionalContact": "David Fry, CEO",
+   "email2": "Dfry@loftcs.org",
+   "phone2": "416-979-1994",
+   "devicesAssigned": 1,
+   "deviceIds": [
+    27
+   ],
+   "exemptionType1": "Mobile",
+   "lat": 44.0565,
+   "lng": -79.4615,
+   "coordsApprox": true,
+   "notes": [
+    "Mobile drug checking, York Region; offices 26 Wellington Street East, 10th Floor, Toronto (agreement) — HC letter addressed to Floor 9, 15 Toronto Street, Toronto M5C 2E3",
+    "Site agreement effective 1 Apr 2026, signed 12 Aug 2026",
+    "Mobile exemption 26-104371-467 (17 Sep 2026) valid to 30 Sep 2027; RPIC Debra Walko, Chief Client Care Officer",
+    "Device 27 (previously Prairie Harm Reduction); scanning since 25 Aug 2026"
+   ],
+   "reviewNotes": [],
+   "exemptionType2": "NA",
+   "status": "active",
+   "statusNote": "",
+   "devices": [
+    {
+     "deviceId": 27,
+     "serial": "C2Q1MR2JT8FG",
+     "scatrName": "Prairie Harm Reduction Series One",
+     "lastScan": "2026-10-09",
+     "note": "Previously Prairie Harm Reduction; at LOFT since Aug 2026"
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "key": "cmhahp",
+   "username": null,
+   "nameOrganization": "CMHA Huron Perth Addiction and Mental Health Services",
+   "shortName": "CMHA Huron Perth",
+   "address": "380 Hibernia Street",
+   "city": "Stratford",
+   "prov": "ON",
+   "postal": "N5A 5W3",
+   "primaryContact": "Catherine Hardman, CEO",
+   "email1": "catherine.hardman@cmhahuronperth.com",
+   "phone1": "519-271-6819",
+   "additionalContact": "Tanya Hefkey, Program Manager (Stratford Connection Centre)",
+   "email2": "tanya.hefkey@cmhahuronperth.com",
+   "phone2": "519-271-6819 · cell 226-921-5235",
+   "devicesAssigned": 1,
+   "deviceIds": [],
+   "exemptionType1": "Pending",
+   "lat": 43.3745,
+   "lng": -80.983,
+   "coordsApprox": true,
+   "status": "planned-install",
+   "statusNote": "Agreement signed 28 Aug 2026; device delivery and training planned for Dec 2026",
+   "notes": [
+    "Finance: Sana Ali, Director of Corporate Services, sana.ali@cmhahuronperth.com, 519-271-6819",
+    "Exemption application to follow device installation"
+   ],
+   "exemptionType2": "NA",
+   "reviewNotes": [],
+   "devices": []
+  },
+  {
+   "id": 25,
+   "key": "bras",
+   "username": null,
+   "nameOrganization": "BRAS Outaouais",
+   "shortName": "BRAS Outaouais",
+   "address": "109 Wright Street",
+   "city": "Gatineau",
+   "prov": "QC",
+   "postal": "J8X 2G7",
+   "primaryContact": "Noémie Dompierre, Coordonnatrice des services d'intervention en milieu festif",
+   "email1": "noemie.dompierre@lebras.qc.ca",
+   "phone1": "819-210-3875",
+   "additionalContact": "Sylvain Laflamme, Interim Executive Director",
+   "email2": "dg@lebras.qc.ca",
+   "phone2": "819-209-0611",
+   "devicesAssigned": 1,
+   "deviceIds": [],
+   "exemptionType1": "Pending",
+   "lat": 45.429,
+   "lng": -75.717,
+   "coordsApprox": true,
+   "status": "planned-install",
+   "statusNote": "Agreement effective 13 Aug 2026, signed by BRAS 28 Sep 2026; device delivery and training planned for Dec 2026",
+   "reviewNotes": [
+    "Confirm Western and Scatr countersignatures on the agreement"
+   ],
+   "exemptionType2": "NA",
+   "notes": [
+    "Finance: Robin Corallo, Accounting and Financial Reporting Coordinator, robin.corallo@lebras.qc.ca, 819-770-1909"
+   ],
+   "devices": []
+  },
+  {
+   "id": 26,
+   "key": "wechu",
+   "username": null,
+   "nameOrganization": "Windsor-Essex County Health Unit",
+   "shortName": "WECHU",
+   "address": "1005 Ouellette Avenue",
+   "city": "Windsor",
+   "prov": "ON",
+   "postal": "N9A 4J8",
+   "primaryContact": "Eric Nadalin, MHK, Director, Public Health Programs",
+   "email1": "enadalin@wechu.org",
+   "phone1": "519-258-2146 ext. 3115",
+   "additionalContact": "Alexis Erickson · Dominique Chauvin (project team)",
+   "email2": "AErickson@wechu.org",
+   "phone2": "",
+   "devicesAssigned": 0,
+   "deviceIds": [],
+   "exemptionType1": "Pending",
+   "lat": 42.3095,
+   "lng": -83.0395,
+   "coordsApprox": true,
+   "status": "onboarding",
+   "statusNote": "Site agreement sent 7 Oct 2026 (not yet signed); University of Windsor REB application in preparation",
+   "notes": [
+    "Mobile drug checking with the Mobile Outreach Support Team (MOST) unit of CMHA Windsor-Essex; mobile unit stored at CMHA Safe Beds, 354 Aylmer Avenue"
+   ],
+   "exemptionType2": "NA",
+   "reviewNotes": [],
+   "devices": []
+  }
+ ],
+ "deviceNotes": {
+  "excludedDevices": [
+   {
+    "deviceId": 2,
+    "serial": "VT73E0MYFCFD",
+    "note": "Scatr demo unit registered to LOFT (single demo scan at the 10 Jul 2026 Health Canada site visit)"
+   },
+   {
+    "deviceId": 17,
+    "serial": "ANWSBX5GWRFF",
+    "note": "Scatr test unit registered to Western (5 scans, Jun 2025)"
+   }
+  ],
+  "source": "scatr.ca allDeviceData 13 Oct 2026: site = registered customer username, with the Guelph/Moyo label swap corrected and device 27 assigned to LOFT by its scans since Aug 2026"
+ }
+}
