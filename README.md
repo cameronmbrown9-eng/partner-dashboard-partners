@@ -10,7 +10,7 @@ Everything the page shows comes from `src/data/*.json`. Nothing is hard-coded in
 |---|---|---|
 | `partners.json` | one record per organization: address, contacts, devices, exemption types, `status` (`active`, `planned-install`, `onboarding`, `closed`), notes | edit by hand |
 | `news.json` | news items, newest first, with a `tag` (Network, Regulatory, Research, Training) | add an item at the top |
-| `training_sessions.json` | the DCP training tracker rows | mirror the tracker spreadsheet |
+| `training_sessions.json` | the DCP training tracker rows (shown on the research dashboard only) | mirror the tracker spreadsheet |
 | `exemptions.json` | one row per exemption letter (used by the research dashboard) | mirror `HealthCan-UWO/Legal & Regulatory` |
 | `documents.json` | the document shelf (labels, paths in `public/`, versions) | edit when a document is replaced |
 | `links.json` | related links | edit by hand |
