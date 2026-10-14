@@ -1,6 +1,6 @@
 {
- "lastUpdated": "2026-10-13",
- "source": "DCP Training & Cert Tracker_Phase 1 and 2.xlsx (10 Apr 2026); Aug 2026 utilization report for the 31 Jul session",
+ "lastUpdated": "2026-10-14",
+ "source": "DCP Training & Cert Tracker_Phase 1 and 2.xlsx (10 Apr 2026, updated 14 Oct 2026); Aug 2026 utilization report for the 31 Jul session; Zoom invitation and partner correspondence for the 30 Apr session",
  "sessions": [
   {
    "id": 1,
@@ -162,13 +162,13 @@
    "site": "Lower Mainland Purpose Society",
    "location": "New Westminster, BC",
    "sessionNum": 1,
-   "scheduledDate": "2026-04-21",
+   "scheduledDate": "2026-04-30",
    "purpose": "DCP Certification",
-   "status": "To schedule",
+   "status": "Complete",
    "attendants": null,
    "newAttendants": null,
    "stipend": 3000,
-   "notes": "Preferred date Apr 21 2026 recorded in Apr; whether the session was held is not on file — confirm"
+   "notes": "Held 30 Apr 2026 by Zoom (10 am–1 pm PDT); LOICs and surveys shipped 12 Jun 2026 — paper copies in the office, attendance to enter"
   },
   {
    "id": 13,
@@ -256,6 +256,6 @@
   }
  ],
  "reviewNotes": [
-  "Sessions held after 10 Apr 2026 other than AIDS New Brunswick (31 Jul) are not on file; the tracker needs updating"
+  "Sessions held after 10 Apr 2026 other than Lower Mainland Purpose Society (30 Apr) and AIDS New Brunswick (31 Jul) are not on file; LMPS attendance comes from the paper LOICs and surveys once entered"
  ]
 }

@@ -439,9 +439,9 @@ export const PwlleTrainingSessions = ({ id = 'pwlle-sessions', expandedDefault =
   const stipendsCommitted = S.reduce((a, s) => a + (s.stipend || 0), 0);
   const siteMap = new Map();
   S.forEach((s) => {
-    if (!siteMap.has(s.site)) siteMap.set(s.site, { site: s.site, location: s.location, p1Unique: 0, p2Unique: 0, pendingSessions: 0 });
+    if (!siteMap.has(s.site)) siteMap.set(s.site, { site: s.site, location: s.location, p1Unique: 0, p2Unique: 0, pendingSessions: 0, completeSessions: 0 });
     const e = siteMap.get(s.site);
-    if (s.status === 'Complete') { if (s.phase === 1) e.p1Unique += s.newAttendants || 0; else e.p2Unique += s.newAttendants || 0; } else e.pendingSessions += 1;
+    if (s.status === 'Complete') { e.completeSessions += 1; if (s.phase === 1) e.p1Unique += s.newAttendants || 0; else e.p2Unique += s.newAttendants || 0; } else e.pendingSessions += 1;
   });
   const siteData = Array.from(siteMap.values()).sort((a, b) => (b.p1Unique + b.p2Unique) - (a.p1Unique + a.p2Unique));
   const maxTotal = Math.max(...siteData.map((s) => s.p1Unique + s.p2Unique), 1);
@@ -454,7 +454,7 @@ export const PwlleTrainingSessions = ({ id = 'pwlle-sessions', expandedDefault =
             ['Sessions', S.length, `${completed.length} complete · ${toSchedule.length} to schedule`],
             ['Unique PWLLE', totalUnique, `across ${siteData.filter((s) => s.p1Unique + s.p2Unique > 0).length} sites`],
             ['Total attendants', totalAttendants, 'including repeat participants'],
-            ['Stipends', `$${(stipendsPaid / 1000).toFixed(0)}k / $${(stipendsCommitted / 1000).toFixed(0)}k`, 'paid / committed'],
+            ['Stipends', `$${(stipendsPaid / 1000).toFixed(0)}k / $${(stipendsCommitted / 1000).toFixed(0)}k`, 'completed sessions / committed'],
           ].map(([l, v, d]) => (
             <div key={l} className="bg-white rounded-xl p-4 border-2 border-purple-200 shadow-md"><div className="text-xs text-purple-600 font-semibold uppercase tracking-wide mb-1">{l}</div><div className="text-3xl font-bold text-purple-900">{v}</div><div className="text-xs text-gray-600 mt-1">{d}</div></div>
           ))}
@@ -472,7 +472,7 @@ export const PwlleTrainingSessions = ({ id = 'pwlle-sessions', expandedDefault =
                     {total > 0 ? (<>
                       <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-end pr-2" style={{ width: `${p1}%` }}>{s.p1Unique > 0 && <span className="text-white text-xs font-bold">{s.p1Unique}</span>}</div>
                       <div className="absolute top-0 h-full bg-gradient-to-r from-teal-400 to-teal-600 flex items-center justify-end pr-2" style={{ left: `${p1}%`, width: `${p2}%` }}>{s.p2Unique > 0 && <span className="text-white text-xs font-bold">{s.p2Unique}</span>}</div>
-                    </>) : (<div className="absolute inset-0 flex items-center justify-center"><span className="text-xs font-semibold text-purple-400 italic">{s.pendingSessions} session{s.pendingSessions > 1 ? 's' : ''} to schedule</span></div>)}
+                    </>) : (<div className="absolute inset-0 flex items-center justify-center"><span className="text-xs font-semibold text-purple-400 italic">{s.pendingSessions > 0 ? `${s.pendingSessions} session${s.pendingSessions > 1 ? 's' : ''} to schedule` : `${s.completeSessions} session${s.completeSessions > 1 ? 's' : ''} complete · attendance to enter`}</span></div>)}
                   </div>
                   <div className="w-10 text-right text-sm font-bold text-purple-900">{total || '—'}</div>
                 </div>
