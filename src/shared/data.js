@@ -19,6 +19,8 @@ export const LINKS = linksJson.links;
 export const METRICS = metricsJson;
 export const EXEMPTIONS = exemptionsJson.exemptions;
 export const PLANNED_DEVICES_TOTAL = partnersJson.plannedDevicesTotal;
+/** Project instruments allocated but not at any site (e.g. a unit in hand awaiting placement). */
+export const ALLOCATED_UNPLACED = (partnersJson.deviceNotes && partnersJson.deviceNotes.allocatedUnplaced) || [];
 
 /** Sites shown on the map and in the contact table: everything except closed. */
 export const LISTED_PARTNERS = ALL_PARTNERS.filter((p) => p.status !== 'closed');
@@ -42,7 +44,7 @@ export const networkStats = () => {
   const provinces = [...new Set(counted.map((p) => p.prov))].sort();
   const cities = new Set(counted.map((p) => `${p.city}|${p.prov}`)).size;
   const deployedDevices = active.reduce((n, p) => n + Number(p.devicesAssigned || 0), 0);
-  const allocatedDevices = counted.reduce((n, p) => n + Number(p.devicesAssigned || 0), 0);
+  const allocatedDevices = counted.reduce((n, p) => n + Number(p.devicesAssigned || 0), 0) + ALLOCATED_UNPLACED.length;
   return {
     signedPartners: signed.length,
     onboarding: ONBOARDING_PARTNERS.length,
@@ -52,6 +54,9 @@ export const networkStats = () => {
     cities,
     deployedDevices,
     allocatedDevices,
+    plannedInstallDevices: planned.reduce((n, p) => n + Number(p.devicesAssigned || 0), 0),
+    allocatedUnplaced: ALLOCATED_UNPLACED.length,
+    devicesToAssign: Math.max(0, PLANNED_DEVICES_TOTAL - allocatedDevices),
     plannedDevicesTotal: PLANNED_DEVICES_TOTAL,
     mobileSites: counted.filter(hasMobile),
     nonMobileSites: counted.filter(hasFixed),

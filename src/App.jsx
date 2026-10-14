@@ -1851,7 +1851,7 @@ const ProjectPartnerDashboard = () => {
           </div>
           <div className="mt-6">
             <p className="text-gray-800 leading-relaxed">As of <strong>{todayFormatted}</strong>, Phase #2 <em>"Leading the Way: PWLLE at the Forefront of Drug-Checking Initiatives"</em>, funded through Health Canada's Substance Use and Addictions Program (<a href="https://www.canada.ca/en/health-canada/services/substance-use/canadian-drugs-substances-strategy/funding/substance-use-addictions-program.html" target="_blank" rel="noopener noreferrer" className="text-purple-700 hover:text-purple-900 underline">SUAP</a>), has <strong>{stats.signedPartners} partner organizations</strong> under signed agreements in <strong>{stats.provinces.length} provinces</strong>, with <strong>{stats.deployedDevices} spectrometers</strong> deployed at {stats.activeSites - 1} partner sites plus Western's laboratory{stats.plannedSites > 0 && <> and {stats.plannedSites} more allocated for installation in December 2026</>}{stats.onboarding > 0 && <>; {stats.onboarding} further organization{stats.onboarding === 1 ? ' is' : 's are'} completing onboarding</>}.</p>
-            <p className="text-gray-800 leading-relaxed mt-4">The project plan is a network of <strong>{stats.plannedDevicesTotal} spectrometers</strong> by project completion on March 31, 2028. {stats.allocatedDevices} of the {stats.plannedDevicesTotal} are allocated today.</p>
+            <p className="text-gray-800 leading-relaxed mt-4">The project plan is a network of <strong>{stats.plannedDevicesTotal} spectrometers</strong> by project completion on March 31, 2028. {stats.allocatedDevices} of the {stats.plannedDevicesTotal} are allocated today: {stats.deployedDevices} in service{stats.plannedInstallDevices > 0 && <>, {stats.plannedInstallDevices} being built for the sites installing in December 2026</>}{stats.allocatedUnplaced > 0 && <> and {stats.allocatedUnplaced} in hand awaiting placement</>}; {stats.devicesToAssign} remain{stats.devicesToAssign === 1 ? 's' : ''} to be assigned.</p>
             <p className="text-gray-800 leading-relaxed mt-4">For those of you undergoing any sort of Exemption 56 related application, renewal, transfer or likewise process, please let Cameron know if he can be of any ongoing assistance at any time.</p>
             <div className="mt-4 bg-yellow-50 border-4 border-yellow-400 rounded-xl p-4" role="note">
               <p className="text-yellow-900 font-black text-lg leading-snug"><AlertTriangle size={22} className="inline-block mr-2 -mt-1" aria-hidden="true" />Please send Cameron copies of all Exemption-related approval documents, notices, or likewise as soon as possible, subsequent to receipt. Thank you kindly.</p>
@@ -1907,11 +1907,11 @@ const ProjectPartnerDashboard = () => {
         </div>
       </div>
       <div className="p-6 space-y-6">
+        <NetworkSummary expandedDefault />
         <PdfCard id="onboarding" title="Informational Onboarding Document" url="https://partners.uwo-drugchecking.ca/Informational-Onboarding-Document.pdf" printable summary="Prospective-partner onboarding document (Apr 2026): how the network works, what a site receives, and the steps from agreement to first scan." />
         <PicturingTheProblem />
         <ProjectTimeline />
         <NewsFeed />
-        <NetworkSummary />
         <ProjectPublications />
         <PdfCard id="scatr-research" title="Scatr Technical Research Strategy" url="https://partners.uwo-drugchecking.ca/Scatr-Technical-Research-Strategy.pdf" summary="Scatr Inc.'s technical research strategy for the Series One platform." />
         <DocumentsSection />

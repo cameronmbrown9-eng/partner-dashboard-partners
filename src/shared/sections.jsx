@@ -1,5 +1,5 @@
 // Shared dashboard sections (data-driven). Keep identical in both repos.
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
 import { MapPin, List, Users, ChevronDown, ChevronUp, CheckCircle, Clock, FileText, Download, ExternalLink, RotateCcw, Printer, Newspaper, Activity, Building2, Smartphone, Globe, Zap, Search } from 'lucide-react';
 import { SectionCard, StatusBadge, STATUS_META, statusMarkerIcon, fmtDate, fmtMonth, SparkBars, DataStamp } from './ui.jsx';
@@ -256,74 +256,245 @@ export const PartnerTable = ({ sites = LISTED_PARTNERS, showMetrics = false }) =
 };
 
 // ─── Network summary & analytics ─────────────────────────────────────────────
-const ProgressRing = ({ progress, size = 120, strokeWidth = 10, color = '#7c3aed' }) => {
-  const radius = (size - strokeWidth) / 2, circumference = radius * 2 * Math.PI, offset = circumference - (Math.min(100, progress) / 100) * circumference;
-  return (
-    <svg width={size} height={size} className="transform -rotate-90" aria-hidden="true">
-      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#e5e7eb" strokeWidth={strokeWidth} />
-      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke={color} strokeWidth={strokeWidth} strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round" className="transition-all duration-1000 ease-out" />
-    </svg>
-  );
+const prefersReducedMotion = () => typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Counts from 0 to `target` once on mount (instant under prefers-reduced-motion). */
+const useCountUp = (target, duration = 1100) => {
+  const [val, setVal] = useState(() => (prefersReducedMotion() ? target : 0));
+  useEffect(() => {
+    if (!Number.isFinite(target)) return undefined;
+    if (prefersReducedMotion()) { setVal(target); return undefined; }
+    let raf; const start = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - start) / duration), eased = 1 - Math.pow(1 - p, 3);
+      setVal(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration]);
+  return val;
+};
+const CountUp = ({ value }) => { const v = useCountUp(Number(value) || 0); return <>{v.toLocaleString()}</>; };
+
+/** True one frame after mount, so widths and heights can transition in from zero. */
+const useMounted = () => { const [m, setM] = useState(false); useEffect(() => { const t = requestAnimationFrame(() => setM(true)); return () => cancelAnimationFrame(t); }, []); return m; };
+/** Width of a container element, tracked with ResizeObserver (0 until measured). */
+const useElementWidth = () => {
+  const ref = useRef(null); const [w, setW] = useState(0);
+  useEffect(() => {
+    const el = ref.current; if (!el) return undefined;
+    const measure = () => setW(el.getBoundingClientRect().width);
+    measure();
+    if (typeof ResizeObserver === 'undefined') { window.addEventListener('resize', measure); return () => window.removeEventListener('resize', measure); }
+    const ro = new ResizeObserver(measure); ro.observe(el); return () => ro.disconnect();
+  }, []);
+  return [ref, w];
+};
+const fmtMonthLong = (ym) => { const [y, m] = ym.split('-').map(Number); return new Date(y, m - 1, 1).toLocaleDateString('en-CA', { month: 'long', year: 'numeric' }); };
+
+const niceStep = (rough) => { const p = Math.pow(10, Math.floor(Math.log10(rough || 1))), r = (rough || 1) / p; return (r <= 1 ? 1 : r <= 2 ? 2 : r <= 5 ? 5 : 10) * p; };
+const fiscalYearOf = (ym) => { const [y, m] = ym.split('-').map(Number); const s = m >= 4 ? y : y - 1; return `FY${s}-${String(s + 1).slice(-2)}`; };
+const fmtCompact = (n) => (n >= 1000 ? `${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1)}K` : String(n));
+/** Column with a 4px rounded top and a square baseline. */
+const barPath = (x, yTop, w, h, r = 4) => {
+  if (h <= 0) return '';
+  const rr = Math.min(r, h, w / 2), yb = yTop + h;
+  return `M${x},${yb} V${yTop + rr} A${rr},${rr} 0 0 1 ${x + rr},${yTop} H${x + w - rr} A${rr},${rr} 0 0 1 ${x + w},${yTop + rr} V${yb} Z`;
 };
 
-const DonutChart = ({ data, size = 160 }) => {
+const DonutChart = ({ data, size = 160, centerLabel = 'Sites' }) => {
   const total = data.reduce((sum, item) => sum + item.value, 0) || 1;
-  const strokeWidth = 24, radius = (size - strokeWidth) / 2, circumference = radius * 2 * Math.PI;
+  const strokeWidth = 22, radius = (size - strokeWidth) / 2, circumference = radius * 2 * Math.PI, gap = 2;
+  const mounted = useMounted();
   let currentOffset = 0;
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="transform -rotate-90" role="img" aria-label={data.map((d) => `${d.label}: ${d.value}`).join(', ')}>
-        {data.map((item, idx) => {
-          const segmentLength = (item.value / total) * circumference, offset = currentOffset;
-          currentOffset += segmentLength;
-          return <circle key={idx} cx={size / 2} cy={size / 2} r={radius} fill="none" stroke={item.color} strokeWidth={strokeWidth} strokeDasharray={`${segmentLength} ${circumference - segmentLength}`} strokeDashoffset={-offset} />;
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#f3f4f6" strokeWidth={strokeWidth} />
+        {data.filter((d) => d.value > 0).map((item) => {
+          const segmentLength = Math.max(0, (item.value / total) * circumference - gap), offset = currentOffset;
+          currentOffset += (item.value / total) * circumference;
+          return <circle key={item.label} cx={size / 2} cy={size / 2} r={radius} fill="none" stroke={item.color} strokeWidth={strokeWidth} strokeDasharray={`${mounted ? segmentLength : 0} ${circumference}`} strokeDashoffset={-offset} style={{ transition: 'stroke-dasharray 900ms cubic-bezier(.2,.8,.2,1)' }} />;
         })}
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center"><div className="text-center"><div className="text-2xl font-bold text-gray-800">{data.reduce((s, d) => s + d.value, 0)}</div><div className="text-xs text-gray-500">Sites</div></div></div>
+      <div className="absolute inset-0 flex items-center justify-center"><div className="text-center"><div className="text-2xl font-bold text-gray-900">{data.reduce((s, d) => s + d.value, 0)}</div><div className="text-xs text-gray-500">{centerLabel}</div></div></div>
     </div>
   );
 };
 
-const MiniCanadaMap = ({ activeProvinces }) => {
-  const c = (p) => (activeProvinces.includes(p) ? '#7c3aed' : '#e5e7eb');
+/** Tile cartogram of Canada: one tile per province or territory, lit where the network has a site. */
+const PROVINCE_TILES = [
+  ['YT', 1, 1, 'Yukon'], ['NT', 2, 1, 'Northwest Territories'], ['NU', 3, 1, 'Nunavut'],
+  ['BC', 1, 2, 'British Columbia'], ['AB', 2, 2, 'Alberta'], ['SK', 3, 2, 'Saskatchewan'], ['MB', 4, 2, 'Manitoba'], ['ON', 5, 2, 'Ontario'], ['QC', 6, 2, 'Quebec'], ['NL', 7, 2, 'Newfoundland and Labrador'],
+  ['NB', 6, 3, 'New Brunswick'], ['PE', 7, 3, 'Prince Edward Island'],
+  ['NS', 7, 4, 'Nova Scotia'],
+];
+const ProvinceTiles = ({ byProv, devicesByProv }) => {
+  const mounted = useMounted();
   return (
-    <svg viewBox="0 0 300 200" className="w-full h-auto" role="img" aria-label={`Provinces with partner sites: ${activeProvinces.join(', ')}`}>
-      <path d="M20,60 L45,40 L50,80 L55,120 L35,140 L20,100 Z" fill={c('BC')} stroke="#fff" strokeWidth="1" />
-      <path d="M50,50 L80,50 L80,120 L50,120 Z" fill={c('AB')} stroke="#fff" strokeWidth="1" />
-      <path d="M80,50 L110,50 L110,120 L80,120 Z" fill={c('SK')} stroke="#fff" strokeWidth="1" />
-      <path d="M110,50 L140,50 L145,80 L140,120 L110,120 Z" fill={c('MB')} stroke="#fff" strokeWidth="1" />
-      <path d="M140,60 L180,50 L200,80 L190,130 L160,140 L140,120 Z" fill={c('ON')} stroke="#fff" strokeWidth="1" />
-      <path d="M200,40 L240,30 L260,60 L250,100 L220,120 L200,100 Z" fill={c('QC')} stroke="#fff" strokeWidth="1" />
-      <path d="M250,100 L270,95 L275,115 L255,120 Z" fill={c('NB')} stroke="#fff" strokeWidth="1" />
-      <path d="M270,110 L290,105 L295,125 L275,130 Z" fill={c('NS')} stroke="#fff" strokeWidth="1" />
-      <path d="M25,20 L45,20 L50,45 L30,50 Z" fill={c('YT')} stroke="#fff" strokeWidth="1" />
-      <path d="M50,15 L120,15 L120,45 L50,45 Z" fill={c('NT')} stroke="#fff" strokeWidth="1" />
-      <path d="M120,10 L200,10 L200,45 L140,50 L120,40 Z" fill={c('NU')} stroke="#fff" strokeWidth="1" />
-      {activeProvinces.includes('BC') && <text x="35" y="95" className="text-[8px] font-bold fill-white">BC</text>}
-      {activeProvinces.includes('AB') && <text x="58" y="90" className="text-[8px] font-bold fill-white">AB</text>}
-      {activeProvinces.includes('SK') && <text x="88" y="90" className="text-[8px] font-bold fill-white">SK</text>}
-      {activeProvinces.includes('ON') && <text x="158" y="100" className="text-[8px] font-bold fill-white">ON</text>}
-      {activeProvinces.includes('QC') && <text x="220" y="75" className="text-[8px] font-bold fill-white">QC</text>}
-      {activeProvinces.includes('NB') && <text x="255" y="112" className="text-[6px] font-bold fill-white">NB</text>}
-      {activeProvinces.includes('NS') && <text x="275" y="122" className="text-[6px] font-bold fill-white">NS</text>}
-    </svg>
+    <div className="grid gap-1.5" style={{ gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }} role="list" aria-label="Partner sites by province and territory">
+      {PROVINCE_TILES.map(([code, col, row, name], idx) => {
+        const sites = byProv[code] || [], n = sites.length, devices = devicesByProv[code] || 0, lit = n > 0;
+        return (
+          <div key={code} role="listitem" className="relative group" style={{ gridColumn: col, gridRow: row, aspectRatio: '1 / 1' }}>
+            <button type="button" aria-label={`${name}: ${n} partner site${n === 1 ? '' : 's'}${lit ? `, ${devices} device${devices === 1 ? '' : 's'}: ${sites.join(', ')}` : ''}`}
+              className={`w-full h-full rounded-lg flex flex-col items-center justify-center leading-none focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 transition-all duration-500 ${lit ? 'bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5' : 'bg-gray-100 text-gray-400'}`}
+              style={{ opacity: mounted ? 1 : 0, transform: mounted ? undefined : 'scale(.85)', transitionDelay: `${idx * 35}ms` }}>
+              <span className={`text-[11px] font-semibold tracking-wide ${lit ? 'text-purple-100' : ''}`}>{code}</span>
+              {lit && <span className="text-xl font-black mt-0.5">{n}</span>}
+            </button>
+            {lit && (
+              <div role="tooltip" className="pointer-events-none absolute z-20 left-1/2 -translate-x-1/2 top-full mt-1.5 w-60 rounded-lg bg-gray-900 text-white text-xs p-2.5 shadow-xl opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity">
+                <div className="font-semibold mb-1">{name} · {n} site{n === 1 ? '' : 's'} · {devices} device{devices === 1 ? '' : 's'}</div>
+                <ul className="space-y-0.5 text-gray-200">{sites.map((s) => <li key={s}>{s}</li>)}</ul>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
-/** Monthly bar chart with month labels (network scans per month). */
-const MonthlyBars = ({ series, color = '#7c3aed', label }) => {
-  const max = Math.max(1, ...series.map((s) => s.poc));
-  const H = 140, W = 720, pad = 34, top = 12, bw = (W - pad) / series.length;
-  const ticks = [0, 0.5, 1].map((f) => Math.round(max * f));
+/** One slot per planned instrument: deployed, allocated for installation, or still to be assigned. */
+const DeviceSlots = ({ deployed, allocated, total }) => {
+  const mounted = useMounted();
+  const toAssign = Math.max(0, total - allocated), pending = Math.max(0, allocated - deployed);
   return (
-    <svg viewBox={`0 0 ${W} ${H + top + 32}`} className="w-full h-auto" role="img" aria-label={label}>
-      {ticks.map((t) => { const y = top + H - (t / max) * H; return <g key={t}><line x1={pad} x2={W} y1={y} y2={y} stroke="#e5e7eb" /><text x={pad - 4} y={y + 4} fontSize="10" textAnchor="end" fill="#6b7280">{t}</text></g>; })}
-      {series.map((s, i) => {
-        const h = (s.poc / max) * H, x = pad + i * bw;
-        return <g key={s.month}><rect x={x + 1} y={top + H - h} width={Math.max(2, bw - 2)} height={h} fill={color} rx="2"><title>{`${fmtMonth(s.month)}: ${s.poc} scans`}</title></rect>
-          {(i % 3 === 0 || series.length <= 12) && <text x={x + bw / 2} y={top + H + 14} fontSize="10" textAnchor="middle" fill="#6b7280">{fmtMonth(s.month)}</text>}</g>;
+    <div>
+      <div className="flex flex-wrap gap-1 mt-3" role="img" aria-label={`${deployed} of ${total} spectrometers deployed, ${pending} allocated but not yet in service, ${toAssign} to be assigned`}>
+        {Array.from({ length: total }, (_, i) => (
+          <span key={i} className={`h-5 w-2.5 rounded-sm transition-all duration-500 ${i < deployed ? 'bg-indigo-600' : i < allocated ? 'bg-indigo-300' : 'bg-white border border-indigo-200'}`} style={{ transitionDelay: `${i * 25}ms`, opacity: mounted ? 1 : 0, transform: mounted ? 'none' : 'translateY(6px)' }} />
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-600 mt-2">
+        <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-indigo-600" aria-hidden="true"></span>{deployed} deployed</span>
+        <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-indigo-300" aria-hidden="true"></span>{pending} allocated, not yet in service</span>
+        <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-white border border-indigo-200" aria-hidden="true"></span>{toAssign} to be assigned</span>
+      </div>
+    </div>
+  );
+};
+
+/** Monthly column chart: current fiscal year in the accent, earlier years lighter, the month in progress outlined; hover/focus readout; table view. */
+const MonthlyBars = ({ series: fullSeries, dataAsOf, label }) => {
+  const [active, setActive] = useState(null);
+  const [showTable, setShowTable] = useState(false);
+  const mounted = useMounted();
+  const [wrapRef, wrapW] = useElementWidth();
+  const narrow = wrapW > 0 && wrapW < 600;
+  const series = narrow ? fullSeries.slice(-12) : fullSeries;
+  const n = series.length;
+  if (!n) return null;
+  const lastIdx = n - 1, currentMonth = (dataAsOf || '').slice(0, 7);
+  const partialIdx = series[lastIdx].month === currentMonth ? lastIdx : -1;
+  const latestCompleteIdx = partialIdx === -1 ? lastIdx : Math.max(0, lastIdx - 1);
+  const fullPartialIdx = fullSeries[fullSeries.length - 1].month === currentMonth ? fullSeries.length - 1 : -1;
+  const complete12 = fullSeries.filter((_, i) => i !== fullPartialIdx).slice(-12);
+  const avg12 = complete12.length ? Math.round(complete12.reduce((a, s) => a + s.poc, 0) / complete12.length) : 0;
+  const max = Math.max(1, ...series.map((s) => s.poc));
+  const step = niceStep(max / 4), yMax = Math.max(step, Math.ceil(max / step) * step);
+  const ticks = []; for (let t = 0; t <= yMax; t += step) ticks.push(t);
+  const W = narrow ? 420 : 760, H = 170, padL = 44, padR = 16, top = 24, axisH = 22, fyH = 18, totalH = top + H + axisH + fyH, fs = narrow ? 12 : 10;
+  const plotW = W - padL - padR, slot = plotW / n, bw = Math.min(24, slot - 4);
+  const yOf = (v) => top + H - (v / yMax) * H;
+  const curFY = fiscalYearOf(currentMonth || series[lastIdx].month);
+  const bands = []; series.forEach((s, i) => { const fy = fiscalYearOf(s.month), b = bands[bands.length - 1]; if (b && b.fy === fy) b.end = i; else bands.push({ fy, start: i, end: i }); });
+  const maxIdx = series.reduce((bi, s, i) => (s.poc > series[bi].poc ? i : bi), 0);
+  const labelEvery = n > 12 || narrow ? 2 : 1;
+  const readout = series[active != null ? active : latestCompleteIdx];
+  return (
+    <div ref={wrapRef}>
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-600">
+          <span className="flex items-center gap-1.5"><span aria-hidden="true" className="inline-block w-3 h-3 rounded-sm" style={{ background: '#7c3aed' }}></span>{curFY}, the current fiscal year</span>
+          <span className="flex items-center gap-1.5"><span aria-hidden="true" className="inline-block w-3 h-3 rounded-sm" style={{ background: '#c4b5fd' }}></span>Earlier fiscal years</span>
+          {partialIdx !== -1 && <span className="flex items-center gap-1.5"><span aria-hidden="true" className="inline-block w-3 h-3 rounded-sm border border-purple-500" style={{ background: '#ede9fe' }}></span>Month in progress</span>}
+          {avg12 > 0 && <span className="flex items-center gap-1.5"><span aria-hidden="true" className="inline-block w-4 border-t-2 border-gray-400"></span>12-month average {avg12.toLocaleString()}</span>}
+        </div>
+        <div className="bg-purple-50 border border-purple-100 rounded-lg px-3 py-1.5 text-sm" aria-live="polite">
+          <span className="font-bold text-gray-900 text-lg">{readout.poc.toLocaleString()}</span> <span className="text-gray-600">scans · {fmtMonth(readout.month)}{active == null ? ' (latest complete month)' : (active === partialIdx ? ' (in progress)' : '')}</span>
+        </div>
+      </div>
+      <svg viewBox={`0 0 ${W} ${totalH}`} className="w-full h-auto" role="img" aria-label={label} onMouseLeave={() => setActive(null)}>
+        {bands.map((b, k) => (
+          <g key={b.fy}>
+            <rect x={padL + b.start * slot} y={top - 8} width={(b.end - b.start + 1) * slot} height={H + 8 + axisH + fyH} fill={k % 2 ? '#faf5ff' : 'transparent'} />
+            {k > 0 && <line x1={padL + b.start * slot} x2={padL + b.start * slot} y1={top - 8} y2={top + H + axisH + fyH} stroke="#e9d5ff" />}
+            <text x={padL + (b.start + (b.end - b.start + 1) / 2) * slot} y={top + H + axisH + 12} fontSize={fs} fontWeight="600" textAnchor="middle" fill="#6d28d9">{b.fy}</text>
+          </g>
+        ))}
+        {ticks.map((t) => <g key={t}><line x1={padL} x2={W - padR} y1={yOf(t)} y2={yOf(t)} stroke="#e5e7eb" /><text x={padL - 6} y={yOf(t) + 3.5} fontSize={fs} textAnchor="end" fill="#6b7280">{fmtCompact(t)}</text></g>)}
+        {avg12 > 0 && <line x1={padL} x2={W - padR} y1={yOf(avg12)} y2={yOf(avg12)} stroke="#9ca3af" strokeWidth="1.5" />}
+        {series.map((s, i) => {
+          const x = padL + i * slot + (slot - bw) / 2, h = (s.poc / yMax) * H, yTop = top + H - h;
+          const isPartial = i === partialIdx, isCur = fiscalYearOf(s.month) === curFY, isActive = active === i;
+          const fill = isPartial ? '#ede9fe' : isCur ? '#7c3aed' : '#c4b5fd';
+          const showLabel = isActive || i === maxIdx || i === latestCompleteIdx;
+          return (
+            <g key={s.month}>
+              <path d={barPath(x, yTop, bw, h)} fill={fill} stroke={isPartial ? '#7c3aed' : 'none'} strokeWidth={isPartial ? 1.25 : 0} opacity={isActive ? 0.8 : 1} style={{ transform: mounted ? 'scaleY(1)' : 'scaleY(0)', transformOrigin: `${x + bw / 2}px ${top + H}px`, transition: `transform 800ms cubic-bezier(.2,.8,.2,1) ${i * 18}ms` }} />
+              {showLabel && h > 0 && <text x={x + bw / 2} y={yTop - 5} fontSize={fs} fontWeight="700" textAnchor="middle" fill="#374151">{s.poc.toLocaleString()}</text>}
+              {(lastIdx - i) % labelEvery === 0 && <text x={padL + i * slot + slot / 2} y={top + H + 14} fontSize={fs} textAnchor="middle" fill={isCur ? '#4b5563' : '#9ca3af'}>{fmtMonth(s.month)}</text>}
+              <rect x={padL + i * slot} y={top - 8} width={slot} height={H + 8 + axisH} fill="transparent" tabIndex="0" role="img" aria-label={`${fmtMonth(s.month)}: ${s.poc} scans${isPartial ? ' (month in progress)' : ''}`} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)} onBlur={() => setActive(null)} style={{ outline: 'none', cursor: 'default' }} />
+            </g>
+          );
+        })}
+        {avg12 > 0 && <text x={W - padR} y={yOf(avg12) - 5} fontSize={fs} fontWeight="600" textAnchor="end" fill="#4b5563" stroke="#ffffff" strokeWidth="3" paintOrder="stroke">avg {avg12.toLocaleString()}</text>}
+      </svg>
+      <button type="button" onClick={() => setShowTable(!showTable)} aria-expanded={showTable} className="mt-2 text-xs font-semibold text-purple-700 hover:text-purple-900 underline underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded">{showTable ? 'Hide' : 'Show'} the monthly figures as a table</button>
+      {showTable && (
+        <div className="mt-2 overflow-x-auto">
+          <table className="text-sm border-collapse">
+            <caption className="sr-only">Point-of-care scans per month</caption>
+            <thead><tr className="text-left text-xs text-gray-500"><th scope="col" className="pr-6 py-1 font-semibold">Month</th><th scope="col" className="pr-6 py-1 font-semibold">Fiscal year</th><th scope="col" className="py-1 font-semibold text-right">Scans</th></tr></thead>
+            <tbody>{[...fullSeries].reverse().map((s, i) => <tr key={s.month} className="border-t border-gray-100"><td className="pr-6 py-1 text-gray-800">{fmtMonth(s.month)}{i === 0 && partialIdx !== -1 ? ' (in progress)' : ''}</td><td className="pr-6 py-1 text-gray-600">{fiscalYearOf(s.month)}</td><td className="py-1 text-right tabular-nums font-medium text-gray-900">{s.poc.toLocaleString()}</td></tr>)}</tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
+
+/** Scans by fiscal year as thin horizontal bars; the current year is emphasised and marked "to date". */
+const FiscalYearBars = ({ byFy, currentFy }) => {
+  const mounted = useMounted();
+  const rows = Object.entries(byFy || {}).sort(([a], [b]) => a.localeCompare(b));
+  const max = Math.max(1, ...rows.map(([, v]) => v));
+  return (
+    <div className="space-y-2" role="list" aria-label="Point-of-care scans by fiscal year">
+      {rows.map(([fy, v]) => {
+        const cur = fy === currentFy;
+        return (
+          <div key={fy} role="listitem" className="flex items-center gap-3 text-sm">
+            <div className={`w-24 flex-shrink-0 text-right ${cur ? 'font-bold text-gray-900' : 'text-gray-600'}`}>{fy}{cur && <span className="block text-[10px] font-medium text-purple-700 leading-tight">to date</span>}</div>
+            <div className="flex-1 h-5 bg-gray-50 rounded relative overflow-hidden"><div className={`absolute left-0 top-0 h-full rounded-r ${cur ? 'bg-purple-600' : 'bg-purple-300'}`} style={{ width: mounted ? `${(v / max) * 100}%` : 0, transition: 'width 900ms cubic-bezier(.2,.8,.2,1)' }}></div></div>
+            <div className={`w-14 text-right tabular-nums ${cur ? 'font-bold text-gray-900' : 'text-gray-700'}`}>{v.toLocaleString()}</div>
+          </div>
+        );
       })}
-    </svg>
+    </div>
+  );
+};
+
+const KpiTile = ({ icon: Icon, tone, aside, value, unit, label, children }) => {
+  const tones = {
+    purple: ['from-purple-500 to-purple-700', 'from-purple-50'],
+    indigo: ['from-indigo-500 to-indigo-700', 'from-indigo-50'],
+    emerald: ['from-emerald-500 to-emerald-700', 'from-emerald-50'],
+    amber: ['from-amber-400 to-orange-500', 'from-amber-50'],
+  }[tone] || ['from-purple-500 to-purple-700', 'from-purple-50'];
+  return (
+    <div className={`relative overflow-hidden bg-gradient-to-br ${tones[1]} via-white to-white rounded-2xl p-5 shadow-lg border border-gray-100`}>
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div className={`bg-gradient-to-br ${tones[0]} text-white p-2.5 rounded-xl shadow-md`}><Icon size={24} aria-hidden="true" /></div>
+        {aside}
+      </div>
+      <div className="text-4xl md:text-[2.6rem] font-black text-gray-900 leading-none">{value}{unit && <span className="text-lg font-semibold text-gray-400 ml-1">{unit}</span>}</div>
+      <div className="text-sm font-medium text-gray-600 mt-2">{label}</div>
+      {children}
+    </div>
   );
 };
 
@@ -331,93 +502,107 @@ export const NetworkSummary = ({ id = 'metrics', expandedDefault = false }) => {
   const [isExpanded, setIsExpanded] = useState(expandedDefault);
   const stats = networkStats();
   const byProv = sitesByProvince();
-  const regions = { Western: { provinces: ['BC', 'AB'], sites: 0, devices: 0 }, Prairies: { provinces: ['SK', 'MB'], sites: 0, devices: 0 }, Central: { provinces: ['ON', 'QC'], sites: 0, devices: 0 }, Atlantic: { provinces: ['NB', 'NS', 'PE', 'NL'], sites: 0, devices: 0 } };
+  const devicesByProv = {}; stats.counted.forEach((s) => { devicesByProv[s.prov] = (devicesByProv[s.prov] || 0) + Number(s.devicesAssigned || 0); });
+  const regions = { 'Western Canada': { provinces: ['BC', 'AB'], sites: 0, devices: 0 }, Prairies: { provinces: ['SK', 'MB'], sites: 0, devices: 0 }, 'Central Canada': { provinces: ['ON', 'QC'], sites: 0, devices: 0 }, Atlantic: { provinces: ['NB', 'NS', 'PE', 'NL'], sites: 0, devices: 0 } };
   stats.counted.forEach((site) => { Object.values(regions).forEach((r) => { if (r.provinces.includes(site.prov)) { r.sites++; r.devices += Number(site.devicesAssigned || 0); } }); });
   const both = stats.bothSites.length;
   const exemptionData = [
-    { label: 'Non-Mobile only', value: stats.nonMobileSites.length - both, color: '#3b82f6' },
+    { label: 'Fixed site only', value: stats.nonMobileSites.length - both, color: '#3b82f6' },
     { label: 'Mobile only', value: stats.mobileSites.length - both, color: '#10b981' },
-    { label: 'Both types', value: both, color: '#8b5cf6' },
+    { label: 'Fixed site and mobile', value: both, color: '#8b5cf6' },
   ];
-  const provinceData = Object.entries(byProv).map(([p, names]) => ({ prov: p, count: names.length, devices: stats.counted.filter((s) => s.prov === p).reduce((n, s) => n + Number(s.devicesAssigned || 0), 0) })).sort((a, b) => b.count - a.count);
   const monthly = METRICS.networkMonthly || [];
   const last12 = monthly.slice(-12), last24 = monthly.slice(-24);
-  const deviceProgress = (stats.allocatedDevices / stats.plannedDevicesTotal) * 100;
   const t = METRICS.totals;
+  // network activity, from the per-site metrics of sites that have a device today
+  const activeSites = stats.counted.filter((p) => p.status === 'active');
+  const siteMetrics = activeSites.map((p) => metricsFor(p)).filter(Boolean);
+  const asOf = METRICS.dataAsOf ? new Date(`${METRICS.dataAsOf}T12:00:00`) : new Date();
+  const daysSince = (iso) => (iso ? Math.round((asOf - new Date(`${iso}T12:00:00`)) / 86400000) : Infinity);
+  const scanned12 = siteMetrics.filter((m) => m.pocLast12Months > 0).length;
+  const scanned30 = siteMetrics.filter((m) => daysSince(m.lastScan) <= 30).length;
+  const lastNetworkScan = siteMetrics.map((m) => m.lastScan).filter(Boolean).sort().slice(-1)[0];
+  const thisMonth = last24.length && last24[last24.length - 1].month === (METRICS.dataAsOf || '').slice(0, 7) ? last24[last24.length - 1] : null;
+  const firstPocMonth = monthly.length ? monthly[0].month : null;
+  // sites by year of first scan (growth)
+  const firstYears = {}; activeSites.forEach((p) => { const m = metricsFor(p); if (m && m.firstScan) { const y = m.firstScan.slice(0, 4); firstYears[y] = (firstYears[y] || 0) + 1; } });
+  const years = Object.keys(firstYears).sort();
+  const growth = years.map((y) => ({ key: y, label: `${y}: ${firstYears[y]} site${firstYears[y] === 1 ? '' : 's'} started scanning`, value: firstYears[y] }));
   return (
     <SectionCard id={id} icon={Activity} title="Network Summary & Analytics" subtitle={`Scan data as of ${fmtDate(METRICS.dataAsOf)} · partner data updated ${fmtDate(partnersMeta.lastUpdated)}`} expanded={isExpanded} onToggle={() => setIsExpanded(!isExpanded)}>
       <div className="p-6 bg-gradient-to-br from-gray-50 to-white">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <div className="flex items-center justify-between mb-4"><div className="bg-purple-100 p-3 rounded-xl"><Building2 size={28} className="text-purple-600" aria-hidden="true" /></div><div className="text-right text-xs text-gray-500">{stats.onboarding} onboarding</div></div>
-            <div className="text-4xl font-black text-gray-900">{stats.signedPartners}</div>
-            <div className="text-sm font-medium text-gray-500 mt-1">Partner organizations with signed agreements</div>
-            <div className="text-xs text-gray-500 mt-2">{stats.activeSites - 1} operating sites · {stats.plannedSites} installing Dec 2026 · plus Western's laboratory</div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <div className="flex items-center justify-between mb-4"><div className="bg-indigo-100 p-3 rounded-xl"><Zap size={28} className="text-indigo-600" aria-hidden="true" /></div><div className="relative"><ProgressRing progress={deviceProgress} size={60} strokeWidth={6} color="#6366f1" /><div className="absolute inset-0 flex items-center justify-center"><span className="text-xs font-bold text-indigo-600">{Math.round(deviceProgress)}%</span></div></div></div>
-            <div className="text-4xl font-black text-gray-900">{stats.deployedDevices}<span className="text-lg font-normal text-gray-400"> deployed</span></div>
-            <div className="text-sm font-medium text-gray-500 mt-1">{stats.allocatedDevices} allocated of {stats.plannedDevicesTotal} planned spectrometers</div>
-            <div className="w-full bg-gray-200 rounded-full h-2 mt-3" aria-hidden="true"><div className="bg-indigo-500 h-2 rounded-full" style={{ width: `${deviceProgress}%` }}></div></div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <div className="flex items-center justify-between mb-4"><div className="bg-emerald-100 p-3 rounded-xl"><Globe size={28} className="text-emerald-600" aria-hidden="true" /></div><div className="text-right"><div className="text-xs text-gray-400">Cities</div><div className="text-sm font-bold text-emerald-600">{stats.cities}</div></div></div>
-            <div className="text-4xl font-black text-gray-900">{stats.provinces.length}<span className="text-lg font-normal text-gray-400">/13</span></div>
-            <div className="text-sm font-medium text-gray-500 mt-1">Provinces & territories</div>
-            <div className="flex flex-wrap gap-1 mt-3">{stats.provinces.map((p) => <span key={p} className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded text-xs font-medium">{p}</span>)}</div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <div className="flex items-center justify-between mb-4"><div className="bg-amber-100 p-3 rounded-xl"><Activity size={28} className="text-amber-600" aria-hidden="true" /></div><SparkBars series={last12.map((m) => ({ key: m.month, label: fmtMonth(m.month), value: m.poc }))} color="#f59e0b" label="Point-of-care scans per month, last 12 months" /></div>
-            <div className="text-4xl font-black text-gray-900">{t.pocAllTime.toLocaleString()}</div>
-            <div className="text-sm font-medium text-gray-500 mt-1">Point-of-care scans since Nov 2022</div>
-            <div className="text-xs text-gray-500 mt-2">{t.pocFiscalYearToDate.toLocaleString()} this fiscal year ({METRICS.fiscalYearNow}) · {t.pocLast12Months.toLocaleString()} in the last 12 months</div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
+          <KpiTile icon={Building2} tone="purple" value={<CountUp value={stats.signedPartners} />} label="Partner organizations with signed agreements"
+            aside={<div className="text-right"><SparkBars series={growth} color="#a78bfa" label="Sites starting to scan, by year" /><div className="text-[10px] text-gray-500 mt-1">sites starting to scan {years[0]}–{years[years.length - 1]}</div></div>}>
+            <div className="text-xs text-gray-500 mt-2">{stats.activeSites - 1} operating sites · {stats.plannedSites} installing Dec 2026 · plus Western's laboratory{stats.onboarding > 0 && <> · {stats.onboarding} onboarding</>}</div>
+          </KpiTile>
+          <KpiTile icon={Zap} tone="indigo" value={<CountUp value={stats.deployedDevices} />} unit="deployed" label={`${stats.allocatedDevices} allocated of ${stats.plannedDevicesTotal} planned spectrometers`}
+            aside={<div className="text-right"><div className="text-2xl font-black text-indigo-600 leading-none">{Math.round((stats.allocatedDevices / stats.plannedDevicesTotal) * 100)}%</div><div className="text-[10px] text-gray-500 mt-1">of the plan allocated</div></div>}>
+            <DeviceSlots deployed={stats.deployedDevices} allocated={stats.allocatedDevices} total={stats.plannedDevicesTotal} />
+          </KpiTile>
+          <KpiTile icon={Globe} tone="emerald" value={<CountUp value={stats.provinces.length} />} unit="of 13" label="Provinces and territories with partner sites"
+            aside={<div className="text-right"><div className="text-2xl font-black text-emerald-600 leading-none"><CountUp value={stats.cities} /></div><div className="text-[10px] text-gray-500 mt-1">cities and towns</div></div>}>
+            <div className="flex flex-wrap gap-1 mt-3">{stats.provinces.map((p) => <span key={p} className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-semibold">{p}<span className="font-normal text-emerald-700"> {(byProv[p] || []).length}</span></span>)}</div>
+          </KpiTile>
+          <KpiTile icon={Activity} tone="amber" value={<CountUp value={t.pocAllTime} />} label={firstPocMonth ? `Point-of-care scans since ${fmtMonthLong(firstPocMonth)}` : 'Point-of-care scans to date'}
+            aside={<div className="text-right"><SparkBars series={last12.map((m) => ({ key: m.month, label: `${fmtMonth(m.month)}: ${m.poc} scans`, value: m.poc }))} color="#f59e0b" label="Point-of-care scans per month, last 12 months" /><div className="text-[10px] text-gray-500 mt-1">last 12 months</div></div>}>
+            <div className="text-xs text-gray-500 mt-2"><span className="font-semibold text-gray-700">{t.pocFiscalYearToDate.toLocaleString()}</span> this fiscal year ({METRICS.fiscalYearNow}) · <span className="font-semibold text-gray-700">{t.pocLast12Months.toLocaleString()}</span> in the last 12 months{thisMonth && <> · {thisMonth.poc.toLocaleString()} so far in {fmtMonth(thisMonth.month)}</>}</div>
+          </KpiTile>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mb-8">
-          <h3 className="text-lg font-bold text-gray-800 mb-1">Point-of-care scans per month, whole network</h3>
-          <p className="text-xs text-gray-500 mb-3">Last 24 months. A scan counts when a result was recorded; calibration and test scans are excluded. The current month is partial.</p>
-          <MonthlyBars series={last24} label="Point-of-care scans per month, last 24 months" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6" role="list" aria-label="Network activity">
+          {[
+            [`${scanned30} of ${siteMetrics.length}`, 'sites scanned in the last 30 days'],
+            [`${scanned12} of ${siteMetrics.length}`, 'sites scanned in the last 12 months'],
+            [fmtDate(lastNetworkScan), 'most recent scan in the network'],
+            [t.sitesWithPocAllTime.toLocaleString(), `sites have contributed scans since ${firstPocMonth ? firstPocMonth.slice(0, 4) : 'the start'}`],
+          ].map(([v, l]) => (
+            <div key={l} role="listitem" className="bg-white rounded-xl px-4 py-3 border border-gray-100 shadow-sm"><div className="text-xl font-bold text-gray-900 leading-tight">{v}</div><div className="text-xs text-gray-500 mt-0.5">{l}</div></div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+          <div className="xl:col-span-2 bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+            <h3 className="text-lg font-bold text-gray-800 mb-1">Point-of-care scans per month, whole network</h3>
+            <p className="text-xs text-gray-500 mb-3">Last 24 months (12 on small screens; the table has all 24). A scan counts when a result was recorded; calibration and test scans are excluded. Hover over or tab to a column for its value.</p>
+            <MonthlyBars series={last24} dataAsOf={METRICS.dataAsOf} label="Point-of-care scans per month, last 24 months" />
+          </div>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+            <h3 className="text-lg font-bold text-gray-800 mb-1">Scans by fiscal year</h3>
+            <p className="text-xs text-gray-500 mb-4">Health Canada fiscal years run April to March. {METRICS.fiscalYearNow} is in progress.</p>
+            <FiscalYearBars byFy={t.pocByFiscalYear} currentFy={METRICS.fiscalYearNow} />
+            <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100">{t.scanRecordsAllTime.toLocaleString()} scan records in all, of which {t.pocAllTime.toLocaleString()} produced a result and count here; {t.labRecordsAllTime.toLocaleString()} further records are from Western's laboratory instruments.</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><MapPin size={20} className="text-purple-600" aria-hidden="true" />Geographic coverage</h3>
-            <div className="flex items-center gap-6">
-              <div className="flex-1"><MiniCanadaMap activeProvinces={stats.provinces} /></div>
-              <div className="flex-1 space-y-3">
+            <h3 className="text-lg font-bold text-gray-800 mb-1 flex items-center gap-2"><MapPin size={20} className="text-purple-600" aria-hidden="true" />Geographic coverage</h3>
+            <p className="text-xs text-gray-500 mb-4">One tile per province or territory; the number is the partner sites there. Hover over or focus a tile for the list.</p>
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="w-full sm:w-[60%] max-w-md"><ProvinceTiles byProv={byProv} devicesByProv={devicesByProv} /></div>
+              <div className="flex-1 grid grid-cols-2 sm:grid-cols-1 gap-3 w-full">
                 {Object.entries(regions).map(([region, d]) => (
-                  <div key={region}>
-                    <div className="flex justify-between text-sm mb-1"><span className="font-medium text-gray-700">{region}</span><span className="text-gray-500">{d.sites} site{d.sites === 1 ? '' : 's'} · {d.devices} device{d.devices === 1 ? '' : 's'}</span></div>
-                    <div className="w-full bg-gray-200 rounded-full h-2" aria-hidden="true"><div className="bg-purple-500 h-2 rounded-full" style={{ width: `${(d.sites / stats.counted.length) * 100}%` }}></div></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-gray-100">
-              <h4 className="text-sm font-bold text-gray-800 mb-3">Province by province</h4>
-              <div className="flex flex-wrap gap-2">
-                {provinceData.map(({ prov, count, devices }) => (
-                  <div key={prov} className="bg-gray-50 rounded-lg px-3 py-2 flex items-center gap-2"><span className="text-lg font-black text-purple-700">{prov}</span><span className="text-xs text-gray-600">{count} site{count !== 1 ? 's' : ''} · {devices} device{devices !== 1 ? 's' : ''}</span></div>
+                  <div key={region} className="bg-gray-50 rounded-xl px-3 py-2"><div className="text-xs text-gray-500">{region}</div><div className="text-base font-bold text-gray-900">{d.sites} site{d.sites === 1 ? '' : 's'} <span className="text-xs font-medium text-gray-600">· {d.devices} device{d.devices === 1 ? '' : 's'}</span></div></div>
                 ))}
               </div>
             </div>
           </div>
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"><FileText size={20} className="text-purple-600" aria-hidden="true" />Exemption types across signed sites</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-1 flex items-center gap-2"><FileText size={20} className="text-purple-600" aria-hidden="true" />Exemption types across signed sites</h3>
+            <p className="text-xs text-gray-500 mb-4">Health Canada subsection 56(1) exemptions on file. Sites whose applications are pending are counted under neither type.</p>
             <div className="flex items-center justify-around flex-wrap gap-4">
               <DonutChart data={exemptionData} size={160} />
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {exemptionData.map((item) => (
-                  <li key={item.label} className="flex items-center gap-3"><span aria-hidden="true" className="w-4 h-4 rounded-full inline-block" style={{ backgroundColor: item.color }}></span><div><div className="text-sm font-medium text-gray-800">{item.label}</div><div className="text-lg font-bold" style={{ color: item.color }}>{item.value} sites</div></div></li>
+                  <li key={item.label} className="flex items-center gap-3"><span aria-hidden="true" className="w-3.5 h-3.5 rounded-sm inline-block flex-shrink-0" style={{ backgroundColor: item.color }}></span><div><div className="text-lg font-bold text-gray-900 leading-tight">{item.value} <span className="text-sm font-medium text-gray-600">site{item.value === 1 ? '' : 's'}</span></div><div className="text-xs text-gray-600">{item.label}</div></div></li>
                 ))}
               </ul>
             </div>
             <div className="mt-4 pt-4 border-t border-gray-100 grid grid-cols-2 gap-4">
-              <div className="bg-blue-50 rounded-xl p-3 text-center"><Smartphone size={20} className="mx-auto text-blue-600 mb-1" aria-hidden="true" /><div className="text-xl font-bold text-blue-700">{stats.mobileSites.length}</div><div className="text-xs text-blue-600">Sites with a mobile exemption</div></div>
-              <div className="bg-emerald-50 rounded-xl p-3 text-center"><Building2 size={20} className="mx-auto text-emerald-600 mb-1" aria-hidden="true" /><div className="text-xl font-bold text-emerald-700">{stats.nonMobileSites.length}</div><div className="text-xs text-emerald-600">Sites with a fixed-site exemption</div></div>
+              <div className="bg-blue-50 rounded-xl p-3 text-center"><Smartphone size={20} className="mx-auto text-blue-700 mb-1" aria-hidden="true" /><div className="text-xl font-bold text-gray-900">{stats.mobileSites.length}</div><div className="text-xs text-blue-800">sites with a mobile exemption</div></div>
+              <div className="bg-emerald-50 rounded-xl p-3 text-center"><Building2 size={20} className="mx-auto text-emerald-700 mb-1" aria-hidden="true" /><div className="text-xl font-bold text-gray-900">{stats.nonMobileSites.length}</div><div className="text-xs text-emerald-800">sites with a fixed-site exemption</div></div>
             </div>
-            <p className="text-xs text-gray-500 mt-3">Types shown are those on file; sites whose applications are pending are counted under neither.</p>
           </div>
         </div>
         <DataStamp metrics={METRICS} partners={partnersMeta} className="mt-6" />

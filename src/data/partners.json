@@ -1,7 +1,7 @@
 {
  "lastUpdated": "2026-10-14",
  "plannedDevicesTotal": 28,
- "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028 (to confirm against the Oct 2026 allocation)",
+ "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028; 26 allocated as of 14 Oct 2026 (Cameron Brown), 2 to assign in FY2027-28",
  "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pull 13 Oct 2026, partner correspondence",
  "partners": [
   {
@@ -76,7 +76,7 @@
     "Exemption 24-108536-846 (Carepoint, decision 20 Nov 2025) valid to 30 Nov 2026 (renewal due); Executive Director Martin McIntosh is the exemption holder"
    ],
    "reviewNotes": [
-    "Protocol V5 lists an \"Extra Unit\" for RHAC; no second device appears in scatr.ca — confirm"
+    "Protocol V5 site table entry 12 (\"Extra Unit\", RHAC) is stale: RHAC has scanned on one device (10) since Feb 2025; device 5 went to Breakaway in Aug 2025 — remove at the next amendment"
    ],
    "exemptionType2": "NA",
    "status": "active",
@@ -1085,18 +1085,23 @@
   }
  ],
  "deviceNotes": {
-  "excludedDevices": [
+  "allocatedUnplaced": [
    {
     "deviceId": 2,
     "serial": "VT73E0MYFCFD",
-    "note": "Scatr demo unit registered to LOFT (single demo scan at the 10 Jul 2026 Health Canada site visit)"
-   },
+    "spectrometerSerial": "WP-01136",
+    "note": "Project unit in hand, not at a site: lent to LOFT for the 10 Jul 2026 Health Canada inspection and registered to LOFT on scatr.ca under the name \"Scatr Demo Unit\"; earlier scans by Western (Oct–Nov 2024) and Positive Living Niagara (Sep 2024). Placement to confirm."
+   }
+  ],
+  "excludedDevices": [
    {
     "deviceId": 17,
     "serial": "ANWSBX5GWRFF",
-    "note": "Scatr test unit registered to Western (5 scans, Jun 2025)"
+    "spectrometerSerial": "WP-01996",
+    "note": "Scatr test unit registered to Western (scans Jun 2025 only); outside the 28-instrument allotment (Standard Work §23)"
    }
   ],
+  "beingBuilt": "CMHA Huron Perth and BRAS Outaouais instruments are being built (14 Oct 2026); they count as allocated and appear on scatr.ca once commissioned",
   "source": "scatr.ca allDeviceData 13 Oct 2026: site = registered customer username, with the Guelph/Moyo label swap corrected and device 27 assigned to LOFT by its scans since Aug 2026"
  }
 }

@@ -4,11 +4,11 @@ import { ChevronDown, ChevronUp, Clock, Trophy, ExternalLink, Maximize2, Minimiz
 import { SectionCard } from './ui.jsx';
 
 export const DEFAULT_TOC = [
+  { id: 'metrics', label: 'Network Summary & Analytics' },
   { id: 'onboarding', label: 'Informational Onboarding Document' },
   { id: 'csuch', label: 'Picturing the Problem' },
   { id: 'timeline', label: 'Project Background & Timeline' },
   { id: 'news', label: 'News & Updates' },
-  { id: 'metrics', label: 'Network Summary & Analytics' },
   { id: 'publications', label: 'Project-Related Publications' },
   { id: 'scatr-research', label: 'Scatr Technical Research Strategy' },
   { id: 'documents', label: 'Research, Ethics & Exemptions Documents' },
