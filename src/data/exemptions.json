@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-10-14",
+ "lastUpdated": "2026-10-24",
  "folder": "HealthCan-UWO/Legal & Regulatory",
  "exemptions": [
   {
@@ -60,7 +60,7 @@
    "validTo": "2026-09-30",
    "status": "to-confirm",
    "file": "PURPOSE SOCIETY_BRITISH COLUMBIA_Fixed_Exemption_Provincial_Auto-Extended_Valid Through_2026-09-30.pdf",
-   "note": "Fraser Health extension confirmed by email 15 Oct 2025 to 30 Sep 2026; current extension not on file — requested 14 Oct 2026"
+   "note": "Fraser Health extension confirmed by email 15 Oct 2025 to 30 Sep 2026; current extension requested 14 Oct 2026 — Lynda Fletcher-Gordon replied the same day that a new letter is coming and she will send it along"
   },
   {
    "partnerKey": "grey",
@@ -98,9 +98,9 @@
    "type": "Fixed",
    "number": "23-100103-782",
    "validTo": "2026-01-31",
-   "status": "expired-renewal-submitted",
+   "status": "expired-new-application-submitted",
    "file": "GUELPH CHC_ONTARIO_Fixed_Exemption_23-100103-782_EXPIRED 2026-01-31_Renewal Submitted to HC.pdf",
-   "note": "Expired 31 Jan 2026; renewal submitted — HC correspondence on the renewal not on file; no scans since 13 Feb 2026 — status requested 14 Oct 2026"
+   "note": "Expired 31 Jan 2026. Per Christiane Kraft 19 Oct 2026: no current exemption; a new mobile application was submitted to Health Canada a few weeks earlier and is awaiting a decision; Lindsey Sodtke on extended leave, Christiane Kraft is the contact"
   },
   {
    "partnerKey": "sanguen",
@@ -255,12 +255,12 @@
   {
    "partnerKey": "aidsnb",
    "site": "AIDS New Brunswick",
-   "type": "Fixed (in-office) and mobile",
+   "type": "Provincial (NB UPHNS authorization): Fredericton fixed partner sites and vehicle; Miramichi site; Miramichi fixed partner sites and vehicle",
    "number": "",
-   "validTo": null,
+   "validTo": "2026-09-30",
    "status": "to-confirm",
-   "note": "Received 10 Mar 2026 (\"mobile and in office service\", Linda Thompson-Brown 13 Oct 2026); letters not on file — requested 14 Oct 2026",
-   "file": null
+   "note": "Three NB Department of Health UPHNS authorization agreements, 1 Feb to 30 Sep 2026 (Fredericton; Miramichi; Miramichi fixed partner sites), received from Linda Thompson-Brown 20 Oct 2026 and filed; renewal past 30 Sep 2026 to confirm",
+   "file": "AIDS NEW BRUNSWICK_NEW BRUNSWICK_Fixed partner sites and Mobile (Fredericton)_Exemption_Provincial UPHNS_Valid Through_2026-09-30.pdf"
   },
   {
    "partnerKey": "avenueb",

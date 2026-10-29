@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-10-14",
+ "lastUpdated": "2026-10-24",
  "plannedDevicesTotal": 28,
  "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028; 26 allocated as of 14 Oct 2026 (Cameron Brown), 2 to assign in FY2027-28",
  "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pull 13 Oct 2026, partner correspondence",
@@ -269,12 +269,12 @@
    "city": "Guelph",
    "prov": "ON",
    "postal": "N1H 8N9",
-   "primaryContact": "Lindsey Sodtke",
-   "email1": "lsodtke@guelphchc.ca",
-   "phone1": "519-821-6638 Ext302",
-   "additionalContact": "Christiane Kraft, Clinical Supervisor, HART Hub and Integrated Programs",
-   "email2": "ckraft@guelphchc.ca",
-   "phone2": "519-821-6638 Ext341",
+   "primaryContact": "Christiane Kraft (Supervisor, Clinical, HART Hub & Integrated Programs)",
+   "email1": "christiane.kraft@gchc.ca",
+   "phone1": "519-821-6638 ext. 341",
+   "additionalContact": "Lindsey Sodtke (on extended leave, Oct 2026)",
+   "email2": "lsodtke@guelphchc.ca",
+   "phone2": "519-821-6638 Ext302",
    "devicesAssigned": 1,
    "deviceIds": [
     3

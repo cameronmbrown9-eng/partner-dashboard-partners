@@ -1,6 +1,6 @@
 {
- "lastUpdated": "2026-10-14",
- "source": "DCP Training & Cert Tracker_Phase 1 and 2.xlsx (10 Apr 2026, updated 14 Oct 2026); Aug 2026 utilization report for the 31 Jul session; Zoom invitation and partner correspondence for the 30 Apr session",
+ "lastUpdated": "2026-10-26",
+ "source": "DCP Training & Cert Tracker_Phase 1 and 2.xlsx (10 Apr 2026, updated 26 Oct 2026); Aug 2026 utilization report for the 31 Jul session; Zoom invitation and partner correspondence for the 30 Apr session",
  "sessions": [
   {
    "id": 1,
@@ -154,7 +154,7 @@
    "attendants": 15,
    "newAttendants": 15,
    "stipend": 3000,
-   "notes": "Awaiting receipt of LOICs and Surveys for final signature and input"
+   "notes": "Held 10 Apr 2026 by Zoom; 15 participants. Forms received by courier 11 Jun 2026 (10 LOICs dated 10 Apr 2026; 10 survey booklets, 9 completed, 1 blank); scanned 26 Oct 2026. Western co-signature of LOICs pending."
   },
   {
    "id": 12,
@@ -168,7 +168,7 @@
    "attendants": 5,
    "newAttendants": 5,
    "stipend": 3000,
-   "notes": "Held 30 Apr 2026 by Zoom (10 am–1 pm PDT); 5 participants (Cameron Brown, 14 Oct 2026) — to confirm against the paper LOICs and surveys shipped 12 Jun 2026"
+   "notes": "Held 30 Apr 2026 by Zoom (10 am–1 pm PDT); 5 participants, confirmed against the forms received by courier 12 Jun 2026 (5 LOICs dated 30 Apr/1 May 2026; 5 completed surveys); scanned 26 Oct 2026. Western co-signature of LOICs pending."
   },
   {
    "id": 13,
@@ -182,7 +182,7 @@
    "attendants": 5,
    "newAttendants": 5,
    "stipend": 3000,
-   "notes": "Held 31 Jul 2026, 5 attendees (Aug 2026 utilization report)"
+   "notes": "Held 31 Jul 2026 by Zoom; 5 attendees (Aug 2026 utilization report). Attendance only: no LOICs or surveys completed."
   },
   {
    "id": 14,
@@ -218,13 +218,13 @@
    "site": "Regional HIV/AIDS Connection (RHAC)",
    "location": "London, ON",
    "sessionNum": 4,
-   "scheduledDate": null,
+   "scheduledDate": "2026-06-17",
    "purpose": "DCP Certification",
-   "status": "To schedule",
-   "attendants": null,
-   "newAttendants": null,
+   "status": "Complete",
+   "attendants": 10,
+   "newAttendants": 10,
    "stipend": 6000,
-   "notes": "Training upcoming (double-session budget: $6,000)"
+   "notes": "Held 17 Jun 2026 in person at Counterpoint, 446 York St, London (double session, $6,000 approved by the PI); 10 participants; 10 LOICs (dated 17 Jun 2026) and 10 pre/post surveys completed on site; scanned 26 Oct 2026. Western co-signature of LOICs pending."
   },
   {
    "id": 17,
@@ -246,16 +246,16 @@
    "site": "Sanguen Health Centre",
    "location": "Kitchener, ON",
    "sessionNum": 4,
-   "scheduledDate": null,
+   "scheduledDate": "2026-08-31",
    "purpose": "DCP Certification",
-   "status": "To schedule",
+   "status": "Complete",
    "attendants": null,
    "newAttendants": null,
    "stipend": 3000,
-   "notes": "Training upcoming"
+   "notes": "Held 31 Aug 2026 by Zoom (12 pm ET); approximately 7 participants (weekly meeting summary, 4 Sep 2026); count to confirm. LOICs and surveys not yet received at Western (26 Oct 2026)."
   }
  ],
  "reviewNotes": [
-  "Sessions held after 10 Apr 2026 other than Lower Mainland Purpose Society (30 Apr) and AIDS New Brunswick (31 Jul) are not on file; LMPS participant count (5) to confirm against the paper LOICs and surveys"
+  "RHAC (17 Jun 2026) and Sanguen (31 Aug 2026) added 26 Oct 2026 from the scanned forms and the 4 Sep 2026 meeting summary; Sanguen participant count (about 7) to confirm and its forms are not yet received. Avenue B: tracker records 17 attendants but 18 survey sets were tallied for the approved Period 2 PPR; to reconcile."
  ]
 }
