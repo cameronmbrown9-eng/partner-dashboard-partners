@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-10-24",
+ "lastUpdated": "2026-11-05",
  "folder": "HealthCan-UWO/Legal & Regulatory",
  "exemptions": [
   {
@@ -106,21 +106,21 @@
    "partnerKey": "sanguen",
    "site": "Sanguen Health Centre",
    "type": "Fixed",
-   "number": "25-106363-560",
-   "validTo": "2026-10-31",
+   "number": "26-105442-437",
+   "validTo": "2027-10-31",
    "status": "active",
-   "file": "SANGUEN CHC_ONTARIO_Fixed_Exemption_Valid Through_2026-10-31.pdf",
-   "note": "Decision 20 Oct 2025; renewal due"
+   "file": "SANGUEN CHC_ONTARIO_Fixed_Exemption_26-105442-437_Valid Through_2027-10-31.pdf",
+   "note": "Decision 8 Oct 2026 (renewal of 25-106363-560); letter received 2 Nov 2026 and filed"
   },
   {
    "partnerKey": "sanguen",
    "site": "Sanguen Health Centre",
    "type": "Mobile",
-   "number": "25-106361-136",
-   "validTo": "2026-10-31",
+   "number": "26-105443-737",
+   "validTo": "2027-10-31",
    "status": "active",
-   "file": "SANGUEN CHC_ONTARIO_Mobile_Exemption_Valid Through_2026-10-31.pdf",
-   "note": "Decision 20 Oct 2025; renewal due"
+   "file": "SANGUEN CHC_ONTARIO_Mobile_Exemption_26-105443-737_Valid Through_2027-10-31.pdf",
+   "note": "Decision 8 Oct 2026 (renewal of 25-106361-136); letter received 2 Nov 2026 and filed"
   },
   {
    "partnerKey": "moyo",
@@ -246,21 +246,11 @@
    "partnerKey": "breakaway",
    "site": "Breakaway Community Services",
    "type": "Fixed",
-   "number": "",
-   "validTo": null,
-   "status": "pending",
-   "note": "Awaiting decision after the Health Canada site visit",
-   "file": null
-  },
-  {
-   "partnerKey": "aidsnb",
-   "site": "AIDS New Brunswick",
-   "type": "Provincial (NB UPHNS authorization): Fredericton fixed partner sites and vehicle; Miramichi site; Miramichi fixed partner sites and vehicle",
-   "number": "",
-   "validTo": "2026-09-30",
-   "status": "to-confirm",
-   "note": "Three NB Department of Health UPHNS authorization agreements, 1 Feb to 30 Sep 2026 (Fredericton; Miramichi; Miramichi fixed partner sites), received from Linda Thompson-Brown 20 Oct 2026 and filed; renewal past 30 Sep 2026 to confirm",
-   "file": "AIDS NEW BRUNSWICK_NEW BRUNSWICK_Fixed partner sites and Mobile (Fredericton)_Exemption_Provincial UPHNS_Valid Through_2026-09-30.pdf"
+   "number": "26-105790-508",
+   "validTo": "2027-10-31",
+   "status": "active",
+   "note": "Decision 30 Oct 2026; letter received 4 Nov 2026 and filed; soft launch Nov 2026",
+   "file": "BREAKAWAY COMMUNITY SERVICES_ONTARIO_Fixed_Exemption_26-105790-508_Valid Through_2027-10-31.pdf"
   },
   {
    "partnerKey": "avenueb",
@@ -331,6 +321,36 @@
    "status": "active",
    "file": "BOYLE STREET COMMUNITY SERVICES_ALBERTA_Mobile (Streetworks Outreach Van)_Exemption_26-104316-564_Valid Through_2027-09-30.pdf",
    "note": "Decision 2 Sep 2026; recovered from the 2 Sep 2026 email and filed 13 Oct 2026"
+  },
+  {
+   "partnerKey": "aidsnb",
+   "site": "AIDS New Brunswick",
+   "status": "active",
+   "validTo": "2029-09-30",
+   "type": "Provincial (NB UPHNS authorization): Miramichi site",
+   "number": "Agreement 5668",
+   "file": "AIDS NEW BRUNSWICK_NEW BRUNSWICK_Fixed (Miramichi)_Exemption_Provincial UPHNS_Agreement 5668_Valid Through_2029-09-30.pdf",
+   "note": "NB Department of Health authorization agreement 1 Oct 2026 to 30 Sep 2029 (signed 14 and 23 Oct 2026); received from Linda Thompson-Brown 5 Nov 2026 and filed; replaces the 2026 agreement"
+  },
+  {
+   "partnerKey": "aidsnb",
+   "site": "AIDS New Brunswick",
+   "status": "active",
+   "validTo": "2029-09-30",
+   "type": "Provincial (NB UPHNS authorization): Miramichi fixed partner sites and vehicle",
+   "number": "Agreement 5667",
+   "file": "AIDS NEW BRUNSWICK_NEW BRUNSWICK_Fixed partner sites and Mobile (Miramichi)_Exemption_Provincial UPHNS_Agreement 5667_Valid Through_2029-09-30.pdf",
+   "note": "NB Department of Health authorization agreement 1 Oct 2026 to 30 Sep 2029 (signed 14 and 23 Oct 2026); received 5 Nov 2026 and filed; replaces the 2026 agreement"
+  },
+  {
+   "partnerKey": "aidsnb",
+   "site": "AIDS New Brunswick",
+   "status": "active",
+   "validTo": "2029-09-30",
+   "type": "Provincial (NB UPHNS authorization): Fredericton fixed partner sites and vehicle",
+   "number": "Agreement 5666",
+   "file": "AIDS NEW BRUNSWICK_NEW BRUNSWICK_Fixed partner sites and Mobile (Fredericton)_Exemption_Provincial UPHNS_Agreement 5666_Valid Through_2029-09-30.pdf",
+   "note": "NB Department of Health authorization agreement 1 Oct 2026 to 30 Sep 2029 (signed 14 and 23 Oct 2026); received 5 Nov 2026 and filed; replaces the 2026 agreement"
   }
  ]
 }

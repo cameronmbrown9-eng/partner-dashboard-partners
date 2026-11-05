@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-10-24",
+ "lastUpdated": "2026-11-05",
  "plannedDevicesTotal": 28,
  "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028; 26 allocated as of 14 Oct 2026 (Cameron Brown), 2 to assign in FY2027-28",
  "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pull 13 Oct 2026, partner correspondence",
@@ -327,7 +327,7 @@
    "lat": 43.4516,
    "lng": -80.4925,
    "notes": [
-    "Fixed exemption 25-106363-560 and mobile exemption 25-106361-136 (20 Oct 2025) valid to 31 Oct 2026 (renewal due)",
+    "Fixed exemption 26-105442-437 and mobile exemption 26-105443-737 (decisions 8 Oct 2026) valid to 31 Oct 2027; letters filed 2 Nov 2026",
     "Positive Living Niagara device on loan since 9 Oct 2026 while the Sanguen unit is repaired"
    ],
    "reviewNotes": [
@@ -795,7 +795,7 @@
    "lat": 43.6395,
    "lng": -79.4358,
    "notes": [
-    "Awaiting Health Canada decision after the site visit"
+    "Fixed-site exemption 26-105790-508 (decision 30 Oct 2026) valid to 31 Oct 2027; letter filed 4 Nov 2026; soft launch Nov 2026"
    ],
    "exemptionType2": "NA",
    "status": "active",
@@ -835,11 +835,10 @@
    "lat": 45.9636,
    "lng": -66.6431,
    "notes": [
-    "Exemption received 10 Mar 2026 (letter not on file)",
+    "NB Department of Health UPHNS authorization agreements 5666 (Fredericton, fixed partner sites and vehicle), 5667 (Miramichi, fixed partner sites and vehicle) and 5668 (Miramichi site), 1 Oct 2026 to 30 Sep 2029; received 5 Nov 2026 and filed",
     "Offices: Suite 203-440 Wilsey Road, Fredericton; also Bathurst and Miramichi; Edmundston planned",
     "Second device requested 13 Oct 2026; demand is the deciding factor",
     "Fredericton office Suite 203-440 Wilsey Road (aidsnb.com, letterhead, email signature); Miramichi office 121 Jail Street E1V 3M4; Edmundston planned for spring 2027",
-    "Exemptions for a mobile and an in-office service received 10 Mar 2026 (letters requested)",
     "Protocol V5 lists 354 King Street — not on the organization's website; correct at the next amendment"
    ],
    "reviewNotes": [
