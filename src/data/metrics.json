@@ -1,214 +1,258 @@
 {
- "generatedAt": "2026-10-13T22:48:44-04:00",
- "pullTimestamp": "2026-10-13T22:43:08-04:00",
- "dataAsOf": "2026-10-13",
- "source": "scatr.ca allScanData via scatr_full_pull/run.sh (Nov 2022 \u2192 present); POC = results non-empty; organisation = username",
+ "generatedAt": "2026-11-05T08:40:52-05:00",
+ "pullTimestamp": "2026-11-05T08:39:59.710626-05:00",
+ "dataAsOf": "2026-11-05",
+ "source": "scatr.ca allScanData via scatr_full_pull/run.sh (Nov 2022 \u2192 present); organisation = username",
+ "definitions": {
+  "pointOfCareScan": "A scan under a partner site's account for which the instrument recorded a result.",
+  "laboratoryScan": "A scan under Western's account on Western's laboratory unit (confirmation of a surrendered sample, paired with HPLC-MS).",
+  "notCounted": "Calibration and other scans with no recorded result; checks Western ran on units before they shipped (preShipmentChecks); the admin and testing accounts.",
+  "mostRecentScan": "The latest partner-site scan in this data pull (dataAsOf), not a live figure."
+ },
  "fiscalYearNow": "FY2026-27",
  "totals": {
-  "scanRecordsAllTime": 19767,
-  "pocAllTime": 16512,
-  "pocPhase2SinceJun27_2024": 9940,
+  "scanRecordsAllTime": 19955,
+  "noResultRecords": 3299,
+  "excludedAccountRecords": 0,
+  "preShipmentChecks": 217,
+  "labScansAllTime": 2134,
+  "labScansFiscalYearToDate": 92,
+  "labScansLast12Months": 257,
+  "lastLabScan": "2026-06-23",
+  "lastPartnerScan": "2026-11-04",
+  "pocAllTime": 14305,
+  "pocPhase2SinceJun27_2024": 8766,
   "pocByFiscalYear": {
-   "FY2022-23": 1,
-   "FY2023-24": 4508,
-   "FY2024-25": 6962,
-   "FY2025-26": 3738,
-   "FY2026-27": 1303
+   "FY2023-24": 3812,
+   "FY2024-25": 5886,
+   "FY2025-26": 3257,
+   "FY2026-27": 1350
   },
-  "pocFiscalYearToDate": 1303,
-  "pocLast12Months": 3196,
+  "pocFiscalYearToDate": 1350,
+  "pocLast12Months": 2699,
   "devicesOnScatrDashboard": 25,
-  "labRecordsAllTime": 2271,
-  "sitesWithPocAllTime": 23,
+  "labRecordsAllTime": 2273,
+  "sitesWithPocAllTime": 22,
   "sitesWithPocLast12Months": 18
  },
  "networkMonthly": [
   {
-   "month": "2023-03",
-   "poc": 1
-  },
-  {
-   "month": "2023-04",
-   "poc": 0
-  },
-  {
    "month": "2023-05",
-   "poc": 53
+   "poc": 34,
+   "lab": 18
   },
   {
    "month": "2023-06",
-   "poc": 90
+   "poc": 12,
+   "lab": 0
   },
   {
    "month": "2023-07",
-   "poc": 240
+   "poc": 142,
+   "lab": 98
   },
   {
    "month": "2023-08",
-   "poc": 264
+   "poc": 228,
+   "lab": 36
   },
   {
    "month": "2023-09",
-   "poc": 425
+   "poc": 350,
+   "lab": 75
   },
   {
    "month": "2023-10",
-   "poc": 386
+   "poc": 353,
+   "lab": 33
   },
   {
    "month": "2023-11",
-   "poc": 489
+   "poc": 389,
+   "lab": 99
   },
   {
    "month": "2023-12",
-   "poc": 536
+   "poc": 469,
+   "lab": 67
   },
   {
    "month": "2024-01",
-   "poc": 567
+   "poc": 493,
+   "lab": 74
   },
   {
    "month": "2024-02",
-   "poc": 687
+   "poc": 615,
+   "lab": 72
   },
   {
    "month": "2024-03",
-   "poc": 771
+   "poc": 727,
+   "lab": 44
   },
   {
    "month": "2024-04",
-   "poc": 823
+   "poc": 697,
+   "lab": 126
   },
   {
    "month": "2024-05",
-   "poc": 779
+   "poc": 610,
+   "lab": 169
   },
   {
    "month": "2024-06",
-   "poc": 542
+   "poc": 501,
+   "lab": 41
   },
   {
    "month": "2024-07",
-   "poc": 573
+   "poc": 507,
+   "lab": 66
   },
   {
    "month": "2024-08",
-   "poc": 673
+   "poc": 593,
+   "lab": 80
   },
   {
    "month": "2024-09",
-   "poc": 581
+   "poc": 515,
+   "lab": 66
   },
   {
    "month": "2024-10",
-   "poc": 483
+   "poc": 385,
+   "lab": 51
   },
   {
    "month": "2024-11",
-   "poc": 639
+   "poc": 553,
+   "lab": 43
   },
   {
    "month": "2024-12",
-   "poc": 448
+   "poc": 372,
+   "lab": 76
   },
   {
    "month": "2025-01",
-   "poc": 387
+   "poc": 325,
+   "lab": 62
   },
   {
    "month": "2025-02",
-   "poc": 516
+   "poc": 366,
+   "lab": 150
   },
   {
    "month": "2025-03",
-   "poc": 518
+   "poc": 462,
+   "lab": 56
   },
   {
    "month": "2025-04",
-   "poc": 247
+   "poc": 222,
+   "lab": 25
   },
   {
    "month": "2025-05",
-   "poc": 302
+   "poc": 250,
+   "lab": 40
   },
   {
    "month": "2025-06",
-   "poc": 354
+   "poc": 292,
+   "lab": 56
   },
   {
    "month": "2025-07",
-   "poc": 332
+   "poc": 282,
+   "lab": 31
   },
   {
    "month": "2025-08",
-   "poc": 278
+   "poc": 232,
+   "lab": 46
   },
   {
    "month": "2025-09",
-   "poc": 332
+   "poc": 306,
+   "lab": 26
   },
   {
    "month": "2025-10",
-   "poc": 375
+   "poc": 324,
+   "lab": 51
   },
   {
    "month": "2025-11",
-   "poc": 326
+   "poc": 296,
+   "lab": 30
   },
   {
    "month": "2025-12",
-   "poc": 294
+   "poc": 272,
+   "lab": 22
   },
   {
    "month": "2026-01",
-   "poc": 247
+   "poc": 205,
+   "lab": 38
   },
   {
    "month": "2026-02",
-   "poc": 268
+   "poc": 241,
+   "lab": 27
   },
   {
    "month": "2026-03",
-   "poc": 383
+   "poc": 335,
+   "lab": 48
   },
   {
    "month": "2026-04",
-   "poc": 329
+   "poc": 292,
+   "lab": 37
   },
   {
    "month": "2026-05",
-   "poc": 253
+   "poc": 223,
+   "lab": 30
   },
   {
    "month": "2026-06",
-   "poc": 225
+   "poc": 197,
+   "lab": 25
   },
   {
    "month": "2026-07",
-   "poc": 101
+   "poc": 101,
+   "lab": 0
   },
   {
    "month": "2026-08",
-   "poc": 128
+   "poc": 126,
+   "lab": 0
   },
   {
    "month": "2026-09",
-   "poc": 205
+   "poc": 205,
+   "lab": 0
   },
   {
    "month": "2026-10",
-   "poc": 62
+   "poc": 190,
+   "lab": 0
+  },
+  {
+   "month": "2026-11",
+   "poc": 16,
+   "lab": 0
   }
  ],
  "labMonthly": [
-  {
-   "month": "2023-03",
-   "labRecords": 0
-  },
-  {
-   "month": "2023-04",
-   "labRecords": 0
-  },
   {
    "month": "2023-05",
    "labRecords": 0
@@ -375,24 +419,88 @@
   },
   {
    "month": "2026-10",
-   "labRecords": 12
+   "labRecords": 14
+  },
+  {
+   "month": "2026-11",
+   "labRecords": 0
   }
  ],
  "sites": [
   {
+   "username": "scatr",
+   "site": "Western University",
+   "known": true,
+   "laboratory": true,
+   "pocAllTime": 2134,
+   "pocFiscalYearToDate": 92,
+   "pocLast12Months": 257,
+   "firstScan": "2023-05-13",
+   "lastScan": "2026-06-23",
+   "monthly": [
+    {
+     "month": "2025-12",
+     "poc": 22
+    },
+    {
+     "month": "2026-01",
+     "poc": 38
+    },
+    {
+     "month": "2026-02",
+     "poc": 27
+    },
+    {
+     "month": "2026-03",
+     "poc": 48
+    },
+    {
+     "month": "2026-04",
+     "poc": 37
+    },
+    {
+     "month": "2026-05",
+     "poc": 30
+    },
+    {
+     "month": "2026-06",
+     "poc": 25
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 0
+    },
+    {
+     "month": "2026-09",
+     "poc": 0
+    },
+    {
+     "month": "2026-10",
+     "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    9
+   ]
+  },
+  {
    "username": "sanguenhealth",
    "site": "Sanguen Health Centre",
    "known": true,
-   "pocAllTime": 4143,
-   "pocFiscalYearToDate": 589,
-   "pocLast12Months": 1055,
+   "pocAllTime": 4224,
+   "pocFiscalYearToDate": 670,
+   "pocLast12Months": 1054,
    "firstScan": "2023-07-22",
-   "lastScan": "2026-10-13",
+   "lastScan": "2026-11-04",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 57
-    },
     {
      "month": "2025-12",
      "poc": 86
@@ -435,30 +543,30 @@
     },
     {
      "month": "2026-10",
-     "poc": 46
+     "poc": 116
+    },
+    {
+     "month": "2026-11",
+     "poc": 11
     }
    ],
    "deviceIds": [
     6,
     3,
-    7,
-    1
+    1,
+    7
    ]
   },
   {
    "username": "londoncts",
    "site": "Regional HIV/AIDS Connection (RHAC)",
    "known": true,
-   "pocAllTime": 2726,
-   "pocFiscalYearToDate": 162,
-   "pocLast12Months": 514,
+   "pocAllTime": 2735,
+   "pocFiscalYearToDate": 171,
+   "pocLast12Months": 466,
    "firstScan": "2023-06-03",
-   "lastScan": "2026-10-09",
+   "lastScan": "2026-11-03",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 71
-    },
     {
      "month": "2025-12",
      "poc": 64
@@ -501,7 +609,11 @@
     },
     {
      "month": "2026-10",
-     "poc": 4
+     "poc": 12
+    },
+    {
+     "month": "2026-11",
+     "poc": 1
     }
    ],
    "deviceIds": [
@@ -511,99 +623,15 @@
    ]
   },
   {
-   "username": "scatr",
-   "site": "Western University",
-   "known": true,
-   "pocAllTime": 2351,
-   "pocFiscalYearToDate": 97,
-   "pocLast12Months": 317,
-   "firstScan": "2023-03-25",
-   "lastScan": "2026-08-25",
-   "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 30
-    },
-    {
-     "month": "2025-12",
-     "poc": 22
-    },
-    {
-     "month": "2026-01",
-     "poc": 42
-    },
-    {
-     "month": "2026-02",
-     "poc": 27
-    },
-    {
-     "month": "2026-03",
-     "poc": 48
-    },
-    {
-     "month": "2026-04",
-     "poc": 37
-    },
-    {
-     "month": "2026-05",
-     "poc": 30
-    },
-    {
-     "month": "2026-06",
-     "poc": 28
-    },
-    {
-     "month": "2026-07",
-     "poc": 0
-    },
-    {
-     "month": "2026-08",
-     "poc": 2
-    },
-    {
-     "month": "2026-09",
-     "poc": 0
-    },
-    {
-     "month": "2026-10",
-     "poc": 0
-    }
-   ],
-   "deviceIds": [
-    9,
-    2,
-    4,
-    1,
-    27,
-    5,
-    28,
-    24,
-    19,
-    26,
-    25,
-    17,
-    23,
-    22,
-    20,
-    21,
-    18,
-    10
-   ]
-  },
-  {
    "username": "sandyhill",
    "site": "Sandy Hill Community Health Centre",
    "known": true,
-   "pocAllTime": 1630,
-   "pocFiscalYearToDate": 132,
-   "pocLast12Months": 306,
+   "pocAllTime": 1653,
+   "pocFiscalYearToDate": 155,
+   "pocLast12Months": 294,
    "firstScan": "2023-05-27",
-   "lastScan": "2026-10-08",
+   "lastScan": "2026-11-04",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 33
-    },
     {
      "month": "2025-12",
      "poc": 28
@@ -646,7 +674,11 @@
     },
     {
      "month": "2026-10",
-     "poc": 3
+     "poc": 25
+    },
+    {
+     "month": "2026-11",
+     "poc": 1
     }
    ],
    "deviceIds": [
@@ -660,14 +692,10 @@
    "known": true,
    "pocAllTime": 1627,
    "pocFiscalYearToDate": 108,
-   "pocLast12Months": 404,
+   "pocLast12Months": 350,
    "firstScan": "2023-05-27",
    "lastScan": "2026-06-12",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 31
-    },
     {
      "month": "2025-12",
      "poc": 43
@@ -711,6 +739,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -730,10 +762,6 @@
    "firstScan": "2023-05-20",
    "lastScan": "2025-03-31",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -777,6 +805,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -789,14 +821,10 @@
    "known": true,
    "pocAllTime": 1120,
    "pocFiscalYearToDate": 65,
-   "pocLast12Months": 158,
+   "pocLast12Months": 144,
    "firstScan": "2023-07-29",
    "lastScan": "2026-07-03",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 23
-    },
     {
      "month": "2025-12",
      "poc": 14
@@ -840,6 +868,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -859,10 +891,6 @@
    "firstScan": "2023-11-04",
    "lastScan": "2026-02-13",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -906,6 +934,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -919,14 +951,10 @@
    "known": true,
    "pocAllTime": 208,
    "pocFiscalYearToDate": 2,
-   "pocLast12Months": 17,
+   "pocLast12Months": 14,
    "firstScan": "2023-06-17",
    "lastScan": "2026-06-17",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 4
-    },
     {
      "month": "2025-12",
      "poc": 5
@@ -970,6 +998,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -986,10 +1018,6 @@
    "firstScan": "2024-03-21",
    "lastScan": "2026-10-05",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -1033,6 +1061,10 @@
     {
      "month": "2026-10",
      "poc": 1
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -1043,16 +1075,12 @@
    "username": "tdr",
    "site": "Travail de rue Chicoutimi",
    "known": true,
-   "pocAllTime": 154,
-   "pocFiscalYearToDate": 29,
-   "pocLast12Months": 125,
+   "pocAllTime": 156,
+   "pocFiscalYearToDate": 31,
+   "pocLast12Months": 93,
    "firstScan": "2025-08-26",
-   "lastScan": "2026-09-30",
+   "lastScan": "2026-11-01",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 23
-    },
     {
      "month": "2025-12",
      "poc": 5
@@ -1095,7 +1123,11 @@
     },
     {
      "month": "2026-10",
-     "poc": 0
+     "poc": 1
+    },
+    {
+     "month": "2026-11",
+     "poc": 1
     }
    ],
    "deviceIds": [
@@ -1108,14 +1140,10 @@
    "known": true,
    "pocAllTime": 121,
    "pocFiscalYearToDate": 0,
-   "pocLast12Months": 81,
+   "pocLast12Months": 66,
    "firstScan": "2025-08-14",
    "lastScan": "2026-03-17",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 32
-    },
     {
      "month": "2025-12",
      "poc": 19
@@ -1159,6 +1187,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -1171,14 +1203,10 @@
    "known": true,
    "pocAllTime": 120,
    "pocFiscalYearToDate": 59,
-   "pocLast12Months": 119,
+   "pocLast12Months": 92,
    "firstScan": "2025-09-25",
    "lastScan": "2026-08-26",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 18
-    },
     {
      "month": "2025-12",
      "poc": 4
@@ -1222,6 +1250,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -1232,16 +1264,12 @@
    "username": "greycounty",
    "site": "County of Grey",
    "known": true,
-   "pocAllTime": 74,
-   "pocFiscalYearToDate": 10,
-   "pocLast12Months": 16,
+   "pocAllTime": 78,
+   "pocFiscalYearToDate": 14,
+   "pocLast12Months": 20,
    "firstScan": "2024-07-17",
-   "lastScan": "2026-08-05",
+   "lastScan": "2026-11-03",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 2
@@ -1284,7 +1312,11 @@
     },
     {
      "month": "2026-10",
-     "poc": 0
+     "poc": 3
+    },
+    {
+     "month": "2026-11",
+     "poc": 1
     }
    ],
    "deviceIds": [
@@ -1297,14 +1329,10 @@
    "known": true,
    "pocAllTime": 34,
    "pocFiscalYearToDate": 3,
-   "pocLast12Months": 22,
+   "pocLast12Months": 19,
    "firstScan": "2025-07-29",
    "lastScan": "2026-08-03",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 4
-    },
     {
      "month": "2025-12",
      "poc": 2
@@ -1347,6 +1375,10 @@
     },
     {
      "month": "2026-10",
+     "poc": 0
+    },
+    {
+     "month": "2026-11",
      "poc": 0
     }
    ],
@@ -1358,16 +1390,12 @@
    "username": "rps",
    "site": "Renfrew Paramedic Services",
    "known": true,
-   "pocAllTime": 27,
-   "pocFiscalYearToDate": 11,
-   "pocLast12Months": 22,
+   "pocAllTime": 30,
+   "pocFiscalYearToDate": 14,
+   "pocLast12Months": 25,
    "firstScan": "2025-07-17",
-   "lastScan": "2026-07-08",
+   "lastScan": "2026-10-15",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -1410,6 +1438,10 @@
     },
     {
      "month": "2026-10",
+     "poc": 3
+    },
+    {
+     "month": "2026-11",
      "poc": 0
     }
    ],
@@ -1421,16 +1453,12 @@
    "username": "aidsnb",
    "site": "AIDS New Brunswick",
    "known": true,
-   "pocAllTime": 20,
-   "pocFiscalYearToDate": 17,
-   "pocLast12Months": 17,
+   "pocAllTime": 28,
+   "pocFiscalYearToDate": 25,
+   "pocLast12Months": 25,
    "firstScan": "2025-09-26",
-   "lastScan": "2026-10-07",
+   "lastScan": "2026-10-31",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -1473,7 +1501,11 @@
     },
     {
      "month": "2026-10",
-     "poc": 3
+     "poc": 11
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -1481,83 +1513,15 @@
    ]
   },
   {
-   "username": "loft",
-   "site": "LOFT Community Services",
-   "known": true,
-   "pocAllTime": 12,
-   "pocFiscalYearToDate": 12,
-   "pocLast12Months": 12,
-   "firstScan": "2026-07-10",
-   "lastScan": "2026-10-09",
-   "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
-    {
-     "month": "2025-12",
-     "poc": 0
-    },
-    {
-     "month": "2026-01",
-     "poc": 0
-    },
-    {
-     "month": "2026-02",
-     "poc": 0
-    },
-    {
-     "month": "2026-03",
-     "poc": 0
-    },
-    {
-     "month": "2026-04",
-     "poc": 0
-    },
-    {
-     "month": "2026-05",
-     "poc": 0
-    },
-    {
-     "month": "2026-06",
-     "poc": 0
-    },
-    {
-     "month": "2026-07",
-     "poc": 1
-    },
-    {
-     "month": "2026-08",
-     "poc": 7
-    },
-    {
-     "month": "2026-09",
-     "poc": 1
-    },
-    {
-     "month": "2026-10",
-     "poc": 3
-    }
-   ],
-   "deviceIds": [
-    27,
-    2
-   ]
-  },
-  {
    "username": "boylestreet",
    "site": "Boyle Street Service Society",
    "known": true,
-   "pocAllTime": 7,
-   "pocFiscalYearToDate": 6,
-   "pocLast12Months": 7,
+   "pocAllTime": 17,
+   "pocFiscalYearToDate": 16,
+   "pocLast12Months": 17,
    "firstScan": "2026-02-10",
-   "lastScan": "2026-10-08",
+   "lastScan": "2026-10-30",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -1600,7 +1564,11 @@
     },
     {
      "month": "2026-10",
-     "poc": 2
+     "poc": 12
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -1608,19 +1576,79 @@
    ]
   },
   {
+   "username": "loft",
+   "site": "LOFT Community Services",
+   "known": true,
+   "pocAllTime": 15,
+   "pocFiscalYearToDate": 15,
+   "pocLast12Months": 15,
+   "firstScan": "2026-07-10",
+   "lastScan": "2026-10-29",
+   "monthly": [
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 1
+    },
+    {
+     "month": "2026-08",
+     "poc": 7
+    },
+    {
+     "month": "2026-09",
+     "poc": 1
+    },
+    {
+     "month": "2026-10",
+     "poc": 6
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
+    }
+   ],
+   "deviceIds": [
+    27,
+    2
+   ]
+  },
+  {
    "username": "breakawaycs",
    "site": "Breakaway",
    "known": true,
-   "pocAllTime": 5,
-   "pocFiscalYearToDate": 0,
-   "pocLast12Months": 0,
+   "pocAllTime": 6,
+   "pocFiscalYearToDate": 1,
+   "pocLast12Months": 1,
    "firstScan": "2025-08-21",
-   "lastScan": "2025-08-21",
+   "lastScan": "2026-11-04",
    "monthly": [
-    {
-     "month": "2025-11",
-     "poc": 0
-    },
     {
      "month": "2025-12",
      "poc": 0
@@ -1664,6 +1692,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 1
     }
    ],
    "deviceIds": [
@@ -1681,10 +1713,6 @@
    "lastScan": "2025-07-25",
    "monthly": [
     {
-     "month": "2025-11",
-     "poc": 0
-    },
-    {
      "month": "2025-12",
      "poc": 0
     },
@@ -1726,6 +1754,10 @@
     },
     {
      "month": "2026-10",
+     "poc": 0
+    },
+    {
+     "month": "2026-11",
      "poc": 0
     }
    ],
@@ -1744,10 +1776,6 @@
    "lastScan": "2025-06-24",
    "monthly": [
     {
-     "month": "2025-11",
-     "poc": 0
-    },
-    {
      "month": "2025-12",
      "poc": 0
     },
@@ -1789,6 +1817,10 @@
     },
     {
      "month": "2026-10",
+     "poc": 0
+    },
+    {
+     "month": "2026-11",
      "poc": 0
     }
    ],
@@ -1807,10 +1839,6 @@
    "lastScan": "2025-07-30",
    "monthly": [
     {
-     "month": "2025-11",
-     "poc": 0
-    },
-    {
      "month": "2025-12",
      "poc": 0
     },
@@ -1853,6 +1881,10 @@
     {
      "month": "2026-10",
      "poc": 0
+    },
+    {
+     "month": "2026-11",
+     "poc": 0
     }
    ],
    "deviceIds": [
@@ -1870,9 +1902,9 @@
    "canonicalUsername": "niagaracts",
    "canonicalSite": "Positive Living Niagara",
    "mostRecentUsername": "sanguenhealth",
-   "mostRecentUsernameLastScan": "2026-10-13",
-   "pocAllTime": 1077,
-   "lastScan": "2026-10-13",
+   "mostRecentUsernameLastScan": "2026-11-04",
+   "pocAllTime": 1125,
+   "lastScan": "2026-11-04",
    "usernames": [
     {
      "username": "niagaracts",
@@ -1880,14 +1912,9 @@
      "lastScan": "2026-06-12"
     },
     {
-     "username": "scatr",
-     "poc": 33,
-     "lastScan": "2023-06-17"
-    },
-    {
      "username": "sanguenhealth",
-     "poc": 8,
-     "lastScan": "2026-10-13"
+     "poc": 89,
+     "lastScan": "2026-11-04"
     }
    ]
   },
@@ -1897,18 +1924,13 @@
    "dashboardName": "Scatr Demo Unit",
    "dashboardOrganization": "LOFT Community Services",
    "dashboardUsername": "loft",
-   "canonicalUsername": "scatr",
-   "canonicalSite": "Western University",
+   "canonicalUsername": "niagaracts",
+   "canonicalSite": "Positive Living Niagara",
    "mostRecentUsername": "loft",
    "mostRecentUsernameLastScan": "2026-07-10",
-   "pocAllTime": 99,
+   "pocAllTime": 9,
    "lastScan": "2026-07-10",
    "usernames": [
-    {
-     "username": "scatr",
-     "poc": 90,
-     "lastScan": "2024-11-07"
-    },
     {
      "username": "niagaracts",
      "poc": 8,
@@ -1966,18 +1988,13 @@
    "canonicalSite": "Lower Mainland Purpose Society",
    "mostRecentUsername": "purposesociety",
    "mostRecentUsernameLastScan": "2026-06-17",
-   "pocAllTime": 251,
+   "pocAllTime": 208,
    "lastScan": "2026-06-17",
    "usernames": [
     {
      "username": "purposesociety",
      "poc": 208,
      "lastScan": "2026-06-17"
-    },
-    {
-     "username": "scatr",
-     "poc": 43,
-     "lastScan": "2023-06-17"
     }
    ]
   },
@@ -1990,9 +2007,9 @@
    "canonicalUsername": "londoncts",
    "canonicalSite": "Regional HIV/AIDS Connection (RHAC)",
    "mostRecentUsername": "breakawaycs",
-   "mostRecentUsernameLastScan": "2025-08-21",
-   "pocAllTime": 1721,
-   "lastScan": "2025-08-21",
+   "mostRecentUsernameLastScan": "2026-11-04",
+   "pocAllTime": 1715,
+   "lastScan": "2026-11-04",
    "usernames": [
     {
      "username": "londoncts",
@@ -2000,14 +2017,9 @@
      "lastScan": "2025-02-19"
     },
     {
-     "username": "scatr",
-     "poc": 7,
-     "lastScan": "2025-07-14"
-    },
-    {
      "username": "breakawaycs",
-     "poc": 5,
-     "lastScan": "2025-08-21"
+     "poc": 6,
+     "lastScan": "2026-11-04"
     }
    ]
   },
@@ -2092,19 +2104,13 @@
    "dashboardName": "Western University Series One",
    "dashboardOrganization": "Western University",
    "dashboardUsername": "scatr",
-   "canonicalUsername": "scatr",
-   "canonicalSite": "Western University",
-   "mostRecentUsername": "scatr",
-   "mostRecentUsernameLastScan": "2026-06-23",
-   "pocAllTime": 2134,
-   "lastScan": "2026-06-23",
-   "usernames": [
-    {
-     "username": "scatr",
-     "poc": 2134,
-     "lastScan": "2026-06-23"
-    }
-   ]
+   "canonicalUsername": null,
+   "canonicalSite": null,
+   "mostRecentUsername": null,
+   "mostRecentUsernameLastScan": null,
+   "pocAllTime": 0,
+   "lastScan": null,
+   "usernames": []
   },
   {
    "deviceId": 10,
@@ -2115,24 +2121,19 @@
    "canonicalUsername": "londoncts",
    "canonicalSite": "Regional HIV/AIDS Connection (RHAC)",
    "mostRecentUsername": "londoncts",
-   "mostRecentUsernameLastScan": "2026-10-09",
-   "pocAllTime": 1605,
-   "lastScan": "2026-10-09",
+   "mostRecentUsernameLastScan": "2026-11-03",
+   "pocAllTime": 1613,
+   "lastScan": "2026-11-03",
    "usernames": [
     {
      "username": "londoncts",
-     "poc": 1012,
-     "lastScan": "2026-10-09"
+     "poc": 1021,
+     "lastScan": "2026-11-03"
     },
     {
      "username": "sandyhill",
      "poc": 592,
      "lastScan": "2024-04-05"
-    },
-    {
-     "username": "scatr",
-     "poc": 1,
-     "lastScan": "2023-05-27"
     }
    ]
   },
@@ -2145,14 +2146,14 @@
    "canonicalUsername": "sandyhill",
    "canonicalSite": "Sandy Hill Community Health Centre",
    "mostRecentUsername": "sandyhill",
-   "mostRecentUsernameLastScan": "2026-10-08",
-   "pocAllTime": 1419,
-   "lastScan": "2026-10-08",
+   "mostRecentUsernameLastScan": "2026-11-04",
+   "pocAllTime": 1442,
+   "lastScan": "2026-11-04",
    "usernames": [
     {
      "username": "sandyhill",
-     "poc": 1038,
-     "lastScan": "2026-10-08"
+     "poc": 1061,
+     "lastScan": "2026-11-04"
     },
     {
      "username": "ottawainnercityhealth",
@@ -2190,14 +2191,14 @@
    "canonicalUsername": "greycounty",
    "canonicalSite": "County of Grey",
    "mostRecentUsername": "greycounty",
-   "mostRecentUsernameLastScan": "2026-08-05",
-   "pocAllTime": 74,
-   "lastScan": "2026-08-05",
+   "mostRecentUsernameLastScan": "2026-11-03",
+   "pocAllTime": 78,
+   "lastScan": "2026-11-03",
    "usernames": [
     {
      "username": "greycounty",
-     "poc": 74,
-     "lastScan": "2026-08-05"
+     "poc": 78,
+     "lastScan": "2026-11-03"
     }
    ]
   },
@@ -2227,19 +2228,13 @@
    "dashboardName": "Scatr Series One",
    "dashboardOrganization": "Western University",
    "dashboardUsername": "scatr",
-   "canonicalUsername": "scatr",
-   "canonicalSite": "Western University",
-   "mostRecentUsername": "scatr",
-   "mostRecentUsernameLastScan": "2025-06-09",
-   "pocAllTime": 3,
-   "lastScan": "2025-06-09",
-   "usernames": [
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-06-09"
-    }
-   ]
+   "canonicalUsername": null,
+   "canonicalSite": null,
+   "mostRecentUsername": null,
+   "mostRecentUsernameLastScan": null,
+   "pocAllTime": 0,
+   "lastScan": null,
+   "usernames": []
   },
   {
    "deviceId": 18,
@@ -2251,18 +2246,13 @@
    "canonicalSite": "Peterborough AIDS Resource Network",
    "mostRecentUsername": "parn",
    "mostRecentUsernameLastScan": "2025-07-25",
-   "pocAllTime": 7,
+   "pocAllTime": 4,
    "lastScan": "2025-07-25",
    "usernames": [
     {
      "username": "parn",
      "poc": 4,
      "lastScan": "2025-07-25"
-    },
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-05-09"
     }
    ]
   },
@@ -2275,9 +2265,9 @@
    "canonicalUsername": "ottawainnercityhealth",
    "canonicalSite": "Ottawa Inner City Health",
    "mostRecentUsername": "aidsnb",
-   "mostRecentUsernameLastScan": "2026-10-07",
-   "pocAllTime": 64,
-   "lastScan": "2026-10-07",
+   "mostRecentUsernameLastScan": "2026-10-31",
+   "pocAllTime": 69,
+   "lastScan": "2026-10-31",
    "usernames": [
     {
      "username": "ottawainnercityhealth",
@@ -2286,13 +2276,8 @@
     },
     {
      "username": "aidsnb",
-     "poc": 20,
-     "lastScan": "2026-10-07"
-    },
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-07-14"
+     "poc": 28,
+     "lastScan": "2026-10-31"
     }
    ]
   },
@@ -2306,18 +2291,13 @@
    "canonicalSite": "Ensemble Moncton",
    "mostRecentUsername": "ensemble",
    "mostRecentUsernameLastScan": "2026-08-03",
-   "pocAllTime": 37,
+   "pocAllTime": 34,
    "lastScan": "2026-08-03",
    "usernames": [
     {
      "username": "ensemble",
      "poc": 34,
      "lastScan": "2026-08-03"
-    },
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-05-12"
     }
    ]
   },
@@ -2331,18 +2311,13 @@
    "canonicalSite": "Cochrane District Paramedic Service",
    "mostRecentUsername": "cdsb",
    "mostRecentUsernameLastScan": "2025-06-24",
-   "pocAllTime": 6,
+   "pocAllTime": 3,
    "lastScan": "2025-06-24",
    "usernames": [
     {
      "username": "cdsb",
      "poc": 3,
      "lastScan": "2025-06-24"
-    },
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-05-09"
     }
    ]
   },
@@ -2355,19 +2330,14 @@
    "canonicalUsername": "rps",
    "canonicalSite": "Renfrew Paramedic Services",
    "mostRecentUsername": "rps",
-   "mostRecentUsernameLastScan": "2026-07-08",
+   "mostRecentUsernameLastScan": "2026-10-15",
    "pocAllTime": 30,
-   "lastScan": "2026-07-08",
+   "lastScan": "2026-10-15",
    "usernames": [
     {
      "username": "rps",
-     "poc": 27,
-     "lastScan": "2026-07-08"
-    },
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-05-12"
+     "poc": 30,
+     "lastScan": "2026-10-15"
     }
    ]
   },
@@ -2377,18 +2347,13 @@
    "dashboardName": "Northern Healthy Connections Society Series One",
    "dashboardOrganization": "Northern Healthy Connections Society",
    "dashboardUsername": "nhcs",
-   "canonicalUsername": "scatr",
-   "canonicalSite": "Western University",
+   "canonicalUsername": "nhcs",
+   "canonicalSite": "NHC Society",
    "mostRecentUsername": "nhcs",
    "mostRecentUsernameLastScan": "2025-07-30",
-   "pocAllTime": 5,
+   "pocAllTime": 2,
    "lastScan": "2025-07-30",
    "usernames": [
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-06-09"
-    },
     {
      "username": "nhcs",
      "poc": 2,
@@ -2406,18 +2371,13 @@
    "canonicalSite": "Avenue B Harm Reduction Inc.",
    "mostRecentUsername": "avenueb",
    "mostRecentUsernameLastScan": "2026-08-26",
-   "pocAllTime": 124,
+   "pocAllTime": 120,
    "lastScan": "2026-08-26",
    "usernames": [
     {
      "username": "avenueb",
      "poc": 120,
      "lastScan": "2026-08-26"
-    },
-    {
-     "username": "scatr",
-     "poc": 4,
-     "lastScan": "2025-07-14"
     }
    ]
   },
@@ -2430,19 +2390,14 @@
    "canonicalUsername": "tdr",
    "canonicalSite": "Travail de rue Chicoutimi",
    "mostRecentUsername": "tdr",
-   "mostRecentUsernameLastScan": "2026-09-30",
-   "pocAllTime": 157,
-   "lastScan": "2026-09-30",
+   "mostRecentUsernameLastScan": "2026-11-01",
+   "pocAllTime": 156,
+   "lastScan": "2026-11-01",
    "usernames": [
     {
      "username": "tdr",
-     "poc": 154,
-     "lastScan": "2026-09-30"
-    },
-    {
-     "username": "scatr",
-     "poc": 3,
-     "lastScan": "2025-07-14"
+     "poc": 156,
+     "lastScan": "2026-11-01"
     }
    ]
   },
@@ -2455,9 +2410,9 @@
    "canonicalUsername": "prairiehr",
    "canonicalSite": "Prairie Harm Reduction",
    "mostRecentUsername": "loft",
-   "mostRecentUsernameLastScan": "2026-10-09",
-   "pocAllTime": 140,
-   "lastScan": "2026-10-09",
+   "mostRecentUsernameLastScan": "2026-10-29",
+   "pocAllTime": 135,
+   "lastScan": "2026-10-29",
    "usernames": [
     {
      "username": "prairiehr",
@@ -2466,13 +2421,8 @@
     },
     {
      "username": "loft",
-     "poc": 11,
-     "lastScan": "2026-10-09"
-    },
-    {
-     "username": "scatr",
-     "poc": 8,
-     "lastScan": "2026-08-25"
+     "poc": 14,
+     "lastScan": "2026-10-29"
     }
    ]
   },
@@ -2485,19 +2435,14 @@
    "canonicalUsername": "boylestreet",
    "canonicalSite": "Boyle Street Service Society",
    "mostRecentUsername": "boylestreet",
-   "mostRecentUsernameLastScan": "2026-10-08",
-   "pocAllTime": 11,
-   "lastScan": "2026-10-08",
+   "mostRecentUsernameLastScan": "2026-10-30",
+   "pocAllTime": 17,
+   "lastScan": "2026-10-30",
    "usernames": [
     {
      "username": "boylestreet",
-     "poc": 7,
-     "lastScan": "2026-10-08"
-    },
-    {
-     "username": "scatr",
-     "poc": 4,
-     "lastScan": "2026-01-13"
+     "poc": 17,
+     "lastScan": "2026-10-30"
     }
    ]
   }

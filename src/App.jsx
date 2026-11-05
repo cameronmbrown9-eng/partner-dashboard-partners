@@ -1822,7 +1822,7 @@ const ProjectPartnerDashboard = () => {
                   [stats.signedPartners, 'Partner organizations'],
                   [stats.deployedDevices, 'Spectrometers deployed'],
                   [stats.provinces.length, 'Provinces'],
-                  [METRICS.totals.pocAllTime.toLocaleString(), 'Point-of-care scans'],
+                  [METRICS.totals.pocAllTime.toLocaleString(), 'Point-of-care scans at partner sites'],
                 ].map(([v, l]) => (
                   <div key={l} className="bg-purple-50 border border-purple-200 rounded-xl px-3 py-2"><dt className="text-xs text-purple-700 font-semibold uppercase tracking-wide order-2">{l}</dt><dd className="text-2xl font-black text-purple-900">{v}</dd></div>
                 ))}

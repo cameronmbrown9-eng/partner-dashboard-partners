@@ -498,6 +498,65 @@ const KpiTile = ({ icon: Icon, tone, aside, value, unit, label, children }) => {
   );
 };
 
+/** Plain-language definitions and counting rules behind the Network Summary figures, with the current value of each. */
+const DefinitionsTable = ({ stats, t, firstPocMonth }) => {
+  const [open, setOpen] = useState(true);
+  const installing = stats.counted.filter((p) => p.status === 'planned-install');
+  const onboarding = (partnersMeta.partners || []).filter((p) => p.status === 'onboarding');
+  const closed = (partnersMeta.partners || []).filter((p) => p.status === 'closed');
+  const names = (list) => list.map((p) => p.nameOrganization).join(', ');
+  const since = firstPocMonth ? fmtMonthLong(firstPocMonth) : 'the first scan';
+  const rows = [
+    ['Partner organization', 'An organization with a signed Collaborative Site Agreement.', 'Western (the project lead); organizations still in discussion; closed sites.', `${stats.signedPartners}`],
+    ['Operating site', 'A partner organization with a spectrometer in service.', 'Partners whose unit is still being built.', `${stats.activeSites - 1}, plus Western's laboratory`],
+    ['Installing', 'Agreement signed, instrument being built, installation booked.', '', `${installing.length}${installing.length ? ` (${names(installing)})` : ''}`],
+    ['Onboarding', 'In discussion with the project; agreement not yet signed.', 'Not included in any count above.', `${onboarding.length}${onboarding.length ? ` (${names(onboarding)})` : ''}`],
+    ['Closed', 'A former site that no longer operates; its unit was returned and redeployed within the network.', 'Not counted anywhere.', `${closed.length}`],
+    ['Deployed spectrometer', "An instrument in service at an operating site, Western's laboratory unit included. A unit on loan to another site counts once, for its owner.", "The manufacturer's own test unit.", `${stats.deployedDevices}`],
+    ['Allocated, not yet in service', 'Units being built for installing sites, plus any project unit in hand awaiting placement.', '', `${stats.allocatedDevices - stats.deployedDevices}`],
+    ['To be assigned', `Slots left in the ${stats.plannedDevicesTotal}-instrument plan.`, '', `${stats.devicesToAssign}`],
+    ['Point-of-care scan', "A scan made under a partner site's account for which the instrument recorded a result.", "Calibration and other scans with no recorded result; scans under Western's account (next row); the admin and testing accounts.", `${t.pocAllTime.toLocaleString()} since ${since}; ${t.pocFiscalYearToDate.toLocaleString()} this fiscal year`],
+    ['Laboratory scan', "A scan on Western's own unit of a sample surrendered for confirmation, paired with HPLC–MS analysis.", `Checks Western ran on units before they shipped (${(t.preShipmentChecks || 0).toLocaleString()}, not shown anywhere).`, `${(t.labScansAllTime || 0).toLocaleString()}`],
+    ['Data currency', 'Scan figures come from a data pull, not a live feed. "Most recent scan" is the latest partner-site scan in that pull.', '', `Pull of ${fmtDate(METRICS.dataAsOf)}`],
+  ];
+  return (
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-100 mb-6">
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="w-full flex items-center justify-between px-6 py-4 text-left">
+        <span><span className="text-lg font-bold text-gray-800">Definitions and counting rules</span><span className="block text-xs text-gray-500 mt-0.5">What each figure above includes and leaves out, with its current value.</span></span>
+        {open ? <ChevronUp size={18} className="text-gray-500" aria-hidden="true" /> : <ChevronDown size={18} className="text-gray-500" aria-hidden="true" />}
+      </button>
+      {open && (
+        <div className="px-6 pb-5">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <caption className="sr-only">Definitions and counting rules for the network summary figures</caption>
+              <thead>
+                <tr className="bg-purple-50 text-left text-xs uppercase tracking-wide text-gray-600">
+                  <th scope="col" className="border border-purple-200 p-2 w-44">Term</th>
+                  <th scope="col" className="border border-purple-200 p-2">What counts</th>
+                  <th scope="col" className="border border-purple-200 p-2">What is left out</th>
+                  <th scope="col" className="border border-purple-200 p-2 w-48">Today</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map(([term, inc, exc, today]) => (
+                  <tr key={term} className="odd:bg-white even:bg-purple-50/40 align-top">
+                    <th scope="row" className="border border-purple-200 p-2 font-semibold text-gray-800 text-left">{term}</th>
+                    <td className="border border-purple-200 p-2 text-gray-700">{inc}</td>
+                    <td className="border border-purple-200 p-2 text-gray-600">{exc || '—'}</td>
+                    <td className="border border-purple-200 p-2 text-gray-900 font-medium">{today}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-600 mt-3"><span className="font-semibold">Example.</span> A client's sample scanned on a partner site's instrument counts as one point-of-care scan. The calibration scan the instrument runs beforehand has no result and is not counted. If the same sample is surrendered and re-scanned on Western's unit before HPLC–MS analysis, that scan is counted once more, as a laboratory scan, and is reported separately.</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const NetworkSummary = ({ id = 'metrics', expandedDefault = false }) => {
   const [isExpanded, setIsExpanded] = useState(expandedDefault);
   const stats = networkStats();
@@ -515,15 +574,15 @@ export const NetworkSummary = ({ id = 'metrics', expandedDefault = false }) => {
   const last12 = monthly.slice(-12), last24 = monthly.slice(-24);
   const t = METRICS.totals;
   // network activity, from the per-site metrics of sites that have a device today
-  const activeSites = stats.counted.filter((p) => p.status === 'active');
-  const siteMetrics = activeSites.map((p) => metricsFor(p)).filter(Boolean);
+  const activeSites = stats.counted.filter((p) => p.status === 'active' && !p.isLead);   // partner sites with a unit in service (Western's laboratory excluded)
+  const siteMetrics = activeSites.map((p) => metricsFor(p)).filter((m) => m && !m.laboratory);
   const asOf = METRICS.dataAsOf ? new Date(`${METRICS.dataAsOf}T12:00:00`) : new Date();
   const daysSince = (iso) => (iso ? Math.round((asOf - new Date(`${iso}T12:00:00`)) / 86400000) : Infinity);
   const scanned12 = siteMetrics.filter((m) => m.pocLast12Months > 0).length;
   const scanned30 = siteMetrics.filter((m) => daysSince(m.lastScan) <= 30).length;
   const lastNetworkScan = siteMetrics.map((m) => m.lastScan).filter(Boolean).sort().slice(-1)[0];
   const thisMonth = last24.length && last24[last24.length - 1].month === (METRICS.dataAsOf || '').slice(0, 7) ? last24[last24.length - 1] : null;
-  const firstPocMonth = monthly.length ? monthly[0].month : null;
+  const firstPoc = monthly.find((m) => m.poc > 0); const firstPocMonth = firstPoc ? firstPoc.month : null;
   // sites by year of first scan (growth)
   const firstYears = {}; activeSites.forEach((p) => { const m = metricsFor(p); if (m && m.firstScan) { const y = m.firstScan.slice(0, 4); firstYears[y] = (firstYears[y] || 0) + 1; } });
   const years = Object.keys(firstYears).sort();
@@ -544,9 +603,10 @@ export const NetworkSummary = ({ id = 'metrics', expandedDefault = false }) => {
             aside={<div className="text-right"><div className="text-2xl font-black text-emerald-600 leading-none"><CountUp value={stats.cities} /></div><div className="text-[10px] text-gray-500 mt-1">cities and towns</div></div>}>
             <div className="flex flex-wrap gap-1 mt-3">{stats.provinces.map((p) => <span key={p} className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-semibold">{p}<span className="font-normal text-emerald-700"> {(byProv[p] || []).length}</span></span>)}</div>
           </KpiTile>
-          <KpiTile icon={Activity} tone="amber" value={<CountUp value={t.pocAllTime} />} label={firstPocMonth ? `Point-of-care scans since ${fmtMonthLong(firstPocMonth)}` : 'Point-of-care scans to date'}
+          <KpiTile icon={Activity} tone="amber" value={<CountUp value={t.pocAllTime} />} label={firstPocMonth ? `Point-of-care scans at partner sites since ${fmtMonthLong(firstPocMonth)}` : 'Point-of-care scans at partner sites'}
             aside={<div className="text-right"><SparkBars series={last12.map((m) => ({ key: m.month, label: `${fmtMonth(m.month)}: ${m.poc} scans`, value: m.poc }))} color="#f59e0b" label="Point-of-care scans per month, last 12 months" /><div className="text-[10px] text-gray-500 mt-1">last 12 months</div></div>}>
             <div className="text-xs text-gray-500 mt-2"><span className="font-semibold text-gray-700">{t.pocFiscalYearToDate.toLocaleString()}</span> this fiscal year ({METRICS.fiscalYearNow}) · <span className="font-semibold text-gray-700">{t.pocLast12Months.toLocaleString()}</span> in the last 12 months{thisMonth && <> · {thisMonth.poc.toLocaleString()} so far in {fmtMonth(thisMonth.month)}</>}</div>
+            {t.labScansAllTime != null && <div className="text-xs text-gray-500 mt-1">Not included: <span className="font-semibold text-gray-700">{t.labScansAllTime.toLocaleString()}</span> laboratory scans on Western's unit (see the counting rules below)</div>}
           </KpiTile>
         </div>
 
@@ -554,24 +614,26 @@ export const NetworkSummary = ({ id = 'metrics', expandedDefault = false }) => {
           {[
             [`${scanned30} of ${siteMetrics.length}`, 'sites scanned in the last 30 days'],
             [`${scanned12} of ${siteMetrics.length}`, 'sites scanned in the last 12 months'],
-            [fmtDate(lastNetworkScan), 'most recent scan in the network'],
+            [fmtDate(lastNetworkScan), `most recent partner-site scan in the data (pull of ${fmtDate(METRICS.dataAsOf)})`],
             [t.sitesWithPocAllTime.toLocaleString(), `sites have contributed scans since ${firstPocMonth ? firstPocMonth.slice(0, 4) : 'the start'}`],
           ].map(([v, l]) => (
             <div key={l} role="listitem" className="bg-white rounded-xl px-4 py-3 border border-gray-100 shadow-sm"><div className="text-xl font-bold text-gray-900 leading-tight">{v}</div><div className="text-xs text-gray-500 mt-0.5">{l}</div></div>
           ))}
         </div>
 
+        <DefinitionsTable stats={stats} t={t} firstPocMonth={firstPocMonth} />
+
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
           <div className="xl:col-span-2 bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-1">Point-of-care scans per month, whole network</h3>
-            <p className="text-xs text-gray-500 mb-3">Last 24 months (12 on small screens; the table has all 24). A scan counts when a result was recorded; calibration and test scans are excluded. Hover over or tab to a column for its value.</p>
+            <h3 className="text-lg font-bold text-gray-800 mb-1">Point-of-care scans per month, all partner sites</h3>
+            <p className="text-xs text-gray-500 mb-3">Last 24 months (12 on small screens; the table has all 24). A scan counts when it was made under a partner site's account and the instrument recorded a result; calibration scans, Western's laboratory scans and pre-shipment checks are not included (counting rules above). Hover over or tab to a column for its value.</p>
             <MonthlyBars series={last24} dataAsOf={METRICS.dataAsOf} label="Point-of-care scans per month, last 24 months" />
           </div>
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
             <h3 className="text-lg font-bold text-gray-800 mb-1">Scans by fiscal year</h3>
             <p className="text-xs text-gray-500 mb-4">Health Canada fiscal years run April to March. {METRICS.fiscalYearNow} is in progress.</p>
             <FiscalYearBars byFy={t.pocByFiscalYear} currentFy={METRICS.fiscalYearNow} />
-            <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100">{t.scanRecordsAllTime.toLocaleString()} scan records in all, of which {t.pocAllTime.toLocaleString()} produced a result and count here; {t.labRecordsAllTime.toLocaleString()} further records are from Western's laboratory instruments.</p>
+            <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100">{t.scanRecordsAllTime.toLocaleString()} scan records in all: {t.pocAllTime.toLocaleString()} point-of-care scans at partner sites (counted here); {(t.labScansAllTime || 0).toLocaleString()} laboratory scans on Western's unit, {(t.preShipmentChecks || 0).toLocaleString()} pre-shipment checks and {(t.noResultRecords || 0).toLocaleString()} calibration or other scans with no result (not counted). HPLC–MS records ({t.labRecordsAllTime.toLocaleString()}) are a separate dataset.</p>
           </div>
         </div>
 
