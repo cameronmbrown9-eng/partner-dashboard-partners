@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-10-13",
+ "lastUpdated": "2026-11-06",
  "groups": [
   {
    "title": "Policy & Announcements",
@@ -108,6 +108,11 @@
    "title": "Exemptions",
    "tone": "purple",
    "items": [
+    {
+     "label": "Project Partner Section 56(1) Exemption Application Guide — revised 6 Nov 2026, with Health Canada's requirements list (Appendix I)",
+     "url": "/Exemption-56-Application-Guide.pdf",
+     "version": "6 Nov 2026"
+    },
     {
      "label": "Exemption 56 Approved — Redacted Template",
      "url": "/Exemption-56-Template.pdf"
