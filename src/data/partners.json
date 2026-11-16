@@ -2,7 +2,7 @@
  "lastUpdated": "2026-11-16",
  "plannedDevicesTotal": 28,
  "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028; 26 allocated as of 14 Oct 2026 (Cameron Brown), 2 to assign in FY2027-28",
- "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pull 13 Oct 2026, partner correspondence",
+ "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pulls of 13 Oct 2026 (device list) and 16 Nov 2026 (device last scans), partner correspondence",
  "partners": [
   {
    "id": 1,
@@ -86,7 +86,7 @@
      "deviceId": 10,
      "serial": "RNSR8R6DMWFD",
      "scatrName": "Regional HIV/AIDS Connection's Series One",
-     "lastScan": "2026-10-09",
+     "lastScan": "2026-11-13",
      "note": ""
     }
    ]
@@ -126,7 +126,7 @@
      "deviceId": 11,
      "serial": "J6N29H27GMFE",
      "scatrName": "Sandy Hill Community Health Centre's Series One",
-     "lastScan": "2026-10-08",
+     "lastScan": "2026-11-13",
      "note": ""
     }
    ]
@@ -254,7 +254,7 @@
      "deviceId": 13,
      "serial": "WBGVJXPMPGFE",
      "scatrName": "Grey County's Series One",
-     "lastScan": "2026-08-05",
+     "lastScan": "2026-11-11",
      "note": ""
     }
    ]
@@ -347,7 +347,7 @@
      "deviceId": 1,
      "serial": "WCFY6P4Y4GFD",
      "scatrName": "Positive Living Niagara Series One",
-     "lastScan": "2026-10-13",
+     "lastScan": "2026-11-15",
      "note": "On loan from Positive Living Niagara since 9 Oct 2026",
      "loaner": true
     }
@@ -479,7 +479,7 @@
      "deviceId": 1,
      "serial": "WCFY6P4Y4GFD",
      "scatrName": "Positive Living Niagara Series One",
-     "lastScan": "2026-10-13",
+     "lastScan": "2026-11-15",
      "note": "On loan to Sanguen Health Centre since 9 Oct 2026"
     },
     {
@@ -645,7 +645,7 @@
      "deviceId": 22,
      "serial": "7CQDZFGT2GFG",
      "scatrName": "Renfrew Paramedic Service Series One",
-     "lastScan": "2026-07-08",
+     "lastScan": "2026-10-15",
      "note": ""
     }
    ]
@@ -725,7 +725,7 @@
      "deviceId": 26,
      "serial": "ATPBJ8JJT8FG",
      "scatrName": "Travail de rue Chicoutimi Series One",
-     "lastScan": "2026-09-30",
+     "lastScan": "2026-11-13",
      "note": ""
     }
    ]
@@ -806,7 +806,7 @@
      "deviceId": 5,
      "serial": "88X7YQ625MFD",
      "scatrName": "Breakaway Series One",
-     "lastScan": "2026-11-04",
+     "lastScan": "2026-11-12",
      "note": ""
     }
    ]
@@ -852,7 +852,7 @@
      "deviceId": 19,
      "serial": "GWPF1RNGX8FF",
      "scatrName": "AIDS New Brunswick Series One",
-     "lastScan": "2026-10-07",
+     "lastScan": "2026-11-16",
      "note": ""
     }
    ]
@@ -937,7 +937,7 @@
      "deviceId": 28,
      "serial": "DK8ST72JT8FG",
      "scatrName": "Boyle Street Community Services Series One",
-     "lastScan": "2026-10-08",
+     "lastScan": "2026-11-10",
      "note": ""
     }
    ]
@@ -981,7 +981,7 @@
      "deviceId": 27,
      "serial": "C2Q1MR2JT8FG",
      "scatrName": "Prairie Harm Reduction Series One",
-     "lastScan": "2026-10-09",
+     "lastScan": "2026-10-29",
      "note": "Previously Prairie Harm Reduction; at LOFT since Aug 2026"
     }
    ]

@@ -4,12 +4,13 @@
   {
    "site": "Sanguen Health Centre",
    "partnerKey": "sanguen",
-   "priority": "high",
+   "priority": "medium",
    "owner": "Cameron",
-   "due": "2026-10-31",
+   "due": null,
    "items": [
-    "Fixed and mobile exemptions expire 31 Oct 2026 — renewal",
-    "Device issues reported 5 Oct; Positive Living Niagara spare on loan since 9 Oct; Sanguen unit repaired under maintenance (Katelyn coordinating)"
+    "Fixed and mobile exemptions renewed to 31 Oct 2027 (decisions 8 Oct 2026; letters filed 2 Nov)",
+    "Still scanning on the Positive Living Niagara loaner (last scan 15 Nov); own unit last scanned 8 Oct, repair status to confirm with Scatr",
+    "31 Aug DCP session: consent and survey forms received 2 Nov (6 sets), for the Period 2 report"
    ]
   },
   {
@@ -87,8 +88,10 @@
    "owner": "Cameron",
    "due": null,
    "items": [
-    "Site agreement sent 7 Oct (unsigned); University of Windsor REB package returned 8 Oct",
-    "Follow-up call: convey the 13 Oct HSREB approval (W11), relabelled Protocol V5 / LOIC V3; TCPS2 certificates (Francois, Abe, Dan); AWS region confirmation from Scatr"
+    "Site agreement sent 7 Oct, not yet signed; WECHU takes it to its leadership team the week of 16 Nov; call to discuss on 20 or 23 Nov",
+    "Follow-up call held 13 Nov; Dr. Mehdi Aloosh is the local Principal Investigator",
+    "Updated University of Windsor REB package to WECHU the week of 16 Nov",
+    "TCPS2 certificates requested 15 Nov (Francois, Abe, Dan); AWS server location to confirm with Scatr"
    ]
   },
   {

@@ -1,7 +1,7 @@
 {
- "generatedAt": "2026-11-05T08:40:52-05:00",
- "pullTimestamp": "2026-11-05T08:39:59.710626-05:00",
- "dataAsOf": "2026-11-05",
+ "generatedAt": "2026-11-16T12:09:33-05:00",
+ "pullTimestamp": "2026-11-16T12:07:42-05:00",
+ "dataAsOf": "2026-11-16",
  "source": "scatr.ca allScanData via scatr_full_pull/run.sh (Nov 2022 \u2192 present); organisation = username",
  "definitions": {
   "pointOfCareScan": "A scan under a partner site's account for which the instrument recorded a result.",
@@ -11,27 +11,27 @@
  },
  "fiscalYearNow": "FY2026-27",
  "totals": {
-  "scanRecordsAllTime": 19955,
-  "noResultRecords": 3299,
+  "scanRecordsAllTime": 20036,
+  "noResultRecords": 3312,
   "excludedAccountRecords": 0,
   "preShipmentChecks": 217,
   "labScansAllTime": 2134,
   "labScansFiscalYearToDate": 92,
   "labScansLast12Months": 257,
   "lastLabScan": "2026-06-23",
-  "lastPartnerScan": "2026-11-04",
-  "pocAllTime": 14305,
-  "pocPhase2SinceJun27_2024": 8766,
+  "lastPartnerScan": "2026-11-16",
+  "pocAllTime": 14373,
+  "pocPhase2SinceJun27_2024": 8834,
   "pocByFiscalYear": {
    "FY2023-24": 3812,
    "FY2024-25": 5886,
    "FY2025-26": 3257,
-   "FY2026-27": 1350
+   "FY2026-27": 1418
   },
-  "pocFiscalYearToDate": 1350,
-  "pocLast12Months": 2699,
+  "pocFiscalYearToDate": 1418,
+  "pocLast12Months": 2767,
   "devicesOnScatrDashboard": 25,
-  "labRecordsAllTime": 2273,
+  "labRecordsAllTime": 2279,
   "sitesWithPocAllTime": 22,
   "sitesWithPocLast12Months": 18
  },
@@ -248,7 +248,7 @@
   },
   {
    "month": "2026-11",
-   "poc": 16,
+   "poc": 84,
    "lab": 0
   }
  ],
@@ -403,7 +403,7 @@
   },
   {
    "month": "2026-06",
-   "labRecords": 21
+   "labRecords": 25
   },
   {
    "month": "2026-07",
@@ -411,7 +411,7 @@
   },
   {
    "month": "2026-08",
-   "labRecords": 1
+   "labRecords": 0
   },
   {
    "month": "2026-09",
@@ -423,7 +423,7 @@
   },
   {
    "month": "2026-11",
-   "labRecords": 0
+   "labRecords": 3
   }
  ],
  "sites": [
@@ -495,11 +495,11 @@
    "username": "sanguenhealth",
    "site": "Sanguen Health Centre",
    "known": true,
-   "pocAllTime": 4224,
-   "pocFiscalYearToDate": 670,
-   "pocLast12Months": 1054,
+   "pocAllTime": 4255,
+   "pocFiscalYearToDate": 701,
+   "pocLast12Months": 1085,
    "firstScan": "2023-07-22",
-   "lastScan": "2026-11-04",
+   "lastScan": "2026-11-15",
    "monthly": [
     {
      "month": "2025-12",
@@ -547,7 +547,7 @@
     },
     {
      "month": "2026-11",
-     "poc": 11
+     "poc": 42
     }
    ],
    "deviceIds": [
@@ -561,11 +561,11 @@
    "username": "londoncts",
    "site": "Regional HIV/AIDS Connection (RHAC)",
    "known": true,
-   "pocAllTime": 2735,
-   "pocFiscalYearToDate": 171,
-   "pocLast12Months": 466,
+   "pocAllTime": 2741,
+   "pocFiscalYearToDate": 177,
+   "pocLast12Months": 472,
    "firstScan": "2023-06-03",
-   "lastScan": "2026-11-03",
+   "lastScan": "2026-11-13",
    "monthly": [
     {
      "month": "2025-12",
@@ -613,7 +613,7 @@
     },
     {
      "month": "2026-11",
-     "poc": 1
+     "poc": 7
     }
    ],
    "deviceIds": [
@@ -626,11 +626,11 @@
    "username": "sandyhill",
    "site": "Sandy Hill Community Health Centre",
    "known": true,
-   "pocAllTime": 1653,
-   "pocFiscalYearToDate": 155,
-   "pocLast12Months": 294,
+   "pocAllTime": 1657,
+   "pocFiscalYearToDate": 159,
+   "pocLast12Months": 298,
    "firstScan": "2023-05-27",
-   "lastScan": "2026-11-04",
+   "lastScan": "2026-11-13",
    "monthly": [
     {
      "month": "2025-12",
@@ -678,7 +678,7 @@
     },
     {
      "month": "2026-11",
-     "poc": 1
+     "poc": 5
     }
    ],
    "deviceIds": [
@@ -1075,11 +1075,11 @@
    "username": "tdr",
    "site": "Travail de rue Chicoutimi",
    "known": true,
-   "pocAllTime": 156,
-   "pocFiscalYearToDate": 31,
-   "pocLast12Months": 93,
+   "pocAllTime": 158,
+   "pocFiscalYearToDate": 33,
+   "pocLast12Months": 95,
    "firstScan": "2025-08-26",
-   "lastScan": "2026-11-01",
+   "lastScan": "2026-11-13",
    "monthly": [
     {
      "month": "2025-12",
@@ -1127,7 +1127,7 @@
     },
     {
      "month": "2026-11",
-     "poc": 1
+     "poc": 3
     }
    ],
    "deviceIds": [
@@ -1264,11 +1264,11 @@
    "username": "greycounty",
    "site": "County of Grey",
    "known": true,
-   "pocAllTime": 78,
-   "pocFiscalYearToDate": 14,
-   "pocLast12Months": 20,
+   "pocAllTime": 79,
+   "pocFiscalYearToDate": 15,
+   "pocLast12Months": 21,
    "firstScan": "2024-07-17",
-   "lastScan": "2026-11-03",
+   "lastScan": "2026-11-11",
    "monthly": [
     {
      "month": "2025-12",
@@ -1316,11 +1316,74 @@
     },
     {
      "month": "2026-11",
-     "poc": 1
+     "poc": 2
     }
    ],
    "deviceIds": [
     13
+   ]
+  },
+  {
+   "username": "aidsnb",
+   "site": "AIDS New Brunswick",
+   "known": true,
+   "pocAllTime": 39,
+   "pocFiscalYearToDate": 36,
+   "pocLast12Months": 36,
+   "firstScan": "2025-09-26",
+   "lastScan": "2026-11-16",
+   "monthly": [
+    {
+     "month": "2025-12",
+     "poc": 0
+    },
+    {
+     "month": "2026-01",
+     "poc": 0
+    },
+    {
+     "month": "2026-02",
+     "poc": 0
+    },
+    {
+     "month": "2026-03",
+     "poc": 0
+    },
+    {
+     "month": "2026-04",
+     "poc": 0
+    },
+    {
+     "month": "2026-05",
+     "poc": 0
+    },
+    {
+     "month": "2026-06",
+     "poc": 0
+    },
+    {
+     "month": "2026-07",
+     "poc": 0
+    },
+    {
+     "month": "2026-08",
+     "poc": 1
+    },
+    {
+     "month": "2026-09",
+     "poc": 13
+    },
+    {
+     "month": "2026-10",
+     "poc": 11
+    },
+    {
+     "month": "2026-11",
+     "poc": 11
+    }
+   ],
+   "deviceIds": [
+    19
    ]
   },
   {
@@ -1450,77 +1513,14 @@
    ]
   },
   {
-   "username": "aidsnb",
-   "site": "AIDS New Brunswick",
-   "known": true,
-   "pocAllTime": 28,
-   "pocFiscalYearToDate": 25,
-   "pocLast12Months": 25,
-   "firstScan": "2025-09-26",
-   "lastScan": "2026-10-31",
-   "monthly": [
-    {
-     "month": "2025-12",
-     "poc": 0
-    },
-    {
-     "month": "2026-01",
-     "poc": 0
-    },
-    {
-     "month": "2026-02",
-     "poc": 0
-    },
-    {
-     "month": "2026-03",
-     "poc": 0
-    },
-    {
-     "month": "2026-04",
-     "poc": 0
-    },
-    {
-     "month": "2026-05",
-     "poc": 0
-    },
-    {
-     "month": "2026-06",
-     "poc": 0
-    },
-    {
-     "month": "2026-07",
-     "poc": 0
-    },
-    {
-     "month": "2026-08",
-     "poc": 1
-    },
-    {
-     "month": "2026-09",
-     "poc": 13
-    },
-    {
-     "month": "2026-10",
-     "poc": 11
-    },
-    {
-     "month": "2026-11",
-     "poc": 0
-    }
-   ],
-   "deviceIds": [
-    19
-   ]
-  },
-  {
    "username": "boylestreet",
    "site": "Boyle Street Service Society",
    "known": true,
-   "pocAllTime": 17,
-   "pocFiscalYearToDate": 16,
-   "pocLast12Months": 17,
+   "pocAllTime": 25,
+   "pocFiscalYearToDate": 24,
+   "pocLast12Months": 25,
    "firstScan": "2026-02-10",
-   "lastScan": "2026-10-30",
+   "lastScan": "2026-11-10",
    "monthly": [
     {
      "month": "2025-12",
@@ -1568,7 +1568,7 @@
     },
     {
      "month": "2026-11",
-     "poc": 0
+     "poc": 8
     }
    ],
    "deviceIds": [
@@ -1643,11 +1643,11 @@
    "username": "breakawaycs",
    "site": "Breakaway",
    "known": true,
-   "pocAllTime": 6,
-   "pocFiscalYearToDate": 1,
-   "pocLast12Months": 1,
+   "pocAllTime": 11,
+   "pocFiscalYearToDate": 6,
+   "pocLast12Months": 6,
    "firstScan": "2025-08-21",
-   "lastScan": "2026-11-04",
+   "lastScan": "2026-11-12",
    "monthly": [
     {
      "month": "2025-12",
@@ -1695,7 +1695,7 @@
     },
     {
      "month": "2026-11",
-     "poc": 1
+     "poc": 6
     }
    ],
    "deviceIds": [
@@ -1902,9 +1902,9 @@
    "canonicalUsername": "niagaracts",
    "canonicalSite": "Positive Living Niagara",
    "mostRecentUsername": "sanguenhealth",
-   "mostRecentUsernameLastScan": "2026-11-04",
-   "pocAllTime": 1125,
-   "lastScan": "2026-11-04",
+   "mostRecentUsernameLastScan": "2026-11-15",
+   "pocAllTime": 1156,
+   "lastScan": "2026-11-15",
    "usernames": [
     {
      "username": "niagaracts",
@@ -1913,8 +1913,8 @@
     },
     {
      "username": "sanguenhealth",
-     "poc": 89,
-     "lastScan": "2026-11-04"
+     "poc": 120,
+     "lastScan": "2026-11-15"
     }
    ]
   },
@@ -2007,9 +2007,9 @@
    "canonicalUsername": "londoncts",
    "canonicalSite": "Regional HIV/AIDS Connection (RHAC)",
    "mostRecentUsername": "breakawaycs",
-   "mostRecentUsernameLastScan": "2026-11-04",
-   "pocAllTime": 1715,
-   "lastScan": "2026-11-04",
+   "mostRecentUsernameLastScan": "2026-11-12",
+   "pocAllTime": 1720,
+   "lastScan": "2026-11-12",
    "usernames": [
     {
      "username": "londoncts",
@@ -2018,8 +2018,8 @@
     },
     {
      "username": "breakawaycs",
-     "poc": 6,
-     "lastScan": "2026-11-04"
+     "poc": 11,
+     "lastScan": "2026-11-12"
     }
    ]
   },
@@ -2121,14 +2121,14 @@
    "canonicalUsername": "londoncts",
    "canonicalSite": "Regional HIV/AIDS Connection (RHAC)",
    "mostRecentUsername": "londoncts",
-   "mostRecentUsernameLastScan": "2026-11-03",
-   "pocAllTime": 1613,
-   "lastScan": "2026-11-03",
+   "mostRecentUsernameLastScan": "2026-11-13",
+   "pocAllTime": 1619,
+   "lastScan": "2026-11-13",
    "usernames": [
     {
      "username": "londoncts",
-     "poc": 1021,
-     "lastScan": "2026-11-03"
+     "poc": 1027,
+     "lastScan": "2026-11-13"
     },
     {
      "username": "sandyhill",
@@ -2146,14 +2146,14 @@
    "canonicalUsername": "sandyhill",
    "canonicalSite": "Sandy Hill Community Health Centre",
    "mostRecentUsername": "sandyhill",
-   "mostRecentUsernameLastScan": "2026-11-04",
-   "pocAllTime": 1442,
-   "lastScan": "2026-11-04",
+   "mostRecentUsernameLastScan": "2026-11-13",
+   "pocAllTime": 1446,
+   "lastScan": "2026-11-13",
    "usernames": [
     {
      "username": "sandyhill",
-     "poc": 1061,
-     "lastScan": "2026-11-04"
+     "poc": 1065,
+     "lastScan": "2026-11-13"
     },
     {
      "username": "ottawainnercityhealth",
@@ -2191,14 +2191,14 @@
    "canonicalUsername": "greycounty",
    "canonicalSite": "County of Grey",
    "mostRecentUsername": "greycounty",
-   "mostRecentUsernameLastScan": "2026-11-03",
-   "pocAllTime": 78,
-   "lastScan": "2026-11-03",
+   "mostRecentUsernameLastScan": "2026-11-11",
+   "pocAllTime": 79,
+   "lastScan": "2026-11-11",
    "usernames": [
     {
      "username": "greycounty",
-     "poc": 78,
-     "lastScan": "2026-11-03"
+     "poc": 79,
+     "lastScan": "2026-11-11"
     }
    ]
   },
@@ -2265,9 +2265,9 @@
    "canonicalUsername": "ottawainnercityhealth",
    "canonicalSite": "Ottawa Inner City Health",
    "mostRecentUsername": "aidsnb",
-   "mostRecentUsernameLastScan": "2026-10-31",
-   "pocAllTime": 69,
-   "lastScan": "2026-10-31",
+   "mostRecentUsernameLastScan": "2026-11-16",
+   "pocAllTime": 80,
+   "lastScan": "2026-11-16",
    "usernames": [
     {
      "username": "ottawainnercityhealth",
@@ -2276,8 +2276,8 @@
     },
     {
      "username": "aidsnb",
-     "poc": 28,
-     "lastScan": "2026-10-31"
+     "poc": 39,
+     "lastScan": "2026-11-16"
     }
    ]
   },
@@ -2390,14 +2390,14 @@
    "canonicalUsername": "tdr",
    "canonicalSite": "Travail de rue Chicoutimi",
    "mostRecentUsername": "tdr",
-   "mostRecentUsernameLastScan": "2026-11-01",
-   "pocAllTime": 156,
-   "lastScan": "2026-11-01",
+   "mostRecentUsernameLastScan": "2026-11-13",
+   "pocAllTime": 158,
+   "lastScan": "2026-11-13",
    "usernames": [
     {
      "username": "tdr",
-     "poc": 156,
-     "lastScan": "2026-11-01"
+     "poc": 158,
+     "lastScan": "2026-11-13"
     }
    ]
   },
@@ -2435,14 +2435,14 @@
    "canonicalUsername": "boylestreet",
    "canonicalSite": "Boyle Street Service Society",
    "mostRecentUsername": "boylestreet",
-   "mostRecentUsernameLastScan": "2026-10-30",
-   "pocAllTime": 17,
-   "lastScan": "2026-10-30",
+   "mostRecentUsernameLastScan": "2026-11-10",
+   "pocAllTime": 25,
+   "lastScan": "2026-11-10",
    "usernames": [
     {
      "username": "boylestreet",
-     "poc": 17,
-     "lastScan": "2026-10-30"
+     "poc": 25,
+     "lastScan": "2026-11-10"
     }
    ]
   }
