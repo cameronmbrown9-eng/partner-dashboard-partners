@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-11-05",
+ "lastUpdated": "2026-11-16",
  "plannedDevicesTotal": 28,
  "plannedDevicesNote": "Project plan: 28 spectrometers by Mar 2028; 26 allocated as of 14 Oct 2026 (Cameron Brown), 2 to assign in FY2027-28",
  "source": "Protocol V5 (13 Oct 2026), site agreements, exemption letters, scatr.ca pull 13 Oct 2026, partner correspondence",
@@ -795,7 +795,7 @@
    "lat": 43.6395,
    "lng": -79.4358,
    "notes": [
-    "Fixed-site exemption 26-105790-508 (decision 30 Oct 2026) valid to 31 Oct 2027; letter filed 4 Nov 2026; soft launch Nov 2026"
+    "Fixed-site exemption 26-105790-508 (decision 30 Oct 2026) valid to 31 Oct 2027; letter filed 4 Nov 2026; operational since the week of 9 Nov 2026"
    ],
    "exemptionType2": "NA",
    "status": "active",
@@ -806,7 +806,7 @@
      "deviceId": 5,
      "serial": "88X7YQ625MFD",
      "scatrName": "Breakaway Series One",
-     "lastScan": "2025-08-21",
+     "lastScan": "2026-11-04",
      "note": ""
     }
    ]

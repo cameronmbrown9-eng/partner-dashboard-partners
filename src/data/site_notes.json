@@ -1,5 +1,5 @@
 {
- "lastUpdated": "2026-10-13",
+ "lastUpdated": "2026-11-16",
  "notes": [
   {
    "site": "Sanguen Health Centre",
@@ -61,10 +61,13 @@
    "site": "Breakaway Community Services",
    "partnerKey": "breakaway",
    "priority": "medium",
-   "owner": "Health Canada",
+   "owner": "Cameron",
    "due": null,
    "items": [
-    "Awaiting decision after the site visit; no scans since Aug 2025"
+    "Operational since the week of 9 Nov 2026; exemption 26-105790-508 valid to 31 Oct 2027",
+    "DCP training session to schedule; stipend already sent",
+    "Demographic questions missing from the Scatr dashboard (reported 9 Nov); Scatr is fixing it",
+    "Application as submitted and the Health Canada correspondence to request for the network record"
    ]
   },
   {
