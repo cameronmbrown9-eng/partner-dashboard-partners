@@ -453,7 +453,7 @@
    "primaryContact": "Talia Storm, Director of StreetWorks Services",
    "email1": "tstorm@positivelivingniagara.com",
    "phone1": "905-984-8684 Ext128",
-   "additionalContact": "Myrtle Stage, Supervisor of Community Engagement",
+   "additionalContact": "Myrtle Stage, Supervisor of Community Engagement · Keira Knowles, Supervisor of StreetWorks Services, mobile service (kknowles@positivelivingniagara.com · 905-984-8684 ext. 116)",
    "email2": "mstage@positivelivingniagara.com",
    "phone2": "905-984-8684 ext. 312 · cell 289-783-4803",
    "devicesAssigned": 2,
@@ -474,7 +474,9 @@
    ],
    "status": "active",
    "statusNote": "",
-   "reviewNotes": [],
+   "reviewNotes": [
+    "Keira Knowles added 24 Nov 2026: lead for the mobile service (introduced 2 Jun 2026)"
+   ],
    "devices": [
     {
      "deviceId": 1,
@@ -825,9 +827,9 @@
    "primaryContact": "Linda Thompson-Brown, Executive Director",
    "email1": "linda@aidsnb.com",
    "phone1": "506-455-2625 · cell 506-440-3774",
-   "additionalContact": "Jess Gionet",
-   "email2": "Jess.gionet@aidsnb.com",
-   "phone2": "506-478-4765",
+   "additionalContact": "",
+   "email2": "",
+   "phone2": "",
    "devicesAssigned": 1,
    "deviceIds": [
     19
@@ -843,7 +845,8 @@
     "Protocol V5 lists 354 King Street — not on the organization's website; correct at the next amendment"
    ],
    "reviewNotes": [
-    "Address per aidsnb.com and Linda Thompson-Brown's signature; 354 King St (Protocol V5) could not be confirmed"
+    "Address per aidsnb.com and Linda Thompson-Brown's signature; 354 King St (Protocol V5) could not be confirmed",
+    "Additional contact removed 24 Nov 2026 (address no longer in service); a second contact is to confirm"
    ],
    "exemptionType2": "Mobile",
    "status": "active",
@@ -871,7 +874,7 @@
    "primaryContact": "Laura MacNeill",
    "email1": "laura.macneill@avenueb.ca",
    "phone1": "506-652-2437",
-   "additionalContact": "Allie Myles",
+   "additionalContact": "Allie Myles · Alicia Ellis, Program Manager, programming and training (Alicia.Ellis@avenueb.ca)",
    "email2": "allie.myles@avenueb.ca",
    "phone2": "506-652-2437",
    "devicesAssigned": 1,
@@ -887,7 +890,9 @@
    "exemptionType2": "NA",
    "status": "active",
    "statusNote": "",
-   "reviewNotes": [],
+   "reviewNotes": [
+    "Alicia Ellis added 24 Nov 2026: named by Avenue B for programming and training inquiries (20 Nov 2026)"
+   ],
    "devices": [
     {
      "deviceId": 24,

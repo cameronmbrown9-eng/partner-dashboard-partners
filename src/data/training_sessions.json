@@ -1,6 +1,6 @@
 {
- "lastUpdated": "2026-10-26",
- "source": "DCP Training & Cert Tracker_Phase 1 and 2.xlsx (10 Apr 2026, updated 26 Oct 2026); Aug 2026 utilization report for the 31 Jul session; Zoom invitation and partner correspondence for the 30 Apr session",
+ "lastUpdated": "2026-11-24",
+ "source": "DCP Training & Cert Tracker_Phase 1 and 2.xlsx (10 Apr 2026, updated 24 Nov 2026); Aug 2026 utilization report for the 31 Jul session; Zoom invitation and partner correspondence for the 30 Apr session",
  "sessions": [
   {
    "id": 1,
@@ -190,13 +190,13 @@
    "site": "Breakaway",
    "location": "Toronto, ON",
    "sessionNum": 1,
-   "scheduledDate": null,
+   "scheduledDate": "2026-11-18",
    "purpose": "DCP Certification",
-   "status": "To schedule",
-   "attendants": null,
-   "newAttendants": null,
+   "status": "Complete",
+   "attendants": 6,
+   "newAttendants": 6,
    "stipend": 3000,
-   "notes": "Training upcoming"
+   "notes": "Held 18 Nov 2026 by Teams (4–6 pm ET), participants in Breakaway's boardroom; 6 participants, matching the forms received as scans the same day (6 LOICs, five dated 18 Nov 2026 and one written 11/8/2026; 6 survey booklets, one with the confidence items blank). Paper originals to follow by courier. Western co-signature of LOICs pending."
   },
   {
    "id": 15,
@@ -252,10 +252,12 @@
    "attendants": null,
    "newAttendants": null,
    "stipend": 3000,
-   "notes": "Held 31 Aug 2026 by Zoom (12 pm ET); approximately 7 participants (weekly meeting summary, 4 Sep 2026); count to confirm. LOICs and surveys not yet received at Western (26 Oct 2026)."
+   "notes": "Held 31 Aug 2026 by Zoom (12 pm ET); approximately 7 participants (weekly meeting summary, 4 Sep 2026); count to confirm (6 or 7). Forms received as scans 2 Nov 2026: 6 LOICs (dated 31 Aug 2026) and 6 survey booklets, one missing its first page, plus one post-course page from a possible seventh participant. Western co-signature of LOICs pending."
   }
  ],
  "reviewNotes": [
-  "RHAC (17 Jun 2026) and Sanguen (31 Aug 2026) added 26 Oct 2026 from the scanned forms and the 4 Sep 2026 meeting summary; Sanguen participant count (about 7) to confirm and its forms are not yet received. Avenue B: tracker records 17 attendants but 18 survey sets were tallied for the approved Period 2 PPR; to reconcile."
+  "RHAC (17 Jun 2026) and Sanguen (31 Aug 2026) added 26 Oct 2026 from the scanned forms and the 4 Sep 2026 meeting summary; Sanguen's forms arrived 2 Nov 2026 (6 sets) and its participant count (6 or 7) is to confirm",
+  "Breakaway (18 Nov 2026) added 24 Nov 2026 from the scanned forms: 6 participants",
+  "Avenue B: the tracker records 17 attendants but 18 survey sets were tallied for the approved Period 2 PPR; to reconcile"
  ]
 }
